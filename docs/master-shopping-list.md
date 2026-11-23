@@ -53,16 +53,16 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [3M Scotch-Weld DP8010 structural adhesive (green, 45 mL)](https://www.mcmaster.com/7467A36/) (7467A36) | 1 ea | McMaster-Carr | lightlock | $76 |
 | Anodize — front plate + ring (service) | 1 job | Pac-Nor Anodizing | front-board | $40–$80 |
 | [Dielectric grease, marine-grade (terminal protection)](https://www.amazon.com/dp/B0D6R543V2) (B0D6R543V2) | 1 ea | Amazon | electrical | $9 |
-| Door perimeter weatherstrip + threshold | 1 lot | Home Depot | interior | $10–$22 |
+| Door perimeter weatherstrip + threshold | 1 lot | Local fab | interior | $10–$22 |
 | Flat black paint (RAL 9005) | 1 qt | Local fab | panel | $10–$20 |
 | GRP grating edge-seal kit | 1 kit | Fibergrate | walkway | $40–$60 |
-| [Interior matte-black paint](https://www.homedepot.com/p/316173659) (PR31301) | 5 gal | Home Depot | interior | $125 |
-| [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | 2 tube | Home Depot | tray | $12 |
+| [Interior matte-black paint](https://www.homedepot.com/p/316173659) (PR31301) | 5 gal | Local fab | interior | $125 |
+| [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | 2 tube | Local fab | tray | $12 |
 | Matte-black interior finish | 1 ea | Local fab | lightlock | $40–$70 |
-| Ply edge sealer + lip fixings | 1 lot | Hardware store | shelf | $10 |
-| Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
-| [Silicone bead sealant (black, UV-stable)](https://www.homedepot.com/p/331895623) (RDX1001bl) | 1 ea | Home Depot | lightlock | $20 |
-| Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
+| Ply edge sealer + lip fixings | 1 lot | Local fab | shelf | $10 |
+| Primer + paint | 1 lot | Local fab | ibc-frame | $30–$50 |
+| [Silicone bead sealant (black, UV-stable)](https://www.homedepot.com/p/331895623) (RDX1001bl) | 1 ea | Local fab | lightlock | $20 |
+| Thread seal tape (PTFE) | 4 roll | Local fab | water | $8 |
 | **adhesives-finishes subtotal** | | | | **$430–$562** |
 
 ### aluminum
@@ -72,18 +72,18 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | 4 ea | Grainger | panel | $49 |
 | 1×1×1/8in 6061-T6 Al angle — channel-support beams (×4) + rivets | 4 4ft | Metals Depot | lightlock | $69 |
 | 25×25×3 6061-T6 Al angle — 2 rim rings (rolled R377.5) | 1 lot | Online Metals | lightlock | $45–$90 |
-| [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | 1 ea | Metal Supermarkets | spray | $125 |
+| [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | 1 ea | Steel service center | spray | $125 |
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft](https://www.grainger.com/product/795M51) (795M51) | 4 ea | Grainger | film | $328 |
 | 6063-T5 Al U-channel — rotating-drum opening-edge stiffeners (×2) + rivets | 1 lot | Online Metals | lightlock | $30–$55 |
 | 8mm 6061-T6 aluminum plate — 2 drum caps (Ø755) | 1 lot | Online Metals | lightlock | $400–$700 |
-| [Aluminum angle 2"×2"×1/8" (6061-T6, plain) — 16 ft lengths](https://www.onlinemetals.com/en/buy/aluminum/2-x-2-x-0-125-aluminum-angle-6061-t6/pid/987) | 3 16 ft length | Metal Supermarkets | film | $528 |
+| [Aluminum angle 2"×2"×1/8" (6061-T6, plain) — 16 ft lengths](https://www.onlinemetals.com/en/buy/aluminum/2-x-2-x-0-125-aluminum-angle-6061-t6/pid/987) | 3 16 ft length | Steel service center | film | $528 |
 | Aluminum U-channel, 1/8-panel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | [Anodized-Al straight-flange holder for the #4 wiper brush (×4 lines)](https://www.tanisbrush.com/products/strip-brush/strip-brush-holders) (AH400436) | 4 8ft | Tanis Brush | lightlock | $72–$160 |
-| Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
+| Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local fab | spray | $12–$18 |
 | [Eagle Al H-divider — opening-edge H-mullions (×4)](https://eagle-aluminum.com/product/aluminum-h-divider-1-38-for-316-material/) (SGN-113) | 4 12ft | Eagle Aluminum | lightlock | $152 |
-| ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 1 ea | Metal Supermarkets | front-board | $22 |
-| ICP-03 retaining-ring stock — 6061-T6 | 1 ea | Metal Supermarkets | front-board | $8 |
+| ICP-01 front-plate stock — 6061-T6 round bar Ø190×22 | 1 ea | Steel service center | front-board | $22 |
+| ICP-03 retaining-ring stock — 6061-T6 | 1 ea | Steel service center | front-board | $8 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | 1 ea | Amazon | spray | $15 |
 | **aluminum subtotal** | | | | **$2,039–$2,583** |
 
@@ -123,13 +123,13 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [150×150×50mm axial fans (12V DC)](https://www.amazon.com/dp/B091BTFBD9) (B091BTFBD9) | 2 ea | Amazon | ventilation | $50 |
-| [200mm 90° duct elbow](https://www.homedepot.com/p/100187427) (MF-90E8) | 1 ea | Home Depot | ventilation | $15 |
-| [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | 1 coil | Home Depot | ventilation | $63 |
-| [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | 1 set | Home Depot | ventilation | $16 |
-| [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | 1 ea | Home Depot | ventilation | $109 |
-| Fan-A grille mounting frame — 5mm aluminum over the corrugated wall | 1 ea | Metal Supermarkets | ventilation | $20–$40 |
-| [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | 1 ea | Home Depot | ventilation | $12 |
-| Weatherproof louvre grille, 6in (Fan A + Fan B exterior vents) | 2 ea | Home Depot | ventilation | $20–$40 |
+| [200mm 90° duct elbow](https://www.homedepot.com/p/100187427) (MF-90E8) | 1 ea | Local fab | ventilation | $15 |
+| [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | 1 coil | Local fab | ventilation | $63 |
+| [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | 1 set | Local fab | ventilation | $16 |
+| [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | 1 ea | Local fab | ventilation | $109 |
+| Fan-A grille mounting frame — 5mm aluminum over the corrugated wall | 1 ea | Steel service center | ventilation | $20–$40 |
+| [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | 1 ea | Local fab | ventilation | $12 |
+| Weatherproof louvre grille, 6in (Fan A + Fan B exterior vents) | 2 ea | Local fab | ventilation | $20–$40 |
 | **ducting-ventilation subtotal** | | | | **$305–$345** |
 
 ### electrical-distribution
@@ -153,9 +153,9 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [Blue Sea 5026 fuse block, 12-circuit ST-blade](https://offgridstores.com/products/blue-sea-5026-st-blade-fuse-block-w-cover-12-circuit-w-negative-bus) (5026) | 1 ea | Off Grid Stores | electrical | $59 |
 | [Brady M210 wire label printer kit](https://www.digikey.com/en/products/detail/brady-corporation/M210-KIT/16643735) (M210-KIT) | 1 ea | Amazon | electrical | $194 |
 | [Cable grommets / glands — steel-shell penetrations](https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF) (B09K5GNFHF) | 1 lot | Amazon | electrical | $28 |
-| [Cooler AC outlet — WR duplex receptacle + in-use cover](https://www.homedepot.com/p/202078774) (W5320-T0W) | 1 set | Home Depot | electrical | $25 |
+| [Cooler AC outlet — WR duplex receptacle + in-use cover](https://www.homedepot.com/p/202078774) (W5320-T0W) | 1 set | Local fab | electrical | $25 |
 | Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
-| [Copper-bonded ground rod, 8ft × ⅝" + acorn clamp](https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738) (615880UPC) | 1 lot | Home Depot | electrical | $27 |
+| [Copper-bonded ground rod, 8ft × ⅝" + acorn clamp](https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738) (615880UPC) | 1 lot | Local fab | electrical | $27 |
 | [Deutsch DT 2-pin connectors (Amphenol AT2PS-CKIT)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | 2 set | Waytek Wire | ventilation | $8 |
 | [Deutsch DT 2-pin connectors, IP67 (exterior penetrations)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | 10 set | Waytek Wire | electrical | $30 |
 | Drain-pump switches S-05 / S-03 — 1-pole (SPST) IP67 sealed rocker 12V ≥10A, in a surface box | 2 ea | Amazon | electrical | $20–$40 |
@@ -206,8 +206,8 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 |------|-----|----------|---------|-----------|
 | CNC machining — front plate + retaining ring (service) | 1 job | Fictiv | front-board | $150–$350 |
 | Delivery — short haul (<50 miles), tilt-bed | 1 job | Commercial tilt-bed hire | container | $300–$800 |
-| Fabrication (cut, brake, weld, press sump) | 1 lot | Local sheet metal | tray | $450–$850 |
-| Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings | 1 lot | Local plastic + metal fab | lightlock | $800–$1,150 |
+| Fabrication (cut, brake, weld, press sump) | 1 lot | Local fab | tray | $450–$850 |
+| Fabrication — roll + weld 2 HDPE cylinders, roll rim-angle, fit metal caps/bearings | 1 lot | Local fab | lightlock | $800–$1,150 |
 | Welding / fabrication | 1 lot | Local fab | door | $200–$350 |
 | Welding / fabrication (frame assembly) | 1 lot | Local fab | ibc-frame | $688–$1,018 |
 | **fabrication-labor subtotal** | | | | **$2,588–$4,518** |
@@ -239,12 +239,12 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 121 ea | McMaster-Carr | film, ibc-frame, walkway | $31 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 6 ea | McMaster-Carr | film | $71 |
 | [36× #14 self-drilling TEK screws (bracket → post, RP2/SP2)](https://www.mcmaster.com/90822A620/) (90822A620) | 36 ea | McMaster-Carr | water | $19 |
-| 58× conduit P-clips + PVC-trunk saddle straps | 58 ea | Home Depot | electrical | $26–$46 |
+| 58× conduit P-clips + PVC-trunk saddle straps | 58 ea | Local fab | electrical | $26–$46 |
 | 6× rear-panel brackets, 60mm lengths of 1×1×3/16 steel angle (corridor panel → IBC uprights) | 6 ea | (cut from walkway-right-bearer) | water | $0 |
-| Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | 1 lot | Home Depot | water | $10–$11 |
+| Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | 1 lot | Local fab | water | $10–$11 |
 | [Door pull handle + misc mounting hardware](https://www.mcmaster.com/3570N12/) (3570N12) | 1 ea | McMaster-Carr | interior | $39 |
-| Personnel-door hinges (heavy-duty, ×3) | 3 ea | Home Depot | interior | $15–$24 |
-| Weatherproof door latch/lock set | 1 ea | Home Depot | interior | $20–$45 |
+| Personnel-door hinges (heavy-duty, ×3) | 3 ea | Local fab | interior | $15–$24 |
+| Weatherproof door latch/lock set | 1 ea | Local fab | interior | $20–$45 |
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 4 ft | McMaster-Carr | film | $52 |
 | [Machine screws — filter housings to ply tee-nuts (1/4-20)](https://www.mcmaster.com/90272A552/) (90272A552) | 8 ea | McMaster-Carr | water | $1 |
 | [1/4" flat washer — filter-housing machine screws](https://www.mcmaster.com/90850A100/) (90850A100) | 8 ea | McMaster-Carr | water | $1 |
@@ -253,12 +253,12 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 4 pack | Amazon | film | $20 |
 | [1/8×3/4in 304 flat-bar axle saddles (skate) — 2 ft bar](https://www.mcmaster.com/8992K794-8992K797/) (8992K794) | 2 2 ft bar | McMaster-Carr | film | $20 |
 | [3/32" sq key stock, 12in bar — U-joint stub keys (×8 cut)](https://www.grainger.com/product/Key-Stock-5UY75) (5UY75) | 1 lot | Grainger | film | $2 |
-| [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 3 10-pack | Home Depot | water | $56 |
+| [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 3 10-pack | Local fab | water | $56 |
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 3 ft | McMaster-Carr | ibc-frame | $39 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 12 ea | McMaster-Carr | ibc-frame | $16 |
 | [M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 16 ea | McMaster-Carr | ibc-frame | $14 |
-| [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Home Depot | ibc-frame | $68 |
+| [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Local fab | ibc-frame | $68 |
 | [Bearing retaining rings + upper end-retainer plate](https://www.mcmaster.com/90154A895/) (90154A895) | 1 lot | McMaster-Carr | lightlock | $17–$18 |
 | [Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing](https://www.mcmaster.com/91294A328/) (91294A328) | 1 lot | McMaster-Carr | lightlock | $95 |
 | [12" round pull handle — McMaster 1871A65](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | lightlock | $6 |
@@ -266,28 +266,28 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [1/8" 18-8 SS blind rivets — housing skin → outer beam face (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
 | [1/8" 18-8 SS blind rivets — housing→frame lap (100-pack)](https://www.mcmaster.com/97525A435/) (97525A435) | 1 pack-100 | McMaster-Carr | lightlock | $15 |
 | [1/8" 18-8 SS blind rivets — shell→cap lap (100-pack)](https://www.mcmaster.com/97525A425/) (97525A425) | 1 pack-100 | McMaster-Carr | lightlock | $14 |
-| Misc. conversion hardware (contingency buffer) | 1 lot | Home Depot | interior | $80–$130 |
+| Misc. conversion hardware (contingency buffer) | 1 lot | Local fab | interior | $80–$130 |
 | [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | 58 ea | Harbor Freight | clamp | $115–$173 |
 | [Draw latch — apron pull-out strips (McMaster 1590A13, 10-pack — 8 used)](https://www.mcmaster.com/1590A13/) (1590A13) | 1 10-pack | McMaster-Carr | panel | $10 |
-| Webbing stow strap w/ cam buckle — pull-out strips (×2) | 2 ea | Amazon / hardware | panel | $16–$22 |
+| Webbing stow strap w/ cam buckle — pull-out strips (×2) | 2 ea | Amazon | panel | $16–$22 |
 | [Lift-and-turn tight-hold cam latch (McMaster 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 2 ea | McMaster-Carr | panel | $61 |
 | [12" round pull handle — McMaster 1871A65 (same as the drum handle) + 1/4" screws into rivnuts, matte-black](https://www.mcmaster.com/1871A65/) (1871A65) | 1 ea | McMaster-Carr | panel | $6 |
-| [1/4"-20 zinc machine screws (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-x-1-in-Combo-Truss-Head-Zinc-Plated-Machine-Screw-4-Pack-826771/317479749) (826771) | 10 4-pack | Home Depot | water | $16 |
+| [1/4"-20 zinc machine screws (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-x-1-in-Combo-Truss-Head-Zinc-Plated-Machine-Screw-4-Pack-826771/317479749) (826771) | 10 4-pack | Local fab | water | $16 |
 | [1/8" 18-8 SS blind rivets — HDPE surround → frame lap (100-pack ×2)](https://www.mcmaster.com/97525A435/) (97525A435) | 2 pack | McMaster-Carr | panel | $29 |
 | [M6×25 SHCS 18-8 SS, 4× (plate → adapter)](https://www.mcmaster.com/92314A669/) (92314A669) | 4 ea | McMaster-Carr | front-board | $1 |
 | [M6 flat washer, 18-8 SS, 4× (under the mount-bolt heads)](https://www.mcmaster.com/91455a120/) (91455A120) | 4 ea | McMaster-Carr | front-board | $0 |
 | [M6 knurled thumb screws, 4× (retaining ring)](https://www.mcmaster.com/99607A293/) (99607A293) | 4 ea | McMaster-Carr | front-board | $35 |
-| 87× cushioned pipe P-clips (3/4" + 1/2" pipe) | 87 ea | Home Depot | water | $48–$83 |
-| [1/2"–1 1/4" SS hose clamp (pump flex jumpers)](https://www.homedepot.com/p/Everbilt-1-2-1-1-4-in-Stainless-Steel-Hose-Clamp-10-Pack-671255E/202262870) (202262870) | 2 10-pack | Home Depot | water | $36 |
+| 87× cushioned pipe P-clips (3/4" + 1/2" pipe) | 87 ea | Local fab | water | $48–$83 |
+| [1/2"–1 1/4" SS hose clamp (pump flex jumpers)](https://www.homedepot.com/p/Everbilt-1-2-1-1-4-in-Stainless-Steel-Hose-Clamp-10-Pack-671255E/202262870) (202262870) | 2 10-pack | Local fab | water | $36 |
 | 12× steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 1 lot | (cut from walkway-right-bearer) | water | $0 |
-| [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
+| [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Local fab | ventilation | $10 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | 16 ea | Amazon | water | $8 |
 | [304 SS chain — 2 tension stays](https://www.mcmaster.com/3392T51-3392T512/) (3392T51) | 1 3ft | McMaster-Carr | shelf | $24 |
 | [1/4"-20 steel shoulder eye bolt — shelf front-corner chain anchor](https://www.mcmaster.com/3014T45/) (3014T45) | 2 ea | McMaster-Carr | shelf | $8 |
 | [1/4"-20 SS machine screws — hinge leaves (both)](https://www.mcmaster.com/90272A540/) (90272A540) | 8 ea | McMaster-Carr | shelf | $1 |
 | [Extra-clearance continuous (piano) hinge, 600 mm, SS](https://www.mcmaster.com/14835A77-14835A33/) (14835A77) | 1 ea | McMaster-Carr | shelf | $56 |
 | [304 SS quick-links](https://www.mcmaster.com/8947T25/) (8947T25) | 4 ea | McMaster-Carr | shelf | $12 |
-| [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 2 4-pack | Home Depot | shelf | $3 |
+| [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 2 4-pack | Local fab | shelf | $3 |
 | [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 1 ea | McMaster-Carr | shelf | $31 |
 | [M8 galvanized steel eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 2 ea | McMaster-Carr | shelf | $16 |
 | [Stay-anchor crush sleeve stock — 1-3/8in OD × 1/4in wall DOM steel tube](https://www.mcmaster.com/7767T76-7767T761/) (7767T76) | 1 ft | McMaster-Carr | swing | $36 |
@@ -301,7 +301,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
-| [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Home Depot | water | $19 |
+| [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 12 4-pack | Local fab | water | $19 |
 | [Half-lap hold-down screws (#14 TEK + washer)](https://www.mcmaster.com/90822A620/) (90822A620) | 4 ea | McMaster-Carr | ibc-frame | $3 |
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → sill/cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 20 ea | McMaster-Carr | walkway | $26 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
@@ -321,10 +321,10 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 4 sheet | US Plastics | panel | $493 |
-| [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 2 sheet | US Plastics | panel | $247 |
-| [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 3 sheet | US Plastics | lightlock | $370 |
-| [3/16" UV-stab HDPE sheet, black — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705) (46685) | 3 sheet | US Plastics | lightlock | $555 |
+| [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 4 sheet | US Plastic Corp | panel | $493 |
+| [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 2 sheet | US Plastic Corp | panel | $247 |
+| [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 3 sheet | US Plastic Corp | lightlock | $370 |
+| [3/16" UV-stab HDPE sheet, black — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705) (46685) | 3 sheet | US Plastic Corp | lightlock | $555 |
 | Dibond ACM panel 3mm (black), 4×8 sheet | 4 sheet | Central Coast Plastics | film | $380 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 1 lot | US Plastic Corp | tray | $296 |
@@ -340,31 +340,31 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [1" FNPT × 1" hose barb (Banjo)](https://www.usplastic.com/catalog/item.aspx?itemid=135154) (31544) | 10 ea | US Plastic Corp | water | $30 |
 | [1" MNPT × 1" hose barb (Banjo HB100)](https://www.usplastic.com/catalog/item.aspx?itemid=135135) (31527) | 10 ea | US Plastic Corp | water | $18 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
-| [1" PVC Sch-40 pressure pipe](https://www.homedepot.com/p/319692953) (22405) | 4 stick | Home Depot | water | $35 |
-| [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
-| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 4 ea | Home Depot | water | $9 |
-| [1" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811640) (PVC021091000HD) | 26 ea | Home Depot | water | $30 |
-| [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | 1 25ft coil | Home Depot | tray | $66 |
-| [1/2" barbed coupling (pump flex jumpers)](https://www.homedepot.com/p/Rain-Bird-1-2-in-Barbed-Couplings-for-Drip-Tubing-Brown-20-Pack-BC50-20/318470443) (318470443) | 1 20-pack | Home Depot | water | $12 |
+| [1" PVC Sch-40 pressure pipe](https://www.homedepot.com/p/319692953) (22405) | 4 stick | Local fab | water | $35 |
+| [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Local fab | water | $6 |
+| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 4 ea | Local fab | water | $9 |
+| [1" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811640) (PVC021091000HD) | 26 ea | Local fab | water | $30 |
+| [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | 1 25ft coil | Local fab | tray | $66 |
+| [1/2" barbed coupling (pump flex jumpers)](https://www.homedepot.com/p/Rain-Bird-1-2-in-Barbed-Couplings-for-Drip-Tubing-Brown-20-Pack-BC50-20/318470443) (318470443) | 1 20-pack | Local fab | water | $12 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | 3 length | US Plastic Corp | water | $18 |
 | [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | 1 5-pack | DripDepot | spray | $3 |
-| [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | 8 stick | Home Depot | water | $38 |
-| [1/2" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Home Depot | water | $10 |
-| [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 4 ea | Home Depot | water | $3 |
-| [1/2" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
-| [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 24 ea | Home Depot | water | $19 |
+| [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | 8 stick | Local fab | water | $38 |
+| [1/2" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Local fab | water | $10 |
+| [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 4 ea | Local fab | water | $3 |
+| [1/2" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Local fab | water | $5 |
+| [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 24 ea | Local fab | water | $19 |
 | 1/2" PVC spring check valve (CV-2 / CV-3 — waste legs into the IBC-4 merge) | 2 ea | US Plastic Corp | water | $20–$40 |
-| [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | 2 ea | Home Depot | water | $10 |
-| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | 1 10ft roll | Home Depot | spray | $13 |
-| [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | 1 ea | Home Depot | water | $3 |
+| [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | 2 ea | Local fab | water | $10 |
+| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | 1 10ft roll | Local fab | spray | $13 |
+| [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | 1 ea | Local fab | water | $3 |
 | 2" polypropylene camlock dust cap (fits the 2" male adapter) | 3 ea | US Plastic Corp | water | $18–$45 |
 | [2" polypropylene camlock pairs (M+F)](https://www.usplastic.com/catalog/item.aspx?itemid=30754) (30754) | 4 pair | US Plastic Corp | water | $92 |
-| [2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)](https://www.homedepot.com/p/203811533) (PVC021071300HD) | 8 ea | Home Depot | water | $26 |
+| [2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)](https://www.homedepot.com/p/203811533) (PVC021071300HD) | 8 ea | Local fab | water | $26 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | 1 ea | US Plastic Corp | water | $61 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 2 ea | US Plastic Corp | water | $48 |
 | [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | 1 100ft roll | DripDepot | spray | $31 |
-| [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | 2 stick | Home Depot | water | $12 |
-| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | 5 10-pack | Home Depot | spray | $17 |
+| [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | 2 stick | Local fab | water | $12 |
+| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | 5 10-pack | Local fab | spray | $17 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | 3 ea | Grainger | water | $72 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | 1 ea | Grainger | water | $24 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | 2 ea | Grainger | water | $48 |
@@ -373,7 +373,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
-| [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
+| [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Local fab | shelf | $5 |
 | **plumbing-fittings subtotal** | | | | **$1,344–$1,391** |
 
 ### seals-gaskets
@@ -382,13 +382,13 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 |------|-----|----------|---------|-----------|
 | [#4 (3/16") black-nylon strip brush — running-gap light-seal wiper (×4 lines)](https://www.gordonbrush.com/brushes/strip-brushes-holders/strip-brushes) | 4 8ft | Gordon Brush | lightlock | $88–$160 |
 | 12mm closed-cell neoprene — top/bottom cap wiper seals | 1 lot | Canal Rubber | lightlock | $25–$40 |
-| [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 24 m | Amazon (OKAYASU) | panel | $27–$59 |
+| [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 24 m | Amazon | panel | $27–$59 |
 | Closed-cell EPDM foam gasket — axle-beam wall-penetration light-seals (×4) | 1 lot | Canal Rubber | lightlock | $12–$20 |
-| Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
+| Light-sealing materials (interior conversion) | 1 lot | Amazon | interior | $157–$178 |
 | [Neoprene light-seal washer (Ø82×Ø72×1.5) — cut from sheet](https://www.grainger.com/product/Rubber-Strip-Neoprene-398ZW9) (398ZW9) | 1 6x6 sheet | Grainger | front-board | $2 |
 | [O-ring, black NBR 70A, 170mm ID × 2.5mm section (plate → adapter seal)](https://www.mcmaster.com/93125K132/) (93125K132) | 2 ea | McMaster-Carr | front-board | $4 |
-| Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
-| Rubber cargo friction matting | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
+| Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Local fab | electrical | $15–$30 |
+| Rubber cargo friction matting | 4 ea | Uline | ibc-frame | $40–$80 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
 | **seals-gaskets subtotal** | | | | **$516–$727** |
@@ -404,54 +404,54 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [1" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | 6 stick | Home Depot | ventilation | $131 |
-| 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
-| 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
-| 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Metal Supermarkets | panel | $120–$160 |
+| [1" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | 6 stick | Local fab | ventilation | $131 |
+| 12mm steel plate, 150 × 150 cut | 4 ea | Steel service center | ibc-frame | $20–$40 |
+| 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Steel service center | ibc-frame | $120–$180 |
+| 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Steel service center | panel | $120–$160 |
 | [3/8" PRE-KEYED 316 SS rotary shaft — U-joint stub shafts (1× 36")](https://www.grainger.com/product/Keyed-Rotary-Shaft-3-8-in-822UN5) (822UN5) | 1 lot | Grainger | film | $52 |
-| 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $316–$516 |
+| 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Steel service center | film | $316–$516 |
 | [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1 ea | Metals Depot | spray | $183 |
-| 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | 1 lot | Metal Supermarkets | lightlock | $50–$95 |
-| 50×20×3 RHS (6 m bulk lengths) | 3 ea | Metal Supermarkets | door | $90–$120 |
+| 40×40×5 SS RHS pull-handle stile (cap→cap) + M12 cap bolts | 1 lot | Steel service center | lightlock | $50–$95 |
+| 50×20×3 RHS (6 m bulk lengths) | 3 ea | Steel service center | door | $90–$120 |
 | 75mm Ø × 150mm steel stub shaft | 2 ea | Steel service center | lightlock | $30–$50 |
 | Aperture dark slide / cap | 1 ea | Local fab | optics | $15–$30 |
-| Baffle duct sheet metal (cooler) | 1 lot | Local sheet metal | ventilation | $20 |
-| Baffle duct sheet metal (fans) | 1 lot | Local sheet metal | ventilation | $30 |
+| Baffle duct sheet metal (cooler) | 1 lot | Local fab | ventilation | $20 |
+| Baffle duct sheet metal (fans) | 1 lot | Local fab | ventilation | $30 |
 | Bearing mount plates — 2× Ø240×12 steel disc | 2 ea | Online Metals | lightlock | $24–$44 |
 | Cantilever bracket — standard (near/far) | 11 ea | Local fab | walkway | $330–$550 |
 | Cantilever bracket — widened (near) | 5 ea | Local fab | walkway | $200–$350 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
-| Corner gusset 304 SS (U-joint mount) — ¼in flat L-plate | 4 ea | Metal Supermarkets | film | $100–$160 |
+| Corner gusset 304 SS (U-joint mount) — ¼in flat L-plate | 4 ea | Steel service center | film | $100–$160 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 2×2×0.120in steel SHS | 1 lot | Local fab | swing | $70–$120 |
-| [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Home Depot | ventilation | $16 |
-| [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | 4 ea | Home Depot | ventilation | $47 |
-| [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 8 ea | Home Depot | ventilation | $12 |
+| [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Local fab | ventilation | $16 |
+| [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | 4 ea | Local fab | ventilation | $47 |
+| [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 8 ea | Local fab | ventilation | $12 |
 | Fabricated flanged wall-penetration box (front face + flange) | 1 lot | Local fab | electrical | $60–$100 |
-| Floor-anchor sub-plate (strongback) — steel ~2,170×280×8mm A36 | 1 ea | Metal Supermarkets | walkway | $90–$180 |
-| Floor-anchor sub-plate (strongback) — steel ~650×450×8mm A36 | 1 ea | Metal Supermarkets | ibc-frame | $40–$85 |
-| Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | MetalsDepot | walkway | $65–$105 |
-| Front-bar L-cleat angle 8mm A36 (bar seat, BC-C/BC-W) | 8 ea | Metal Supermarkets | ibc-frame | $6–$20 |
+| Floor-anchor sub-plate (strongback) — steel ~2,170×280×8mm A36 | 1 ea | Steel service center | walkway | $90–$180 |
+| Floor-anchor sub-plate (strongback) — steel ~650×450×8mm A36 | 1 ea | Steel service center | ibc-frame | $40–$85 |
+| Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Metals Depot | walkway | $65–$105 |
+| Front-bar L-cleat angle 8mm A36 (bar seat, BC-C/BC-W) | 8 ea | Steel service center | ibc-frame | $6–$20 |
 | Hinge wall cleat, 6mm steel | 1 lot | Local fab | shelf | $10 |
-| L-cleat nut backing plate 40×50×8mm | 16 ea | Metal Supermarkets | ibc-frame | $10–$19 |
+| L-cleat nut backing plate 40×50×8mm | 16 ea | Steel service center | ibc-frame | $10–$19 |
 | Pivot floor/roof mount plates + anchor bolts + 3 hinge brackets | 1 lot | Local fab | swing | $70–$120 |
 | Reinforcing plate (exterior) | 16 ea | Local fab | walkway | $67–$116 |
-| Right walkway cantilever frame (long + end beams) | 1 lot | MetalsDepot | walkway | $125–$153 |
-| Right walkway center cantilever arms (solid bar) | 2 ea | Metal Supermarkets | ibc-frame | $91 |
+| Right walkway cantilever frame (long + end beams) | 1 lot | Metals Depot | walkway | $125–$153 |
+| Right walkway center cantilever arms (solid bar) | 2 ea | Steel service center | ibc-frame | $91 |
 | Shelf mount backing plates, 8mm steel (welded, ×3) | 3 ea | Local fab | shelf | $18–$30 |
 | Skate carriage plate (×4) — fab | 4 ea | Local fab | film | $136–$236 |
-| Steel angle 1×1×3/16in, 20 ft — right-walkway grating bearer + plywood mounting brackets | 1 20ft length | Metal Supermarkets | walkway | $94 |
-| Steel backing plate 60×205×8mm | 8 ea | Metal Supermarkets | ibc-frame | $32–$56 |
+| Steel angle 1×1×3/16in, 20 ft — right-walkway grating bearer + plywood mounting brackets | 1 20ft length | Steel service center | walkway | $94 |
+| Steel backing plate 60×205×8mm | 8 ea | Steel service center | ibc-frame | $32–$56 |
 | [Steel flat bar 25×3mm — ribbon support cross-brace](https://www.mcmaster.com/6775T37-6775T373/) (6775T37) | 2 3ft bar | McMaster-Carr | water | $35 |
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
 | Walkway-arm CJ crush sleeves | 4 ea | Local fab | ibc-frame | $3–$6 |
 | Walkway-arm end + backing plates (CJ) | 4 ea | Local fab | ibc-frame | $12–$24 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall joist hanger — 4mm plate weldment (back-plate + seat, W5) | 8 ea | Local fab | ibc-frame | $60–$100 |
-| Wall-frame adapter plate + weld | 1 ea | Metal Supermarkets | optics | $20–$40 |
-| Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $68 |
-| Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $160 |
-| Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
+| Wall-frame adapter plate + weld | 1 ea | Steel service center | optics | $20–$40 |
+| Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Steel service center | film | $68 |
+| Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Steel service center | film | $160 |
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Steel service center | swing | $180–$300 |
 | **steel-structural subtotal** | | | | **$3,582–$5,309** |
 
 ### substrate-fabric
@@ -465,32 +465,32 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
+| [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Local fab | water | $29 |
 | [EP plywood backing panel (18mm, ~365×1,425mm)](https://www.homedepot.com/p/302874373) (302874373) | 1 cut from the shelf sheet | shared (Plywood Cut Sheets) | electrical | $0 |
 | [Fan B near-corner ply (swinging mount panel + fixed side part from the SYP sheets A–C offcut; cooler base from the UV-white sheet D)](https://www.homedepot.com/p/303564747) (303564747) | 1 cut from the SYP sheets A–C | shared (Plywood Cut Sheets) | panel | $0 |
-| [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 2 sheet | Home Depot | water | $59 |
-| Pull-out corner apron — fixed full-width base + 2 removable corner strips + leaf lip battens (B1) + 2 strip battens (B2) (18mm ext ply, from the SYP sheets A–C offcut) + CSK wood screws | 1 lot | Home Depot | panel | $6–$12 |
+| [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 2 sheet | Local fab | water | $59 |
+| Pull-out corner apron — fixed full-width base + 2 removable corner strips + leaf lip battens (B1) + 2 strip battens (B2) (18mm ext ply, from the SYP sheets A–C offcut) + CSK wood screws | 1 lot | Local fab | panel | $6–$12 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 cut from the shared SYP sheets | shared (Plywood Cut Sheets) | water | $0 |
-| [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | 1 4'×8' 18mm sheet | Home Depot | shelf | $73 |
+| [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | 1 4'×8' 18mm sheet | Local fab | shelf | $73 |
 | **timber-ply subtotal** | | | | **$167–$173** |
 
 ### tools-safety
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [6-mil black LDPE sheeting](https://www.homedepot.com/p/332821399) (59803) | 1 roll | Home Depot | water | $55 |
+| [6-mil black LDPE sheeting](https://www.homedepot.com/p/332821399) (59803) | 1 roll | Local fab | water | $55 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/dp/B01ENFOIQE) (B01ENFOIQE) | 1 ea | Amazon | water | $80 |
 | Chemical-resistant apron, full length | 2 ea | Amazon | print-tools | $30 |
 | [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B0BWFW5481) (B0BWFW5481) | 1 pack | Amazon | water | $24 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | 2 bag | Amazon | water | $60 |
-| Consumables restock — foam rollers, brushes, gloves | 1 session | Home Depot | print-tools | $50 |
+| Consumables restock — foam rollers, brushes, gloves | 1 session | Local fab | print-tools | $50 |
 | Digital timer | 1 ea | Amazon | print-tools | $15 |
-| Fire extinguisher, ABC, 5 lb | 1 ea | Home Depot | safety | $40 |
+| Fire extinguisher, ABC, 5 lb | 1 ea | Local fab | safety | $40 |
 | First aid kit, ANSI Class A | 1 ea | Amazon | safety | $35 |
-| Foam brush, 4in wide | 6 ea | Home Depot | print-tools | $15 |
-| Foam roller, 18in wide | 3 ea | Home Depot | print-tools | $30 |
-| Folding step stool | 1 ea | Home Depot | print-tools | $25 |
-| GFCI outlet tester | 1 ea | Home Depot | safety | $12 |
+| Foam brush, 4in wide | 6 ea | Local fab | print-tools | $15 |
+| Foam roller, 18in wide | 3 ea | Local fab | print-tools | $30 |
+| Folding step stool | 1 ea | Local fab | print-tools | $25 |
+| GFCI outlet tester | 1 ea | Local fab | safety | $12 |
 | Insulated drinking water jug, 1 gal | 2 ea | Amazon | safety | $30 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | 2 box | Amazon | water | $30 |
 | Non-contact voltage tester | 1 ea | Amazon | safety | $25 |
@@ -498,7 +498,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | pH test strips | 1 pack | Amazon | print-tools | $10 |
 | Red LED safelight headlamp | 2 ea | Amazon | print-tools | $30 |
 | Spray bottle, 1 liter | 2 ea | Amazon | print-tools | $15 |
-| Sunscreen SPF 50+, pump bottle | 2 ea | Costco | safety | $20 |
+| Sunscreen SPF 50+, pump bottle | 2 ea | Amazon | safety | $20 |
 | UV-blocking safety glasses | 2 pair | Amazon | print-tools | $20 |
 | **tools-safety subtotal** | | | | **$659** |
 
@@ -521,36 +521,30 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Local fab | 21 | adhesives-finishes, fabrication-labor, steel-structural | $2,144–$3,505 |
+| Local fab | 88 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,296–$7,626 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Metal Supermarkets | 23 | aluminum, ducting-ventilation, steel-structural | $2,310–$3,107 |
-| Amazon | 40 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,223–$2,243 |
+| Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
+| US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
+| Amazon | 44 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,443–$2,522 |
 | McMaster-Carr | 89 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,187–$2,195 |
-| Home Depot | 59 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,785–$1,963 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
-| US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
-| Local plastic + metal fab | 1 | fabrication-labor | $800–$1,150 |
-| US Plastic Corp | 15 | plastics-sheet, plumbing-fittings | $1,048–$1,095 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
-| Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
+| Metals Depot | 4 | aluminum, steel-structural | $442–$510 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Central Coast Plastics | 1 | plastics-sheet | $380 |
 | Fictiv | 1 | fabrication-labor | $150–$350 |
 | Powerwerx | 5 | electrical-distribution, electrical-power | $308 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
-| MetalsDepot | 2 | steel-structural | $190–$258 |
-| Metals Depot | 2 | aluminum, steel-structural | $252 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | Waytek Wire | 9 | electrical-distribution, electrical-power | $197 |
 | LED Profiles | 1 | electrical-distribution | $189 |
-| Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |
 | Gordon Brush | 1 | seals-gaskets | $88–$160 |
 | Tanis Brush | 1 | aluminum | $72–$160 |
@@ -560,17 +554,14 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Fasteners Plus | 1 | fasteners-hardware | $90–$120 |
 | Lenox Laser | 1 | optics | $60–$120 |
 | Blue Sea | 3 | electrical-distribution | $101 |
-| Hardware store | 3 | adhesives-finishes, seals-gaskets | $55–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
-| Uline / cargo-securing supplier | 1 | seals-gaskets | $40–$80 |
+| Uline | 1 | seals-gaskets | $40–$80 |
 | Pac-Nor Anodizing | 1 | adhesives-finishes | $40–$80 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | Canal Rubber | 2 | seals-gaskets | $37–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
-| Amazon (OKAYASU) | 1 | seals-gaskets | $27–$59 |
 | AutomationDirect | 1 | electrical-distribution | $52 |
 | McNichols | 1 | fasteners-hardware | $30–$50 |
-| Steel service center | 1 | steel-structural | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
@@ -580,9 +571,6 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
-| Amazon / hardware | 1 | fasteners-hardware | $16–$22 |
-| Costco | 1 | tools-safety | $20 |
-| Local machine shop | 1 | aluminum | $12–$18 |
 | misterworker | 1 | plumbing-fittings | $14 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |
 | shared (Plywood Cut Sheets) | 3 | timber-ply | $0 |

@@ -25,11 +25,25 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## 🛒 Parts to source (SKU + price)
 
-- [ ] Consolidate suppliers (2026-11-23): the registry buys from ~70 suppliers, many for one or two
-  items (e.g. Metals Depot vs "MetalsDepot", US Plastic Corp vs "US Plastics", local fab spelled four
-  ways). Merge duplicate names, then move single-item buys onto the big orders (McMaster-Carr, Home
-  Depot, Metal Supermarkets, US Plastic Corp, Amazon) where an equivalent part exists, so the
-  Master Shopping List's supplier-consolidation table shrinks to a few large orders.
+- [~] Consolidate suppliers (2026-11-23). Duplicate names merged 2026-11-23 (~70 → 56: Metals Depot,
+  US Plastic Corp, Amazon sellers, all local fabrication → "Local fab", generic hardware → Home Depot,
+  stub-shaft stock → Metal Supermarkets). Remaining moves need a re-sourced SKU + price (each lands on
+  an order we already place):
+  - [ ] Bearings Direct (SKF 6215-2RS1, 51118 thrust) → McMaster-Carr — $201
+  - [ ] Canal Rubber (12mm neoprene, EPDM foam) → McMaster (8694K88 / 4568N128 datasheets already in eng-specs) — $37–60
+  - [ ] Gordon Brush + Tanis Brush (strip brush + holder) → McMaster (74405T126 / 8813T536 datasheets in eng-specs) — $160–320
+  - [ ] Blue Sea direct/Defender (MRBF 5187+5191, inverter ANL, 2300 block) → Off Grid Stores or Powerwerx — $101
+  - [ ] Inverter Service Center (Victron IP65 12/15 charger) → Powerwerx (listed alt) or Inverter Supply — $152
+  - [ ] buyDeutsch (DT06-2S pairs) + AutomationDirect (4 AWG ground wire) → Waytek Wire — $79
+  - [ ] Signature Solar (10 AWG PV extension) → Off Grid Stores — $30
+  - [ ] McNichols (grating clips) + Fibergrate (edge-seal kit) → American Grating, with the grating — $70–110
+  - [ ] Harfington (2× uxcell e-stop) → Amazon (same uxcell part) — $26
+  - [ ] Polycase (ZH-080804 enclosure) → Amazon (listed alt); Central Coast Plastics (Dibond) → TAP Plastics (listed alt)
+  - [ ] DripDepot (LDPE pipe, clamps, barb tee), Lowe's (Hillman self-drillers), misterworker (foot valve),
+        CountryMax (aquarium silicone), Fresh Water Systems (Big Blue brackets) → Home Depot / Amazon equivalents — ~$100
+  - [ ] HitLights strip + LED Profiles channel → Super Bright LEDs (already the safelight order) — only if an
+        equivalent 4000K COB strip keeps the electrical-report lux basis
+  - [ ] Fasteners Plus (5/8in jaw-eye turnbuckle JETBGV58X6) → McMaster
 - [ ] Source SKUs for the 16 tool and safety parts added 2026-11-23 (`print-*`, `safety-*`, SKU pending).
 - [x] Dropped 2026-11-21: the separate drum-exit GRP grating purchase (`walkway-drum-exit-grp`, costing $50–65) — the punch-out is integral to the left lift-out piece and nests on the 2 stock panels.
 

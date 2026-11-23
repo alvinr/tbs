@@ -53,8 +53,8 @@ bought or steel is cut.
 | 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *sump + supports → 3.2*) + run the filter skid's **DV-01 recycle → IBC-3** and **waste → IBC-4** return lines + run the **Cct-C corridor pump wiring** to the pinhole wall (*the electrical panel (EP) drop is connected in 4.3*) | 1.2 | ☐ |
 | 1.4 | Install **Fan A** (exhaust) + run its **Cct-A cable** along the pinhole-wall trunk and **down to the EP drop** (EP itself lands in Phase 4) — *before the far IBCs bury it* | 1.2 | ☐ |
 | 1.5 | Install 2× IBC totes on the **far wall** (far column), then fit the **frame rails + retaining bars** to trap all totes | 1.4 | ☐ |
-| 1.6 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
-| 1.7 | Survey the floor cross-members, then lay and self-tap the **left-walkway floor-anchor sub-plate** (its size and holes depend on the container; the Phase-3 floor-leg cantilevers and the swing pivot bolt to it) | 1.6 | ☐ |
+| 1.6 | Survey the floor cross-members, then lay and self-tap the **left-walkway floor-anchor sub-plate** (its size and holes depend on the container; the swing-pivot floor plate and the Phase-3 floor-leg cantilevers bolt to it) | 1.5 | ☐ |
+| 1.7 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum), its swing-pivot floor plate bolted to the 1.6 sub-plate | 1.2, 1.6 | ☐ |
 
 **Exit gate:** frame square, totes restrained, IBC plumbing pressure-checked, left sub-plate fixed.
 
@@ -86,7 +86,7 @@ plumbing, the film-plane support, and the walkway.
 | 3.4 | Lay the **under-grate ribbons** (sump line + skid ribbon legs — tray-sump→P-04 suction, DV-02 waste, P-02→ACC-02 — + pipe support beams) **and install the pinhole filter skid** (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02 + skid-side plumbing; mounts to the 3.1 backing; connects to the recycle→IBC-3 + waste returns from 1.3) — *span the space, so after the beams and both cantilever sets, before the grate*. Test-fit the walkway before gluing, to locate the grating pass-through holes. | 3.1, 3.2, 3.3 | ☐ |
 | 3.5 | **Extend plumbing** to the pinhole-wall panel | 3.4 | ☐ |
 | 3.6 | Install the **processing tray** | 3.2 | ☐ |
-| 3.7 | Install the **left-walkway floor-leg cantilevers** (bolt onto the 1.7 sub-plate) | 1.7, 3.4 | ☐ |
+| 3.7 | Install the **left-walkway floor-leg cantilevers** (bolt onto the 1.6 sub-plate) | 1.6, 3.4 | ☐ |
 | 3.8 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.2 | ☐ |
 | 3.9 | Install the **walkway** (grating on all cantilevers) | 3.3, 3.4, 3.7, 3.8 | ☐ |
 
@@ -121,41 +121,9 @@ plumbing, the film-plane support, and the walkway.
 | 5.3 | Install the **light-trap drum support cage** + axle beams + SKF 6215 bearings + mount plates + floor HDPE | Phase 1 (panel), 5.2 | ☐ |
 | 5.4 | Hang the **light-trap HDPE skins** — rotating drum shell + fixed Ø800 housing panels + H-mullions | 5.3 | ☐ |
 | 5.5 | Fit the **light-trap outer HDPE surround / bay** (walls + roof) + cage rivets + the EPDM beam-notch seals (×4) + the **pull-out corner apron** (fixed base + 2 removable strips + draw latches) | 5.4 | ☐ |
-| 5.6 | Install the **spray bar** (over the processing tray) | Phase 3 (tray) | ☐ |
+| 5.6 | Install the **spray bar** (over the processing tray; carriage build steps in [Processing Tray & Spray Bar §3.6](processing-tray-and-spray-bar.md)) | Phase 3 (tray) | ☐ |
 
 **Exit gate:** plane travels through its full tilt/swing envelope; spray bar movement is free; camera confirmed light-tight.
-
-### 8.1 Spray-Bar Carriage Build (step 5.6)
-
-Two identical carriages, one at each end of the beam. Parts, sheets and the acceptance requirements
-are in [Processing Tray & Spray Bar §3.6](processing-tray-and-spray-bar.md).
-
-**Carriage plate (×2), Sheet 10**
-
-1. Scribe the central notch so the wings butt the 38mm beam faces, outer edge flush with the beam end.
-2. Jigsaw or bandsaw the notch from one long edge.
-3. Mark the axle-saddle holes (two per saddle on each wing) and the beam-clamp holes (two each side of the beam, matching the clamp plates).
-4. Drill all 12 holes on a drill press, then deburr the edges, notch and holes.
-
-**Wheel units (×4), Sheet 5**
-
-1. Place the acetal wheel under the carriage plate and push the 10mm SS axle pin through its bore.
-2. Set the saddle clamp over the axle, feet against the plate underside.
-3. Pass 2× M5 bolts up through the saddle feet and plate; fit nyloc nuts on top, finger-tight.
-4. Spin the wheel by hand: it should turn freely with no side wobble.
-
-**Carriage assembly (×2), Sheet 6**
-
-1. Lay the plate flat on the bench, notch centered, and fit the near and far wheel units finger-tight.
-2. Check the 200mm wheel spacing, then tighten the nyloc nuts to 4 N·m.
-3. Stand the carriage on a flat surface and check both wheels touch; shim before final torque if not.
-
-**Beam attachment, Sheet 2**
-
-1. Set the bottom clamp plate under the beam, outer edge flush with the beam end.
-2. Lower the carriage plate over the beam so the wings butt the beam faces, and place a spacer block against each face between the wings.
-3. Lay the top clamp plate on, pass the four bolts down through top plate, spacer, wing and bottom plate, and tighten the nuts evenly until the beam is gripped.
-4. Set the bar on the tray floor and push it through its full travel: the top clamp plate must clear the grating, every wheel must roll, and the bar must track straight without binding.
 
 ---
 

@@ -8,12 +8,12 @@ This report is the **build order of record** for TBS-001 — the sequence in whi
 is assembled inside the container, why that order is forced, and the gate that must be met
 before each phase begins. The install is **geometry-first**: the large fixed masses (the IBC
 totes and their frame) go in first and set the datum everything else is measured from; the
-precision optical system goes in last, once the real, as-built space is known. Fabrication and
-ordering for subsequent phases of the install can only be performed once the **geometry is established**.
+precision optical system goes in last, once the real, as-built space is known. Later phases are
+fabricated and ordered only after the **geometry is established**.
 
-The sequence is validated by a **phased 3D construction model** (§8) — one scene per phase,
-with a click-through that reveals each step in order — so the order can be walked before any
-components, steel is cut, etc.
+The sequence is checked in a **phased 3D construction model** (§9): one scene per phase, with a
+click-through that reveals each step in order, so the order can be walked before any part is
+bought or steel is cut.
 
 ---
 
@@ -21,10 +21,10 @@ components, steel is cut, etc.
 
 | Phase | Name | Goal | To Be Completed               |
 |-------|------|------|-------------------------------|
-| **1** | Geometry set-out | Install the fixed masses that fix the datum | IBC frame + totes plumbed and square; hinge panel hung |
+| **1** | Geometry set-out | Install the fixed masses that fix the datum | IBC frame + totes plumbed and square; hinge panel hung; left floor sub-plate laid |
 | **2** | Re-measure | Capture the **as-built** space before committing hard structure | Measured clearances reconciled against the model; refactor the design based on available space |
 | **3** | Framing | Fit the tray, cantilevers, plumbing, film-plane beams, walkway | Walkway + tray in; perimeter structure loaded |
-| **4** | Electrical | Panels, lights, and all wiring runs | Circuits terminated + tested (Blue / Brown / Black) |
+| **4** | Electrical | Panels, lights, and all wiring runs | Circuits A–F terminated + tested |
 | **5** | Photo system | Film plane, pinhole mechanism, light trap | Camera light-tight and operable |
 
 ---
@@ -38,7 +38,7 @@ components, steel is cut, etc.
 - **Work from the walls inward, optics last.** Structure and services are installed while the
   tray zone is open; the film plane / pinhole / light trap go in last to stay clean and true.
 - **No trapped work.** Each step leaves access for the next (e.g. plumb before the walkway
-  caps the corridor). Dependency conflicts surface in the §8 click-through, not on site.
+  caps the corridor). Dependency conflicts surface in the §9 click-through, not on site.
 
 ---
 
@@ -48,14 +48,15 @@ components, steel is cut, etc.
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 1.1 | Install the **IBC frame posts** (upright skeleton + feet) + **plumbing-panel backing** | — | ☐ |
+| 1.1 | Install the **IBC frame posts** (upright skeleton + feet, on the IBC-frame floor sub-plate) + **plumbing-panel backing** | — | ☐ |
 | 1.2 | Install 2× IBC totes on the **pinhole wall** (near column) — dropped into the post skeleton | 1.1 | ☐ |
-| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *sump + supports → 3.2*) + run the filter skid's **blue recycle** and **gray waste** corridor lines to the IBC panel + run the **purple Cct-C corridor pump wiring** to the pinhole wall (*EP drop connected in 4.3*) | 1.2 | ☐ |
+| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *sump + supports → 3.2*) + run the filter skid's **DV-01 recycle → IBC-3** and **waste → IBC-4** return lines + run the **Cct-C corridor pump wiring** to the pinhole wall (*the electrical panel (EP) drop is connected in 4.3*) | 1.2 | ☐ |
 | 1.4 | Install **Fan A** (exhaust) + run its **Cct-A cable** along the pinhole-wall trunk and **down to the EP drop** (EP itself lands in Phase 4) — *before the far IBCs bury it* | 1.2 | ☐ |
 | 1.5 | Install 2× IBC totes on the **far wall** (far column), then fit the **frame rails + retaining bars** to trap all totes | 1.4 | ☐ |
 | 1.6 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
+| 1.7 | Survey the floor cross-members, then lay and self-tap the **left-walkway floor-anchor sub-plate** (its size and holes depend on the container; the Phase-3 floor-leg cantilevers and the swing pivot bolt to it) | 1.6 | ☐ |
 
-**Exit gate:** frame square, totes restrained, IBC plumbing pressure-checked.
+**Exit gate:** frame square, totes restrained, IBC plumbing pressure-checked, left sub-plate fixed.
 
 ---
 
@@ -79,13 +80,13 @@ plumbing, the film-plane support, and the walkway.
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 3.1 | Install the **pinhole-wall ply backing** (mounts the filter skid; shown as a semi-transparent, plywood-colored backdrop for the plumbing build — ghosts like all prior geometry from Phase 4 on) | Phase 2 | ☐ |
+| 3.1 | Install the **pinhole-wall ply backing** (mounts the filter skid) | Phase 2 | ☐ |
 | 3.2 | Install **cantilevers on the far + right walls** | Phase 2 | ☐ |
 | 3.3 | Install **cantilevers on the near wall** | 3.2 | ☐ |
-| 3.4 | Lay the **under-grate ribbons** (sump line + skid ribbon legs — tray-sump→P-04 suction, DV-02 waste, P-02→ACC-02 — + pipe support beams) **and install the pinhole filter skid** (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02 + skid-side plumbing; mounts to the 3.1 backing; connects to the recycle→IBC-3 + waste returns from 1.3) — *span the space, so after the beams and both cantilever sets, before the grate*; Note: Before the pipes can be glued, the walkway has to be test-fitted to locate the holes for the pipe bump-through. | 3.1, 3.2, 3.3 | ☐ |
+| 3.4 | Lay the **under-grate ribbons** (sump line + skid ribbon legs — tray-sump→P-04 suction, DV-02 waste, P-02→ACC-02 — + pipe support beams) **and install the pinhole filter skid** (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02 + skid-side plumbing; mounts to the 3.1 backing; connects to the recycle→IBC-3 + waste returns from 1.3) — *span the space, so after the beams and both cantilever sets, before the grate*. Test-fit the walkway before gluing, to locate the grating pass-through holes. | 3.1, 3.2, 3.3 | ☐ |
 | 3.5 | **Extend plumbing** to the pinhole-wall panel | 3.4 | ☐ |
 | 3.6 | Install the **processing tray** | 3.2 | ☐ |
-| 3.7 | Install the **left cantilevers** | 3.4 | ☐ |
+| 3.7 | Install the **left-walkway floor-leg cantilevers** (bolt onto the 1.7 sub-plate) | 1.7, 3.4 | ☐ |
 | 3.8 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.2 | ☐ |
 | 3.9 | Install the **walkway** (grating on all cantilevers) | 3.3, 3.4, 3.7, 3.8 | ☐ |
 
@@ -103,7 +104,7 @@ plumbing, the film-plane support, and the walkway.
 | 4.2 | Install the **interior electrical panel** (EP core + external links) + **E-stop** + **PV disconnect** + cabling + **batteries** | 4.1 | ☐ |
 | 4.3 | **Connect the Cct-C corridor wiring to the EP** (the corridor run was pre-installed to the pinhole wall in 1.3 — this closes the EP drop) | 4.2 | ☐ |
 | 4.4 | **Hang the lights** | Phase 3 | ☐ |
-| 4.5 | Install **Fan B** + its **Cct-B wiring** + the **chem-prep shelf**; terminate the remaining circuit runs (Blue / Brown / Black — Fan A + Cct-A were 1.4, pump Cct-C 1.3 + 4.3, lights 4.4) | 4.2, 4.3, 4.4 | ☐ |
+| 4.5 | Install **Fan B** + its **Cct-B wiring** + the **chem-prep shelf**; terminate the remaining circuit runs (Fan A + Cct-A were 1.4, pump Cct-C 1.3 + 4.3, lights 4.4) | 4.2, 4.3, 4.4 | ☐ |
 
 **Exit gate:** every circuit terminated, continuity + insulation tested, E-stops verified.
 
@@ -115,7 +116,7 @@ plumbing, the film-plane support, and the walkway.
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 5.1 | Install the **pinhole mechanism** (plate + aperture) | Phase 3 | ☐ |
+| 5.1 | Install the **pinhole mechanism** (wall adapter + O-ring + plate + ring + aperture) | Phase 3 | ☐ |
 | 5.2 | Install the **film plane + carriages** (screen + frame; the beams were 3.8) | Phase 3 (beams), 5.1 | ☐ |
 | 5.3 | Install the **light-trap drum support cage** + axle beams + SKF 6215 bearings + mount plates + floor HDPE | Phase 1 (panel), 5.2 | ☐ |
 | 5.4 | Hang the **light-trap HDPE skins** — rotating drum shell + fixed Ø800 housing panels + H-mullions | 5.3 | ☐ |
@@ -186,5 +187,5 @@ next in install order (drag to orbit, scroll to zoom). Model-generation internal
 ## See Also
 
 - [Water System](water-system-report.md) · [Electrical](electrical-report.md) — the systems installed across the phases
-- [IBC Stacking System](ibc-stacking-report.md) — the frame erected in Phase 3
+- [IBC Stacking System](ibc-stacking-report.md) — the frame erected in Phase 1
 - [Plywood Cut Sheets](plywood-cut-sheets.md) — the panel cut plan for the fit-out

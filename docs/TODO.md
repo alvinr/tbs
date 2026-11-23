@@ -40,9 +40,9 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - [ ] Harfington (2× uxcell e-stop) → Amazon (same uxcell part) — $26
   - [ ] Polycase (ZH-080804 enclosure) → Amazon (listed alt); Central Coast Plastics (Dibond) → TAP Plastics (listed alt)
   - [~] Lowe's Hillman self-drillers → McMaster 90415A129 done (2026-11-23); misterworker foot valve — KEEP (owner).
-        DripDepot pipe + barb tee HELD: Home Depot X2-75160100 is IPS pipe (OD ≈1.0in) and SWGT1/2TEE is a swing-pipe tee,
-        neither fits the 0.940in-OD tube the saddle tees / end clamps / manifold clips are sized to. CountryMax silicone,
-        Fresh Water Systems brackets still open.
+        DripDepot pipe + end clamps + tee — KEEP (2026-11-23): Home Depot irrigation stops at 1/2in; the manifold is 3/4in.
+        Open: confirm the DripDepot center-feed tee is a 3/4 × 3/4 × 1/2in reducing barbed tee (1084 is listed as a ½in tee).
+        CountryMax silicone, Fresh Water Systems brackets still open.
   - [ ] HitLights strip + LED Profiles channel → Super Bright LEDs (already the safelight order) — only if an
         equivalent 4000K COB strip keeps the electrical-report lux basis
   - [ ] Fasteners Plus (5/8in jaw-eye turnbuckle JETBGV58X6) → McMaster

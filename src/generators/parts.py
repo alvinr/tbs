@@ -527,7 +527,7 @@ PARTS: list[Part] = [
          dims="Ø31.75 rod → 4× Ø32×20, Ø10.5 bore",
          note="One 1 ft (305mm) 1-1/4in Delrin rod (McMaster 8576K23) makes all 4 wheels; price verified 2026-07-12."),
     Part("spray-brass-barb", '1/2" PVC barbed tee (flex hose → manifold center feed)', "plumbing-fittings",
-         "spray", 1, "5-pack", 2.85, 2.85, "DripDepot", part_no="1084", url="https://www.dripdepot.com/barb-tubing-tee-size-half-inch", spec="DripDepot 1084 ½\" PVC barbed tee (PVC), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½\" flex hose → manifold center. 1 used. Firm 2026-07-28."),
+         "spray", 1, "5-pack", 2.85, 2.85, "DripDepot", part_no="1084", url="https://www.dripdepot.com/barb-tubing-tee-size-half-inch", spec="DripDepot 1084 ½\" PVC barbed tee (PVC), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½\" flex hose → manifold center. 1 used. Firm 2026-07-28 CHECK (2026-11-23): the manifold is 3/4in tubing (0.820 ID × 0.940 OD), so the center feed needs a 3/4 × 3/4 × 1/2in REDUCING barbed tee (run fits 0.82 ID, branch ½in for the braided hose); confirm 1084 is that, else re-source at DripDepot."),
     Part("spray-pool-pole", "Telescoping aluminum pool pole, 4–8 ft", "aluminum",
          "spray", 1, "ea", 15, 15, "Amazon", part_no="B0FHPSPD4T", url="https://www.amazon.com/dp/B0FHPSPD4T",
          spec="Standard pool skimmer handle — POOLPURE telescopic aluminum, 4–8 ft (B0FHPSPD4T, exact). ~$15–20 est — confirm."),

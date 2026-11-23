@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2935,17 +2935,17 @@
 <tbody>
 <tr>
 <td>Focal length (f)</td>
-<td><strong><!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (7 ft 9 in)</strong></td>
-<td>ISO 668 interior width</td>
+<td><strong><!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm (7 ft 8 in)</strong></td>
+<td>ISO 668 interior width, less the 24.5mm pinhole inset from the wall</td>
 </tr>
 <tr>
 <td>Rayleigh optimal pinhole (d)</td>
-<td><strong><!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm</strong></td>
+<td><strong><!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm</strong></td>
 <td>d = 1.9 × √(f × 0.00055); Rayleigh, <em>Phil. Mag.</em> 1891</td>
 </tr>
 <tr>
 <td>F-number (N)</td>
-<td><strong>f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --></strong></td>
+<td><strong>f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --></strong></td>
 <td>N = f/d</td>
 </tr>
 <tr>
@@ -2991,7 +2991,7 @@
 <h3 id="key-observations-from-the-formula">Key Observations from the Formula<a class="headerlink" href="#key-observations-from-the-formula" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p><strong>As u → ∞:</strong> B → d. The blur circle never gets smaller than the pinhole diameter itself. The minimum possible blur is 2.17mm (at infinity).</p>
+<p><strong>As u → ∞:</strong> B → d. The blur circle never gets smaller than the pinhole diameter itself. The minimum possible blur is 2.15mm (at infinity).</p>
 </li>
 <li>
 <p><strong>As u → 0:</strong> B → ∞. Very close subjects produce extremely large blur circles.</p>
@@ -3000,15 +3000,15 @@
 <p><strong>At u = f:</strong> B = d × (f + f)/f = <strong>2d</strong> — exactly twice the pinhole diameter.</p>
 </li>
 <li>
-<p><strong>The pinhole is always "soft"</strong> by the standards of lens-based photography. A 2.17mm blur circle at f/1088 would be unacceptable on a 4×5 inch print. On a 19-foot print viewed from 6 meters, it is invisible.</p>
+<p><strong>The pinhole is always "soft"</strong> by the standards of lens-based photography. A 2.15mm blur circle at f/1087 would be unacceptable on a 4×5 inch print. On a 19-foot print viewed from 6 meters, it is invisible.</p>
 </li>
 </ol>
 <h3 id="diffraction-added-to-geometric-blur">Diffraction Added to Geometric Blur<a class="headerlink" href="#diffraction-added-to-geometric-blur" title="Permanent link">&para;</a></h3>
-<p>At infinity, the geometric blur = d = 2.17mm. But diffraction also contributes a spread of:</p>
-<div class="highlight"><pre><span></span><code>B_diffraction = 2.44 × λ × f / d = 2.44 × 0.00055 × 2362 / 2.17 = 1.47mm
+<p>At infinity, the geometric blur = d = 2.15mm. But diffraction also contributes a spread of:</p>
+<div class="highlight"><pre><span></span><code>B_diffraction = 2.44 × λ × f / d = 2.44 × 0.00055 × 2338 / 2.15 = 1.46mm
 </code></pre></div>
 <p>The Rayleigh optimal pinhole was chosen precisely so that these two contributions are balanced. The total blur at infinity is approximately:</p>
-<div class="highlight"><pre><span></span><code>B_total = √(d² + B_diffraction²) = √(2.17² + 1.47²) = √(4.71 + 2.16) = √6.87 = 2.62mm
+<div class="highlight"><pre><span></span><code>B_total = √(d² + B_diffraction²) = √(2.15² + 1.46²) = √(4.62 + 2.13) = √6.75 = 2.60mm
 </code></pre></div>
 <p>This is the <strong>absolute minimum blur</strong> for this camera — occurring at infinity.</p>
 <p>At finite distances, geometric blur dominates over diffraction blur, so the formula B = d × (1 + f/u) gives a good practical estimate for u &gt; 5 m.</p>
@@ -3026,14 +3026,14 @@
 <tbody>
 <tr>
 <td>0.5 m</td>
-<td><strong>12.4mm</strong></td>
+<td><strong>12.2mm</strong></td>
 <td>5.7×</td>
 <td>Visible smear at all viewing distances</td>
 </tr>
 <tr>
 <td>1.0 m</td>
-<td><strong>7.3mm</strong></td>
-<td>3.4×</td>
+<td><strong>7.2mm</strong></td>
+<td>3.3×</td>
 <td>Visible softness at any viewing distance</td>
 </tr>
 <tr>
@@ -3044,7 +3044,7 @@
 </tr>
 <tr>
 <td>3.0 m</td>
-<td><strong>3.9mm</strong></td>
+<td><strong>3.8mm</strong></td>
 <td>1.8×</td>
 <td>Marginally visible from 5 m</td>
 </tr>
@@ -3069,7 +3069,7 @@
 <tr>
 <td>50.0 m</td>
 <td><strong>2.3mm</strong></td>
-<td>1.06×</td>
+<td>1.05×</td>
 <td>Indistinguishable from infinity</td>
 </tr>
 <tr>
@@ -3080,13 +3080,13 @@
 </tr>
 <tr>
 <td>∞</td>
-<td><strong>2.17mm</strong></td>
+<td><strong>2.15mm</strong></td>
 <td>1.00×</td>
 <td>Theoretical minimum</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Formula applied:</strong> B = 2.17 × (1 + 2362/u), where u is in mm.</p>
+<p><strong>Formula applied:</strong> B = 2.15 × (1 + 2338/u), where u is in mm.</p>
 <hr />
 <h2 id="part-4-depth-of-field">Part 4: Depth of Field<a class="headerlink" href="#part-4-depth-of-field" title="Permanent link">&para;</a></h2>
 <h3 id="definition-for-a-pinhole-camera">Definition for a Pinhole Camera<a class="headerlink" href="#definition-for-a-pinhole-camera" title="Permanent link">&para;</a></h3>
@@ -3135,34 +3135,34 @@
 <td>8 m</td>
 <td>2.33mm</td>
 <td>2.33mm</td>
-<td>u_near = 2.17×2362/(2.33−2.17) = <strong>31.9 m</strong></td>
+<td>u_near = 2.15×2338/(2.33−2.15) = <strong>27.9 m</strong></td>
 </tr>
 <tr>
 <td>10 m</td>
 <td>2.91mm</td>
 <td>2.91mm</td>
-<td>u_near = 2.17×2362/(2.91−2.17) = <strong>6.9 m</strong></td>
+<td>u_near = 2.15×2338/(2.91−2.15) = <strong>6.6 m</strong></td>
 </tr>
 <tr>
 <td>15 m</td>
 <td>4.37mm</td>
 <td>4.37mm</td>
-<td>u_near = 2.17×2362/(4.37−2.17) = <strong>2.3 m</strong></td>
+<td>u_near = 2.15×2338/(4.37−2.15) = <strong>2.3 m</strong></td>
 </tr>
 <tr>
 <td>20 m</td>
 <td>5.82mm</td>
 <td>5.82mm</td>
-<td>u_near = 2.17×2362/(5.82−2.17) = <strong>1.4 m</strong></td>
+<td>u_near = 2.15×2338/(5.82−2.15) = <strong>1.4 m</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Reading this table:</strong> A viewer standing 10 meters from the finished 19-foot print can resolve features down to 2.91mm on the print surface. Since our minimum blur is 2.17mm (at ∞), subjects must be at least 6.9 meters from the camera for their image to be indistinguishable from infinity by this viewer. Subjects closer than 6.9 meters appear measurably softer.</p>
+<p><strong>Reading this table:</strong> A viewer standing 10 meters from the finished 19-foot print can resolve features down to 2.91mm on the print surface. Since our minimum blur is 2.15mm (at ∞), subjects must be at least 6.6 meters from the camera for their image to be indistinguishable from infinity by this viewer. Subjects closer than 6.6 meters appear measurably softer.</p>
 <h3 id="the-practical-rule-of-thumb">The Practical Rule of Thumb<a class="headerlink" href="#the-practical-rule-of-thumb" title="Permanent link">&para;</a></h3>
 <p>A commonly cited rule for pinhole cameras is: <strong>subjects closer than 3–10× the focal length show noticeable softness.</strong></p>
-<p>For our focal length of <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm:
-- <strong>3× f = 7.1 m (23 ft)</strong> — softness starts to become apparent
-- <strong>10× f = 23.6 m (77 ft)</strong> — essentially indistinguishable from infinity</p>
+<p>For our focal length of <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm:
+- <strong>3× f = 7.0 m (23 ft)</strong> — softness starts to become apparent
+- <strong>10× f = 23.4 m (77 ft)</strong> — essentially indistinguishable from infinity</p>
 <p><strong>Source:</strong> Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. <a href="https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/">stinsonphotography.wordpress.com</a></p>
 <h3 id="dof-summary">DoF Summary<a class="headerlink" href="#dof-summary" title="Permanent link">&para;</a></h3>
 <table>
@@ -3186,18 +3186,18 @@
 </tr>
 <tr>
 <td>Zone 3</td>
-<td>7 – 24 m</td>
+<td>7 – 23 m</td>
 <td>Slight softness; detail present</td>
 </tr>
 <tr>
 <td>Zone 4</td>
-<td>24 m – ∞</td>
+<td>23 m – ∞</td>
 <td><strong>Effectively sharp</strong>; blur within visual noise of the emulsion</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>For this project:</strong> Any subject more than ~24 meters from the camera can be considered "in focus." At the scale of landscape or architectural photography — the natural subject matter for a fixed outdoor camera — virtually everything of interest (buildings, horizons, skylines) falls into Zone 4. The "infinite depth of field" characterization is valid for the vast majority of practical use cases.</p>
+<p><strong>For this project:</strong> Any subject more than ~23 meters from the camera can be considered "in focus." At the scale of landscape or architectural photography — the natural subject matter for a fixed outdoor camera — virtually everything of interest (buildings, horizons, skylines) falls into Zone 4. The "infinite depth of field" characterization is valid for the vast majority of practical use cases.</p>
 </blockquote>
 <hr />
 <h2 id="part-5-image-magnification">Part 5: Image Magnification<a class="headerlink" href="#part-5-image-magnification" title="Permanent link">&para;</a></h2>
@@ -3207,7 +3207,7 @@
 </code></pre></div>
 <p><strong>Where:</strong>
 - <code>M</code> = lateral magnification (dimensionless)
-- <code>f</code> = focal length = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm
+- <code>f</code> = focal length = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm
 - <code>u</code> = subject distance from pinhole (mm)</p>
 <p>The image is <strong>inverted</strong> (upside down and mirror-reversed). The magnitude |M| gives the size ratio.</p>
 <table>
@@ -3221,38 +3221,38 @@
 <tbody>
 <tr>
 <td>0.5 m</td>
-<td><strong>4.72×</strong></td>
-<td>Image is 4.72× larger than subject</td>
+<td><strong>4.68×</strong></td>
+<td>Image is 4.68× larger than subject</td>
 </tr>
 <tr>
 <td>1.0 m</td>
-<td><strong>2.36×</strong></td>
-<td>Image is 2.36× larger</td>
+<td><strong>2.34×</strong></td>
+<td>Image is 2.34× larger</td>
 </tr>
 <tr>
-<td><strong>2.36 m (= 1×f)</strong></td>
+<td><strong>2.34 m (= 1×f)</strong></td>
 <td><strong>1.00×</strong></td>
 <td><strong>1:1 — image equals subject size</strong></td>
 </tr>
 <tr>
 <td>3.0 m</td>
-<td>0.787×</td>
-<td>Image is 79% of subject size</td>
+<td>0.779×</td>
+<td>Image is 78% of subject size</td>
 </tr>
 <tr>
 <td>5.0 m</td>
-<td><strong>0.472×</strong></td>
+<td><strong>0.468×</strong></td>
 <td>Image is 47% of subject size</td>
 </tr>
 <tr>
-<td>7.75 m (= focal length in ft)</td>
-<td>0.305×</td>
+<td>7.75 m</td>
+<td>0.302×</td>
 <td>—</td>
 </tr>
 <tr>
 <td>10.0 m</td>
-<td><strong>0.236×</strong></td>
-<td>Image is 24% of subject size</td>
+<td><strong>0.234×</strong></td>
+<td>Image is 23% of subject size</td>
 </tr>
 <tr>
 <td>20.0 m</td>
@@ -3266,8 +3266,8 @@
 </tr>
 <tr>
 <td>100.0 m</td>
-<td>0.024×</td>
-<td>Image is 2.4% of subject size</td>
+<td>0.023×</td>
+<td>Image is 2.3% of subject size</td>
 </tr>
 </tbody>
 </table>
@@ -3287,45 +3287,45 @@ Scene height captured = image height × (u / f)
 <tbody>
 <tr>
 <td>2 m</td>
-<td>5.0 m (16 ft)</td>
-<td>2.0 m (6.6 ft)</td>
+<td>5.0 m (17 ft)</td>
+<td>1.8 m (5.9 ft)</td>
 </tr>
 <tr>
 <td>5 m</td>
-<td>12.5 m (41 ft)</td>
-<td>5.1 m (16.7 ft)</td>
+<td>12.6 m (41 ft)</td>
+<td>4.5 m (14.7 ft)</td>
 </tr>
 <tr>
 <td>10 m</td>
-<td>24.9 m (82 ft)</td>
-<td>10.1 m (33 ft)</td>
+<td>25.2 m (83 ft)</td>
+<td>9.0 m (29 ft)</td>
 </tr>
 <tr>
 <td>20 m</td>
-<td>49.9 m (164 ft)</td>
-<td>20.2 m (66 ft)</td>
+<td>50.4 m (165 ft)</td>
+<td>17.9 m (59 ft)</td>
 </tr>
 <tr>
 <td>50 m</td>
-<td>124.7 m (409 ft)</td>
-<td>50.6 m (166 ft)</td>
+<td>126.1 m (414 ft)</td>
+<td>44.8 m (147 ft)</td>
 </tr>
 <tr>
 <td>100 m</td>
-<td>249.4 m (818 ft)</td>
-<td>101.1 m (331 ft)</td>
+<td>252.1 m (827 ft)</td>
+<td>89.6 m (294 ft)</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Example:</strong> A building 15 meters tall at 50 meters from the camera:
-- Image height = 15,000mm × (2362/50000) = 15,000 × 0.0472 = <strong>708mm (2.3 ft)</strong> on the image plane
-- This building fills 708/2094 = <strong>34% of the image height</strong></p>
+- Image height = 15,000mm × (2338/50000) = 15,000 × 0.0468 = <strong>701mm (2.3 ft)</strong> on the image plane
+- This building fills 701/2094 = <strong>33% of the image height</strong></p>
 <p><strong>Example:</strong> A person 1.8 m tall at 5 meters:
-- Image height = 1,800mm × (2362/5000) = 1,800 × 0.4724 = <strong>850mm (2.8 ft)</strong>
-- Fills 850/2094 = <strong>41% of the image height</strong></p>
+- Image height = 1,800mm × (2338/5000) = 1,800 × 0.4675 = <strong>842mm (2.8 ft)</strong>
+- Fills 842/2094 = <strong>40% of the image height</strong></p>
 <h3 id="the-11-point-where-subjects-are-life-size-in-the-image">The 1:1 Point — Where Subjects Are Life-Size in the Image<a class="headerlink" href="#the-11-point-where-subjects-are-life-size-in-the-image" title="Permanent link">&para;</a></h3>
-<p>At u = f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (approximately <strong>7 ft 9 in</strong>), subjects project at exactly life-size onto the image plane. A person standing 7'9" from the outside of the container wall appears life-size on the opposite interior wall.</p>
-<p>This has creative implications: subjects between 0.5 m and 2.36 m from the camera project at <strong>larger than life scale</strong> on the image plane — they are magnified. Objects directly pressed against the outside of the container wall approach macro photography scales.</p>
+<p>At u = f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm (approximately <strong>7 ft 8 in</strong>), subjects project at exactly life-size onto the image plane. A person standing 7'8" from the pinhole appears life-size on the opposite interior wall.</p>
+<p>This has creative implications: subjects between 0.5 m and 2.34 m from the camera project at <strong>larger than life scale</strong> on the image plane — they are magnified. Objects directly pressed against the outside of the container wall approach macro photography scales.</p>
 <hr />
 <h2 id="part-6-minimum-focal-distance">Part 6: Minimum Focal Distance<a class="headerlink" href="#part-6-minimum-focal-distance" title="Permanent link">&para;</a></h2>
 <p>"Minimum focal distance" requires a definition. For a pinhole camera there are three distinct interpretations, each giving a different answer.</p>
@@ -3336,8 +3336,8 @@ Scene height captured = image height × (u / f)
 <h3 id="definition-2-minimum-for-recognizable-image-practical">Definition 2: Minimum for Recognizable Image (Practical)<a class="headerlink" href="#definition-2-minimum-for-recognizable-image-practical" title="Permanent link">&para;</a></h3>
 <p>The subject must be far enough that some identifiable image structure exists — not just a wash of light. Based on the blur table in Part 3:</p>
 <ul>
-<li>At <strong>2 m:</strong> B = 4.7mm, M = 1.18×. A recognizable if soft image of a person or object forms.</li>
-<li>At <strong>1 m:</strong> B = 7.3mm, M = 2.36×. Heavy softness; impressionistic but not unrecognizable.</li>
+<li>At <strong>2 m:</strong> B = 4.7mm, M = 1.17×. A recognizable if soft image of a person or object forms.</li>
+<li>At <strong>1 m:</strong> B = 7.2mm, M = 2.34×. Heavy softness; impressionistic but not unrecognizable.</li>
 </ul>
 <p><strong>Practical minimum for a recognizable image: ~1–2 m</strong> from the pinhole.</p>
 <h3 id="definition-3-minimum-for-acceptable-sharpness-photographic">Definition 3: Minimum for Acceptable Sharpness (Photographic)<a class="headerlink" href="#definition-3-minimum-for-acceptable-sharpness-photographic" title="Permanent link">&para;</a></h3>
@@ -3359,12 +3359,12 @@ Scene height captured = image height × (u / f)
 <tr>
 <td>8 m (large gallery)</td>
 <td>2.33mm</td>
-<td><strong>31.9 m (105 ft)</strong></td>
+<td><strong>27.9 m (92 ft)</strong></td>
 </tr>
 <tr>
 <td>10 m (outdoor/billboard)</td>
 <td>2.91mm</td>
-<td><strong>6.9 m (22.7 ft)</strong></td>
+<td><strong>6.6 m (21.7 ft)</strong></td>
 </tr>
 <tr>
 <td>15 m (across a plaza)</td>
@@ -3378,19 +3378,19 @@ Scene height captured = image height × (u / f)
 <p>A fourth practical constraint: the subject must be far enough that they fit within the image plane boundaries.</p>
 <p>For a person 1.8 m (71 inches) tall to fit within the 2,094mm image height:</p>
 <div class="highlight"><pre><span></span><code>1,800 × M ≤ 2,094
-1,800 × (2362/u) ≤ 2,094
-u ≥ 1,800 × 2362 / 2094
-u ≥ 2030mm ≈ 2.03 m (6.7 ft)
+1,800 × (2338/u) ≤ 2,094
+u ≥ 1,800 × 2338 / 2094
+u ≥ 2010mm ≈ 2.01 m (6.6 ft)
 </code></pre></div>
 <p>For a vehicle 4.5 m tall (truck/bus) to fit in frame:</p>
-<div class="highlight"><pre><span></span><code>u ≥ 4,500 × 2362/2094 ≈ 5076mm ≈ 5.08 m (16.6 ft)
+<div class="highlight"><pre><span></span><code>u ≥ 4,500 × 2338/2094 ≈ 5024mm ≈ 5.02 m (16.5 ft)
 </code></pre></div>
 <p>For a building 10 m tall to fit in frame:</p>
-<div class="highlight"><pre><span></span><code>u ≥ 10,000 × 2362/2094 ≈ 11279mm ≈ 11.28 m (37.0 ft)
+<div class="highlight"><pre><span></span><code>u ≥ 10,000 × 2338/2094 ≈ 11165mm ≈ 11.17 m (36.6 ft)
 </code></pre></div>
 <hr />
 <h2 id="part-7-consolidated-minimum-focal-distance-table">Part 7: Consolidated Minimum Focal Distance Table<a class="headerlink" href="#part-7-consolidated-minimum-focal-distance-table" title="Permanent link">&para;</a></h2>
-<p>Combining all four definitions for Option B (20-ft container, f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, d = 2.17mm):</p>
+<p>Combining all four definitions for Option B (20-ft container, f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm, d = <!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm):</p>
 <table>
 <thead>
 <tr>
@@ -3412,22 +3412,22 @@ u ≥ 2030mm ≈ 2.03 m (6.7 ft)
 </tr>
 <tr>
 <td>Person fits in frame (1.8 m tall)</td>
-<td><strong>1.8 m (5.9 ft)</strong></td>
+<td><strong>2.0 m (6.6 ft)</strong></td>
 <td>Magnification ≤ image height</td>
 </tr>
 <tr>
 <td>Acceptable sharpness at 10 m viewing</td>
-<td><strong>6.9 m (22.7 ft)</strong></td>
+<td><strong>6.6 m (21.7 ft)</strong></td>
 <td>B ≤ 2.91mm</td>
 </tr>
 <tr>
 <td>Acceptable sharpness at 8 m viewing</td>
-<td><strong>31.9 m (104.7 ft)</strong></td>
+<td><strong>27.9 m (91.5 ft)</strong></td>
 <td>B ≤ 2.33mm</td>
 </tr>
 <tr>
 <td>Sharp by any standard (B ≤ 1.1d)</td>
-<td><strong>~24 m (78 ft)</strong></td>
+<td><strong>~23 m (77 ft)</strong></td>
 <td>B within 10% of minimum</td>
 </tr>
 </tbody>
@@ -3441,39 +3441,39 @@ u ≥ 2030mm ≈ 2.03 m (6.7 ft)
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Proposals 1, 2, 4 (f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm)</th>
+<th>Proposals 1, 2, 4 (f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm)</th>
 <th>Proposal 3 (f = 12,013mm)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Pinhole diameter</td>
-<td><!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm</td>
+<td><!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm</td>
 <td>4.87mm</td>
 </tr>
 <tr>
 <td>F-number</td>
-<td>f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --></td>
+<td>f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --></td>
 <td>f/2467</td>
 </tr>
 <tr>
 <td>Minimum blur (at ∞)</td>
-<td><strong>2.17mm</strong></td>
+<td><strong>2.15mm</strong></td>
 <td><strong>4.87mm</strong></td>
 </tr>
 <tr>
 <td>1:1 magnification distance</td>
-<td><strong>2.36 m</strong></td>
+<td><strong>2.34 m</strong></td>
 <td><strong>12.0 m</strong></td>
 </tr>
 <tr>
 <td>Near DoF (c=3mm)</td>
-<td><strong>6.2 m</strong></td>
+<td><strong>5.9 m</strong></td>
 <td>Not achievable (3 &lt; 4.87)</td>
 </tr>
 <tr>
 <td>Near DoF (c=10mm)</td>
-<td><strong>0.65 m</strong></td>
+<td><strong>0.64 m</strong></td>
 <td><strong>11.4 m</strong></td>
 </tr>
 <tr>
@@ -3483,7 +3483,7 @@ u ≥ 2030mm ≈ 2.03 m (6.7 ft)
 </tr>
 <tr>
 <td>Practical "all sharp" distance</td>
-<td><strong>~24 m</strong></td>
+<td><strong>~23 m</strong></td>
 <td><strong>~120 m</strong></td>
 </tr>
 </tbody>
@@ -3491,7 +3491,7 @@ u ≥ 2030mm ≈ 2.03 m (6.7 ft)
 <p><strong>Key takeaway on Proposal 3 (end-to-end):</strong> With a 4.87mm minimum blur, subjects must be over 120 meters from the camera for the blur to drop within 10% of its minimum value. The depth of field is effectively the middle distance and beyond. Close and mid-range subjects appear dramatically softer than in Proposals 1/2.</p>
 <hr />
 <h2 id="part-9-visual-summary">Part 9: Visual Summary<a class="headerlink" href="#part-9-visual-summary" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>OPTION B — DEPTH OF FIELD ZONES (f = 2362mm, d = 2.17mm)
+<div class="highlight"><pre><span></span><code>OPTION B — DEPTH OF FIELD ZONES (f = 2338mm, d = 2.15mm)
 
 Distance from pinhole:
 │
@@ -3499,22 +3499,22 @@ Distance from pinhole:
 │         Blur: extreme; Magnification: extreme
 │
 1 m ─── Recognizable image minimum
-│         Blur: 7.3mm; Magnification: 2.4×
+│         Blur: 7.2mm; Magnification: 2.3×
 │
-2.36 m ─ 1:1 MAGNIFICATION (life-size image)
-│         Blur: 4.7mm; Magnification: 1.0×
+2.34 m ─ 1:1 MAGNIFICATION (life-size image)
+│         Blur: 4.3mm; Magnification: 1.0×
 │
-5 m ───  Person fits in frame (1.8m tall person = 36% frame height)
+5 m ───  Person fits in frame (1.8m tall person = 40% frame height)
 │         Blur: 3.2mm; Magnification: 0.47×
 │
 7 m ───  MINIMUM FOCAL DISTANCE (10m viewing, 2.91mm CoC)
-│         Blur: 2.9mm; Magnification: 0.34×
+│         Blur: 2.9mm; Magnification: 0.33×
 │
-24 m ──  &quot;EFFECTIVELY SHARP&quot; BEGINS
+23 m ──  "EFFECTIVELY SHARP" BEGINS
 │         Blur: 2.4mm (10% above minimum)
 │
 ∞  ────  Maximum sharpness
-          Blur: 2.17mm (minimum possible)
+          Blur: 2.15mm (minimum possible)
 </code></pre></div>
 <hr />
 <h2 id="citations">Citations<a class="headerlink" href="#citations" title="Permanent link">&para;</a></h2>
@@ -3528,7 +3528,7 @@ Distance from pinhole:
 <tbody>
 <tr>
 <td>Rayleigh, J.W.S., <em>Philosophical Magazine</em> Ser. 5, Vol. 31, 1891. <a href="https://www.tandfonline.com/loi/tphm18">Taylor &amp; Francis</a></td>
-<td>Pinhole diameter formula; basis for d = 2.17mm</td>
+<td>Pinhole diameter formula; basis for d = 2.15mm</td>
 </tr>
 <tr>
 <td>Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., Cambridge UP, 1999, §8.6. <a href="https://openlibrary.org/search?q=Born+Wolf+Principles+of+Optics">Library catalog</a></td>
@@ -3548,7 +3548,7 @@ Distance from pinhole:
 </tr>
 <tr>
 <td><a href="https://chs-containergroup.com/us/shipping-container-dimensions/">ISO 668:2020</a></td>
-<td>Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm)</td>
+<td>Container interior dimensions (source of f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm)</td>
 </tr>
 </tbody>
 </table>
@@ -3619,10 +3619,10 @@ Distance from pinhole:
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.19"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.19"}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

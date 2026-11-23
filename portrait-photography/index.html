@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2650,8 +2650,8 @@
 projected — inverted and reversed — onto the photosensitive film plane inside the container. This
 page collects the geometry of that capture: how wide a scene the camera takes in, how large a subject
 renders at a given distance, and where a portrait sits best.</p>
-<p>The optics are the fixed pinhole — focal length <strong>f = 2,362mm</strong> (the container's interior depth),
-pinhole <strong>Ø2.17mm</strong>, <strong>f/1088</strong> (the <a href="../pinhole-optics-report/">Rayleigh optimum</a>). The image forms
+<p>The optics are the fixed pinhole — focal length <strong>f = <!-- BEGIN fact:focal_length_mm -->2,338<!-- END fact:focal_length_mm -->mm</strong> (pinhole to the far wall),
+pinhole <strong>Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.15<!-- END fact:pinhole_diameter_mm -->mm</strong>, <strong>f/<!-- BEGIN fact:f_number -->1087<!-- END fact:f_number --></strong> (the <a href="../pinhole-optics-report/">Rayleigh optimum</a>). The image forms
 on the <strong>active film plane, 4,389 × 2,094mm</strong>, with the pinhole centered on the long wall at
 X ≈ 2,454mm — see the <a href="../film-plane-mechanism-report/">Film Plane Mechanism</a>.</p>
 <hr />
@@ -2659,26 +2659,26 @@ X ≈ 2,454mm — see the <a href="../film-plane-mechanism-report/">Film Plane M
 <p>The field of view is set by how much of the film plane the pinhole "sees" — the active plane's extent
 relative to the focal length:</p>
 <ul>
-<li><strong>Horizontal FOV ≈ 86°</strong> — 2·atan((4,389 ÷ 2) ÷ 2,362)</li>
-<li><strong>Vertical FOV ≈ 48°</strong> — 2·atan((2,094 ÷ 2) ÷ 2,362)</li>
+<li><strong>Horizontal FOV ≈ 86°</strong> — 2·atan((4,389 ÷ 2) ÷ 2,338)</li>
+<li><strong>Vertical FOV ≈ 48°</strong> — 2·atan((2,094 ÷ 2) ÷ 2,338)</li>
 </ul>
 <p><img alt="Portrait camera schematic — top-down, with subject distances" src="../assets/portrait-camera-schematic.png" /></p>
 <p>Subjects stand outside the pinhole wall, facing the camera. A standing adult fills the frame
 vertically at modest range; farther back, the figure shrinks and more of the surrounding scene enters.</p>
 <h2 id="2-subject-size-vs-distance">2. Subject size vs distance<a class="headerlink" href="#2-subject-size-vs-distance" title="Permanent link">&para;</a></h2>
 <p>For a pinhole the projected image scales linearly: <strong>magnification M = f ÷ u</strong> (image size ÷ subject
-size, for a subject at distance <em>u</em>). A 1,780mm (5′10″) subject therefore projects to 1,780 · (2,362 ÷ u)
+size, for a subject at distance <em>u</em>). A 1,780mm (5′10″) subject therefore projects to 1,780 · (2,338 ÷ u)
 mm on the film:</p>
 <p><img alt="Portrait scale comparison — one subject at several distances" src="../assets/portrait-scale-comparison.png" /></p>
 <p>Closer subjects render larger (and eventually overflow the 2,094mm plane height); farther subjects
 render smaller with more context around them.</p>
 <h2 id="3-the-optimal-portrait-distance">3. The optimal portrait distance<a class="headerlink" href="#3-the-optimal-portrait-distance" title="Permanent link">&para;</a></h2>
-<p>Sharpness is limited by the pinhole's geometric blur circle, <strong>B = 2.17 · (1 + f ÷ u)</strong> mm on the
+<p>Sharpness is limited by the pinhole's geometric blur circle, <strong>B = 2.15 · (1 + f ÷ u)</strong> mm on the
 film — larger for nearer subjects, since the cone of light from each point of the subject spreads more
 on the way in. Trading framing against blur puts a comfortable full-figure portrait at roughly <strong>3m</strong>:</p>
 <p><img alt="Optimal portrait at 3m — magnification and blur circle" src="../assets/portrait-optimal-3m.png" /></p>
-<p>At 3m the image is <strong>M = 2,362 ÷ 3,000 ≈ 0.79×</strong> of the subject (a 1,780mm person → ~1,400mm image,
-inside the 2,094mm plane height) with a blur circle of <strong>B ≈ 2.17 · (1 + 2,362 ÷ 3,000) ≈ 3.9mm</strong> —
+<p>At 3m the image is <strong>M = 2,338 ÷ 3,000 ≈ 0.78×</strong> of the subject (a 1,780mm person → ~1,390mm image,
+inside the 2,094mm plane height) with a blur circle of <strong>B ≈ 2.15 · (1 + 2,338 ÷ 3,000) ≈ 3.8mm</strong> —
 soft by lens standards, and characteristic of the pinhole look.</p>
 <hr />
 <h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
@@ -2755,10 +2755,10 @@ soft by lens standards, and characteristic of the pinhole look.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.19"}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": "0.19"}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

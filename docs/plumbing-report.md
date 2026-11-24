@@ -193,11 +193,12 @@ BV-01/BV-02/BV-03/BV-07 are the Corridor panel pump-suction isolation valves; **
 isolates the TAP-01 chemistry tap. These five, and BV-06, are 1/2" Banjo V050FP quarter-turn
 **2-way** ball valves (Grainger 803HZ1).
 
-**Tote vents (BV-08 to BV-11).** Each tote has a secondary side-entry high on its corridor face: a
-3/4" bulkhead, a ball valve, and a down-turned elbow with an insect screen, open into the corridor. It
+**Tote vents (BV-08 to BV-11).** Each tote has a secondary side-entry high on its walkway face, in
+reach from the right walkway: a 3/4" bulkhead, a ball valve, and a down-turned elbow with an insect
+screen. The top-tier (Blue) vents sit above the top retaining bar, so a step stool helps. It
 lets air out while a tote fills (X1, or P-04 / the filter return into IBC-3, the waste legs into IBC-4)
 and lets air in while a pump draws it down, so the tote is never pressurized or pulled into a vacuum.
-The down-turned outlet sends any overfill to the corridor floor. The valves close for transport,
+The down-turned outlet sends any overfill onto the walkway. The valves close for transport,
 when Blue travels full. A float-type air/vacuum relief valve can replace the elbow later without
 changing the fitting.
 

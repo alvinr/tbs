@@ -18,7 +18,7 @@ sys.path.insert(0, _HERE)
 import generate_sketchup_model as ov
 import generate_ibc_model as ib                 # owns ibc_stack() (Phase 1)
 import tbs_draw as draw                          # shared drawing/material primitives
-from tbs_constants import C_PIPE_FITTING, IBC_VENT_X, IBC_VENT_Z_TOP, IBC_VENT_Z_BOT, IBC_VENT_OUT, IBC_VENT_DROP, PUMP_YD_SPAN, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H, STEEL_ANGLE_LEG, STEEL_ANGLE_T
+from tbs_constants import C_PIPE_FITTING, IBC_VENT_YD_NEAR, IBC_VENT_YD_FAR, IBC_VENT_Z_TOP, IBC_VENT_Z_BOT, IBC_VENT_OUT, IBC_VENT_DROP, PUMP_YD_SPAN, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H, STEEL_ANGLE_LEG, STEEL_ANGLE_T
 
 # ── deep-box frame geometry (from the fork; one source) ──
 S       = ov.IBC_FRAME_RHS               # 50.8×50.8 RHS (2×2×0.120in)
@@ -1260,22 +1260,22 @@ def drains_ports(sump_on_skid=False):
             (ew - 130, COL_R, p3o[2]), (ew - 130, COL_R, EXT_DRAIN_4_H), (ew - 60, COL_R, EXT_DRAIN_4_H)]
     pipe("P-03 -> X4 end-wall port", _p03, draw.C_PIPE_WASTE)   # OUT turns one elbow out of the port
     port_jumper(p, "P-03 discharge jumper", _p03)
-    for tag, yface, into, z, nm in (("BV-08", YD_NEAR, -1, IBC_VENT_Z_TOP, "IBC-1 (Blue)"),
-                                    ("BV-09", YD_FAR, +1, IBC_VENT_Z_TOP, "IBC-2 (Blue)"),
-                                    ("BV-10", YD_NEAR, -1, IBC_VENT_Z_BOT, "IBC-3 (Brown)"),
-                                    ("BV-11", YD_FAR, +1, IBC_VENT_Z_BOT, "IBC-4 (Waste)")):
-        _tote_vent(p, tag, nm, IBC_VENT_X, yface, into, z)
+    for tag, yd, z, nm in (("BV-08", IBC_VENT_YD_NEAR, IBC_VENT_Z_TOP, "IBC-1 (Blue)"),
+                           ("BV-09", IBC_VENT_YD_FAR, IBC_VENT_Z_TOP, "IBC-2 (Blue)"),
+                           ("BV-10", IBC_VENT_YD_NEAR, IBC_VENT_Z_BOT, "IBC-3 (Brown)"),
+                           ("BV-11", IBC_VENT_YD_FAR, IBC_VENT_Z_BOT, "IBC-4 (Waste)")):
+        _tote_vent(p, tag, nm, ov.IBC_COL_X, yd, z)
     return "\n".join(p)
 
 
-def _tote_vent(p, tag, nm, x, yface, into, z):
-    """Tote VENT: side-entry flange high on the corridor face → short stub into the corridor with the
-    vent ball valve → down-turned elbow, its open end screened (two-way air path, no pump)."""
-    yo = yface - into * IBC_VENT_OUT
-    p.append(draw.ruby_cylinder(f"{nm} vent flange", x, yface - into * 8, z, 30, 16, color=draw.C_STEEL, axis="y"))
-    p.append(draw.ruby_pipe_run(f"{nm} vent", [(x, yface - into * 8, z), (x, yo, z), (x, yo, z - IBC_VENT_DROP)], RP, color=C_PIPE_FITTING))
-    p.append(ball_valve(f"{tag} ({nm} vent)", x, yface - into * 60, z, "y"))
-    p.append(draw.ruby_cylinder(f"{nm} vent insect screen", x, yo, z - IBC_VENT_DROP - 6, RP + 2, 6, color="#3A3A3A", axis="z"))
+def _tote_vent(p, tag, nm, xface, yd, z):
+    """Tote VENT on the WALKWAY (−X) face: side-entry flange → short −X stub toward the right walkway
+    with the vent ball valve (handle up, in reach) → down-turned elbow, its open end screened."""
+    xo = xface - IBC_VENT_OUT
+    p.append(draw.ruby_cylinder(f"{nm} vent flange", xface - 8, yd, z, 30, 16, color=draw.C_STEEL, axis="x"))
+    p.append(draw.ruby_pipe_run(f"{nm} vent", [(xface - 8, yd, z), (xo, yd, z), (xo, yd, z - IBC_VENT_DROP)], RP, color=C_PIPE_FITTING))
+    p.append(ball_valve(f"{tag} ({nm} vent)", xface - 60, yd, z, "x"))
+    p.append(draw.ruby_cylinder(f"{nm} vent insect screen", xo, yd, z - IBC_VENT_DROP - 6, RP + 2, 6, color="#3A3A3A", axis="z"))
 
 
 def context():

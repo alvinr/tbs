@@ -43,7 +43,7 @@ Valve and pump tags are on the panel labels; the layout is in the [Plumbing Repo
 - [ ] 0.1.7 — Close **BV-06** (spray off).
 - [ ] 0.1.8 — Check the X3 and X4 dust caps are on.
 - [ ] 0.1.9 — Confirm Brown IBC-3 and Waste IBC-4 are empty.
-- [ ] 0.1.10 — Open the Blue tote vents **BV-08** (IBC-1) and **BV-09** (IBC-2).
+- [ ] 0.1.10 — Open the Blue tote vents **BV-08** (IBC-1) and **BV-09** (IBC-2), high on the totes' walkway face (step stool).
 - [ ] 0.1.11 — Check all four vent screens are clear.
 
 **Fill — before the container is lifted**

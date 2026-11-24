@@ -30,28 +30,22 @@ variant in place; the basis is in [Wash-Water Classification](wash-water-classif
 **Lighting: normal white light throughout this phase.**
 
 ### 0.1 Water System
-The water system has three circuits (Blue/Brown/Black), pumps on the plumbing panel in the IBC plumbing corridor (P-01 Blue supply, P-02 Brown recycle spray, P-05/P-03 Brown/Waste drain), plus P-04 on the pinhole-wall filter skid (tray drain, feeds the filter train), and four 275-gal IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves facing the plumbing corridor; all tote-top connections are **side-entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm of headroom). The X1 fill line tees inside the corridor to fill both Blue totes (IBC-1 and IBC-2) in parallel via side-entry near the top. A check valve (CV-1) on the X1 fill line prevents backflow on the gravity fresh-fill; the pump-driven X3/X4 drains sit above the bottom-tier totes and are isolated by the drain-pump suction valves BV-02/BV-07, and CV-2/CV-3 stop the two diverter waste legs back-feeding each other at the IBC-4 tee. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+Valve and pump tags are on the panel labels; the layout is in the [Plumbing Report](plumbing-report.md).
 
-- [ ] 0.1.1 — **Fill the Blue totes before departure.** The camera deploys with Blue full: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of IBC-1 and IBC-2 (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all). Remove the X1 dust cap, connect the supply hose, fill, disconnect and re-cap. X1 tees internally to fill both totes in parallel through check valve CV-1. Fill before the container is lifted: the transport restraint is designed for this load ([IBC Stacking §3.4](ibc-stacking-report.md)). Confirm Brown IBC-3 and Waste IBC-4 are empty.
+- [ ] 0.1.1 — **Fill the Blue totes before departure.** The camera deploys with Blue full: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of IBC-1 and IBC-2 (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all). Remove the X1 dust cap, connect the supply hose, fill, disconnect and re-cap. Fill before the container is lifted. Confirm Brown IBC-3 and Waste IBC-4 are empty.
 - [ ] 0.1.2 — Check the drain-pump switches **S-05** and **S-03** (near-upper side board, beside BV-02 / BV-07) are OFF. Set the valves for operation: open the DN50 butterfly valves on IBC-1, IBC-2 (Blue) and IBC-3 (Brown); open **BV-01** (P-01 suction) and **BV-03** (P-02 suction). Keep closed: the IBC-4 butterfly valve, **BV-02** and **BV-07** (the P-05 / P-03 drain suctions), **BV-04** (TAP-01, opened only when drawing water), and **BV-06** (spray on/off). P-01 is self-priming.
 - [ ] 0.1.3 — Set BV-05 to Blue and open BV-06. Switch on P-01 (Blue supply, circuit C1).
 - [ ] 0.1.4 — Check all pipe joints for drips. Tighten any fittings that are weeping.
 - [ ] 0.1.5 — Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 - [ ] 0.1.6 — Switch P-01 OFF.
-- [ ] 0.1.7 — Confirm P-04 suction pickup tube is seated in the sump well and the suction hose is connected over the tray rim to the pump manifold. Set 3W-DV-02 (on P-04 discharge) to route toward IBC-3 (Brown). P-04 draws used wash water from the sump and lifts it to IBC-3 via a side-entry near the top. Switch on manually after each wash cycle. (The tray and pickup tube are permanently installed between the film plane rails.)
+- [ ] 0.1.7 — Confirm P-04 suction pickup tube is seated in the sump well and the suction hose is connected over the tray rim to the pump manifold. Set 3W-DV-02 (on P-04 discharge) to route toward IBC-3 (Brown).
 
 ### 0.2 Chemistry — Part A (Ferric Ammonium Oxalate)
 **Lighting: WHITE LIGHT — Part A is not light-sensitive in dry or dissolved form.**
 
-> **⚠ RECIPE NOT YET LOCKED — see [Sensitizer Trials](sensitizer-trials.md).** Quantities use the
-> **Mike Ware New Cyanotype** ratio (ferric ammonium oxalate : ferricyanide = **3 : 1**) over the **<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active
-> plane, TWO wet-on-wet coats** (§2.5), at the sourced muslin coverage **~120 ml/m²/coat →
-> ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L working sensitizer per print**. The **concentration tier is the open variable** — it
-> swings chemistry cost and print count by **~3×** across the three tiers. Three alternatives are given for costing/trialling.
-> **Default: Standard (½-Ware)** until the trial decides.
+> **⚠ Recipe not yet locked.** The [Sensitizer Trials](sensitizer-trials.md) set the strength tier; use **Standard (½-Ware)** until they do.
 
-Prepare Part A in **warm water (50–60°C)** — ferric ammonium oxalate does not dissolve cold. Part A holds all the
-iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
+Prepare Part A in **warm water (50–60°C)**; it does not dissolve cold.
 
 | Tier (per print) | Ferric ammonium oxalate (dry) | Part A water (warm) | mixed strength | For 50 prints |
 |---|---|---|---|---|
@@ -68,9 +62,7 @@ iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 ### 0.3 Chemistry — Part B (Potassium Ferricyanide, + Ammonium Dichromate if chosen)
 **Lighting: WHITE LIGHT — Part B is not light-sensitive on its own.**
 
-Part B holds the ferricyanide, at ⅓ of the ferric ammonium oxalate mass (Ware's 3:1 ratio), in ~half the working
-volume. For the dichromate option it also carries the dichromate (see
-[Chemistry Choice](#2-chemistry-choice-with-or-without-ammonium-dichromate)).
+For the dichromate option, Part B also carries the dichromate ([§2](#2-chemistry-choice-with-or-without-ammonium-dichromate)).
 
 | Tier (per print) | Potassium ferricyanide | Part B water |
 |---|---|---|
@@ -84,13 +76,11 @@ volume. For the dichromate option it also carries the dichromate (see
 - [ ] 0.3.2 — Add water (room temperature). Stir until fully dissolved — the solution turns yellow-orange.
 - [ ] 0.3.3 — Label the jug **PART B — KFe**.
 
-**Dichromate option only.** Dichromate is dosed as a **% of the total working volume**, so it is the
-same across strength tiers: Ware's baseline is **0.1%**, raised for more contrast (trial **T3**: 0.1% /
-0.2% / 0.4%). That is <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi --> g per print.
+**Dichromate option only.** Use 0.1% of the working volume for Ware's baseline contrast, up to 0.4%
+for more (trial **T3** sets it): <!-- BEGIN fact:dichromate_g_lo -->2.2<!-- END fact:dichromate_g_lo -->–<!-- BEGIN fact:dichromate_g_hi -->8.8<!-- END fact:dichromate_g_hi --> g per print.
 
 > **⚠ Ammonium dichromate** is a Category 1A carcinogen and an oxidizer. Wear nitrile gloves and weigh
-> it in a ventilated space. Do not inhale the dust. Once it is in the sensitizer, the wash water from
-> every print carries chromium (§4.2, §5.1).
+> it in a ventilated space. Do not inhale the dust.
 
 - [ ] 0.3.4 — Wearing nitrile gloves, weigh the ammonium dichromate.
 - [ ] 0.3.5 — Add it to the Part B jug and stir until dissolved — the solution turns bright orange-red.
@@ -162,7 +152,7 @@ Everything below is in the [Master Shopping List](master-shopping-list.md?system
 ### 1.3 Mode Conversion — Transport to Operational
 **Time: ~10 minutes. Single-person operation.**
 
-The container arrives in transport mode: the stepped hinged panel is swung ~56° inboard about the vertical pivot post and held by the top + bottom wall stays; the two left film rails (TL + BL), the left walkway, and the two pull-out apron strips have been struck/removed (the strips stow strapped inside). Convert to operational mode before proceeding.
+The container arrives in transport mode: panel swung in and held by the two wall stays; the left film rails (TL + BL), the left walkway and the two apron strips stowed.
 
 The two end states — transport (panel + drum swung 56°, doors closed) and operational (panel latched at the door plane, X=0) — are shown in plan at the cargo-door end:
 
@@ -172,9 +162,9 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.3.2 — Release the top + bottom wall stays: slack each turnbuckle, pull the cotter and clevis pin at the wall-anchor eye, and swing the stay clear (or unpin both ends and stow it).
 - [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb dry, one person).
 - [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration. Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill the reservoir (~18 L, one tankful) from the Blue circuit at TAP-01 on the pinhole wall — doors are open at this stage, so draw at TAP-01 and carry/hose the water out to the cooler.
-- [ ] 1.3.5 — Swing the frame back ~56° to the door plane (camera position), assisted. The vertical pivot is balanced at any angle (no gravity torque) — effort is only inertia + bearing friction; control momentum at the stop.
-- [ ] 1.3.6 — Latch the panel to the door frame with both 1619A74 lift-and-turn cam latches (interior-face lever — lift and turn) — compresses the EPDM perimeter + cut seals.
-- [ ] 1.3.7 — Re-fit the two pull-out apron strips (near + far corner zones) that close the under-leaf floor gap: set each onto its 45° base chamfer seat (exterior-low → interior-high, so it gravity-seats exterior-down) and butt it up to the leaf lip at the top, then throw its four draw latches (1590A13): the two bottom latches from inside (one at each strip end, clamping the strip down onto the chamfer) and the two exterior span latches from the door side (one at each strip end, bridging the leaf lip batten B1 + the strip batten B2 to clamp the strip up to the leaf/lip). Confirm the EPDM joints (chamfer, strip↔lip butt, strip ends) are seated.
+- [ ] 1.3.5 — Swing the frame back ~56° to the door plane (camera position), assisted. Control its momentum at the stop.
+- [ ] 1.3.6 — Latch the panel to the door frame with both 1619A74 lift-and-turn cam latches (interior-face lever — lift and turn).
+- [ ] 1.3.7 — Re-fit the two pull-out apron strips (near + far corners): set each onto its 45° base chamfer, butt it up to the leaf lip, then close its four 1590A13 draw latches — the two bottom latches from inside, the two span latches from the door side. Check the EPDM seals at the chamfer, the lip and the strip ends are seated.
 - [ ] 1.3.8 — Re-fit the two left film rails (TL + BL): drop each into its saddles; the tapered dowels set the film datum; clamp down. Confirm the re-seated rails return the film plane square and planar to datum.
 - [ ] 1.3.9 — Re-fit the left walkway + door-end near-deck lift-out section onto their butt-joint ends / floor-leg cantilever brackets.
 - [ ] 1.3.10 — Un-pin the revolving drum (ready for personnel light-lock use).
@@ -195,16 +185,16 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.5.4 — Connect Blue Sea fuse block to battery positive busbar.
 - [ ] 1.5.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
 - [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C1 (corridor pumps P-01/02/03/05, one at a time), C2 (tray-drain pump P-04), D (red safelight), E (evap cooler inverter — its own 40A ANL fuse and Blue Sea 6006 disconnect; close the disconnect), F (white LED lighting). Both pump fuses are gated by the single 2-pole master pump switch; the drain pumps P-05 / P-03 also have local switches S-05 / S-03, kept OFF except for a pump-out.
-- [ ] 1.5.7 — **Grounding.** The protective bond (container shell + inverter/cooler/equipment → battery-negative, 4 AWG) is **permanent** — just confirm the main-panel bond lug is tight. It protects on any surface; **no site earth needs to be driven.** The 8-ft copper earth stake is **optional supplementary earthing**: **on soil**, drive it beside the power panel and clamp it to the main-panel earth terminal (it dissipates static — good in a dry darkroom); **on concrete, asphalt, or any hard surface, skip it** — the bonding provides full fault protection regardless ([Electrical Report §7.3](electrical-report.md)). If a convenient earth is at hand (building ground, grounded metal water pipe), bond to that instead of driving the stake. (Set **directly on bare soil**, the container's steel corner castings already earth it enough to bleed static — so the stake only matters if it is leveled up on **timber sleepers**, §1.2.2, which insulate the castings.)
+- [ ] 1.5.7 — **Grounding.** Confirm the main-panel bond lug is tight. If the container sits on timber sleepers over soil, drive the 8-ft earth stake beside the power panel and clamp it to the main-panel earth terminal (or bond to a building ground or grounded metal water pipe). On concrete, asphalt or bare soil, skip the stake ([Electrical Report §7.3](electrical-report.md)).
 
 > **Shore power backup:** First confirm the site's AC supply is on an RCD/GFCI-protected circuit. Never run an AC extension cord or generator output into the wet interior. If grid power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 
 ### 1.6 Ventilation and Cooling
 - [ ] 1.6.1 — Switch ON exhaust fan (circuit A) and intake fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
 - [ ] 1.6.2 — **Cooling (hot climate):** Switch ON evaporative cooler (circuit E). Fill the cooler reservoir from TAP-01 (open BV-04, then close it). Run cooler for a minimum of **30 minutes before any operator entry** when ambient temperature exceeds 30°C. Interior should reach below 35°C before loading.
-- [ ] 1.6.3 — If using shade canopy: erect before solar noon. A 70% shade cloth over the container reduces interior temperature by 15–20°C.
+- [ ] 1.6.3 — If using shade canopy: erect before solar noon.
 
-> **Heat safety:** Do not enter the container if the interior temperature exceeds 40°C. A digital thermometer hung inside is standard practice. In Palm Springs summer without shade, the steel container body can reach 75°C — **shade and pre-cooling are not optional in these conditions.**
+> **Heat safety:** Do not enter if the interior is above 40°C (thermometer hung inside, §0.4.8). Shade and pre-cooling are mandatory in hot weather.
 
 ### 1.7 Walkway and Tray (if not done in Phase 0.5)
 - [ ] 1.7.1 — Install perimeter walkway grating sections (see 0.5.4 for full procedure).
@@ -244,12 +234,12 @@ Set the plane for the shot before loading. The corner-depth table is in the
 | Part B | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L |
 | **Working sensitizer** | **~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L** |
 
-> **Volume basis:** ~120 ml/m²/coat (muslin, sourced — [AlternativePhotography](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) / [Jacquard](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/)) × **2 coats** (§2.5 is two wet-on-wet passes, not one) × <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m². **Confirm by trial T1** — [Sensitizer Trials](sensitizer-trials.md). Mix 1:1 by volume.
+Mix Part A and Part B 1:1 by volume.
 
 - [ ] 2.1.1 — Pour equal volumes of Part A and Part B into the third jug. *Dichromate option: the working sensitizer now carries a Category 1A carcinogen — gloves, UV glasses and apron on before mixing, and keep it off skin.* Stir gently. The mix turns yellow-green.
 - [ ] 2.1.2 — Pour into the roller tray immediately.
 
-> **The mixed sensitizer is UV-sensitive.** It is safe under red LED safelight but must not be exposed to daylight, blue sky light, or white LED light once mixed. Work quickly once inside.
+> **Mixed sensitizer:** red safelight only from here on — no daylight or white light. Work quickly.
 
 ### 2.2 Humidity Check
 Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
@@ -272,7 +262,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 - [ ] 2.3.5 — Pass equipment through the drum in the same direction — one item at a time.
 - [ ] 2.3.6 — Switch ON the safelight (circuit D switch, located on the electrical panel). **RED light only.**
 
-> **Rule:** The drum seals automatically as it rotates — no doors to leave open. However, do not wedge equipment in the drum aperture. If a load is too large for the drum, it must be loaded during a full dark period (after sunset) with the panel unlatched and swung open.
+> **Rule:** Do not wedge equipment in the drum opening. Anything too large for the drum is loaded after sunset with the panel unlatched and swung open.
 
 ### 2.4 Mounting the Muslin
 
@@ -281,7 +271,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 - [ ] 2.4.1 — Retrieve the pre-cut muslin. Confirm the HDPE filler strip is seated in the frame's L channel along the three clamped edges (it stays installed).
 - [ ] 2.4.2 — Start at the **top edge**. Open each nylon spring clamp by hand and hook it over the frame edge so its swivel pads bite the muslin against the filled sandwich; the spring holds it closed with tactile feedback. Work along the top at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps) — hanging from the top lets the fabric fall straight.
 - [ ] 2.4.3 — Work down the **left and right edges** (14 clamps each), pulling the fabric taut outward from center. Total: **58 clamps** on the top + two sides.
-- [ ] 2.4.4 — The **bottom edge is left unclamped** (no clamp clearance to the raised walkway; keeps the swing/tilt envelope clear). Tension the fabric downward and secure the bottom flat against the plane by the trained method, so it cannot flap when the plane tilts or swings.
+- [ ] 2.4.4 — The **bottom edge is left unclamped**. Tension the fabric downward and secure the bottom flat against the plane by the trained method, so it cannot flap when the plane tilts or swings.
 - [ ] 2.4.5 — Final check: no wrinkles or sags when viewed with the safelight from 2 meters. Any slack will print as a soft zone.
 
 ### 2.5 Applying the Sensitizer
@@ -289,7 +279,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 - [ ] 2.5.1 — Gloves on (and glasses + apron with the dichromate option). Load the foam roller with sensitizer. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
 - [ ] 2.5.2 — **First coat:** roll horizontally from left to right across the full width of the muslin. Even strokes, 50% overlap. Work top to bottom.
-- [ ] 2.5.3 — **Second coat — wet-on-wet (apply while the first is still wet):** roll vertically, top to bottom. The cross-direction second coat lays down the remaining sensitizer and evens the coverage. *Two coats is why the working volume is ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L (§2.1), not ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L — budget for both.*
+- [ ] 2.5.3 — **Second coat — wet-on-wet (while the first is still wet):** roll vertically, top to bottom.
 - [ ] 2.5.4 — Check edges — roller tends to undercoat at the far edges. Finish with a hand-held foam brush on the last 50mm of each edge.
 - [ ] 2.5.5 — Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitizer — it will skin over.** Leftover sensitizer goes to Waste at cleanup (§5.1.2), never down a drain — with the dichromate option it carries chromium.
 
@@ -300,7 +290,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 - [ ] 2.6.2 — Wait **15–20 minutes** under safelight. The sensitizer changes from wet-glossy to a matte tack-dry state.
 - [ ] 2.6.3 — Confirm by lightly touching the corner of the coated area with a gloved fingertip. It should not transfer to the glove.
 
-> **Do not proceed with a wet coat.** A wet coat will run during exposure and will not produce a sharp image.
+> **Do not proceed with a wet coat.**
 
 ### 2.7 Exiting via the Light Trap
 - [ ] 2.7.1 — Switch OFF safelight.
@@ -314,7 +304,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 **Lighting: N/A — operator is outside the container.**
 
 ### 3.1 Exposure Calculation
-Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning to mid-afternoon, summer (Mike Ware New Cyanotype formula on cotton muslin). This is 4–8× faster than the traditional Herschel formula (~2–3 hours baseline) due to the higher UV sensitivity of ferric ammonium oxalate.
+Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning to mid-afternoon, summer.
 
 **Exposure Adjustment Table**
 
@@ -329,7 +319,7 @@ Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning t
 
 *For compound conditions (e.g. thin haze + early morning), multiply the factors: 1.5 × 2.0 = × 3.0.*
 
-These factors are EV-based estimates for light level changes. Cyanotype is an iron-based process and does not exhibit Schwarzschild reciprocity failure — no additional reciprocity correction is required beyond the factors above. For critical work, run a test strip first: cut a 200mm × full-height strip of coated muslin, expose in **5-minute intervals** using a card mask, develop immediately, and compare zones.
+No further reciprocity correction is needed. For critical work, run a test strip first: cut a 200mm × full-height strip of coated muslin, expose in **5-minute intervals** using a card mask, develop immediately, and compare zones.
 
 ### 3.2 Opening the Shutter
 - [ ] 3.2.1 — Confirm the vestibule outer door is closed and latched.
@@ -358,9 +348,9 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 - [ ] 4.1.4 — Feed the exposed muslin face-up down through the **far muslin-drop slot** (image-plane side) and draw it across the tray toward the parked beam until it lies flat on the LDPE liner over the washable area. The beam then rolls back over the laid muslin to wash ([Processing Tray & Spray Bar §2.8 and §3.4](processing-tray-and-spray-bar.md)).
 
 ### 4.2 Development in Water
-**Lighting: switch to WHITE LIGHT (Circuit F — white LED, a SEPARATE circuit from the Circuit D red safelight) once the first wash begins — the image is no longer UV-sensitive after initial water contact. The two lighting circuits are independently switched (pull-cords labeled RED / WHITE), not interlocked.**
+**Lighting: switch to WHITE LIGHT (Circuit F, pull-cord labeled WHITE) once the first wash begins.**
 
-Cyanotype develops by oxidation — the iron salts convert to Prussian blue on contact with water and air. The full blue color deepens over the first few minutes of drying.
+
 
 **Spray bar setup:**
 
@@ -368,10 +358,10 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 **Continuous flow-through wash (supply + drain run together):**
 
-Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump ([Water System Report §3](water-system-report.md) gives the water per print).
+The supply pump and the tray drain (P-04) run together, so the tray never fills; both start from the master pump switch.
 
 - [ ] 4.2.2 — Switch ON the master pump switch — **P-02 (Brown recycle supply) and P-04 (tray drain) both run.** P-02 feeds the spray bar from the IBC-3 buffer; P-04 continuously lifts the sump water through 3W-DV-02 and the filter train back toward IBC-3. Confirm BV-01 and BV-03 are open (0.1.2). *(First print after a resupply: IBC-3 is empty — run this pass on Blue: BV-05 to Blue, P-01 instead of P-02.)*
-- [ ] 4.2.3 — **Recycled first wash:** set BV-05 to Brown (recycled) and open BV-06. Set 3W-DV-02 by the [chemistry choice](#2-chemistry-choice-with-or-without-ammonium-dichromate): **Brown** for the baseline, **Waste (IBC-4)** for the dichromate option. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (orange-tinged with the dichromate option). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(Baseline: if the drain water is heavily contaminated, set 3W-DV-02 to Waste instead — see the diverter decisions below.)*
+- [ ] 4.2.3 — **Recycled first wash:** set BV-05 to Brown (recycled) and open BV-06. Set 3W-DV-02 by the [chemistry choice](#2-chemistry-choice-with-or-without-ammonium-dichromate): **Brown** for the baseline, **Waste (IBC-4)** for the dichromate option. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes**. The drain water runs yellow-green as unreacted sensitizer clears (orange-tinged with the dichromate option). **Switch to WHITE LIGHT now (Circuit F).** *(Baseline: if the drain water is heavily contaminated, set 3W-DV-02 to Waste instead — see the diverter decisions below.)*
 - [ ] 4.2.4 — **Clean wash:** set BV-05 to Blue (fresh) and bring up **P-01**; P-02 idles. Dichromate option: return 3W-DV-02 to **Brown** now. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
 - [ ] 4.2.5 — **Final rinse:** keep BV-05 on Blue (P-01) for a final ~5-minute clean-Blue flush, P-04 still draining.
 - [ ] 4.2.6 — **Stop:** close BV-06 (spray off), let P-04 run ~30 seconds to clear the sump, then switch OFF the master pump switch. Total wash ~15 minutes (**3 passes**).
@@ -399,37 +389,24 @@ Flow-through, so there are no separate drain phases — **P-04 drains throughout
 
 *First print after a resupply: IBC-3 is empty, so Pass 1 runs on Blue (BV-05 Blue, P-01 On, P-02 Off).*
 
-#### Diverter valve operator decisions
+#### Diverter decisions
 
-The two 3-way diverter valves serve different roles in the water triage chain. Understanding when and why to switch each valve is critical to avoiding cross-contamination of the Blue clean supply.
+**3W-DV-02 (tray drain)**
 
-**3W-DV-02 — Tray drain diverter (operator judgment call)**
+- **Brown (default):** baseline washes, and passes 2–3 with the dichromate option.
+- **Waste — dichromate option, pass 1:** always.
+- **Waste — any time the drain water looks like chemistry** (deep yellow, orange or green), after a spill, or when a failed coat washes off. Clear to pale yellow goes to Brown.
 
-DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:
+**3W-DV-01 (filter output)** — draw ~50 ml at SV-01 and read the pH:
 
-- **Dichromate option — pass 1 to Waste:** the first wash carries most of the chromium. Send it straight to IBC-4 so it never reaches the filters or the Brown buffer. Return DV-02 to Brown for passes 2 and 3.
-- **Set to Brown (default):** Normal processing rinse water: baseline washes, and passes 2–3 under the dichromate option. This water is filtered and reused as the next print's first wash.
-- **Switch to Waste:** Heavy contamination events — concentrated chemistry spills, a failed coat that washes off in bulk, or drain water visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 and never enters the filter/recycle path.
+- **Brown buffer (default):** pH 6–7.5 and the water looks clean.
+- **Waste:** pH above 7.5, or visibly discolored after filtering.
 
-**Rule of thumb (baseline):** If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Waste.
+**Correcting the Brown buffer pH:** if SV-01 reads above pH 7.5 with DV-01 still on Brown:
 
-**3W-DV-01 — Filter output diverter (pH meter reading)**
-
-DV-01 sits after the filter skid (F1→F2→F3) and the SV-01 sample tap. After brown water has been filtered, the operator draws a ~50 ml sample at SV-01 and checks the pH reading:
-
-- **Set to Brown buffer (default):** pH is <!-- BEGIN fact:brown_ph_lo -->6<!-- END fact:brown_ph_lo -->–<!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> and the water looks clean, so it returns to IBC-3 (Brown buffer) for reuse as a first wash. The Blue supply only ever holds fresh water.
-- **Switch to Waste:** pH is above <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi -->, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the recycle buffer.
-
-**Correcting the Brown buffer pH:** if SV-01 reads above pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> with DV-01 still on Brown:
-
-- [ ] 4.2.7 — Dissolve citric acid in a separate container (10 g per liter of water). Never add dry acid to the tote — in iron-rich water it can react exothermically and bubble.
+- [ ] 4.2.7 — Dissolve citric acid in a separate container (10 g per liter of water). Never add dry acid to the tote — it can bubble violently.
 - [ ] 4.2.8 — Add the solution at the IBC-3 outlet dosing port, stir, and retest at SV-01.
-- [ ] 4.2.9 — Never return water above pH <!-- BEGIN fact:brown_ph_hi -->7.5<!-- END fact:brown_ph_hi --> to IBC-3; send it to Waste through DV-01.
-
-| Valve | Decision | Basis | Who decides |
-|-------|----------|-------|-------------|
-| 3W-DV-02 (tray drain) | Brown vs Waste | Chemistry choice (pass 1), then contamination at drain time | Operator — chemistry choice + visual judgment |
-| 3W-DV-01 (filter output) | Brown buffer vs Black | Water quality after filtering | Operator — pH meter reading |
+- [ ] 4.2.9 — Never return water above pH 7.5 to IBC-3; send it to Waste through DV-01.
 
 ### 4.3 Drying
 **Lighting: WHITE LIGHT or daylight — cyanotype is no longer light-sensitive after washing.**
@@ -442,12 +419,8 @@ DV-01 sits after the filter skid (F1→F2→F3) and the SV-01 sample tap. After 
 ## 8. Extended Deployment — On-Site Water Top-Up (optional)
 **Lighting: normal — all top-up is external; the container stays sealed and dark.**
 
-A single hauled Blue fill supports ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints (up to ~<!-- BEGIN fact:prints_max_fill -->17<!-- END fact:prints_max_fill --> if the Blue totes are topped toward
-their 1,000L limit before departure — see [Water System Report §3](water-system-report.md)). For
-a longer stay, resupply Blue and discharge waste through the **external end-wall bulkhead ports** —
-**without opening the cargo doors**, so the dark, camera-ready state is preserved and the print cycle
-(Phases 2–4) simply repeats. This is a distinct mode from the single-fill deployment; it is **not**
-required for a normal 1–2 print outing.
+Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints; ~<!-- BEGIN fact:prints_max_fill -->17<!-- END fact:prints_max_fill --> with the totes topped up). Resupply and
+discharge through the end-wall ports with the **cargo doors closed**, then repeat Phases 2–4.
 
 - [ ] TU.1 — Check the **Blue level (IBC-1/IBC-2)** before each print. Plan a top-up *before* it runs dry mid-wash, not after.
 - [ ] TU.2 — **Resupply Blue:** remove the X1 dust cap and connect the water bowser/tanker hose to the **X1** camlock inlet on the sealed end wall. X1 gravity-feeds through check valve CV-1 and tees to both Blue totes in parallel (side-entry near the top); the fill is controlled at the bowser. Confirm the level, then shut off at the bowser, disconnect, and re-cap X1.
@@ -473,10 +446,10 @@ required for a normal 1–2 print outing.
 
 ### 5.2 Container Ventilation
 - [ ] 5.2.1 — Open both ventilation fans to full speed (circuits A and B).
-- [ ] 5.2.2 — Leave ventilating for **30 minutes minimum** after development is complete, especially if working in hot conditions — the container interior will have accumulated heat and humidity from the wash operation.
+- [ ] 5.2.2 — Leave ventilating for **30 minutes minimum** after development, longer in hot conditions.
 
 ### 5.3 Power-Down Sequence
-Power down in this order to avoid voltage spikes on sensitive electronics:
+Power down in this order:
 
 - [ ] 5.3.1 — Evaporative cooler (circuit E)
 - [ ] 5.3.2 — Water pumps P-01 through P-05 (circuit C)
@@ -495,19 +468,19 @@ If shore charger is connected, leave it running overnight to top up the battery 
 ### 5.5 Transport Mode Conversion (Packing Up)
 **Time: ~10 minutes. Single-person operation.**
 
-The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot post for transport, riding the floor gap (clearing the processing tray rim). The two left film rails (TL + BL), the left walkway, and the two pull-out apron strips must be removed before the swing — the rails so the drum cage can transition the left film-plane rail plane, and the apron strips because they sit in the leaf's horizontal sweep at the floor-gap seal plane (they lift straight out — no floor hinge, nothing folds onto the tray). The processing tray and the near/far/right walkway sections remain in place during mode conversion.
+The left film rails, the left walkway and the two apron strips come out before the swing; the processing tray and the near, far and right walkways stay in place.
 
 - [ ] 5.5.1 — End camera use: power off Fan B, finish any darkroom access. Stow all interior items; return the film-plane cross-slides to their datum, lock all four corners at matching depth and set all four cam clamps. Remove the muslin screen from its frame and stow it rolled; knock down the demountable brace cage (saddle/thumbscrew portals). Fold up and latch the chemistry prep shelf, clear of the cooler stow and the walkway.
 - [ ] 5.5.2 — Park the revolving drum in its closed/aligned position and pin its rotation (detent) so it cannot flop during the move.
 - [ ] 5.5.3 — Disconnect the flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain the cooler reservoir completely. Unplug and stow the cooler's SJOOW cord and open the inverter DC disconnect.
 - [ ] 5.5.4 — Carry the cooler in through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb drained, one person). Place on a ply base plate on the near-walkway wide section, clear of the panel swing sweep. Secure with 2× ratchet straps to the wall brackets and check the anti-slide cleats. Stow the flex duct alongside.
-- [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section — both sit inside the swing arc.
-- [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall). *Required before the swing — otherwise the drum cage fouls the left rail plane.*
-- [ ] 5.5.7 — Remove the two pull-out apron strips (near + far corner zones): at each strip, release its four draw latches (1590A13 — two bottom from inside + two span from the door side), then lift the strip up off its 45° chamfer seat and out; stow both strips strapped inside. *Required before the swing — the strips sit in the leaf's horizontal sweep; the empty corner lets the leaf sweep through (no floor hinge — nothing folds onto the tray).*
-- [ ] 5.5.8 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever) — releases the perimeter + cut seals.
-- [ ] 5.5.9 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
+- [ ] 5.5.5 — Lift out the removable left walkway + door-end near-deck section.
+- [ ] 5.5.6 — Strike the two left film rails (TL + BL): release each clamp bar, lift the rail straight up out of its saddles, and stow (clipped to the near wall).
+- [ ] 5.5.7 — Remove the two pull-out apron strips (near + far corner zones): at each strip, release its four draw latches (1590A13 — two bottom from inside + two span from the door side), then lift the strip up off its 45° chamfer seat and out; stow both strips strapped inside.
+- [ ] 5.5.8 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever).
+- [ ] 5.5.9 — Swing the frame ~56° inboard (toward the far wall), assisted. Control its momentum at the stop.
 - [ ] 5.5.10 — Engage the transport lock: fit the top + bottom wall stays — pin each turnbuckle jaw to the panel lug and to the wall-anchor eye (a spacer washer each side of the plate, cotter pins in), tension the turnbuckle, then tighten both jam nuts against the body.
-- [ ] 5.5.11 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm.
+- [ ] 5.5.11 — Close and latch the standard ISO container cargo doors.
 - [ ] 5.5.12 — Set all circuit fuses/breakers off except safelight standby.
 - [ ] 5.5.13 — Tighten all IBC tote ratchet straps ([IBC Stacking Report §4.2](ibc-stacking-report.md)). Re-check their tension after the first 50 km.
 - [ ] 5.5.14 — Check the dust caps are on all three end-wall ports (X1, X3, X4), that BV-02 and BV-07 (the P-05 / P-03 suctions) are closed, and that S-05 / S-03 are OFF.
@@ -582,7 +555,7 @@ For deep cleaning or nozzle service, lift out the right walkway grate and extrac
 | Annually | Inspect front-bar/wall-hanger bolts and upright floor-anchor bolts for loosening; re-torque to spec |
 | Annually | Flush all internal pipes with clean water; inspect for biofilm |
 | As needed | Replace camlock gaskets if leaking |
-| As needed | Clean IBC interiors between circuit changes: flush with clean water first, then bleach rinse + water flush. Never put bleach into a tote that still holds wash-water residue — alkali breaks down ferricyanide ([Water System Report §10](water-system-report.md)) |
+| As needed | Clean IBC interiors between circuit changes: flush with clean water first, then bleach rinse + water flush. Never put bleach into a tote that still holds wash-water residue |
 
 ### Chemistry prep shelf ([Chemistry Prep Shelves §8](chemistry-prep-shelves.md))
 

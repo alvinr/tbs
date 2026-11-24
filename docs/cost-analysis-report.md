@@ -11,7 +11,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$32,493<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$32,763<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -24,13 +24,13 @@ recurs or is consumed — savings strategy is different for each.
 <!-- BEGIN costing:ca-buckets -->
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$29,763** | The systems you build once — this is where build-savings live |
+| **Capital build** (one-time hardware) | **$30,033** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,680 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $300 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$29,763<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,680<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$30,033<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,680<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -49,7 +49,7 @@ Capital systems ranked by mid cost:
 | **Power & electrical** | $3,614 | 12% | Battery + solar + distribution + protection |
 | **Container + delivery** | $3,300 | 11% | Grade-dependent (CW vs WWT) |
 | **Perimeter walkway** | $2,722 | 9% | GRP grating + steel cantilevers |
-| **Swing pivot** | $1,526 | 5% | Pivot post + bearings + cage + fixed RHS door frame |
+| **Swing pivot** | $1,796 | 6% | Pivot post + bearings + cage + fixed RHS door frame |
 | **Hinged panel structure** | $1,282 | 4% | Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay |
 | **Ventilation & cooling** | $848 | 3% | Fans + cooler + inverter + baffle-duct fab + canopy |
 | **Interior conversion** | $505 | 2% | Insulation, sealing, safelight |
@@ -74,7 +74,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | 4 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --> | Easy | Available — computed (drop 1× 200W panel) |
 | 5 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 4 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$29,763<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#5). Everything else is settled: lever 2 **kept 304 SS** (decision), lever 3 **already 1×100 Ah**.
+After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 4 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$30,033<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#5). Everything else is settled: lever 2 **kept 304 SS** (decision), lever 3 **already 1×100 Ah**.
 
 > **Derivation note.** Lever 1 (container grade), lever 5 (solar), and the roll-up total +
 > percentage are computed in `costing.py` — container is a true CW − WWT subtraction off the

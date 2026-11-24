@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 import os
-from tbs_constants import C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH, DOOR_FRAME_FACE, C_WID
+from tbs_constants import LT_PASSAGE_W, C_LT_DRUM, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_T, DIAGRAMS_DIR, DRUM_D as LT_HOUSING_D, DRUM_H_LT, LT_HOUSING_T, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W, PANEL_CUT_YD, PIVOT_YD, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, BRACE_RHS, LT_CAGE_TOP, PIVOT_POST_OD, C_HGT, FAN_DIAM, LT_DRUM_OR, LT_OPENING_DEG, RAIL_X_L, FP_Y_MIN, FP_Y, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_SKIN_T, LT_RIVET_HOLE, LT_RIVET_PITCH, SWUNG_DOOR_CLEARANCE_MM, DRUM_CX as LT_DRUM_CX, DRUM_CAGE_X0, DRUM_CAGE_X1, DOOR_FRAME_DEPTH, DOOR_FRAME_FACE, C_WID
 from tbs_title_block import title_block
 import tbs_drawing
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes, draw_legend
@@ -725,7 +725,7 @@ def sheet2():
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.8), zorder=12)
     ax.plot([D_CX], [D_CY + LT_DRUM_OR], marker="x", ms=10, mew=2.4,
             color="#2E8B57", zorder=13)
-    ax.text(D_CX, D_CY - DR * 0.45, f"Ø{int(2 * BORE_R)} bore\n~555mm passage", color=C_DIM,
+    ax.text(D_CX, D_CY - DR * 0.45, f"Ø{int(2 * BORE_R)} bore\n~{LT_PASSAGE_W}mm passage", color=C_DIM,
             fontsize=6.2, ha="center", va="center", **FONT, zorder=15)
 
     # Opening labels + component leaders
@@ -1598,7 +1598,7 @@ def sheet6():
                 "PERSONNEL OPENING\n(trim to housing\n— Sheet 2 / 7)",
                 ha="center", va="center", fontsize=6.6, color=C_DIM, **FONT, zorder=5)
         draw_dim_h(ax, ox, ox + OPEN_W, oy1 + 70, f"{OPEN_W}mm personnel opening", offset=14, fs=6.2, font=FONT)
-        ax.text(x0 + W_CTR / 2, oy1 + 150, "≥ drum 80° passage (~487mm, §3.1) — operator fits", ha="center", fontsize=5.8, color=C_DIM, **FONT, zorder=6)
+        ax.text(x0 + W_CTR / 2, oy1 + 150, f"≥ drum 80° passage (~{LT_PASSAGE_W}mm, §3.1) — operator fits", ha="center", fontsize=5.8, color=C_DIM, **FONT, zorder=6)
         # size + locate the cutout: height (dim_v) beside it, bottom margin, and left edge offset
         opening_h = oy1 - oy0
         left_margin = (W_CTR - OPEN_W) / 2
@@ -2885,7 +2885,7 @@ def sheet17():
     # ═══ DETAIL A — transport-lock general arrangement (one stay, swung pose) ═══
     Ax = 6
     ax.text(Ax + 100, 205, "DETAIL A — TRANSPORT-LOCK GENERAL ARRANGEMENT", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
-    ax.text(Ax + 100, 192, "swing-panel stile lug ↔ M16 turnbuckle ↔ near-wall anchor", ha="center", fontsize=6.3, color=C_DIM, **FONT)
+    ax.text(Ax + 100, 192, "swing-panel stile lug ↔ 3/4in jaw-jaw turnbuckle ↔ near-wall anchor", ha="center", fontsize=6.3, color=C_DIM, **FONT)
     ax.add_patch(Rectangle((Ax + 6, 55), 40, 60, fc=C_STEEL, ec=C_OUT, lw=1.4, hatch="///", zorder=4))   # swing stile
     ax.add_patch(Rectangle((Ax + 9, 58), 34, 54, fc=BG, ec=C_OUT, lw=0.5, zorder=4))
     leader(ax, (Ax + 20, 112), (Ax + 6, 152), "swing-panel LEFT stile\n(2×2×0.120 RHS)", col=C_OUT, fs=6, ha="left")
@@ -2895,7 +2895,7 @@ def sheet17():
     ax.add_patch(Rectangle((Ax + 94, 81), 20, 8, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=6))              # jaw + rod
     ax.add_patch(Rectangle((Ax + 114, 78), 26, 14, fc="#8A8F98", ec=C_OUT, lw=1.1, zorder=7))            # barrel
     ax.add_patch(Rectangle((Ax + 140, 81), 26, 8, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=6))             # rod + eye
-    leader(ax, (Ax + 127, 92), (Ax + 122, 134), "M16 jaw-eye turnbuckle\n(JETBGV58X6)", col=C_DIM, fs=6)
+    leader(ax, (Ax + 127, 92), (Ax + 122, 134), "3/4in jaw-jaw turnbuckle\n(2996T533 + 3001T514/714)", col=C_DIM, fs=6)
     ax.add_patch(Circle((Ax + 172, 85), 6, fc=BG, ec=C_OUT, lw=1.3, zorder=6))                           # wall eye
     ax.add_patch(Rectangle((Ax + 176, 55), 8, 60, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=5))               # interior plate
     ax.add_patch(Rectangle((Ax + 184, 58), 6, 54, fc=C_STEEL, ec=C_OUT, lw=0.9, hatch="////", zorder=4))  # wall
@@ -2999,8 +2999,8 @@ def sheet17():
 
     draw_notes(ax, [
         "TRANSPORT LOCK — SPEC:",
-        f"1. Two stays (top Z{LT_STAY_Z[1]}, bottom Z{LT_STAY_Z[0]} AFF — located in Detail D), each a couple: swing-stile lug ↔ M16 turnbuckle ↔ near-wall anchor.",
-        f"2. Turnbuckle: 5/8in jaw-eye galvanized (JETBGV58X6), 2 sets — the jaw pins to the panel lug, the eye to the wall anchor.",
+        f"1. Two stays (top Z{LT_STAY_Z[1]}, bottom Z{LT_STAY_Z[0]} AFF — located in Detail D), each a couple: swing-stile lug ↔ 3/4in jaw-jaw turnbuckle ↔ near-wall anchor.",
+        f"2. Turnbuckle: McMaster 2996T533 body (3/4in-10, 12in take-up) with 3001T514 (RH) + 3001T714 (LH) jaw ends in place of its stub studs, 2995T902 jam nuts; both jaws pin (5/8in) through the Ø{LT_STAY_LUG_HOLE} holes in the panel lug and the wall-anchor eye, 1/4in spacer washers each side of the 12mm plate. Spans ~27–39in pin to pin (the stay is ~35in).",
         f"3. Panel lug (Detail B): {LT_STAY_LUG_T}mm steel eye plate, Ø{LT_STAY_LUG_HOLE} pin hole, 6mm fillet-welded all-round to the left 2×2×0.120in RHS stile.",
         f"4. Wall anchor (Detail C): 2× {2*LT_STAY_PLATE_HW}×{2*LT_STAY_PLATE_HW}×{LT_STAY_PLATE_T}mm A36 plate pair, 4× M16×{LT_STAY_BOLT_L} Gr.8.8 through the near wall @ {2*LT_STAY_BOLT_OFF}mm gauge, welded eye.",
         f"   Each bolt carries a CRUSH SLEEVE (Ø{LT_STAY_SLEEVE_OD}×Ø{LT_STAY_SLEEVE_ID} DOM, L={WALL_SLEEVE_L}mm, cut to the measured",

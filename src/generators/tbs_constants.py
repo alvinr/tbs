@@ -407,7 +407,7 @@ LT_STAY_SLEEVE_ID = 22.2   # mm — 1/4in wall (SF ≥2 on the M16 preload at mi
 LT_STAY_LUG_T    = 12   # lug plate thickness (mm)
 LT_STAY_LUG_PROJ = 70   # lug projection from the stile face (mm)
 LT_STAY_LUG_H    = 60   # lug height along the stile (mm)
-LT_STAY_LUG_HOLE = 17   # clevis-pin hole Ø (mm) — clears the M16 turnbuckle jaw pin
+LT_STAY_LUG_HOLE = 17   # clevis-pin hole Ø (mm) — clears the 5/8in (15.9mm) turnbuckle jaw pin (3001T514/714)
 LT_STAY_LUG_EDGE = 25   # pin-hole center inset from the projecting tip (mm) — ~1× hole-Ø of
                         # material past the bore, so the loaded eye can't tear out; centered in LT_STAY_LUG_H
 # Transport-stay heights (Z AFF, mm) — (bottom, top). Single-sourced for 2D (hingepanel Sheet 17) + 3D

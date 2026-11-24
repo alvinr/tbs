@@ -817,13 +817,13 @@ def wall_anchors():
     return '\n'.join(p)
 
 
-# Transport STAY RODS — the M16 turnbuckle stays themselves (top + bottom), drawn in the
+# Transport STAY RODS — the 3/4in jaw-jaw turnbuckle stays (top + bottom), drawn in the
 # TRANSPORT (swung) pose: a straight rod from each frame hook (at SOCKET) down to its wall-
 # anchor eye, with a turnbuckle barrel mid-span. Built here in transport (axis-aligned along
 # Yd) coords; generate_ruby adds it as a Panel-Swing DC CHILD with a -LOCK° pre-rotation so
 # the parent's +LOCK°·swing cancels it at swing=1 (rod meets hook + eye exactly), and HIDES
 # it until swung — the stays are engaged AFTER the swing and removed before the swing-back.
-ROD_R, TURN_R = 8, 14                                 # Ø16 M16 rod, Ø28 turnbuckle barrel
+ROD_R, TURN_R = 9.5, 14                               # Ø19 (3/4in) jaw threads, ~Ø28 turnbuckle body (1-1/8in hex)
 
 
 def _ruby_rod(name, p0, p1, radius, color, alpha=1.0, n=16):
@@ -850,13 +850,13 @@ def stay_rods():
     ex, ey = ANCHOR_X, PLATE_T + 48                   # wall-eye pin (Yd≈60), clamped X to clear the EP
     LHx, LHy = _rot_pt(-LUG_PROJ + LUG_EDGE, LOCK_BOLT[1], LOCK)   # LUG pin hole in the TRANSPORT pose
     cR, cT = "#8A8A92", "#6A6A72"                     # rod / turnbuckle barrel
-    TURN_L = 120
+    TURN_L = 362                                       # 2996T533 body, 14-1/4in
     p = []
     for z in STAY_Z:
         L = math.hypot(LHx - ex, LHy - ey)
         ux, uy = (LHx - ex) / L, (LHy - ey) / L
         pt = lambda t: (ex + ux * t, ey + uy * t, z)  # point t mm along the wall→lug line
-        b0 = 0.45 * L                                  # turnbuckle barrel start
+        b0 = (L - TURN_L) / 2                          # body centered between the two jaw ends
         p += [
             ruby_box("Stay clevis (eye end)", ex - 12, ey - 12, z - 12, 24, 24, 24, color=C_STEEL),
             _ruby_rod("Stay rod (eye side)", pt(0), pt(b0), ROD_R, cR),
@@ -1642,7 +1642,7 @@ lw_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 lw_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
 # ── Transport stay rods — a CHILD DC component inside the swing def: SHOWN only when the
-#    panel is swung open (the M16 turnbuckle stays are engaged AFTER the swing). Built in
+#    panel is swung open (the turnbuckle stays are engaged AFTER the swing). Built in
 #    TRANSPORT (swung) coords, then added with a -LOCK° pre-rotation about the pivot so the
 #    parent's +LOCK°·swing cancels it at swing=1 → the rod lands exactly on the frame hook
 #    (which also swings to SOCKET) and the static wall-anchor eye. A child, so its

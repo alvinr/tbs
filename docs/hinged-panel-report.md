@@ -396,7 +396,7 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 
 > **Stay lugs land on steel, not the skin.** The transport-stay couple carries real tension, so both lugs weld to the **left perimeter RHS stile** of the swinging frame — *not* the 1/8" HDPE plastic skin. The perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
 
-The complete transport lock is detailed on **Sheet 17** — the general arrangement, the **panel-side receiver lug**, and the **near-wall anchor**. The wall is a single 1.6mm corrugated sheet, so each bolt crosses a ~28mm hollow; a **crush sleeve** (1-3/8in OD × 1/4in wall DOM steel tube, cut to the measured hollow) fills it so the 225 N·m preload (70.7 kN at 75% of proof load, K = 0.2) clamps plate, sleeve and sheet instead of folding the corrugation. The sleeve runs at 124 MPa (SF 2.02 on 250 MPa mild-steel yield) and bears on the sheet at SF 2.78 (Corten, 345 MPa yield). The 90mm length covers the 54mm grip plus washers, split-lock, nut and two threads, with spare length for corrugation-depth variation. The turnbuckle is a 5/8in jaw-eye galvanized unit (JETBGV58X6). Both ends are modeled in 3D.
+The complete transport lock is detailed on **Sheet 17** — the general arrangement, the **panel-side receiver lug**, and the **near-wall anchor**. The wall is a single 1.6mm corrugated sheet, so each bolt crosses a ~28mm hollow; a **crush sleeve** (1-3/8in OD × 1/4in wall DOM steel tube, cut to the measured hollow) fills it so the 225 N·m preload (70.7 kN at 75% of proof load, K = 0.2) clamps plate, sleeve and sheet instead of folding the corrugation. The sleeve runs at 124 MPa (SF 2.02 on 250 MPa mild-steel yield) and bears on the sheet at SF 2.78 (Corten, 345 MPa yield). The 90mm length covers the 54mm grip plus washers, split-lock, nut and two threads, with spare length for corrugation-depth variation. Each stay is a jaw-jaw turnbuckle: a McMaster 2996T533 body (3/4in-10, 12in take-up) with 3001T514 (right-hand) and 3001T714 (left-hand) jaw ends screwed in place of its stub studs and locked by jam nuts. Both 5/8in jaw pins pass the Ø17mm holes in the panel lug and the wall-anchor eye, with 1/4in spacer washers each side of the 12mm plate, and the assembly spans about 27–39in pin to pin against the ~35in stay. Both ends are modeled in 3D.
 
 **Sheet 17 — Transport Lock: general arrangement + panel-side receiver lug + near-wall anchor**
 ![TBS-001 Hinged Panel — Sheet 17: Transport Lock](assets/hingepanel-sheet17.png)
@@ -542,9 +542,9 @@ See the **[Master Shopping List, filtered to this report's systems](master-shopp
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,195<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,368<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$3,384<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$4,220<!-- END costing:hp-housing-high --> |
-| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$867<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,167<!-- END costing:hp-swing-high --> |
+| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$1,137<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,437<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,865<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,354<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$6,135<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$7,624<!-- END costing:hp-total-high -->** |
 
 ---
 

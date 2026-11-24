@@ -17,7 +17,7 @@ All prices USD.
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,996 | $8,362 |
 | 6. Electrical — power, circuits, wiring | $3,562 | $3,667 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
-| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,286 | $1,766 |
+| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,556 | $2,036 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,290 | $3,177 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,195 | $1,368 |
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $240 | $240 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,115** | **~$36,544** |
+| **TOTAL (base build + 50-print run)** | **~$28,385** | **~$36,814** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -289,8 +289,13 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [1/4"-20 pronged tee-nut (ply attach)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 2 4-pack | Local fab | shelf | $3 |
 | [Transport latch — cam latch (reuse 1619A74)](https://www.mcmaster.com/1619A74/) (1619A74) | 1 ea | McMaster-Carr | shelf | $31 |
 | [M8 galvanized steel eye bolt — chain wall anchor](https://www.mcmaster.com/4843T13/) (4843T13) | 2 ea | McMaster-Carr | shelf | $16 |
+| [Jam nut, 3/4in-10 (RH + LH), turnbuckle lock](https://www.mcmaster.com/2995T902/) (2995T902) | 4 ea | McMaster-Carr | swing | $23 |
+| [Turnbuckle jaw end fitting, 3/4in-10 LH, 5/8in pin](https://www.mcmaster.com/3001T714/) (3001T714) | 2 ea | McMaster-Carr | swing | $75 |
+| [Turnbuckle jaw end fitting, 3/4in-10 RH, 5/8in pin](https://www.mcmaster.com/3001T514/) (3001T514) | 2 ea | McMaster-Carr | swing | $75 |
+| Spacer washer, 5/8in bore × 1/4in thick steel | 8 ea | McMaster-Carr | swing | $8 |
+| [Turnbuckle, 3/4in-10, 12in take-up (body; stub ends replaced by jaws)](https://www.mcmaster.com/2996T533/) (2996T533) | 2 ea | McMaster-Carr | swing | $148 |
 | [Stay-anchor crush sleeve stock — 1-3/8in OD × 1/4in wall DOM steel tube](https://www.mcmaster.com/7767T76-7767T761/) (7767T76) | 1 ft | McMaster-Carr | swing | $36 |
-| [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
+| Wall-stay lugs + 4-bolt anchor plates (fab, ×2 stays) | 2 set | Local fab | swing | $30–$60 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | 1 ea | Ruland | spray | $28–$33 |
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | 1 ea | McMaster-Carr | spray | $1 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
@@ -306,7 +311,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 9 ft | McMaster-Carr | walkway | $116 |
-| **fasteners-hardware subtotal** | | | | **$2,343–$2,611** |
+| **fasteners-hardware subtotal** | | | | **$2,614–$2,881** |
 
 ### optics
 
@@ -522,11 +527,11 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Local fab | 88 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,296–$7,626 |
+| Local fab | 89 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,326–$7,686 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
+| McMaster-Carr | 100 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,948–$2,956 |
 | US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
-| McMaster-Carr | 95 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,618–$2,626 |
 | Amazon | 44 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,443–$2,522 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
@@ -549,7 +554,6 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Harbor Freight | 2 | fasteners-hardware | $118–$176 |
 | Eagle Aluminum | 1 | aluminum | $152 |
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
-| Fasteners Plus | 1 | fasteners-hardware | $90–$120 |
 | Lenox Laser | 1 | optics | $60–$120 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
 | Uline | 1 | seals-gaskets | $40–$80 |

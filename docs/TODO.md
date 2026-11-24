@@ -45,7 +45,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
         Big Blue brackets → 3× FM25W-KIT, Fresh Water Systems $11.95 ea (2026-11-23).
   - [ ] HitLights strip + LED Profiles channel → Super Bright LEDs (already the safelight order) — only if an
         equivalent 4000K COB strip keeps the electrical-report lux basis
-  - [ ] Fasteners Plus (5/8in jaw-eye turnbuckle JETBGV58X6) → McMaster
+  - [x] Fasteners Plus turnbuckle → McMaster 2996T533 body + 3001T514/714 jaws + 2995T902 jam nuts (2026-11-23); spacer washers SKU pending
 - [ ] Source SKUs for the 16 tool and safety parts added 2026-11-23 (`print-*`, `safety-*`, SKU pending).
 - [x] Dropped 2026-11-21: the separate drum-exit GRP grating purchase (`walkway-drum-exit-grp`, costing $50–65) — the punch-out is integral to the left lift-out piece and nests on the 2 stock panels.
 

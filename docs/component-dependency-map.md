@@ -269,7 +269,7 @@ kept. Held by a **restraint DEEP 4-LEG BOX** at the corridor mouth (2×2×0.120i
 450mm apart tied by rings + 50×20×3 front retaining bars in the 25mm tote↔film-rail gap + Simpson wall
 joist-hangers + D-ring lashing + 4 floor feet) —
 NOT a load-bearing platform; the totes carry their own stack load. 1" PVC Sch-40 blue supply pipe, spray bar
-(¾" PVC), Blue fill = gravity **side-entry near the top** (X1, shared T), Brown/Waste drains pumped (X3/X4).
+(¾" PVC), Blue fill = pressurized-supply **side-entry near the top** (X1, shared T), Brown/Waste drains pumped (X3/X4).
 Legacy `IBC_H_600`=1010 / `IBC_H_STK`=2020 constants are the superseded "600L fill-level" values — kept only
 for the few generators not yet repointed (overview Blue-trunk shelf, walkway/weight context imports).*
 

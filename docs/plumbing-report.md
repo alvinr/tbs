@@ -242,7 +242,7 @@ Its settings are in the [Operating Manual §4.2](operating-manual.md).
 | CV-3 | 1/2" | DV-02 waste riser, just below the IBC-4 merge tee | One-way into the merge — stops the DV-01 reject leg back-feeding the DV-02 leg |
 
 The Shurflo 2088 pumps carry integral check valves, but those sit upstream of the diverters. CV-1
-guards the one gravity (non-pumped) path, the X1 fresh fill. CV-2 and CV-3 make the two waste legs
+guards the one non-pumped path, the X1 fresh fill from a pressurized supply. CV-2 and CV-3 make the two waste legs
 one-way where they share the IBC-4 merge tee. All three are in the IBC zone, not on a panel.
 
 ### 3.4 Sample Taps (SV-01, SV-02)

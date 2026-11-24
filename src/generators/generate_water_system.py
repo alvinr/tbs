@@ -295,7 +295,7 @@ def draw_sheet1():
     tote_vent(ax1, 82.5, 187.5, 35, 35, "BV-09", C_BLUE)
 
     ext_port(ax1, 37.5, 241.25, color=C_BLUE, label="X1")
-    ax1.text(37.5, 249.5, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5, color=C_BLUE, style="italic")
+    ax1.text(37.5, 249.5, "EXT. FILL\n2\" NPT\nPRESSURIZED", ha="center", fontsize=5.5, color=C_BLUE, style="italic")
     pipe(ax1, 37.5, 238.25, 37.5, 227, C_BLUE)
     check_valve(ax1, 37.5, 234.5, 0, -25, color=C_BLUE)
     ax1.text(32, 234.5, "CV-1", ha="right", va="center", fontsize=5.5, color=C_BLUE)

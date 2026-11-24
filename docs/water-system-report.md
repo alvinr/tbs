@@ -149,8 +149,8 @@ IBC-2 ──┘
 - The two Blue totes feed a 1" PVC manifold through their DN50 tote valves; BV-01 isolates the P-01 suction. A **1" equalization cross-tie** at the base keeps their levels balanced as P-01 draws and X1 refills. Like every tote connection, the tie lands on each tote through a short 1" flex jumper, so the rigid PVC can't fatigue as the totes settle independently
 - **P-01:** Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - **ACC-01:** 0.75L pressure accumulator — smooths pump cycling and holds pressure when the pump is off
-- **Check valves:** **CV-1** on the X1 gravity fill — the one flow path with no pump. The Shurflo 2088s carry an **integral check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so the pumped supply legs do not need an additional check valve. The two waste legs are the exception (§4.3)
-- **Fill:** one external bulkhead (X1) gravity-feeds both Blue totes in parallel (§7)
+- **Check valves:** **CV-1** on the X1 fill — the one flow path with no on-board pump. The Shurflo 2088s carry an **integral check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so the pumped supply legs do not need an additional check valve. The two waste legs are the exception (§4.3)
+- **Fill:** one external bulkhead (X1) takes a pressurized supply hose and fills both Blue totes in parallel (§7)
 - **Vents:** every tote has a valved side-entry vent high on its walkway face (BV-08 to BV-11), open while filling and operating, closed for transport ([Plumbing Report §3.1](plumbing-report.md))
 
 ### 4.2 Brown System — Used Water Recycling
@@ -274,7 +274,7 @@ system be filled and drained from a bowser or tanker without opening the cargo d
 
 | Port | Function | Connects to |
 |------|----------|-------------|
-| X1 — Fill Blue | Fresh-water fill (gravity) | Both Blue totes, side-entry near the top |
+| X1 — Fill Blue | Fresh-water fill (pressurized supply) | Both Blue totes, side-entry near the top |
 | X3 — Drain Brown | Used-water drain (P-05) | IBC-3 |
 | X4 — Drain Waste | Waste drain (P-03) | IBC-4 |
 

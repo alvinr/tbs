@@ -389,8 +389,8 @@ from the right walkway.
 
 Three 2" NPT bulkhead ports penetrate the sealed end wall on the container
 centerline — **X1** (Blue fill), **X3** (Brown drain), and **X4** (Waste drain) —
-so all four totes fill and drain without opening the cargo doors. X1 gravity-feeds
-an internal tee that side-enters both Blue totes near the top, so one external hose
+so all four totes fill and drain without opening the cargo doors. X1 takes a pressurized supply
+hose into an internal tee that side-enters both Blue totes near the top, so one external hose
 fills both. Each bulkhead clamps through the end wall over a flat steel backing doubler that
 bridges the corrugation and spreads its load (clamped, not welded — the same idea as the frame's
 exterior backing plates, [§3.2](#32-frame-specification)). Each port takes a tethered dust cap
@@ -413,7 +413,7 @@ in [§7](#7-internal-plumbing).)
 All internal supply and return lines route through the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor
 between the near and far IBC columns, reaching each tote's corridor-facing DN50
 butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
-(X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
+(X1 Blue pressurized fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
 and the recycle returns), and the valve schedule are specified in the
 [Water System Report](water-system-report.md) §4 and §7. The corridor pumps on the
 **Corridor Plumbing Panel** (plywood, at the cargo-door mouth of the corridor, bolted to the

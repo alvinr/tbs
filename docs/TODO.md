@@ -31,6 +31,13 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   hoods/louvres and duct stubs, cooler wall stub, exterior stay/hanger backing plates, PV disconnect,
   solar mounts) and for each: recess, make removable for transport, or relocate inside.
 
+## 🔩 Light-trap pivot plate — clashes (2026-11-24)
+
+- [ ] **Pivot plate → sub-plate bolt (M12) sits inside the processing-tray exclusion zone** near (245, 2242), shank and head; overview clash check reports it.
+- [ ] **Pivot plate runs under the hinged-panel pull-out apron** — check and resolve the overlap.
+- [ ] **Pivot plate to processing tray distance** — confirm the clearance and fix it.
+- Default fix direction: alter the plate / bracket to suit, not the tray.
+
 ## 🛒 Parts to source (SKU + price)
 
 - [~] Consolidate suppliers (2026-11-23). Duplicate names merged 2026-11-23 (~70 → 56: Metals Depot,

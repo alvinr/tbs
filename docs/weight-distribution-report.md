@@ -192,7 +192,7 @@ is the densest zone.
 ### 5.3 Camera Ready (Panel Deployed)
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
-deployed to its operational position at the cargo door end (X=0–80).
+deployed to its operational position at the cargo door end.
 CG marker shows the loaded center of gravity at X=<!-- BEGIN weight:wt-ready-x -->3,597<!-- END weight:wt-ready-x -->, Yd=<!-- BEGIN weight:wt-ready-yd -->1,188<!-- END weight:wt-ready-yd -->.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
@@ -244,7 +244,7 @@ transport states lean slightly far (up to ~<!-- BEGIN weight:wt-far-hi -->51.8<!
 their mass toward the far/pivot side. This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
 panel, battery, and solar controller totaling ~<!-- BEGIN weight:wt-near-elec -->28<!-- END weight:wt-near-elec --> kg), the pump manifold is on the Corridor Plumbing Panel
-centered in the IBC corridor (Yd=1,046), and the IBC stack is centered
+centered in the IBC corridor, and the IBC stack is centered
 across the container width. The film plane carriage contributes ~<!-- BEGIN weight:wt-comp-film -->51<!-- END weight:wt-comp-film --> kg to
 the far side; the near (pinhole-wall) side carries only the light pinhole disc
 holder (~1.5 kg), so this lateral offset is taken up by the IBC stack and corridor

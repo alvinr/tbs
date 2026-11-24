@@ -184,6 +184,10 @@ tells below (advisory, per-track thresholds) — run it before ticking a doc.
 ### Design reports are the WHAT and WHY; the Operating Manual is the HOW
 - A design report says **what** the system is, **how it is built** (fabrication, assembly,
   installation and commissioning are design), and **why** each choice was made.
+- **The operating manual is a checklist of what to do — never how the system works.** One action per
+  checkbox (no "check X, set Y and open Z" in one step); quantities, limits and warnings stay, design
+  rationale and system description go to the subsystem reports. Steps are numbered per subsection
+  (X.Y.n); renumbering moves every step reference in other reports and `parts.py`.
 - **Operating instructions belong in `operating-manual.md` only**: deployment, operation, cleanup,
   transport, maintenance procedures and schedules, PPE, troubleshooting. Tell-tales are imperatives
   addressed to an operator ("set / open / check / inspect / wear / keep / never / avoid …", "the

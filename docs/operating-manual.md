@@ -51,35 +51,35 @@ The water system has three circuits (Blue/Brown/Black), pumps on the plumbing pa
 - [ ] 0.1.6 — Switch P-01 OFF.
 - [ ] 0.1.7 — Confirm P-04 suction pickup tube is seated in the sump well and the suction hose is connected over the tray rim to the pump manifold. Set 3W-DV-02 (on P-04 discharge) to route toward IBC-3 (Brown). P-04 draws used wash water from the sump and lifts it to IBC-3 via a side-entry near the top. Switch on manually after each wash cycle. (The tray and pickup tube are permanently installed between the film plane rails.)
 
-### 0.2 Chemistry — Part A (Ammonium Iron(III) Oxalate)
+### 0.2 Chemistry — Part A (Ferric Ammonium Oxalate)
 **Lighting: WHITE LIGHT — Part A is not light-sensitive in dry or dissolved form.**
 
 > **⚠ RECIPE NOT YET LOCKED — see [Sensitizer Trials](sensitizer-trials.md).** Quantities use the
-> **Mike Ware New Cyanotype** ratio (AmFe : ferricyanide = **3 : 1**) over the **<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active
+> **Mike Ware New Cyanotype** ratio (ferric ammonium oxalate : ferricyanide = **3 : 1**) over the **<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m² active
 > plane, TWO wet-on-wet coats** (§2.5), at the sourced muslin coverage **~120 ml/m²/coat →
 > ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L working sensitizer per print**. The **concentration tier is the open variable** — it
 > swings chemistry cost and print count by **~3×** across the three tiers. Three alternatives are given for costing/trialling.
 > **Default: Standard (½-Ware)** until the trial decides.
 
-Prepare Part A in **warm water (50–60°C)** — AmFe does not dissolve cold. Part A holds all the
+Prepare Part A in **warm water (50–60°C)** — ferric ammonium oxalate does not dissolve cold. Part A holds all the
 iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 
-| Tier (per print) | AmFe (dry) | Part A water (warm) | mixed strength | AmFe for 50 prints |
+| Tier (per print) | Ferric ammonium oxalate (dry) | Part A water (warm) | mixed strength | For 50 prints |
 |---|---|---|---|---|
 | Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->222<!-- END costing:om-amfe-g-lean --> g | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->11.1<!-- END costing:om-amfe-kg-lean --> kg |
 | **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->334<!-- END costing:om-amfe-g-standard --> g** | **~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->16.7<!-- END costing:om-amfe-kg-standard --> kg** |
 | Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->668<!-- END costing:om-amfe-g-rich --> g | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->33.4<!-- END costing:om-amfe-kg-rich --> kg |
 
 - [ ] 0.2.1 — Heat water to 50–60°C (a kettle left to stand for 2 minutes after boiling is ideal).
-- [ ] 0.2.2 — Weigh AmFe into a mixing jug.
-- [ ] 0.2.3 — Pour warm water over the AmFe. Stir continuously until fully dissolved — the solution turns pale yellow-green and is clear, not cloudy. This may take 3–5 minutes.
+- [ ] 0.2.2 — Weigh the ferric ammonium oxalate into a mixing jug.
+- [ ] 0.2.3 — Pour warm water over it. Stir continuously until fully dissolved — the solution turns pale yellow-green and is clear, not cloudy. This may take 3–5 minutes.
 - [ ] 0.2.4 — Allow to cool to room temperature.
-- [ ] 0.2.5 — Label the jug **PART A — AmFe (WARE)**. Store in a sealed dark bottle.
+- [ ] 0.2.5 — Label the jug **PART A — FERRIC AMMONIUM OXALATE (WARE)**. Store in a sealed dark bottle.
 
 ### 0.3 Chemistry — Part B (Potassium Ferricyanide, + Ammonium Dichromate if chosen)
 **Lighting: WHITE LIGHT — Part B is not light-sensitive on its own.**
 
-Part B holds the ferricyanide, at ⅓ of the AmFe mass (Ware's 3:1 ratio), in ~half the working
+Part B holds the ferricyanide, at ⅓ of the ferric ammonium oxalate mass (Ware's 3:1 ratio), in ~half the working
 volume. For the dichromate option it also carries the dichromate (see
 [Chemistry Choice](#chemistry-choice-with-or-without-ammonium-dichromate)).
 
@@ -165,7 +165,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 ![Cargo-door end — Transport vs Operational (56° panel swing)](assets/assembly-overview-plan.png)
 
 - [ ] 1.3.1 — Open and secure the cargo doors.
-- [ ] 1.3.2 — Release the top + bottom wall stays: slack the turnbuckles and unhook the rods from the near-wall eyes.
+- [ ] 1.3.2 — Release the top + bottom wall stays: slack each turnbuckle, pull the cotter and clevis pin at the wall-anchor eye, and swing the stay clear (or unpin both ends and stow it).
 - [ ] 1.3.3 — With the panel still swung clear of the door plane, retrieve the evaporative cooler from near-walkway stowage (release 2 ratchet straps) and carry it out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb dry, one person).
 - [ ] 1.3.4 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration. Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill the reservoir (~18 L, one tankful) from the Blue circuit at TAP-01 on the pinhole wall — doors are open at this stage, so draw at TAP-01 and carry/hose the water out to the cooler.
 - [ ] 1.3.5 — Swing the frame back ~56° to the door plane (camera position), assisted. The vertical pivot is balanced at any angle (no gravity torque) — effort is only inertia + bearing friction; control momentum at the stop.
@@ -179,10 +179,10 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 ### 1.4 Light Trap — Revolving Drum Panel
 - [ ] 1.4.1 — Confirm the hinged drum panel is closed and both 1619A74 lift-and-turn cam latches are engaged (interior-face lever).
 - [ ] 1.4.2 — Check the EPDM perimeter gasket is seated with no gaps or folded sections.
-- [ ] 1.4.3 — Rotate the drum one full revolution by hand — it should turn freely with no binding or scraping.
-- [ ] 1.4.4 — Verify: step into the drum entry side and rotate through to the interior. Wait 5 minutes for dark adaptation. **No light should be visible at any baffle position.** Mark any leaks with chalk and seal with black silicone before proceeding.
+- [ ] 1.4.3 — Rotate the drum one full revolution by hand — it should turn freely with no binding; a light, even drag from the strip brushes is normal.
+- [ ] 1.4.4 — Verify: step into the drum entry side and rotate through to the interior. Wait 5 minutes for dark adaptation. **No light should be visible at any drum position.** Mark any leaks with chalk and seal with black silicone before proceeding.
 
-> **Safety:** Do not attempt to reverse direction inside the drum — the baffles only clear forward rotation. If unsure of orientation, continue rotating forward until you exit on the intended side.
+> **Safety:** The drum is a single-opening shell: step into the opening and turn it 180° until the opening faces the other side. Keep hands clear of the opening edges as they pass the housing.
 
 ### 1.5 Solar Power System
 - [ ] 1.5.1 — Deploy solar panels on south-facing ground or roof rack, angled at 30° from horizontal (optimal for Palm Springs latitude).
@@ -190,7 +190,7 @@ The two end states — transport (panel + drum swung 56°, doors closed) and ope
 - [ ] 1.5.3 — Connect controller to battery bank (1 × 100Ah LiFePO4 standard; optional 2nd pack in parallel). **Observe polarity.**
 - [ ] 1.5.4 — Connect Blue Sea fuse block to battery positive busbar.
 - [ ] 1.5.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
-- [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C1 (corridor pumps P-01/02/03/05, one at a time), C2 (tray-drain pump P-04), D (red safelight), E (evap cooler inverter), F (white LED lighting). Both pump fuses are gated by the single 2-pole master pump switch; the drain pumps P-05 / P-03 also have local switches S-05 / S-03, kept OFF except for a pump-out.
+- [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C1 (corridor pumps P-01/02/03/05, one at a time), C2 (tray-drain pump P-04), D (red safelight), E (evap cooler inverter — its own 40A ANL fuse and Blue Sea 6006 disconnect; close the disconnect), F (white LED lighting). Both pump fuses are gated by the single 2-pole master pump switch; the drain pumps P-05 / P-03 also have local switches S-05 / S-03, kept OFF except for a pump-out.
 - [ ] 1.5.7 — **Grounding.** The protective bond (container shell + inverter/cooler/equipment → battery-negative, 4 AWG) is **permanent** — just confirm the main-panel bond lug is tight. It protects on any surface; **no site earth needs to be driven.** The 8-ft copper earth stake is **optional supplementary earthing**: **on soil**, drive it beside the power panel and clamp it to the main-panel earth terminal (it dissipates static — good in a dry darkroom); **on concrete, asphalt, or any hard surface, skip it** — the bonding provides full fault protection regardless ([Electrical Report §7.3](electrical-report.md)). If a convenient earth is at hand (building ground, grounded metal water pipe), bond to that instead of driving the stake. (Set **directly on bare soil**, the container's steel corner castings already earth it enough to bleed static — so the stake only matters if it is leveled up on **timber sleepers**, §1.2.2, which insulate the castings.)
 
 > **Shore power backup:** First confirm the site's AC supply is on an RCD/GFCI-protected circuit. Never run an AC extension cord or generator output into the wet interior. If grid power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
@@ -263,8 +263,8 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 - [ ] 2.3.1 — Confirm drum panel is latched (both 1619A74 lift-and-turn cam latches engaged).
 - [ ] 2.3.2 — Carry all equipment to the drum entry side. Set it down at your feet.
-- [ ] 2.3.3 — Push the drum wall forward until the first baffle clears. Step in.
-- [ ] 2.3.4 — Continue rotating forward until you exit into the container interior.
+- [ ] 2.3.3 — Step into the drum opening.
+- [ ] 2.3.4 — Turn the drum 180° (pull handle inside) until the opening faces the container interior, and step out.
 - [ ] 2.3.5 — Pass equipment through the drum in the same direction — one item at a time.
 - [ ] 2.3.6 — Switch ON the safelight (circuit D switch, located on the electrical panel). **RED light only.**
 
@@ -300,7 +300,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 ### 2.7 Exiting via the Light Trap
 - [ ] 2.7.1 — Switch OFF safelight.
-- [ ] 2.7.2 — Step into the drum from the interior side. Rotate forward (same direction as entry) until you exit to the exterior.
+- [ ] 2.7.2 — Step into the drum from the interior side and turn it 180° until the opening faces the exterior.
 - [ ] 2.7.3 — The drum seals behind you as it rotates.
 
 **GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitizer dry to touch. Drum panel latched.
@@ -310,7 +310,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 **Lighting: N/A — operator is outside the container.**
 
 ### 3.1 Exposure Calculation
-Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning to mid-afternoon, summer (Mike Ware New Cyanotype formula on cotton muslin). This is 4–8× faster than the traditional Herschel formula (~2–3 hours baseline) due to the higher UV sensitivity of ammonium iron(III) oxalate.
+Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning to mid-afternoon, summer (Mike Ware New Cyanotype formula on cotton muslin). This is 4–8× faster than the traditional Herschel formula (~2–3 hours baseline) due to the higher UV sensitivity of ferric ammonium oxalate.
 
 **Exposure Adjustment Table**
 
@@ -351,7 +351,7 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 - [ ] 4.1.1 — Enter via light trap (same procedure as Phase 2.3). Switch safelight ON (**red light**).
 - [ ] 4.1.2 — Squeeze each spring clip open to release the muslin — work top-down, supporting the fabric weight as the upper clamps release. The image is latent at this point and may be barely visible as a pale yellow ghost.
 - [ ] 4.1.3 — Roll the spray-bar gantry to the **near (pinhole-wall) end** of its travel and park it there.
-- [ ] 4.1.4 — Feed the exposed muslin face-up down through the **far muslin-drop slot** (image-plane side) and draw it across the tray toward the parked beam until it lies flat on the LDPE liner over the washable area. The beam then rolls back over the laid muslin to wash ([Processing Tray & Spray Bar §4.2](processing-tray-and-spray-bar.md)).
+- [ ] 4.1.4 — Feed the exposed muslin face-up down through the **far muslin-drop slot** (image-plane side) and draw it across the tray toward the parked beam until it lies flat on the LDPE liner over the washable area. The beam then rolls back over the laid muslin to wash ([Processing Tray & Spray Bar §2.8 and §3.4](processing-tray-and-spray-bar.md)).
 
 ### 4.2 Development in Water
 **Lighting: switch to WHITE LIGHT (Circuit F — white LED, a SEPARATE circuit from the Circuit D red safelight) once the first wash begins — the image is no longer UV-sensitive after initial water contact. The two lighting circuits are independently switched (pull-cords labeled RED / WHITE), not interlocked.**
@@ -364,7 +364,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 **Continuous flow-through wash (supply + drain run together):**
 
-Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump — instead of the old fill-dwell-drain cycle (water consumed per print is the same; see [Water System Report §6](water-system-report.md)).
+Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump ([Water System Report §3](water-system-report.md) gives the water per print).
 
 - [ ] 4.2.2 — Switch ON the master pump switch — **P-02 (Brown recycle supply) and P-04 (tray drain) both run.** P-02 feeds the spray bar from the IBC-3 buffer; P-04 continuously lifts the sump water through 3W-DV-02 and the filter train back toward IBC-3. Confirm BV-01 and BV-03 are open (0.1.2). *(First print after a resupply: IBC-3 is empty — run this pass on Blue: BV-05 to Blue, P-01 instead of P-02.)*
 - [ ] 4.2.3 — **Recycled first wash:** set BV-05 to Brown (recycled) and open BV-06. Set 3W-DV-02 by the [chemistry choice](#chemistry-choice-with-or-without-ammonium-dichromate): **Brown** for the baseline, **Waste (IBC-4)** for the dichromate option. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (orange-tinged with the dichromate option). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(Baseline: if the drain water is heavily contaminated, set 3W-DV-02 to Waste instead — see the diverter decisions below.)*
@@ -459,7 +459,7 @@ required for a normal 1–2 print outing.
 **Lighting: WHITE LIGHT.**
 
 ### 5.1 Chemistry Disposal
-- [ ] 5.1.1 — **Spent wash water** is collected in IBC-3 (Brown) and IBC-4 (Waste) and leaves only through the X3/X4 end-wall ports (TU.3). Never discharge either tote to a storm drain, soil or waterway. Keep the caps and valves closed between pump-outs. Book disposal by chemistry ([Water System Report §2.3](water-system-report.md)):
+- [ ] 5.1.1 — **Spent wash water** is collected in IBC-3 (Brown) and IBC-4 (Waste) and leaves only through the X3/X4 end-wall ports (TU.3). Never discharge either tote to a storm drain, soil or waterway. Keep the caps and valves closed between pump-outs. Book disposal by chemistry ([Wash-Water Classification](wash-water-classification.md)):
   - **Baseline:** a liquid-waste hauler or a wastewater plant that accepts it. Before the first disposal, the collected water needs its one-time check ([Sensitizer Trials T6](sensitizer-trials.md)).
   - **Dichromate option:** IBC-4 always goes to a **licensed hazardous-waste hauler**, on a hazardous-waste manifest. IBC-3 goes the same way until Brown has been measured below 5 mg/L chromium ([Sensitizer Trials T7](sensitizer-trials.md)). Keep each manifest with the disposal record, and count the hazardous kilograms each month — they set the generator category.
 - [ ] 5.1.2 — **Unused stock solutions:** seal and store Part A and Part B in dark bottles (6–8 week shelf life). **Mixed working sensitizer** (4–6 hour life): pour what is left into the tray and drain it to **Waste** (3W-DV-02 to Waste, run P-04). Never pour it down a sink or onto the ground.
@@ -501,7 +501,7 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 - [ ] 5.5.7 — Remove the two pull-out apron strips (near + far corner zones): at each strip, release its four draw latches (1590A13 — two bottom from inside + two span from the door side), then lift the strip up off its 45° chamfer seat and out; stow both strips strapped inside. *Required before the swing — the strips sit in the leaf's horizontal sweep; the empty corner lets the leaf sweep through (no floor hinge — nothing folds onto the tray).*
 - [ ] 5.5.8 — Release both 1619A74 lift-and-turn cam latches (panel perimeter, interior-face lever) — releases the perimeter + cut seals.
 - [ ] 5.5.9 — Swing the frame ~56° inboard (toward the far wall), assisted. Balanced about the vertical pivot (no gravity torque); control momentum at the stop.
-- [ ] 5.5.10 — Engage the transport lock: connect the top + bottom wall stays — hook the rods from the frame hooks to the near-wall eyes and tension the turnbuckles.
+- [ ] 5.5.10 — Engage the transport lock: fit the top + bottom wall stays — pin each turnbuckle jaw to the panel lug and to the wall-anchor eye (a spacer washer each side of the plate, cotter pins in), tension the turnbuckle, then tighten both jam nuts against the body.
 - [ ] 5.5.11 — Close and latch the standard ISO container cargo doors. They close outboard of the fixed left panel (Yd0–180); the swung frame clears the door plane by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm --> mm.
 - [ ] 5.5.12 — Set all circuit fuses/breakers off except safelight standby.
 - [ ] 5.5.13 — Tighten all IBC tote ratchet straps ([IBC Stacking Report §4.2](ibc-stacking-report.md)). Re-check their tension after the first 50 km.
@@ -550,7 +550,7 @@ cartridge, inspect the housing interior, insert the new cartridge, re-seat the s
 hand-tighten plus ¼ turn. Return 3W-DV-02 to Brown; at the next wash, check the housing for leaks while P-04 runs. Bag spent cartridges
 with the disposal for the chemistry in use.
 
-### Processing tray and spray bar ([Processing Tray & Spray Bar §7](processing-tray-and-spray-bar.md))
+### Processing tray and spray bar ([Processing Tray & Spray Bar §6](processing-tray-and-spray-bar.md))
 
 | Task | Frequency | Procedure |
 |------|-----------|-----------|
@@ -595,7 +595,7 @@ Deployment and stowing are in §1.7.3 and §5.5.1.
 | Every 20 mode conversions | Inspect the EPDM cut seals at the swing boundaries (Yd180/2287) for wear |
 | Every 6 months | Inspect EPDM perimeter gasket compression; replace if permanently deformed |
 | Every 6 months | Inspect the drum foam end seals (top/bottom) for wear and adhesion, and the four strip brushes for flattened or missing bristles |
-| Annually | Inspect the wall-stay turnbuckles, hooks, and eye anchors; verify tension at the locked angle |
+| Annually | Inspect the wall-stay turnbuckles, jaw pins, cotters and anchor eyes; verify tension and jam nuts at the locked angle |
 | Annually | Grease the 51118 pivot thrust bearing; the iglide journal bushings run dry — do **not** oil/grease them — wipe the post journal bands clean and check for free, smooth rotation |
 | Annually | Check SKF 6215 bearings for roughness — sealed for life, replace only if failed |
 | Annually | Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum |
@@ -640,7 +640,7 @@ Deployment and stowing are in §1.7.3 and §5.5.1.
 | Interval | Task |
 |----------|------|
 | Before each session | Check battery state of charge via Victron Connect app |
-| Before each session | Verify all circuit fuses are intact on Blue Sea 5026 fuse block |
+| Before each session | Verify all circuit fuses are intact on the Blue Sea 5026 fuse block, and the Circuit-E 40A ANL fuse |
 | Before each session | Test safelight (Circuit D) and white light (Circuit F) switches |
 | Before each session | Wet-zone connectors seated and dry; no liquid pooling at any connection |
 | Before each cooling session | Trip-test the Circuit-E cooler-outlet GFCI; cord and outlet undamaged |
@@ -688,8 +688,9 @@ No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinh
 ## Exposure Adjustment Table
 *Full reference table for use in Phase 3.*
 
+| Condition | Exposure | Note |
+|-----------|----------|------|
 | Baseline | 35 min | Direct full sun, summer, 10:00–14:00 (Ware formula) |
-|----------|--------|-----------------------------------------------------|
 | Thin haze | 55 min | |
 | Broken cloud | 70 min | |
 | Heavy overcast | 140 min | |
@@ -711,8 +712,8 @@ No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinh
 
 
 ## See Also
-- [Electrical & Systems Report](electrical-report.md) — power system, light trap construction, cooling specification
+- [Electrical Report](electrical-report.md) — power system and circuits; [Hinged Panel Report](hinged-panel-report.md) — light trap; [Ventilation Report](ventilation-report.md) — cooling
 - [Film Plane Mechanism](film-plane-mechanism-report.md) — image plane adjustment and setup
 - [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) — quick-change pinhole disc / lens swap procedure
-- [Chem Shopping List](chemistry-shopping-list.md) — chemistry suppliers and quantities
+- [Chemistry Shopping List](chemistry-shopping-list.md) — chemistry suppliers and quantities
 - [Processing System](water-system-report.md) — water system circuit operation

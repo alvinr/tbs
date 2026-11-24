@@ -1289,6 +1289,11 @@ def weight_values():
     v["wt-cat-structure"] = f"{cat['structure']:,}"
     v["wt-cat-equipment"] = f"{cat['equipment']:,}"
     v["wt-total-dry"]     = f"{total_dry:,}"
+    # §3.1–3.3 per-component rows (rounded, so each table sums to its subtotal)
+    for c in dry:
+        slug = _re.sub(r"[^a-z0-9]+", "-", c.name.lower()).strip("-")
+        v[f"wt-c-{slug}"] = f"{_rhu(c.weight_kg):,}"
+    v["wt-c-fans"] = f"{sum(_rhu(c.weight_kg) for c in dry if c.name.startswith('Fan ')):,}"
     # container-transport-options.md — the haul weight in lb (nearest 10), split container vs fit-out
     lb = lambda kg: f"{int(round(kg * _LB_PER_KG, -1)):,}"
     v["wt-tx-container-kg"] = f"{cat['container']:,}"

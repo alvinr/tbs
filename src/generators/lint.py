@@ -1171,7 +1171,7 @@ _MONEY_RAW_BASELINE = {
     "mini-tbs/mini-tbs-poc.md": 22, "mini-tbs/mini-tbs-shopping-list.md": 80,
     "photosensitive-plane-options.md": 161, "process-comparison.md": 120,
     "project-cost-breakdown.md": 62, "tray-research.md": 14, "ventilation-report.md": 3,
-    "weight-distribution-report.md": 2,
+    "weight-distribution-report.md": 0,
 }
 
 

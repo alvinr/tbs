@@ -4,11 +4,11 @@
 
 ## 1. Purpose
 
-This report provides a comprehensive weight analysis of TBS-001, covering:
+This report gives the weight of TBS-001 and how it is distributed:
 
 - Total weight of the container with all equipment installed (dry)
 - Total weight with all liquids added (camera ready)
-- Weight distribution (front-back, left-right) for three operational states
+- Weight distribution (front-back, left-right) for the four states: dry, loaded transport, camera ready and materials exhausted
 - Center-of-gravity (CG) position and migration between states
 - ISO container gross weight compliance verification
 
@@ -42,44 +42,45 @@ water 1,000 kg/m³.
 
 | Component | Weight (kg) | Position | Calculation Basis |
 |-----------|------------|----------|-------------------|
-| Container shell (excl. doors) | 1,920 | Full footprint | Hapag-Lloyd 20ft ISO tare (2,200 kg) minus doors (280 kg) |
-| Cargo door — near leaf | 140 | Closed: X=−100 to −40 / Open: along near wall | ISO door leaf, ~140 kg each |
-| Cargo door — far leaf | 140 | Closed: X=−100 to −40 / Open: along far wall | ISO door leaf, ~140 kg each |
+| Container shell (excl. doors) | <!-- BEGIN weight:wt-c-container-shell -->1,920<!-- END weight:wt-c-container-shell --> | Full footprint | Hapag-Lloyd 20ft ISO tare (2,200 kg) minus doors (280 kg) |
+| Cargo door — near leaf | <!-- BEGIN weight:wt-c-cargo-door-near -->140<!-- END weight:wt-c-cargo-door-near --> | Closed: X=−100 to −40 / Open: along near wall | ISO door leaf, ~140 kg each |
+| Cargo door — far leaf | <!-- BEGIN weight:wt-c-cargo-door-far -->140<!-- END weight:wt-c-cargo-door-far --> | Closed: X=−100 to −40 / Open: along far wall | ISO door leaf, ~140 kg each |
 
 ### 3.2 Structural Components
 
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
-| Hinged panel (incl. Ø800 housing + punch-out bay) | 161 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Framed panel: 1/8" HDPE plastic skins + 18mm-ply Fan-B mount band + HDPE-skinned 6061 Al stiffener-grid (1×1×1/8in) corner cores + 2×2×0.120in steel SHS center ≈ 119 kg + bolted 5mm (3/16in) HDPE Ø800 housing ≈ 22 kg + 1/8"-HDPE punch-out bay ≈ 21 kg (first-principles). The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the full movable-assembly breakdown |
-| Light-trap drum (rotating) | 69 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø764 C-shell, 1/8" HDPE plastic skin, no fins (suspended with panel) + 2× 8mm 6061-T6 Al end caps + rolled rim-angles + steel Ø75 stub shafts + 2× SKF 6215 bearings + the interior 40×40×5 SS pull-handle stile (bolts to the caps → rotates with the drum) + plugs + pull handle |
-| Processing tray | 114 | 280–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 57 kg ([Processing Tray Report](processing-tray-and-spray-bar.md)) |
-| Near walkway | 37 | 580–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 12.7 kg/m² GRP grating |
-| Far walkway | 37 | 580–4,629 | 2,062–2,362 | Same as near walkway |
-| Right walkway | 44 | 4,329–4,629 | 0–2,362 | Cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (2×1×0.120in steel) + wall cleats + combined corner plates (shared with the BR film rail) + GRP grating |
-| Left walkway | 27 | 280–580 | 0–2,362 | Removable lift-out: GRP grating + 5 floor-leg cantilever brackets (2×2 post + arm on bare floor outside the tray) + drum-exit punch-out (deeper grating) |
-| Swing pivot + cage hardware | <!-- BEGIN weight:wt-comp-swing -->113<!-- END weight:wt-comp-swing --> | 0–400 | 700–2,287 | Rotation transport hardware: pivot bearings + collar + wall stays + rail saddles (estimates) + the welded 2×2×0.120in RHS drum support cage, taken member by member from the [Hinged Panel Report §2.4](hinged-panel-report.md#24-movable-panel-weight-breakdown) breakdown |
-| Container mods | 65 | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |
-| Chem-prep shelf (fold-down, stowed) | 7 | 1,180–1,780 | 0–22 | Wall-hinged fold-down: 18mm UV-coated white ply (ply-primary, no steel/Al frame) + HDPE spill lip + continuous piano hinge + 2 stays ≈ 7 kg. Modeled **stowed** (folded up vs the pinhole wall) in all states; the ~25 kg deployed mixing load is a transient prep case (film plane parked) — see [Chemistry Prep Shelves §3](chemistry-prep-shelves.md) |
+| Hinged panel (incl. Ø800 housing + punch-out bay) | <!-- BEGIN weight:wt-c-hinged-panel -->136<!-- END weight:wt-c-hinged-panel --> | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Framed panel: 1/8" HDPE plastic skins + 18mm-ply Fan-B mount band + HDPE-skinned 6061 Al stiffener-grid (1×1×1/8in) corner cores + 2×2×0.120in steel SHS center + bolted 5mm (3/16in) HDPE Ø800 housing + 1/8"-HDPE punch-out bay (first-principles). The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the full movable-assembly breakdown |
+| Light-trap drum (rotating) | <!-- BEGIN weight:wt-c-light-trap-drum -->59<!-- END weight:wt-c-light-trap-drum --> | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø<!-- BEGIN fact:lt_drum_od_mm -->758<!-- END fact:lt_drum_od_mm --> C-shell, 1/8" HDPE plastic skin, no fins (suspended with panel) + 2× 8mm 6061-T6 Al end caps + rolled rim-angles + steel Ø75 stub shafts + 2× SKF 6215 bearings + the interior 40×40×5 SS pull-handle stile (bolts to the caps → rotates with the drum) + plugs + pull handle |
+| Processing tray | <!-- BEGIN weight:wt-c-processing-tray -->114<!-- END weight:wt-c-processing-tray --> | 280–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 57 kg ([Processing Tray Report](processing-tray-and-spray-bar.md)) |
+| Near walkway | <!-- BEGIN weight:wt-c-near-walkway -->37<!-- END weight:wt-c-near-walkway --> | 580–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 12.7 kg/m² GRP grating |
+| Far walkway | <!-- BEGIN weight:wt-c-far-walkway -->37<!-- END weight:wt-c-far-walkway --> | 580–4,629 | 2,062–2,362 | Same as near walkway |
+| Right walkway | <!-- BEGIN weight:wt-c-right-walkway -->44<!-- END weight:wt-c-right-walkway --> | 4,329–4,629 | 0–2,362 | Cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (2×1×0.120in steel) + wall cleats + combined corner plates (shared with the BR film rail) + GRP grating |
+| Left walkway | <!-- BEGIN weight:wt-c-left-walkway -->27<!-- END weight:wt-c-left-walkway --> | 280–580 | 0–2,362 | Removable lift-out: GRP grating + 5 floor-leg cantilever brackets (2×2 post + arm on bare floor outside the tray) + drum-exit punch-out (deeper grating) |
+| Swing pivot + cage hardware | <!-- BEGIN weight:wt-c-swing-pivot-cage-hardware -->113<!-- END weight:wt-c-swing-pivot-cage-hardware --> | 0–400 | 700–2,287 | Rotation transport hardware: pivot bearings + collar + wall stays + rail saddles (estimates) + the welded 2×2×0.120in RHS drum support cage, taken member by member from the [Hinged Panel Report §2.4](hinged-panel-report.md#24-movable-panel-weight-breakdown) breakdown |
+| Container mods | <!-- BEGIN weight:wt-c-container-mods -->65<!-- END weight:wt-c-container-mods --> | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |
+| Film depth rails | <!-- BEGIN weight:wt-c-film-depth-rails -->18<!-- END weight:wt-c-film-depth-rails --> | 260–4,649 | 0–2,362 | 4× 6061-T6 Al U-channel 76×38×5mm (Grainger 795M51), fixed film-plane depth rails running wall to wall along the optical axis ([Film Plane Mechanism Report](film-plane-mechanism-report.md)) |
+| Chem-prep shelf (fold-down, stowed) | <!-- BEGIN weight:wt-c-chem-prep-shelf-stowed -->6<!-- END weight:wt-c-chem-prep-shelf-stowed --> | 1,180–1,780 | 0–22 | Wall-hinged fold-down: 18mm UV-coated white ply (ply-primary, no steel/Al frame) + HDPE spill lip + continuous piano hinge + 2 stays ≈ 7 kg. Modeled **stowed** (folded up vs the pinhole wall) in all states; the ~25 kg deployed mixing load is a transient prep case (film plane parked) — see [Chemistry Prep Shelves §3](chemistry-prep-shelves.md) |
 | **Structure subtotal** | **<!-- BEGIN weight:wt-cat-structure -->656<!-- END weight:wt-cat-structure -->** | | | |
 
 ### 3.3 Equipment
 
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
-| Electrical panel | 15 | 1,910–2,210 | 0–150 | Wall-mount distribution panel |
-| Battery bank | 13 | 1,540–2,220 | 0–150 | 1× 100Ah LiFePO4 @ 13 kg (standard build; +13 kg for the optional 2nd pack) |
-| Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
-| Plumbing — Corridor panel | 5 | 4,760–4,874 | 1,046–1,160 | 4× Shurflo 2088 (P-01/P-02/P-03/P-05) + ACC-01 |
-| Plumbing — Pinhole Wall panel | 8 | 3,300–4,016 | 12–196 | P-04 (tray-drain) + 3-stage Big Blue filter (dry); on the pinhole wall — est. |
-| Film plane carriage | <!-- BEGIN weight:wt-comp-film -->51<!-- END weight:wt-comp-film --> | 260–4,649 | 2,212–2,312 | **3mm Dibond ACM backing sheet ≈36 kg (3.80 kg/m² × the FP_W×FP_H face — moves with the plane)** + plain 6061 Al angle frame (50.8×50.8×3.175mm; EXPENDABLE — kept aluminum for weight + cost, replace on pitting) + 58 nylon muslin clamps + 4 acetal skate carriages |
-| Pinhole disc holder | 2 | 2,364–2,544 | 1,104–1,284 | Ø180×18mm Al front plate + Ø80 carrier + retaining ring + 4 thumb screws (on the pinhole wall) |
-| Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
-| Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |
-| Blue IBC-1 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (top tier, near) |
-| Blue IBC-2 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (top tier, far) |
-| Brown IBC-3 (tote) | 65 | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (bottom tier, near) |
-| Waste IBC-4 (tote) | 65 | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (bottom tier, far) |
-| IBC restraint frame | 123 | 4,654–5,104 | 1,046–1,316 | 2×2×0.120in steel restraint-only deep 4-leg box (totes direct-stack cage-on-cage): 4 full-height uprights (front pair X4654 + back pair X5104) + top/bottom rings + 4 floor flange feet + **8 front retaining bars (2/tote face — doubled for the loaded-transport case)** + **8 identical 2-bolt wall joist hangers (through-bolted to 8 exterior backing plates, 16 penetrations)** + rear-panel brackets + **4 anti-slip mats** ([IBC Stacking Report](ibc-stacking-report.md)) |
+| Electrical panel | <!-- BEGIN weight:wt-c-electrical-panel -->15<!-- END weight:wt-c-electrical-panel --> | 1,910–2,210 | 0–150 | Wall-mount distribution panel |
+| Battery bank | <!-- BEGIN weight:wt-c-battery-bank -->11<!-- END weight:wt-c-battery-bank --> | 1,540–2,220 | 0–150 | 1× 100Ah LiFePO4 (standard build; the optional 2nd pack adds the same again) |
+| Solar controller | <!-- BEGIN weight:wt-c-solar-controller -->2<!-- END weight:wt-c-solar-controller --> | 1,700–1,800 | 0–100 | MPPT charge controller |
+| Plumbing — Corridor panel | <!-- BEGIN weight:wt-c-plumbing-corridor-panel -->52<!-- END weight:wt-c-plumbing-corridor-panel --> | 4,760–4,874 | 1,046–1,160 | Corridor plumbing panel from `plumbing_panel_mass.py`: plywood boards + 4× Shurflo 2088 (P-01/P-02/P-03/P-05, 2.18 kg each) + ACC-01 + water-filled pipe, fittings, valves and clips |
+| Plumbing — Pinhole Wall panel | <!-- BEGIN weight:wt-c-plumbing-pinhole-wall-panel -->8<!-- END weight:wt-c-plumbing-pinhole-wall-panel --> | 3,300–4,016 | 12–196 | P-04 (tray-drain) + 3-stage Big Blue filter (dry); on the pinhole wall — est. |
+| Film plane carriage | <!-- BEGIN weight:wt-c-film-plane-carriage -->51<!-- END weight:wt-c-film-plane-carriage --> | 260–4,649 | 2,212–2,312 | **3mm Dibond ACM backing sheet ≈36 kg (3.80 kg/m² × the FP_W×FP_H face — moves with the plane)** + plain 6061 Al angle frame (50.8×50.8×3.175mm; EXPENDABLE — kept aluminum for weight + cost, replace on pitting) + 58 nylon muslin clamps + 4 acetal skate carriages |
+| Pinhole disc holder | <!-- BEGIN weight:wt-c-pinhole-disc-holder -->2<!-- END weight:wt-c-pinhole-disc-holder --> | 2,364–2,544 | 1,104–1,284 | Ø180×18mm Al front plate + Ø80 carrier + retaining ring + 4 thumb screws (on the pinhole wall) |
+| Fans (A+B) | <!-- BEGIN weight:wt-c-fans -->4<!-- END weight:wt-c-fans --> | End walls | Near corners | 2× 150mm axial panel fans |
+| Baffle ducts | <!-- BEGIN weight:wt-c-baffle-ducts -->6<!-- END weight:wt-c-baffle-ducts --> | Distributed | Distributed | 2× galvanized steel baffle ducts |
+| Blue IBC-1 (tote) | <!-- BEGIN weight:wt-c-blue-ibc-1-tote -->65<!-- END weight:wt-c-blue-ibc-1-tote --> | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (top tier, near) |
+| Blue IBC-2 (tote) | <!-- BEGIN weight:wt-c-blue-ibc-2-tote -->65<!-- END weight:wt-c-blue-ibc-2-tote --> | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (top tier, far) |
+| Brown IBC-3 (tote) | <!-- BEGIN weight:wt-c-brown-ibc-3-tote -->65<!-- END weight:wt-c-brown-ibc-3-tote --> | 4,674–5,893 | 30–1,046 | 1,000L caged composite tare (bottom tier, near) |
+| Waste IBC-4 (tote) | <!-- BEGIN weight:wt-c-waste-ibc-4-tote -->65<!-- END weight:wt-c-waste-ibc-4-tote --> | 4,674–5,893 | 1,316–2,332 | 1,000L caged composite tare (bottom tier, far) |
+| IBC restraint frame | <!-- BEGIN weight:wt-c-ibc-restraint-frame -->123<!-- END weight:wt-c-ibc-restraint-frame --> | 4,654–5,104 | 1,046–1,316 | 2×2×0.120in steel restraint-only deep 4-leg box (totes direct-stack cage-on-cage): 4 full-height uprights (front pair X4654 + back pair X5104) + top/bottom rings + 4 floor flange feet + **8 front retaining bars (2/tote face — doubled for the loaded-transport case)** + **8 identical 2-bolt wall joist hangers (through-bolted to 8 exterior backing plates, 16 penetrations)** + rear-panel brackets + **4 anti-slip mats** ([IBC Stacking Report](ibc-stacking-report.md)) |
 | **Equipment subtotal** | **<!-- BEGIN weight:wt-cat-equipment -->534<!-- END weight:wt-cat-equipment -->** | | | |
 
 ### 3.4 Dry Weight Summary
@@ -91,13 +92,10 @@ water 1,000 kg/m³.
 | Equipment | <!-- BEGIN weight:wt-cat-equipment -->534<!-- END weight:wt-cat-equipment --> | <!-- BEGIN weight:wt-pct-equipment -->15.8<!-- END weight:wt-pct-equipment -->% |
 | **Total dry** | **<!-- BEGIN weight:wt-total-dry -->3,390<!-- END weight:wt-total-dry -->** | **100%** |
 
-**Grating weight assumption:** 1" (25mm) molded GRP (fiberglass) grating,
-vinyl-ester resin with grit top, weighs ≈12.7 kg/m² (McNichols MS-S-100, 2.60 lb/sf)
-over the 4.14 m² of deck. GRP is specified for corrosion immunity in the wet
-photo-chemistry environment, at a cost premium of ~$720–$890 (see [cost breakdown §8](project-cost-breakdown.md)).
-1" is the thinnest molded FRP made (15mm molded GRP doesn't exist), so the deck
-sits at 140mm (115mm support arm + 25mm grate) — raised to keep the spray-bar
-carriage clearance under the left cantilever arms.
+**Grating weight assumption:** 1" (25mm) molded GRP (fiberglass) grating, vinyl-ester resin with
+a grit top, weighs ≈12.7 kg/m² (McNichols MS-S-100, 2.60 lb/sf) over the 4.14 m² of deck. GRP is
+specified for corrosion immunity in the wet photo-chemistry environment. 1" is the thinnest molded
+grating made, so the deck sits at 140mm (115mm support arm + 25mm grate).
 
 ---
 
@@ -175,14 +173,14 @@ optional max-Blue-fill top-up is therefore transport-validated.
 
 ## 5. Weight Distribution Diagrams
 
-### 1 — Summary Comparison
+### 5.1 Summary Comparison
 
-Three-state side-by-side comparison with CG positions and summary table.
+Side-by-side comparison of the states with CG positions and a summary table.
 The dry state is nearly balanced; the camera-ready/loaded states shift the CG rearward by ~<!-- BEGIN weight:wt-cg-shift -->885<!-- END weight:wt-cg-shift -->mm (the lighter exhausted return state by ~<!-- BEGIN weight:wt-cg-shift-ex -->695<!-- END weight:wt-cg-shift-ex -->mm).
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
-### 2 — Dry Weight (Configured for Transport)
+### 5.2 Dry Weight (Configured for Transport)
 
 All dry components shown at actual footprint positions, color-coded by
 category. The hinged panel is swung ~56° about the pivot (transport position),
@@ -191,7 +189,7 @@ is the densest zone.
 
 ![TBS-001 — Weight Analysis: Dry — Transport](assets/weight-analysis-sheet2.png)
 
-### 3 — Camera Ready (Panel Deployed)
+### 5.3 Camera Ready (Panel Deployed)
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
@@ -200,7 +198,7 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
 
-### 4 — Materials Exhausted (Configured for Transport)
+### 5.4 Materials Exhausted (Configured for Transport)
 
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l --> kg of it has
 been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
@@ -212,7 +210,7 @@ the governing case.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 
-### 5 — Loaded Transport (Full Blue IBCs)
+### 5.5 Loaded Transport (Full Blue IBCs)
 
 The camera-ready water load (1,800 kg in the top-tier Blue IBCs) carried in
 transport configuration — panel swung in, cargo doors closed. The water is in
@@ -290,7 +288,7 @@ remains migrates from the top tier to the bottom tier, dropping the center of gr
 ### 6.5 Walkway Weight Sensitivity
 
 The walkway system contributes <!-- BEGIN weight:wt-walkway-total -->145<!-- END weight:wt-walkway-total --> kg (<!-- BEGIN weight:wt-walkway-pct -->4.3<!-- END weight:wt-walkway-pct -->% of dry weight), making it the
-second-largest structural subsystem after the hinged panel. The deck grating —
+largest structural subsystem. The deck grating —
 1" (25mm) molded GRP (fiberglass) at ≈12.7 kg/m² — is the largest single line in the
 walkway; GRP is specified for corrosion immunity in the wet photo-chemistry
 environment. The GRP is vinyl-ester resin with a grit
@@ -306,5 +304,5 @@ spray-bar carriage clearance beneath it is set by the Ø32-wheel /
 2. [Hapag-Lloyd Container Specification](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html) — 20ft Standard Dry Container
 3. [McNICHOLS — Fiberglass Grating](https://www.mcnichols.com/fiberglass-grating) / [Grating Pacific — Molded FRP](https://gratingpacific.com/product/molded-fiberglass-grating/) — Molded GRP (fiberglass) grating, vinyl-ester, weight tables
 4. [Schütz Ecobulk MX 1000L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — 1,000L caged composite IBC tote specifications (~65 kg tare; all four positions standardize on this size — a 600L caged tote does not exist)
-5. [Water System Report](water-system-report.md) — Processing tray weight (§4), IBC layout (§5)
-6. [Light Trap Selection](light-trap-selection.md) — Panel + drum weight (§7)
+5. [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) — processing tray weight; [Water System Report](water-system-report.md) — IBC fills and water loss
+6. [Hinged Panel Report §2.4](hinged-panel-report.md) — movable panel, drum and cage weight breakdown

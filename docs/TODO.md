@@ -44,8 +44,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
         DripDepot pipe + end clamps (spray-retainer-clips, owner 2026-11-24) + tee — KEEP: Home Depot irrigation stops at 1/2in; the manifold is 3/4in.
         Center-feed tee now DripDepot 14683 (3/4 × 3/4 × 1/2 reducing). CountryMax silicone — KEEP (owner).
         Big Blue brackets → 3× FM25W-KIT, Fresh Water Systems $11.95 ea (2026-11-23).
-  - [ ] HitLights strip + LED Profiles channel → Super Bright LEDs (already the safelight order) — only if an
-        equivalent 4000K COB strip keeps the electrical-report lux basis
+  - [x] HitLights strip + LED Profiles channel — KEEP (owner, 2026-11-24): Super Bright LEDs stocks only 5m lengths
   - [x] Fasteners Plus turnbuckle → McMaster 2996T533 body + 3001T514/714 jaws + 2995T902 jam nuts (2026-11-23); spacer washers SKU pending
 - [ ] Source SKUs for the 16 tool and safety parts added 2026-11-23 (`print-*`, `safety-*`, SKU pending).
 - [x] Dropped 2026-11-21: the separate drum-exit GRP grating purchase (`walkway-drum-exit-grp`, costing $50–65) — the punch-out is integral to the left lift-out piece and nests on the 2 stock panels.

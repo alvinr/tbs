@@ -183,7 +183,7 @@ Everything below is in the [Master Shopping List](master-shopping-list.md?system
 ### 1.1 Site Selection
 - [ ] 1.1.1 — Ground is level to within 5° (spirit level on the container floor after delivery).
 - [ ] 1.1.2 — Nothing blocks the subject from the pinhole wall within 5m.
-- [ ] 1.1.3 — A shade structure can go over the container (trees, canopy, building shadow).
+- [ ] 1.1.3 — A shade structure can go over the container (trees, canopy, building shadow) - if conditions predicate it.
 - [ ] 1.1.4 — A solar area with clear southern exposure, ~4m × 3m.
 - [ ] 1.1.5 — Water source within 20m, or tanker access for the tote fill.
 - [ ] 1.1.6 — Emergency vehicle access is not blocked.

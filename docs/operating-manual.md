@@ -422,7 +422,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 
 ### 4.1 Entering and Removing the Muslin
 - [ ] 4.1.1 — Enter through the **drum**.
-- [ ] 4.1.2 — Switch ON the **safelight** (**red**).
+- [ ] 4.1.2 — Switch ON the **safelight** (circuit D). **Red only.**
 - [ ] 4.1.3 — Put on gloves (the unwashed print carries sensitizer).
 - [ ] 4.1.4 — Open the **clamps** top-down, supporting the fabric as it releases.
 - [ ] 4.1.5 — Roll the **spray-bar gantry** to the **near (pinhole-wall) end** and park it.

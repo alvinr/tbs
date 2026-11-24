@@ -21,8 +21,8 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
 steepens the print's contrast. It is a creative choice, but it changes how Part B is mixed (§0.3),
-how the sensitizer and the unwashed print are handled (§2.3, §2.4, §4.1), where the first wash drains
-(§4.2) and how the wash water is disposed of (§5.1, TU.9). Each of those steps gives the dichromate
+how the sensitizer and the unwashed print are handled (§2.4, §2.5, §4.1), where the first wash drains
+(§4.2) and how the wash water is disposed of (§5.1, TU.7). Each of those steps gives the dichromate
 variant in place; the basis is in [Wash-Water Classification](wash-water-classification.md).
 
 ## 3. Phase 0 — Pre-Departure
@@ -132,7 +132,7 @@ Everything below is in the [Master Shopping List](master-shopping-list.md?system
 - [ ] 0.4.5 — Digital scale (1 g resolution)
 - [ ] 0.4.6 — 18" foam rollers + 2 roller trays (one set per coat)
 - [ ] 0.4.7 — 4" foam brushes (edges)
-- [ ] 0.4.8 — Spray bottle (low-humidity misting, §2.2)
+- [ ] 0.4.8 — Spray bottle (low-humidity misting, §2.3)
 - [ ] 0.4.9 — Pre-cut muslin, <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm, pre-washed twice in hot water with no detergent and fully dry
 - [ ] 0.4.10 — Light-safe bag for the muslin
 
@@ -317,22 +317,28 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 ## 5. Phase 2 — Loading the Image Plane
 **Time: ~45 minutes. Red safelight only (circuit D) — no white light, no daylight.**
 
-### 2.1 Mounting the Muslin
+### 2.1 Collection Capacity — GO/NO-GO
+**Before mounting the muslin.**
+
+- [ ] 2.1.1 — Enter through the **drum**.
+- [ ] 2.1.2 — Check IBC-3 and IBC-4 each have room for one print: level at or below 940 L on the tote scale.
+- [ ] 2.1.3 — Either tote above 940 L: **NO-GO**. Pump it out (TU.7 onward) before printing.
+
+### 2.2 Mounting the Muslin
 
 ![Muslin clamp layout — top + 2 sides at 150mm centers (58 clamps); the bottom edge is left unclamped](assets/film-plane-muslin-clamp-layout.png)
 
-- [ ] 2.1.1 — Enter through the **drum**.
-- [ ] 2.1.2 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
-- [ ] 2.1.3 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
-- [ ] 2.1.4 — Take out the pre-cut muslin.
-- [ ] 2.1.5 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
-- [ ] 2.1.6 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.1.7 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.1.8 — Tension the unclamped bottom edge downward.
-- [ ] 2.1.9 — Secure it flat against the plane so it cannot flap.
-- [ ] 2.1.10 — From 2 meters, check for wrinkles or sags under the safelight.
+- [ ] 2.2.1 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
+- [ ] 2.2.2 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
+- [ ] 2.2.3 — Take out the pre-cut muslin.
+- [ ] 2.2.4 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
+- [ ] 2.2.5 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.2.6 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.2.7 — Tension the unclamped bottom edge downward.
+- [ ] 2.2.8 — Secure it flat against the plane so it cannot flap.
+- [ ] 2.2.9 — From 2 meters, check for wrinkles or sags under the safelight.
 
-### 2.2 Humidity Check — GO/NO-GO
+### 2.3 Humidity Check — GO/NO-GO
 **Before mixing.**
 
 | Humidity | Action |
@@ -341,11 +347,11 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 | 30–70% | Coat normally |
 | Above 70% | **NO-GO** — do not mix; wait for the humidity to drop (the coat may not dry, risking fog) |
 
-- [ ] 2.2.1 — Read the hygrometer.
-- [ ] 2.2.2 — Above 70%: stop. Do not mix.
-- [ ] 2.2.3 — Below 30%: mist the muslin lightly with plain water.
+- [ ] 2.3.1 — Read the hygrometer.
+- [ ] 2.3.2 — Above 70%: stop. Do not mix.
+- [ ] 2.3.3 — Below 30%: mist the muslin lightly with plain water.
 
-### 2.3 Mix the Working Sensitizer
+### 2.4 Mix the Working Sensitizer
 **At the chemistry prep shelf, under the safelight.**
 
 | For 1 print (<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m², **2 coats**) | Volume |
@@ -354,29 +360,29 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 | Part B | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L |
 | **Working sensitizer** | **~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L** |
 
-- [ ] 2.3.1 — Dichromate option: put on gloves, UV glasses and apron.
-- [ ] 2.3.2 — Pour equal volumes of Part A and Part B (from the chemistry prep shelf) into the third jug.
-- [ ] 2.3.3 — Stir gently (it turns yellow-green).
-- [ ] 2.3.4 — Pour it into the roller tray.
+- [ ] 2.4.1 — Dichromate option: put on gloves, UV glasses and apron.
+- [ ] 2.4.2 — Pour equal volumes of Part A and Part B (from the chemistry prep shelf) into the third jug.
+- [ ] 2.4.3 — Stir gently (it turns yellow-green).
+- [ ] 2.4.4 — Pour it into the roller tray.
 
 > **Mixed sensitizer:** work quickly; coat straight away.
 
-### 2.4 Applying the Sensitizer
+### 2.5 Applying the Sensitizer
 **Aim to finish within 20 minutes.**
 
-- [ ] 2.4.1 — Put on gloves (plus glasses and apron with the dichromate option).
-- [ ] 2.4.2 — Load the **foam roller**.
-- [ ] 2.4.3 — Roll the excess off on scrap card — evenly loaded, not dripping.
-- [ ] 2.4.4 — **First coat:** roll horizontally, left to right, top to bottom, 50% overlap.
-- [ ] 2.4.5 — **Second coat, while the first is still wet:** roll vertically, top to bottom.
-- [ ] 2.4.6 — Brush the last 50mm of each edge with a foam brush.
-- [ ] 2.4.7 — Lift the **roller** out of the tray (it skins over if left in sensitizer).
-- [ ] 2.4.8 — Set the **tray** and **roller** aside for cleanup (§5.1.5) — never pour leftover sensitizer down a drain.
+- [ ] 2.5.1 — Put on gloves (plus glasses and apron with the dichromate option).
+- [ ] 2.5.2 — Load the **foam roller**.
+- [ ] 2.5.3 — Roll the excess off on scrap card — evenly loaded, not dripping.
+- [ ] 2.5.4 — **First coat:** roll horizontally, left to right, top to bottom, 50% overlap.
+- [ ] 2.5.5 — **Second coat, while the first is still wet:** roll vertically, top to bottom.
+- [ ] 2.5.6 — Brush the last 50mm of each edge with a foam brush.
+- [ ] 2.5.7 — Lift the **roller** out of the tray (it skins over if left in sensitizer).
+- [ ] 2.5.8 — Set the **tray** and **roller** aside for cleanup (§5.1.5) — never pour leftover sensitizer down a drain.
 
-### 2.5 Tack-Drying
-- [ ] 2.5.1 — Check **fans A and B** are running (circuits A and B).
-- [ ] 2.5.2 — Wait **15–20 minutes** until the coat turns from glossy to matte.
-- [ ] 2.5.3 — Touch a corner with a gloved fingertip: nothing transfers.
+### 2.6 Tack-Drying
+- [ ] 2.6.1 — Check **fans A and B** are running (circuits A and B).
+- [ ] 2.6.2 — Wait **15–20 minutes** until the coat turns from glossy to matte.
+- [ ] 2.6.3 — Touch a corner with a gloved fingertip: nothing transfers.
 
 > **Do not proceed with a wet coat.**
 
@@ -521,25 +527,23 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints; ~<!-- BEGIN fact:prints_max_fill -->17<!-- END fact:prints_max_fill --> with the totes topped up), then repeat Phases 2–4.
 
 - [ ] TU.1 — Check the Blue level (IBC-1/IBC-2) before each print; top up before it runs dry.
-- [ ] TU.2 — Before each print, check IBC-3 and IBC-4 each have room for one print: level at or below 940 L on the tote scale.
-- [ ] TU.3 — Either tote above 940 L: pump it out (TU.9 onward) before printing.
-- [ ] TU.4 — Remove the X1 **dust cap**.
-- [ ] TU.5 — Connect the **bowser/tanker hose** to X1.
-- [ ] TU.6 — Fill (controlled at the bowser) and check the level.
-- [ ] TU.7 — Shut off at the bowser.
-- [ ] TU.8 — Disconnect and re-cap X1.
-- [ ] TU.9 — Book the hauler for the chemistry in use (§5.1.1).
-- [ ] TU.10 — Put on nitrile gloves.
-- [ ] TU.11 — Remove the **dust cap** on **X3** (Brown) or **X4** (Waste).
-- [ ] TU.12 — Connect the **hauler's hose**.
-- [ ] TU.13 — Brown (X3): open **BV-02**.
-- [ ] TU.14 — Waste (X4): open **BV-07**.
-- [ ] TU.15 — Switch ON that pump's local switch (**S-05** or **S-03**) — one tote at a time.
-- [ ] TU.16 — When the tote is empty, switch it OFF.
-- [ ] TU.17 — Close **BV-02** / **BV-07**.
-- [ ] TU.18 — Disconnect and re-cap the port.
-- [ ] TU.19 — File the hauler's paperwork (the manifest, for hazardous loads).
-- [ ] TU.20 — Resume from [Phase 2](#5-phase-2-loading-the-image-plane).
+- [ ] TU.2 — Remove the X1 **dust cap**.
+- [ ] TU.3 — Connect the **bowser/tanker hose** to X1.
+- [ ] TU.4 — Fill (controlled at the bowser) and check the level.
+- [ ] TU.5 — Shut off at the bowser.
+- [ ] TU.6 — Disconnect and re-cap X1.
+- [ ] TU.7 — Book the hauler for the chemistry in use (§5.1.1).
+- [ ] TU.8 — Put on nitrile gloves.
+- [ ] TU.9 — Remove the **dust cap** on **X3** (Brown) or **X4** (Waste).
+- [ ] TU.10 — Connect the **hauler's hose**.
+- [ ] TU.11 — Brown (X3): open **BV-02**.
+- [ ] TU.12 — Waste (X4): open **BV-07**.
+- [ ] TU.13 — Switch ON that pump's local switch (**S-05** or **S-03**) — one tote at a time.
+- [ ] TU.14 — When the tote is empty, switch it OFF.
+- [ ] TU.15 — Close **BV-02** / **BV-07**.
+- [ ] TU.16 — Disconnect and re-cap the port.
+- [ ] TU.17 — File the hauler's paperwork (the manifest, for hazardous loads).
+- [ ] TU.18 — Resume from [Phase 2](#5-phase-2-loading-the-image-plane).
 
 > **Before transport:** return the totes to their transport fill states — Blue drained, Waste within its return-haul limit ([§5.5](#55-transport-mode-conversion-packing-up)).
 
@@ -547,7 +551,7 @@ Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupp
 **Time: ~30 minutes. White light.**
 
 ### 5.1 Chemistry Disposal
-Spent wash water leaves only through the X3/X4 ports (TU.9). Never discharge a tote to a storm drain, soil or waterway.
+Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a tote to a storm drain, soil or waterway.
 
 - [ ] 5.1.1 — Keep the **tote caps and valves** closed between pump-outs.
 - [ ] 5.1.2 — Book disposal by chemistry ([Wash-Water Classification](wash-water-classification.md)):

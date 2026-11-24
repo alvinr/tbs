@@ -54,7 +54,7 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 6: Muslin Clamp Spec (Off-the-Shelf Nylon Clamp + HDPE Filler)](assets/film-plane-sheet6.png)
 
-![TBS-001 Muslin Clamp Layout — top + 2 sides at 150mm centers (Operating Manual §2.1)](assets/film-plane-muslin-clamp-layout.png)
+![TBS-001 Muslin Clamp Layout — top + 2 sides at 150mm centers (Operating Manual §2.2)](assets/film-plane-muslin-clamp-layout.png)
 
 ![TBS-001 Film Plane Mechanism — Sheet 7: System Schematic, Front Elevation](assets/film-plane-sheet7.png)
 

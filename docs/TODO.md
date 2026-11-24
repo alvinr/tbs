@@ -129,10 +129,10 @@ Deferred until after the editorial review: it reworks the water system and plumb
 - The working tree also accumulates the untracked regenerated `src/models/*.rb` (several MB each); consider writing them to the scratch/temp area instead of `src/models/` so they never sit in the repo tree.
 
 ## 🧲 Muslin mounting — replace the spring clamps with magnets (2026-11-21) — PARKED (editorial first)
-- **Gap:** the clamp report + Operating Manual §2.1 grip the muslin by wrapping it over the frame edge (58 nylon spring clamps + HDPE filler), but the muslin is cut to the tray (4,249 × 2,000) and sits ~70mm inside the frame on every side, so the clamps can't reach it (`tbs_constants` calls it "inboard on the ACM face (field detail)" — undesigned).
+- **Gap:** the clamp report + Operating Manual §2.2 grip the muslin by wrapping it over the frame edge (58 nylon spring clamps + HDPE filler), but the muslin is cut to the tray (4,249 × 2,000) and sits ~70mm inside the frame on every side, so the clamps can't reach it (`tbs_constants` calls it "inboard on the ACM face (field detail)" — undesigned).
 - **Proposed fix (owner leaning yes):** ACM isn't magnetic, so bond a ferritic **430 stainless receiver strip** (~25 × 0.5mm, VHB) to the ACM face under the muslin edges — top, both sides and the bottom — and hold the muslin with **rubber-coated neodymium pot magnets** (~Ø22 × 6mm) every ~150mm. Removes the 58 clamps, the HDPE filler and the reach problem; the bottom edge can be held too (~6mm proud clears the walkway); positive snap for safelight loading.
 - **Watch:** sensitizer is brushed on the mounted muslin — keep bare steel/neodymium out of the chemistry (rubber-coated magnets; seal the strip under black vinyl, or use rubber-faced magnetic-receptive tape instead). Confirm the wet-muslin hold at 40° tilt against a datasheet for the actual strip + magnet pair (pull force drops sharply on a thin strip).
-- **Cascade when picked up:** film-clamp report rewrite, Operating Manual §2.1 + maintenance rows, film-plane Sheet 6, `CLAMP_*` constants, parts (clamps + filler out; strip + magnets in, SKUs owner-sourced), costing.
+- **Cascade when picked up:** film-clamp report rewrite, Operating Manual §2.2 + maintenance rows, film-plane Sheet 6, `CLAMP_*` constants, parts (clamps + filler out; strip + magnets in, SKUs owner-sourced), costing.
 
 ## 🚰 End-wall ports
 

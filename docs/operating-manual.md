@@ -492,12 +492,28 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 - [ ] 4.2.23 — Still above pH 7.5: set **DV-01** to Waste.
 
 ### 4.3 Drying
-**White light or daylight.**
+**White light or daylight.** The muslin leaves through the door opening, with the hinged panel swung in and held by the top stay.
 
-- [ ] 4.3.1 — Carry the muslin out through the drum.
-- [ ] 4.3.2 — Hang it to dry, horizontal if possible (poles or a rope line).
-- [ ] 4.3.3 — Allow 20–60 minutes to dry.
-- [ ] 4.3.4 — Allow ~30 more minutes after touch-dry for the final color.
+- [ ] 4.3.1 — Park the **drum** in its closed position.
+- [ ] 4.3.2 — Pin its rotation.
+- [ ] 4.3.3 — Lift out the **left walkway** and the door-end near-deck section.
+- [ ] 4.3.4 — Release the **clamp bar** on each left film rail (TL + BL).
+- [ ] 4.3.5 — Lift each **rail** straight up out of its saddles.
+- [ ] 4.3.6 — Stow the **rails** clipped to the near wall.
+- [ ] 4.3.7 — Release the four **1590A13 draw latches** on each apron strip.
+- [ ] 4.3.8 — Lift each **strip** off its chamfer.
+- [ ] 4.3.9 — Stow both **strips** inside.
+- [ ] 4.3.10 — Release both **1619A74 cam latches** on the panel.
+- [ ] 4.3.11 — Swing the **panel** ~56° inboard, assisted.
+- [ ] 4.3.12 — Control its momentum at the stop.
+- [ ] 4.3.13 — Pin the top **turnbuckle jaw** to its panel lug (a spacer washer each side, cotter in).
+- [ ] 4.3.14 — Pin the other jaw to the top wall-anchor eye (spacer washers, cotter in).
+- [ ] 4.3.15 — Tension the top **turnbuckle**.
+- [ ] 4.3.16 — Carry the muslin out through the door opening.
+- [ ] 4.3.17 — Hang it to dry, horizontal if possible (poles or a rope line).
+- [ ] 4.3.18 — Allow 20–60 minutes to dry.
+- [ ] 4.3.19 — Allow ~30 more minutes after touch-dry for the final color.
+- [ ] 4.3.20 — Before the next print, close the panel again: §1.3.15 to §1.3.31.
 
 ## 8. Extended Deployment — On-Site Water Top-Up (optional)
 **Cargo doors stay closed.**

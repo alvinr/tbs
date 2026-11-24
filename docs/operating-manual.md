@@ -35,34 +35,34 @@ Valve and pump tags are on the panel labels; the layout is in the [Plumbing Repo
 **Starting positions (before filling)**
 
 - [ ] 0.1.1 — Check the **master pump switch** (Electrical Panel) is OFF.
-- [ ] 0.1.2 — Check drain-pump switches **S-05** and **S-03** (near-upper side **board**) are OFF.
-- [ ] 0.1.3 — Close the **DN50 butterfly valves** on all four **totes** (**IBC-1** to **IBC-4**).
+- [ ] 0.1.2 — Check drain-pump switches **S-05** and **S-03** (near-upper side board) are OFF.
+- [ ] 0.1.3 — Close the **DN50 butterfly valves** on all four totes (IBC-1 to IBC-4).
 - [ ] 0.1.4 — Close **BV-01** and **BV-03** (pump suctions).
 - [ ] 0.1.5 — Close **BV-02** and **BV-07** (drain-pump suctions).
-- [ ] 0.1.6 — Close **BV-04** (**TAP-01**).
+- [ ] 0.1.6 — Close **BV-04** (TAP-01).
 - [ ] 0.1.7 — Close **BV-06** (spray off).
-- [ ] 0.1.8 — Check the **X3** and **X4** **dust caps** are on.
-- [ ] 0.1.9 — Confirm Brown **IBC-3** and Waste **IBC-4** are empty.
-- [ ] 0.1.10 — Open the Blue **tote vents** **BV-08** (**IBC-1**) and **BV-09** (**IBC-2**), high on the **totes**' walkway face (step stool).
-- [ ] 0.1.11 — Check all four **vent screens** are clear.
+- [ ] 0.1.8 — Check the X3 and X4 **dust caps** are on.
+- [ ] 0.1.9 — Confirm Brown IBC-3 and Waste IBC-4 are empty.
+- [ ] 0.1.10 — Open the Blue tote vents **BV-08** (IBC-1) and **BV-09** (IBC-2), high on the totes' walkway face (step stool).
+- [ ] 0.1.11 — Check all four vent screens are clear.
 
 **Fill — before the container is lifted**
 
-- [ ] 0.1.12 — Remove the **X1** **dust cap**.
-- [ ] 0.1.13 — Connect the **supply hose** to **X1**.
-- [ ] 0.1.14 — Fill the Blue **totes**: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of **IBC-1** and **IBC-2** (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all).
+- [ ] 0.1.12 — Remove the X1 **dust cap**.
+- [ ] 0.1.13 — Connect the **supply hose** to X1.
+- [ ] 0.1.14 — Fill the Blue totes: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of IBC-1 and IBC-2 (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all).
 - [ ] 0.1.15 — Disconnect the **hose**.
-- [ ] 0.1.16 — Re-cap **X1**.
+- [ ] 0.1.16 — Re-cap X1.
 
 **Operating positions**
 
-- [ ] 0.1.17 — Open the **DN50 butterfly valves** on **IBC-1** and **IBC-2** (Blue).
-- [ ] 0.1.18 — Open the **DN50 butterfly valve** on **IBC-3** (Brown). **IBC-4** stays closed.
-- [ ] 0.1.19 — Open **BV-01** (**P-01** suction).
-- [ ] 0.1.20 — Open **BV-03** (**P-02** suction).
+- [ ] 0.1.17 — Open the **DN50 butterfly valves** on IBC-1 and IBC-2 (Blue).
+- [ ] 0.1.18 — Open the **DN50 butterfly valve** on IBC-3 (Brown). IBC-4 stays closed.
+- [ ] 0.1.19 — Open **BV-01** (P-01 suction).
+- [ ] 0.1.20 — Open **BV-03** (P-02 suction).
 - [ ] 0.1.21 — Set **BV-05** to Blue.
-- [ ] 0.1.22 — Set **3W-DV-02** to Brown (**IBC-3**).
-- [ ] 0.1.23 — Open the Brown and Waste **tote vents** **BV-10** (**IBC-3**) and **BV-11** (**IBC-4**).
+- [ ] 0.1.22 — Set **3W-DV-02** to Brown (IBC-3).
+- [ ] 0.1.23 — Open the Brown and Waste tote vents **BV-10** (IBC-3) and **BV-11** (IBC-4).
 
 **Test**
 
@@ -70,13 +70,13 @@ Valve and pump tags are on the panel labels; the layout is in the [Plumbing Repo
 - [ ] 0.1.25 — Switch ON **P-01** (circuit C1).
 - [ ] 0.1.26 — Run the **spray bar** for 60 seconds.
 - [ ] 0.1.27 — Check the spray pattern is even across the full image-plane width.
-- [ ] 0.1.28 — Check all **pipe joints** for drips.
+- [ ] 0.1.28 — Check all pipe joints for drips.
 - [ ] 0.1.29 — Tighten any weeping **fittings**.
 - [ ] 0.1.30 — Switch **P-01** OFF.
 - [ ] 0.1.31 — Close **BV-06**.
-- [ ] 0.1.32 — Check the **P-04** **suction pickup** is seated in the **sump well**.
-- [ ] 0.1.33 — Check the **P-04** **suction hose** is connected over the **tray rim**.
-- [ ] 0.1.34 — Close all four **tote vents** (**BV-08** to **BV-11**) before the container is lifted.
+- [ ] 0.1.32 — Check the P-04 **suction pickup** is seated in the sump well.
+- [ ] 0.1.33 — Check the P-04 **suction hose** is connected over the tray rim.
+- [ ] 0.1.34 — Close all four tote vents (**BV-08** to **BV-11**) before the container is lifted.
 
 ### 0.2 Chemistry — Part A (Ferric Ammonium Oxalate)
 **Lighting: white light.**
@@ -162,12 +162,12 @@ Everything below is in the [Master Shopping List](master-shopping-list.md?system
 ### 0.5 Container Pre-Check (if accessible)
 - [ ] 0.5.1 — Check the interior for water ingress.
 - [ ] 0.5.2 — Check the image plane is free of condensation.
-- [ ] 0.5.3 — Check the **door perimeter seals** are intact.
-- [ ] 0.5.4 — Check the **film plane** moves freely at all four **corners**.
-- [ ] 0.5.5 — Fit the near, far and right **walkway gratings** onto their **bracket arms**.
-- [ ] 0.5.6 — Secure each **grating** with its **clips**.
-- [ ] 0.5.7 — Fit the **left walkway lift-out** onto its 5 **floor-leg brackets**.
-- [ ] 0.5.8 — Lay fresh 6-mil black **LDPE liner** over the **tray**, lapping 50mm over the **rims**.
+- [ ] 0.5.3 — Check the door perimeter seals are intact.
+- [ ] 0.5.4 — Check the film plane moves freely at all four corners.
+- [ ] 0.5.5 — Fit the near, far and right walkway gratings onto their bracket arms.
+- [ ] 0.5.6 — Secure each **grating** with its clips.
+- [ ] 0.5.7 — Fit the **left walkway lift-out** onto its 5 floor-leg brackets.
+- [ ] 0.5.8 — Lay fresh 6-mil black **LDPE liner** over the tray, lapping 50mm over the rims.
 
 ### 0.6 Transport Booking (when the container moves)
 - [ ] 0.6.1 — Check the route against the state DOT size and weight limits ([Container Report Part 2](container-report.md)).
@@ -209,68 +209,68 @@ The container arrives in transport mode: panel swung in and held by the two wall
 ![Cargo-door end — Transport vs Operational (56° panel swing)](assets/assembly-overview-plan.png)
 
 - [ ] 1.3.1 — Open and secure the **cargo doors**.
-- [ ] 1.3.2 — Open all four **tote vents** (**BV-08** to **BV-11**).
+- [ ] 1.3.2 — Open all four tote vents (**BV-08** to **BV-11**).
 - [ ] 1.3.3 — Slack both **wall-stay turnbuckles**.
-- [ ] 1.3.4 — Pull the **cotter** and **clevis pin** at each **wall-anchor eye**.
+- [ ] 1.3.4 — Pull the **cotter** and clevis pin at each wall-anchor eye.
 - [ ] 1.3.5 — Swing each **stay** clear (or unpin both ends and stow it).
-- [ ] 1.3.6 — Release the 2 **ratchet straps** on the **evaporative cooler** (near-walkway stowage).
+- [ ] 1.3.6 — Release the 2 **ratchet straps** on the evaporative cooler (near-walkway stowage).
 - [ ] 1.3.7 — Carry the **cooler** out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb, one person).
-- [ ] 1.3.8 — Set the **cooler** on the ground beside the pinhole wall, near the Ø200mm **duct stub**.
-- [ ] 1.3.9 — Remove the **weatherproof cap** from the **wall stub**.
-- [ ] 1.3.10 — Connect the **flex duct** from the **cooler outlet** to the **wall stub collar**.
+- [ ] 1.3.8 — Set the **cooler** on the ground beside the pinhole wall, near the Ø200mm duct stub.
+- [ ] 1.3.9 — Remove the **weatherproof cap** from the wall stub.
+- [ ] 1.3.10 — Connect the **flex duct** from the cooler outlet to the wall stub collar.
 - [ ] 1.3.11 — Tighten the **hose clamp**.
-- [ ] 1.3.12 — Fill the **cooler reservoir** (~18 L) from **TAP-01** (open **BV-04**, then close it).
+- [ ] 1.3.12 — Fill the **cooler reservoir** (~18 L) from TAP-01 (open **BV-04**, then close it).
 - [ ] 1.3.13 — Swing the **panel** back ~56° to the door plane, assisted.
 - [ ] 1.3.14 — Control its momentum at the stop.
-- [ ] 1.3.15 — Lift and turn both **1619A74 cam latches** to latch the **panel** to the **door frame**.
-- [ ] 1.3.16 — Set each **apron strip** (near + far) onto its **45° base chamfer**.
-- [ ] 1.3.17 — Butt each **strip** up to the **leaf lip**.
-- [ ] 1.3.18 — Close the two bottom **1590A13 draw latches** on each **strip** (from inside).
-- [ ] 1.3.19 — Close the two **span draw latches** on each **strip** (from the door side).
-- [ ] 1.3.20 — Check the **EPDM seals** at the **chamfer**, **lip** and **strip ends** are seated.
-- [ ] 1.3.21 — Drop each **left film rail** (TL + BL) into its **saddles**.
+- [ ] 1.3.15 — Lift and turn both **1619A74 cam latches** to latch the panel to the door frame.
+- [ ] 1.3.16 — Set each **apron strip** (near + far) onto its 45° base chamfer.
+- [ ] 1.3.17 — Butt each **strip** up to the leaf lip.
+- [ ] 1.3.18 — Close the two bottom **1590A13 draw latches** on each strip (from inside).
+- [ ] 1.3.19 — Close the two **span draw latches** on each strip (from the door side).
+- [ ] 1.3.20 — Check the EPDM seals at the chamfer, lip and strip ends are seated.
+- [ ] 1.3.21 — Drop each **left film rail** (TL + BL) into its saddles.
 - [ ] 1.3.22 — Clamp each **rail** down.
-- [ ] 1.3.23 — Check the **film plane** is square and planar to datum.
-- [ ] 1.3.24 — Refit the **left walkway** and the door-end **near-deck lift-out**.
+- [ ] 1.3.23 — Check the film plane is square and planar to datum.
+- [ ] 1.3.24 — Refit the **left walkway** and the door-end near-deck lift-out.
 - [ ] 1.3.25 — Un-pin the **revolving drum**.
 - [ ] 1.3.26 — Do the dark-adaptation check (§1.4.5).
 
 ### 1.4 Light Trap — Revolving Drum Panel
 - [ ] 1.4.1 — Check the **drum panel** is closed.
 - [ ] 1.4.2 — Check both **1619A74 cam latches** are engaged.
-- [ ] 1.4.3 — Check the **EPDM perimeter gasket** is seated, with no gaps or folds.
+- [ ] 1.4.3 — Check the EPDM perimeter gasket is seated, with no gaps or folds.
 - [ ] 1.4.4 — Turn the **drum** one full revolution by hand: no binding (a light, even brush drag is normal).
 - [ ] 1.4.5 — Step into the **drum** and turn it through to the interior.
 - [ ] 1.4.6 — Wait 5 minutes for dark adaptation.
-- [ ] 1.4.7 — Check no light is visible at any **drum** position.
+- [ ] 1.4.7 — Check no light is visible at any drum position.
 - [ ] 1.4.8 — Mark any leak with chalk.
 - [ ] 1.4.9 — Seal it with black silicone before proceeding.
 
 > **Safety:** step into the opening and turn the drum 180° until the opening faces the other side. Keep hands clear of the opening edges as they pass the housing.
 
 ### 1.5 Solar Power System
-- [ ] 1.5.1 — Set the **solar panels** on south-facing ground or a **roof rack**, at 30° from horizontal.
-- [ ] 1.5.2 — Connect the **panels** in parallel to the **Victron SmartSolar MPPT 100/50**.
-- [ ] 1.5.3 — Connect the **controller** to the **battery bank**. **Observe polarity.**
-- [ ] 1.5.4 — Connect the **Blue Sea fuse block** to the **battery positive busbar**.
-- [ ] 1.5.5 — Read the **battery** voltage on the **controller**: 12.6–13.2V.
+- [ ] 1.5.1 — Set the **solar panels** on south-facing ground or a roof rack, at 30° from horizontal.
+- [ ] 1.5.2 — Connect the **panels** in parallel to the Victron SmartSolar MPPT 100/50.
+- [ ] 1.5.3 — Connect the **controller** to the battery bank. **Observe polarity.**
+- [ ] 1.5.4 — Connect the **Blue Sea fuse block** to the battery positive busbar.
+- [ ] 1.5.5 — Read the battery voltage on the controller: 12.6–13.2V.
 - [ ] 1.5.6 — Below 12.0V: charge before proceeding.
-- [ ] 1.5.7 — Check **fuses** A (**exhaust fan**) and B (**intake fan**) are seated.
-- [ ] 1.5.8 — Check **fuses** C1 (**corridor pumps**) and C2 (**tray-drain pump** **P-04**) are seated.
-- [ ] 1.5.9 — Check **fuses** D (red **safelight**) and F (**white light**) are seated.
+- [ ] 1.5.7 — Check **fuses** A (exhaust fan) and B (intake fan) are seated.
+- [ ] 1.5.8 — Check **fuses** C1 (corridor pumps) and C2 (tray-drain pump P-04) are seated.
+- [ ] 1.5.9 — Check **fuses** D (red safelight) and F (white light) are seated.
 - [ ] 1.5.10 — Check the **Circuit-E 40A ANL fuse** is seated.
 - [ ] 1.5.11 — Close the **Circuit-E disconnect** (Blue Sea 6006).
 - [ ] 1.5.12 — Check drain-pump switches **S-05** and **S-03** are OFF.
 - [ ] 1.5.13 — Check the **main-panel bond lug** is tight.
-- [ ] 1.5.14 — On timber sleepers over soil only: drive the **8-ft earth stake** beside the **power panel** ([Electrical Report §7.3](electrical-report.md)).
-- [ ] 1.5.15 — Clamp the **stake** to the **main-panel earth terminal** (or bond to a building ground or grounded water pipe instead).
+- [ ] 1.5.14 — On timber sleepers over soil only: drive the 8-ft earth stake beside the power panel ([Electrical Report §7.3](electrical-report.md)).
+- [ ] 1.5.15 — Clamp the **stake** to the main-panel earth terminal (or bond to a building ground or grounded water pipe instead).
 
 > **Shore power:** only from an RCD/GFCI-protected supply, into the NEMA 5-15 inlet on the exterior (Victron IP65 charger). Never run an extension cord or generator into the wet interior. Leave it connected whenever available.
 
 ### 1.6 Ventilation and Cooling
 - [ ] 1.6.1 — Switch ON the **exhaust fan** (circuit A).
 - [ ] 1.6.2 — Switch ON the **intake fan** (circuit B).
-- [ ] 1.6.3 — Hold a tissue at each **duct stub**: it should deflect.
+- [ ] 1.6.3 — Hold a tissue at each duct stub: it should deflect.
 - [ ] 1.6.4 — Hot weather: switch ON the **evaporative cooler** (circuit E).
 - [ ] 1.6.5 — Run it at least **30 minutes before entry** when it is above 30°C outside.
 - [ ] 1.6.6 — Check the interior is below 35°C before loading.
@@ -282,10 +282,10 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.7.1 — Fit the **walkway gratings** (§0.5.5).
 - [ ] 1.7.2 — Lay the **LDPE liner** (§0.5.8).
 - [ ] 1.7.3 — Release the **chemistry prep shelf's cam latch**.
-- [ ] 1.7.4 — Lower the **board** onto its two **chain stays**.
-- [ ] 1.7.5 — Check both **chains** are taut and their **quick-links** closed.
+- [ ] 1.7.4 — Lower the **board** onto its two chain stays.
+- [ ] 1.7.5 — Check both chains are taut and their quick-links closed.
 - [ ] 1.7.6 — Check the **board** is level.
-- [ ] 1.7.7 — Wipe the surface and clear the **spill lip** ([Chemistry Prep Shelves](chemistry-prep-shelves.md)).
+- [ ] 1.7.7 — Wipe the surface and clear the spill lip ([Chemistry Prep Shelves](chemistry-prep-shelves.md)).
 
 ### 1.8 Light-Leak Inspection
 - [ ] 1.8.1 — Check both **drum-panel cam latches** are engaged.
@@ -293,7 +293,7 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.8.3 — Enter through the **drum**.
 - [ ] 1.8.4 — Switch OFF the **safelight**.
 - [ ] 1.8.5 — Stand still **5 minutes** for dark adaptation.
-- [ ] 1.8.6 — Inspect all **seams**, **door perimeters** and **duct penetrations** for light.
+- [ ] 1.8.6 — Inspect all seams, door perimeters and duct penetrations for light.
 - [ ] 1.8.7 — Exit.
 - [ ] 1.8.8 — Seal any leaks with black silicone or gaffer tape.
 - [ ] 1.8.9 — Repeat the inspection.
@@ -303,9 +303,9 @@ The container arrives in transport mode: panel swung in and held by the two wall
 ### 1.9 Film Plane — Tilt, Swing and Focus
 Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-report.md).
 
-- [ ] 1.9.1 — At each corner, roll the **skate** along its **U-channel** to the target depth.
+- [ ] 1.9.1 — At each corner, roll the **skate** along its U-channel to the target depth.
 - [ ] 1.9.2 — Slide the **Z and X cross-slides** to take up the arc.
-- [ ] 1.9.3 — Throw the **cam clamp** to lock the **skate**.
+- [ ] 1.9.3 — Throw the **cam clamp** to lock the skate.
   - **Pure tilt:** TL + TR to one depth, BL + BR to another.
   - **Pure swing:** TL + BL together, TR + BR together.
   - **Back focus:** all four by the same amount.
@@ -327,7 +327,7 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 - [ ] 2.1.1 — Dichromate option: put on gloves, UV glasses and apron.
 - [ ] 2.1.2 — Pour equal volumes of Part A and Part B into the third jug.
 - [ ] 2.1.3 — Stir gently (it turns yellow-green).
-- [ ] 2.1.4 — Pour it into the **roller tray**.
+- [ ] 2.1.4 — Pour it into the roller tray.
 
 > **Mixed sensitizer:** red safelight only from here on. Work quickly.
 
@@ -339,17 +339,17 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 | 30–65% | Coat normally |
 | Above 70% | Delay — the coat may not dry, risking fog |
 
-- [ ] 2.2.1 — Read the **hygrometer**.
+- [ ] 2.2.1 — Read the hygrometer.
 - [ ] 2.2.2 — Act per the table.
 
 ### 2.3 Entering via the Light Trap
 - [ ] 2.3.1 — Check the **drum panel** is latched.
-- [ ] 2.3.2 — Carry all equipment to the **drum** entry side.
-- [ ] 2.3.3 — Step into the **drum opening**.
-- [ ] 2.3.4 — Turn the **drum** 180° (**pull handle** inside) until the opening faces the interior.
+- [ ] 2.3.2 — Carry all equipment to the drum entry side.
+- [ ] 2.3.3 — Step into the **drum** opening.
+- [ ] 2.3.4 — Turn the **drum** 180° (pull handle inside) until the opening faces the interior.
 - [ ] 2.3.5 — Step out.
 - [ ] 2.3.6 — Pass the equipment through the same way, one item at a time.
-- [ ] 2.3.7 — Switch ON the **safelight** (circuit D, **electrical panel**). **Red only.**
+- [ ] 2.3.7 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
 
 > **Rule:** do not wedge anything in the drum opening. Anything too large for the drum is loaded after sunset with the panel unlatched and swung open.
 
@@ -357,14 +357,14 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 
 ![Muslin clamp layout — top + 2 sides at 150mm centers (58 clamps); the bottom edge is left unclamped](assets/film-plane-muslin-clamp-layout.png)
 
-- [ ] 2.4.1 — Check the **HDPE filler strip** is seated in the **frame**'s **L channel** on the three clamped edges.
+- [ ] 2.4.1 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
 - [ ] 2.4.2 — Take out the pre-cut muslin.
-- [ ] 2.4.3 — Clamp the **top edge** first: hook each **nylon spring clamp** over the **frame edge** at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
+- [ ] 2.4.3 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
 - [ ] 2.4.4 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
 - [ ] 2.4.5 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
 - [ ] 2.4.6 — Tension the unclamped bottom edge downward.
 - [ ] 2.4.7 — Secure it flat against the plane so it cannot flap.
-- [ ] 2.4.8 — From 2 meters, check for wrinkles or sags under the **safelight**.
+- [ ] 2.4.8 — From 2 meters, check for wrinkles or sags under the safelight.
 
 ### 2.5 Applying the Sensitizer
 **Aim to finish within 20 minutes.**
@@ -374,9 +374,9 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 - [ ] 2.5.3 — Roll the excess off on scrap card — evenly loaded, not dripping.
 - [ ] 2.5.4 — **First coat:** roll horizontally, left to right, top to bottom, 50% overlap.
 - [ ] 2.5.5 — **Second coat, while the first is still wet:** roll vertically, top to bottom.
-- [ ] 2.5.6 — Brush the last 50mm of each edge with a **foam brush**.
-- [ ] 2.5.7 — Lift the roller out of the **tray** (it skins over if left in sensitizer).
-- [ ] 2.5.8 — Set the **tray** and roller aside for cleanup (§5.1.5) — never pour leftover sensitizer down a drain.
+- [ ] 2.5.6 — Brush the last 50mm of each edge with a foam brush.
+- [ ] 2.5.7 — Lift the **roller** out of the tray (it skins over if left in sensitizer).
+- [ ] 2.5.8 — Set the **tray** and **roller** aside for cleanup (§5.1.5) — never pour leftover sensitizer down a drain.
 
 ### 2.6 Tack-Drying
 - [ ] 2.6.1 — Run **fans A and B** on **low**, not aimed at the coated surface.
@@ -415,19 +415,19 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 ### 3.2 Opening the Shutter
 - [ ] 3.2.1 — Check the **vestibule outer door** is closed and latched.
 - [ ] 3.2.2 — Set the timer.
-- [ ] 3.2.3 — Open the **pinhole shutter** from the **exterior handle**.
+- [ ] 3.2.3 — Open the **pinhole shutter** from the exterior handle.
 
 > **During exposure:** do not open any doors, stand in front of the pinhole wall, or let shadows cross the pinhole.
 
 ### 3.3 Monitoring During Exposure
-- [ ] 3.3.1 — Every 15 minutes, read the **battery** voltage on the **MPPT display**.
+- [ ] 3.3.1 — Every 15 minutes, read the battery voltage on the MPPT display.
 - [ ] 3.3.2 — Below 11.8V: switch off the **evaporative cooler**.
 - [ ] 3.3.3 — If the sky changes substantially, close the **shutter** and note the elapsed time.
 - [ ] 3.3.4 — When conditions return, re-open for the remaining time.
 
 ### 3.4 Closing the Shutter
-- [ ] 3.4.1 — At the calculated time, close the **shutter** from the **exterior handle**.
-- [ ] 3.4.2 — Check the **slide** is at its closed stop and the **plate** covers the **aperture**.
+- [ ] 3.4.1 — At the calculated time, close the **shutter** from the exterior handle.
+- [ ] 3.4.2 — Check the **slide** is at its closed stop and the plate covers the aperture.
 
 **GO/NO-GO checkpoint:** Shutter confirmed closed. Elapsed time within ± 2 min of target.
 
@@ -439,29 +439,29 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 - [ ] 4.1.1 — Enter through the **drum** (§2.3.1).
 - [ ] 4.1.2 — Switch ON the **safelight** (**red**).
 - [ ] 4.1.3 — Put on gloves (the unwashed print carries sensitizer).
-- [ ] 4.1.4 — Open the clamps top-down, supporting the fabric as it releases.
+- [ ] 4.1.4 — Open the **clamps** top-down, supporting the fabric as it releases.
 - [ ] 4.1.5 — Roll the **spray-bar gantry** to the **near (pinhole-wall) end** and park it.
 - [ ] 4.1.6 — Feed the muslin face-up through the **far muslin-drop slot**.
-- [ ] 4.1.7 — Draw it across the **tray** to the **parked beam** until it lies flat on the **liner** ([Processing Tray & Spray Bar §2.8 and §3.4](processing-tray-and-spray-bar.md)).
+- [ ] 4.1.7 — Draw it across the tray to the parked beam until it lies flat on the liner ([Processing Tray & Spray Bar §2.8 and §3.4](processing-tray-and-spray-bar.md)).
 
 ### 4.2 Development in Water
-- [ ] 4.2.1 — Attach the **telescoping pole** to the **arm tube**.
+- [ ] 4.2.1 — Attach the **telescoping pole** to the arm tube.
 - [ ] 4.2.2 — Check **BV-01** and **BV-03** are open.
 - [ ] 4.2.3 — Set **BV-05** to Brown.
 - [ ] 4.2.4 — Set **3W-DV-02**: Brown for the baseline, **Waste** for the dichromate option.
 - [ ] 4.2.5 — Open **BV-06**.
-- [ ] 4.2.6 — Switch ON the **master pump switch** (**P-02** and **P-04** run).
-- [ ] 4.2.7 — First print after a resupply (**IBC-3** empty): use Blue instead — **BV-05** to Blue, run **P-01**, not **P-02**.
-- [ ] 4.2.8 — **Pass 1:** traverse the **spray bar** across the whole surface with the **pole** (~50mm/s, ~44s a pass) for **5 minutes**.
+- [ ] 4.2.6 — Switch ON the **master pump switch** (P-02 and P-04 run).
+- [ ] 4.2.7 — First print after a resupply (IBC-3 empty): use Blue instead — **BV-05** to Blue, run **P-01**, not P-02.
+- [ ] 4.2.8 — **Pass 1:** traverse the **spray bar** across the whole surface with the pole (~50mm/s, ~44s a pass) for **5 minutes**.
 - [ ] 4.2.9 — Switch to **white light** (Circuit F).
 - [ ] 4.2.10 — Baseline: if the drain water looks like chemistry, set **3W-DV-02** to Waste.
 - [ ] 4.2.11 — **Pass 2:** set **BV-05** to Blue.
-- [ ] 4.2.12 — Switch to **P-01** (**P-02** off).
+- [ ] 4.2.12 — Switch to **P-01** (P-02 off).
 - [ ] 4.2.13 — Dichromate option: set **3W-DV-02** back to Brown.
 - [ ] 4.2.14 — Traverse for ~5 minutes.
 - [ ] 4.2.15 — **Pass 3:** keep **BV-05** on Blue and traverse ~5 more minutes.
 - [ ] 4.2.16 — Close **BV-06**.
-- [ ] 4.2.17 — Let **P-04** run ~30 seconds to clear the **sump**.
+- [ ] 4.2.17 — Let **P-04** run ~30 seconds to clear the sump.
 - [ ] 4.2.18 — Switch OFF the **master pump switch**.
 
 > **Visual check after pass 2:** blue shadows against white highlights. A faint image is underexposed — finish washing and drying first (pale prints darken as they dry); if still flat, re-expose at 1.5×.
@@ -501,7 +501,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 **Correcting the Brown buffer pH** (SV-01 above pH 7.5, DV-01 on Brown):
 
 - [ ] 4.2.19 — Dissolve citric acid in a separate container (10 g per liter of water). Never add dry acid to the tote.
-- [ ] 4.2.20 — Add the solution at the **IBC-3** outlet **dosing port**.
+- [ ] 4.2.20 — Add the solution at the IBC-3 outlet dosing port.
 - [ ] 4.2.21 — Stir.
 - [ ] 4.2.22 — Retest at **SV-01**.
 - [ ] 4.2.23 — Still above pH 7.5: set **DV-01** to Waste.
@@ -509,7 +509,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 ### 4.3 Drying
 **White light or daylight.**
 
-- [ ] 4.3.1 — Carry the muslin out through the **drum**.
+- [ ] 4.3.1 — Carry the muslin out through the drum.
 - [ ] 4.3.2 — Hang it to dry, horizontal if possible (poles or a rope line).
 - [ ] 4.3.3 — Allow 20–60 minutes to dry.
 - [ ] 4.3.4 — Allow ~30 more minutes after touch-dry for the final color.
@@ -519,22 +519,22 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 
 Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints; ~<!-- BEGIN fact:prints_max_fill -->17<!-- END fact:prints_max_fill --> with the totes topped up), then repeat Phases 2–4.
 
-- [ ] TU.1 — Check the Blue level (**IBC-1** / **IBC-2**) before each print; top up before it runs dry.
-- [ ] TU.2 — Remove the **X1** **dust cap**.
-- [ ] TU.3 — Connect the **bowser/tanker hose** to **X1**.
+- [ ] TU.1 — Check the Blue level (IBC-1/IBC-2) before each print; top up before it runs dry.
+- [ ] TU.2 — Remove the X1 **dust cap**.
+- [ ] TU.3 — Connect the **bowser/tanker hose** to X1.
 - [ ] TU.4 — Fill (controlled at the bowser) and check the level.
 - [ ] TU.5 — Shut off at the bowser.
-- [ ] TU.6 — Disconnect and re-cap **X1**.
+- [ ] TU.6 — Disconnect and re-cap X1.
 - [ ] TU.7 — Book the hauler for the chemistry in use (§5.1.1).
 - [ ] TU.8 — Put on nitrile gloves.
 - [ ] TU.9 — Remove the **dust cap** on **X3** (Brown) or **X4** (Waste).
 - [ ] TU.10 — Connect the **hauler's hose**.
-- [ ] TU.11 — Brown (**X3**): open **BV-02**.
-- [ ] TU.12 — Waste (**X4**): open the **IBC-4** **butterfly valve** and **BV-07**.
+- [ ] TU.11 — Brown (X3): open **BV-02**.
+- [ ] TU.12 — Waste (X4): open the **IBC-4 butterfly valve** and **BV-07**.
 - [ ] TU.13 — Switch ON that pump's local switch (**S-05** or **S-03**) — one tote at a time.
 - [ ] TU.14 — When the tote is empty, switch it OFF.
-- [ ] TU.15 — Close **BV-02** / **BV-07** (and the **IBC-4** **butterfly valve**).
-- [ ] TU.16 — Disconnect and re-cap the **port**.
+- [ ] TU.15 — Close **BV-02** / **BV-07** (and the **IBC-4 butterfly valve**).
+- [ ] TU.16 — Disconnect and re-cap the port.
 - [ ] TU.17 — File the hauler's paperwork (the manifest, for hazardous loads).
 - [ ] TU.18 — Resume from [Phase 2](#5-phase-2-loading-the-image-plane).
 
@@ -553,12 +553,12 @@ Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a t
   - Once a tote has received dichromate wash water, it stays on the dichromate route until pumped out.
 - [ ] 5.1.3 — Keep each manifest with the disposal record.
 - [ ] 5.1.4 — Log the hazardous kilograms each month (they set the generator category).
-- [ ] 5.1.5 — Seal Part A and Part B in their dark **bottles** (6–8 weeks).
+- [ ] 5.1.5 — Seal Part A and Part B in their dark bottles (6–8 weeks).
 - [ ] 5.1.6 — Set **3W-DV-02** to **Waste**.
-- [ ] 5.1.7 — Pour leftover working sensitizer into the **tray**.
+- [ ] 5.1.7 — Pour leftover working sensitizer into the tray.
 - [ ] 5.1.8 — Run **P-04** to drain it.
 - [ ] 5.1.9 — Put on nitrile gloves.
-- [ ] 5.1.10 — Rinse the **roller trays**, **rollers** and **brushes** in the **tray** (**3W-DV-02** on Waste) right away.
+- [ ] 5.1.10 — Rinse the **roller trays**, rollers and brushes in the tray (**3W-DV-02** on Waste) right away.
 - [ ] 5.1.11 — Park the **spray bar** at either end of its travel.
 - [ ] 5.1.12 — Detach the **telescoping pole** and stow it.
 
@@ -568,15 +568,15 @@ Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a t
 
 ### 5.3 Power-Down Sequence
 - [ ] 5.3.1 — **Evaporative cooler** (circuit E).
-- [ ] 5.3.2 — Water **pumps** (circuit C).
+- [ ] 5.3.2 — Water pumps (circuit C).
 - [ ] 5.3.3 — Ventilation fans (circuits A, B).
-- [ ] 5.3.4 — **Safelight** (circuit D) and **white light** (circuit F).
-- [ ] 5.3.5 — Disconnect the **solar inputs** at the **MPPT controller**.
+- [ ] 5.3.4 — Safelight (circuit D) and white light (circuit F).
+- [ ] 5.3.5 — Disconnect the **solar inputs** at the MPPT controller.
 - [ ] 5.3.6 — Leave the **shore charger** connected overnight if available.
 
 ### 5.4 Securing the Container (Operational Mode)
 - [ ] 5.4.1 — Engage both **drum-panel cam latches**.
-- [ ] 5.4.2 — Unattended overnight: fit the **locking bar** across the **drum panel**.
+- [ ] 5.4.2 — Unattended overnight: fit the locking bar across the drum panel.
 - [ ] 5.4.3 — Cap all **exterior ventilation duct stubs**.
 - [ ] 5.4.4 — Lay the **solar panels** flat or fold them if wind is expected.
 
@@ -586,42 +586,42 @@ Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a t
 - [ ] 5.5.1 — Switch off **Fan B**.
 - [ ] 5.5.2 — Stow all interior items.
 - [ ] 5.5.3 — Return the **film-plane cross-slides** to datum.
-- [ ] 5.5.4 — Lock all four **corners** at matching depth with their **cam clamps**.
+- [ ] 5.5.4 — Lock all four corners at matching depth with their cam clamps.
 - [ ] 5.5.5 — Unclamp the muslin screen and stow it rolled.
 - [ ] 5.5.6 — Knock down the **demountable brace cage**.
 - [ ] 5.5.7 — Fold up and latch the **chemistry prep shelf**.
 - [ ] 5.5.8 — Park the **drum** in its closed position.
 - [ ] 5.5.9 — Pin its rotation.
-- [ ] 5.5.10 — Release the **hose clamp** and disconnect the **flex duct** from the **wall stub**.
-- [ ] 5.5.11 — Refit the **weatherproof cap** on the **stub**.
+- [ ] 5.5.10 — Release the **hose clamp** and disconnect the flex duct from the wall stub.
+- [ ] 5.5.11 — Refit the **weatherproof cap** on the stub.
 - [ ] 5.5.12 — Drain the **cooler reservoir** completely.
 - [ ] 5.5.13 — Unplug and stow the **cooler's cord**.
 - [ ] 5.5.14 — Open the **Circuit-E disconnect** (Blue Sea 6006).
 - [ ] 5.5.15 — Carry the **cooler** in (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb).
-- [ ] 5.5.16 — Set it on its **ply base** on the near-walkway wide section.
-- [ ] 5.5.17 — Strap it down with the 2 **ratchet straps**.
-- [ ] 5.5.18 — Check the **anti-slide cleats**.
+- [ ] 5.5.16 — Set it on its ply base on the near-walkway wide section.
+- [ ] 5.5.17 — Strap it down with the 2 ratchet straps.
+- [ ] 5.5.18 — Check the anti-slide cleats.
 - [ ] 5.5.19 — Stow the **flex duct** alongside.
-- [ ] 5.5.20 — Lift out the **left walkway** and the **door-end near-deck section**.
-- [ ] 5.5.21 — Release the **clamp bar** on each **left film rail** (TL + BL).
-- [ ] 5.5.22 — Lift each **rail** straight up out of its **saddles**.
+- [ ] 5.5.20 — Lift out the **left walkway** and the door-end near-deck section.
+- [ ] 5.5.21 — Release the **clamp bar** on each left film rail (TL + BL).
+- [ ] 5.5.22 — Lift each **rail** straight up out of its saddles.
 - [ ] 5.5.23 — Stow the **rails** clipped to the near wall.
-- [ ] 5.5.24 — Release the four **1590A13 draw latches** on each **apron strip**.
-- [ ] 5.5.25 — Lift each **strip** off its **chamfer**.
+- [ ] 5.5.24 — Release the four **1590A13 draw latches** on each apron strip.
+- [ ] 5.5.25 — Lift each **strip** off its chamfer.
 - [ ] 5.5.26 — Stow both **strips** strapped inside.
-- [ ] 5.5.27 — Release both **1619A74 cam latches** on the **panel**.
+- [ ] 5.5.27 — Release both **1619A74 cam latches** on the panel.
 - [ ] 5.5.28 — Swing the **panel** ~56° inboard, assisted.
 - [ ] 5.5.29 — Control its momentum at the stop.
-- [ ] 5.5.30 — Pin each **turnbuckle jaw** to its **panel lug** (a **spacer washer** each side, **cotter** in).
-- [ ] 5.5.31 — Pin the other **jaw** to its **wall-anchor eye** (**spacer washers**, **cotter** in).
+- [ ] 5.5.30 — Pin each **turnbuckle jaw** to its panel lug (a spacer washer each side, cotter in).
+- [ ] 5.5.31 — Pin the other **jaw** to its wall-anchor eye (spacer washers, cotter in).
 - [ ] 5.5.32 — Tension each **turnbuckle**.
-- [ ] 5.5.33 — Tighten both **jam nuts** against each **body**.
+- [ ] 5.5.33 — Tighten both **jam nuts** against each body.
 - [ ] 5.5.34 — Close and latch the **cargo doors**.
-- [ ] 5.5.35 — Switch off all circuits except the **safelight** standby.
+- [ ] 5.5.35 — Switch off all circuits except the safelight standby.
 - [ ] 5.5.36 — Tighten all **IBC tote ratchet straps** ([IBC Stacking Report §4.2](ibc-stacking-report.md)).
 - [ ] 5.5.37 — Re-check their tension after the first 50 km.
-- [ ] 5.5.38 — Close all four **tote vents** (**BV-08** to **BV-11**).
-- [ ] 5.5.39 — Check **dust caps** are on **X1**, **X3** and **X4**.
+- [ ] 5.5.38 — Close all four tote vents (**BV-08** to **BV-11**).
+- [ ] 5.5.39 — Check **dust caps** are on X1, X3 and X4.
 - [ ] 5.5.40 — Check **BV-02** and **BV-07** are closed.
 - [ ] 5.5.41 — Check **S-05** and **S-03** are OFF.
 
@@ -798,9 +798,9 @@ No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinh
 
 - [ ] FB.1 — Loosen the four **M6 knurled thumb screws**.
 - [ ] FB.2 — Lift the **circular retaining ring** off.
-- [ ] FB.3 — Remove the **carrier** from the **Ø82 counterbore seat**.
-- [ ] FB.4 — Fit the new **carrier** (a **pinhole board**, or a **lens board**) into the **seat**, against the **washer**.
-- [ ] FB.5 — Replace the **retaining ring** and finger-tighten the four **thumb screws** evenly. Swap time: about 30 seconds.
+- [ ] FB.3 — Remove the **carrier** from the Ø82 counterbore seat.
+- [ ] FB.4 — Fit the new **carrier** (a pinhole board, or a lens board) into the seat, against the washer.
+- [ ] FB.5 — Replace the **retaining ring** and finger-tighten the four thumb screws evenly. Swap time: about 30 seconds.
 
 ## 12. Exposure Adjustment Table
 *Full reference table for use in Phase 3.*

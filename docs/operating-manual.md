@@ -20,18 +20,10 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 ## 2. Chemistry Choice — With or Without Ammonium Dichromate
 
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
-steepens the print's contrast. It is a creative choice, but it changes three procedures and the
-disposal of the wash water ([Water System Report §2](water-system-report.md); the basis is in [Wash-Water Classification](wash-water-classification.md)):
-
-| | Baseline (no dichromate) | Dichromate option |
-|---|---|---|
-| Part B (§0.3) | Potassium ferricyanide only | Ferricyanide + ammonium dichromate (§0.3.4–0.3.6) |
-| First wash drain, 3W-DV-02 (§4.2) | Brown (IBC-3), like every pass | **Waste (IBC-4)** for pass 1; Brown for passes 2–3 |
-| Leftover sensitizer and roller rinse (§5.1) | Into the tray, drained to Waste | Same, and always to Waste |
-| Disposal of IBC-3/IBC-4 (§5.1.1, TU.3) | Liquid-waste hauler or wastewater plant | IBC-4: licensed hazardous-waste hauler, manifested. IBC-3: the same until Brown is measured below 5 mg/L chromium |
-
-Once a tote has received dichromate wash water, it stays on the dichromate disposal route until it is
-pumped out. Switching back to the baseline does not clean it.
+steepens the print's contrast. It is a creative choice, but it changes how Part B is mixed (§0.3),
+how the sensitizer and the unwashed print are handled (§2.1, §2.5, §4.1), where the first wash drains
+(§4.2) and how the wash water is disposed of (§5.1, TU.3). Each of those steps gives the dichromate
+variant in place; the basis is in [Wash-Water Classification](wash-water-classification.md).
 
 ## 3. Phase 0 — Pre-Departure
 **Time: ~2 hours. Complete the day before or morning of shoot day at your workshop/home.**
@@ -474,6 +466,7 @@ required for a normal 1–2 print outing.
 - [ ] 5.1.1 — **Spent wash water** is collected in IBC-3 (Brown) and IBC-4 (Waste) and leaves only through the X3/X4 end-wall ports (TU.3). Never discharge either tote to a storm drain, soil or waterway. Keep the caps and valves closed between pump-outs. Book disposal by chemistry ([Wash-Water Classification](wash-water-classification.md)):
   - **Baseline:** a liquid-waste hauler or a wastewater plant that accepts it. Before the first disposal, the collected water needs its one-time check ([Sensitizer Trials T6](sensitizer-trials.md)).
   - **Dichromate option:** IBC-4 always goes to a **licensed hazardous-waste hauler**, on a hazardous-waste manifest. IBC-3 goes the same way until Brown has been measured below 5 mg/L chromium ([Sensitizer Trials T7](sensitizer-trials.md)). Keep each manifest with the disposal record, and count the hazardous kilograms each month — they set the generator category.
+  - Once a tote has received dichromate wash water, it stays on the dichromate disposal route until it is pumped out. Switching back to the baseline does not clean it.
 - [ ] 5.1.2 — **Unused stock solutions:** seal and store Part A and Part B in dark bottles (6–8 week shelf life). **Mixed working sensitizer** (4–6 hour life): pour what is left into the tray and drain it to **Waste** (3W-DV-02 to Waste, run P-04). Never pour it down a sink or onto the ground.
 - [ ] 5.1.3 — **Rinse the roller trays, rollers and brushes** in the processing tray right away (dried sensitizer is harder to remove), with 3W-DV-02 on **Waste**. Wear nitrile gloves; with the dichromate option this rinse carries chromium.
 - [ ] 5.1.4 — Stow the spray bar at either end of its travel. Detach the telescoping pole and store alongside the bar or clip to the container wall. The flexible hose coils naturally at the pinhole wall.

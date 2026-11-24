@@ -21,7 +21,7 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
 steepens the print's contrast. It is a creative choice, but it changes how Part B is mixed (§0.3),
-how the sensitizer and the unwashed print are handled (§2.1, §2.4, §4.1), where the first wash drains
+how the sensitizer and the unwashed print are handled (§2.3, §2.4, §4.1), where the first wash drains
 (§4.2) and how the wash water is disposed of (§5.1, TU.3). Each of those steps gives the dichromate
 variant in place; the basis is in [Wash-Water Classification](wash-water-classification.md).
 
@@ -317,8 +317,36 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 ## 5. Phase 2 — Loading the Image Plane
 **Time: ~45 minutes. Red safelight only (circuit D) — no white light, no daylight.**
 
-### 2.1 Prepare Working Sensitizer
-**Just before entering.**
+### 2.1 Mounting the Muslin
+
+![Muslin clamp layout — top + 2 sides at 150mm centers (58 clamps); the bottom edge is left unclamped](assets/film-plane-muslin-clamp-layout.png)
+
+- [ ] 2.1.1 — Enter through the **drum**.
+- [ ] 2.1.2 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
+- [ ] 2.1.3 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
+- [ ] 2.1.4 — Take out the pre-cut muslin.
+- [ ] 2.1.5 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
+- [ ] 2.1.6 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.1.7 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.1.8 — Tension the unclamped bottom edge downward.
+- [ ] 2.1.9 — Secure it flat against the plane so it cannot flap.
+- [ ] 2.1.10 — From 2 meters, check for wrinkles or sags under the safelight.
+
+### 2.2 Humidity Check — GO/NO-GO
+**Before mixing.**
+
+| Humidity | Action |
+|----------|--------|
+| Below 30% (typical Palm Springs) | Mist the muslin lightly with plain water 5 min before coating |
+| 30–65% | Coat normally |
+| Above 70% | **NO-GO** — do not mix; wait for the humidity to drop (the coat may not dry, risking fog) |
+
+- [ ] 2.2.1 — Read the hygrometer.
+- [ ] 2.2.2 — Above 70%: stop. Do not mix.
+- [ ] 2.2.3 — Below 30%: mist the muslin lightly with plain water.
+
+### 2.3 Mix the Working Sensitizer
+**At the chemistry prep shelf, under the safelight.**
 
 | For 1 print (<!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m², **2 coats**) | Volume |
 |------------------------|--------|
@@ -326,38 +354,12 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 | Part B | ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L |
 | **Working sensitizer** | **~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L** |
 
-- [ ] 2.1.1 — Dichromate option: put on gloves, UV glasses and apron.
-- [ ] 2.1.2 — Pour equal volumes of Part A and Part B into the third jug.
-- [ ] 2.1.3 — Stir gently (it turns yellow-green).
-- [ ] 2.1.4 — Pour it into the roller tray.
+- [ ] 2.3.1 — Dichromate option: put on gloves, UV glasses and apron.
+- [ ] 2.3.2 — Pour equal volumes of Part A and Part B (from the chemistry prep shelf) into the third jug.
+- [ ] 2.3.3 — Stir gently (it turns yellow-green).
+- [ ] 2.3.4 — Pour it into the roller tray.
 
-> **Mixed sensitizer:** red safelight only from here on. Work quickly.
-
-### 2.2 Humidity Check
-
-| Humidity | Action |
-|----------|--------|
-| Below 30% (typical Palm Springs) | Mist the muslin lightly with plain water 5 min before coating |
-| 30–65% | Coat normally |
-| Above 70% | Delay — the coat may not dry, risking fog |
-
-- [ ] 2.2.1 — Read the hygrometer.
-- [ ] 2.2.2 — Act per the table.
-
-### 2.3 Mounting the Muslin
-
-![Muslin clamp layout — top + 2 sides at 150mm centers (58 clamps); the bottom edge is left unclamped](assets/film-plane-muslin-clamp-layout.png)
-
-- [ ] 2.3.1 — Enter through the **drum**.
-- [ ] 2.3.2 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
-- [ ] 2.3.3 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
-- [ ] 2.3.4 — Take out the pre-cut muslin.
-- [ ] 2.3.5 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
-- [ ] 2.3.6 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.3.7 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.3.8 — Tension the unclamped bottom edge downward.
-- [ ] 2.3.9 — Secure it flat against the plane so it cannot flap.
-- [ ] 2.3.10 — From 2 meters, check for wrinkles or sags under the safelight.
+> **Mixed sensitizer:** work quickly; coat straight away.
 
 ### 2.4 Applying the Sensitizer
 **Aim to finish within 20 minutes.**
@@ -377,14 +379,6 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 - [ ] 2.5.3 — Touch a corner with a gloved fingertip: nothing transfers.
 
 > **Do not proceed with a wet coat.**
-
-### 2.6 Exiting via the Light Trap
-- [ ] 2.6.1 — Switch OFF the **safelight**.
-- [ ] 2.6.2 — Step into the **drum** from the interior side.
-- [ ] 2.6.3 — Turn it 180° until the opening faces the exterior.
-- [ ] 2.6.4 — Step out.
-
-**GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitizer dry to touch. Drum panel latched.
 
 ## 6. Phase 3 — Exposure
 **Time: ~30–45 minutes baseline. Shutter operated from outside.**

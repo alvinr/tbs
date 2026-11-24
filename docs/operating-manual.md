@@ -348,15 +348,16 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 
 ![Muslin clamp layout — top + 2 sides at 150mm centers (58 clamps); the bottom edge is left unclamped](assets/film-plane-muslin-clamp-layout.png)
 
-- [ ] 2.3.1 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
-- [ ] 2.3.2 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
-- [ ] 2.3.3 — Take out the pre-cut muslin.
-- [ ] 2.3.4 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
-- [ ] 2.3.5 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.3.6 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.3.7 — Tension the unclamped bottom edge downward.
-- [ ] 2.3.8 — Secure it flat against the plane so it cannot flap.
-- [ ] 2.3.9 — From 2 meters, check for wrinkles or sags under the safelight.
+- [ ] 2.3.1 — Enter through the **drum**.
+- [ ] 2.3.2 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
+- [ ] 2.3.3 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
+- [ ] 2.3.4 — Take out the pre-cut muslin.
+- [ ] 2.3.5 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
+- [ ] 2.3.6 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.3.7 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.3.8 — Tension the unclamped bottom edge downward.
+- [ ] 2.3.9 — Secure it flat against the plane so it cannot flap.
+- [ ] 2.3.10 — From 2 meters, check for wrinkles or sags under the safelight.
 
 ### 2.4 Applying the Sensitizer
 **Aim to finish within 20 minutes.**
@@ -371,7 +372,7 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 - [ ] 2.4.8 — Set the **tray** and **roller** aside for cleanup (§5.1.5) — never pour leftover sensitizer down a drain.
 
 ### 2.5 Tack-Drying
-- [ ] 2.5.1 — Run **fans A and B** on **low**, not aimed at the coated surface.
+- [ ] 2.5.1 — Check **fans A and B** are running (circuits A and B).
 - [ ] 2.5.2 — Wait **15–20 minutes** until the coat turns from glossy to matte.
 - [ ] 2.5.3 — Touch a corner with a gloved fingertip: nothing transfers.
 
@@ -555,7 +556,7 @@ Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a t
 - [ ] 5.1.12 — Detach the **telescoping pole** and stow it.
 
 ### 5.2 Container Ventilation
-- [ ] 5.2.1 — Run both fans (A and B) at full speed.
+- [ ] 5.2.1 — Check **fans A and B** are running (circuits A and B).
 - [ ] 5.2.2 — Ventilate at least **30 minutes** after development (longer when hot).
 
 ### 5.3 Power-Down Sequence

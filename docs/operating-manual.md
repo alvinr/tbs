@@ -2,9 +2,6 @@
 <!-- © 2026 Alvin Richards -->
 # Operating Manual — TBS-001
 
-**The Big Shoebox Project — Camera No. 1**
-Single-operator workflow for cyanotype on cotton muslin.
-
 > **Before you begin:** Read this manual end-to-end once before your first deployment. Each phase has a time estimate and a GO/NO-GO checkpoint. Do not proceed past a checkpoint unless all conditions are met.
 
 ## Quick Reference

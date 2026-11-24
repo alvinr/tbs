@@ -18,7 +18,7 @@
 | **3. Optics — pinhole wall interface** | $35 | $52 | $70 |
 | **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $3,933 | $4,159 | $4,391 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $7,077 | $7,758 | $8,443 |
-| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch + drain-pump switches)** | $3,562 | $3,614 | $3,667 |
+| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch + drain-pump switches)** | $3,545 | $3,597 | $3,650 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $788 | $848 | $938 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $3,384 | $3,803 | $4,220 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,290 | $2,722 | $3,177 |
@@ -28,7 +28,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,230 | $1,680 | $3,040 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits (per-deployment permits; High adds CDL)** | $10 | $300 | $7,320 |
-| **TOTAL (excl. own transport, lens)** | **$28,374** | **$32,844** | **$45,813** |
+| **TOTAL (excl. own transport, lens)** | **$28,357** | **$32,827** | **$45,796** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) brackets the **Mike Ware New Cyanotype** concentration tiers — **Low = Lean ⅓-Ware, Mid = Standard ½-Ware, High = Rich full-Ware** — including the ~<!-- BEGIN costing:pcb-muslin-run -->$300<!-- END costing:pcb-muslin-run --> muslin substrate (§10.1). The [Sensitizer Trials](sensitizer-trials.md) pin the tier.*
@@ -475,7 +475,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $35 |
 | Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $3,933 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,077 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,562 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,545 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $788 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $3,384 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,290 |
@@ -485,7 +485,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,230 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$28,014** |
+| **Scenario A total** | **~$27,997** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -498,7 +498,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $52 |
 | Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $4,159 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,758 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,614 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,597 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $848 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $3,803 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,722 |
@@ -509,7 +509,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$33,644** |
+| **Scenario B total (excl. CDL)** | **~$33,627** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -517,11 +517,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,744 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,727 |
 | CDL Class A training + medical + DMV | $6,570 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$124,314–$154,314** |
+| **Scenario C total** | **~$124,297–$154,297** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

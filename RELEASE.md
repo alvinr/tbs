@@ -26,6 +26,7 @@ is no separate publish step to run afterward.
 
 ## [Unreleased]
 
+- **IP65 enclosure resized and re-sourced.** The DC-distribution box is now a Gratury 290×190×140mm stainless IP65 box (Amazon B08282SQPT, $24.99), replacing the Polycase ZH-080804 (−$17 rounded, drops Polycase as a supplier). Its size and position are one setting (`IP65_ENCL_*`), used by the electrical model and the EP panel elevation (electrical sheet 5); it sits inside the plywood side lips, clear of the disconnect row and the MPPT. The metal box bonds to the main-panel ground.
 - **Tote connections match the 3D model.** Every tote connection is a 1in bulkhead through the tote wall; the totes' own outlet valves are unused and stay closed. Parts swap the 8 S60×6 valve adapters + reducers for 8 tote-wall bulkheads (−$5); the IBC stacking, plumbing and water-system reports, the dependency map, IBC frame sheet 1 and IBC stacking sheets 4–5 now say so; the manual checks the outlet valves are closed instead of operating them. Whether to switch to the totes' own fill cap and outlet valve is an open TODO.
 - **X1 fill takes a pressurized supply.** The Blue fill at X1 is now described as a pressurized supply hose rather than a gravity feed (water P&ID label, water-system, plumbing and IBC-stacking reports, CV-1 spec). The tote vents keep the totes at atmospheric pressure while they fill.
 - **E-stops moved to Amazon.** Both 22mm mushroom E-stop switches (exterior and interior) now come from Amazon (B07VMT4JBN, $15.69 each), which drops Harfington as a supplier; +$5.90.

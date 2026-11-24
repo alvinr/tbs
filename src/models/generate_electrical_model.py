@@ -38,7 +38,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
 import tbs_draw as draw                          # shared drawing/material primitives
-from tbs_constants import SOLAR_ARRAY_Z, SOLAR_GAP, SOLAR_N, SOLAR_PANEL_L, SOLAR_PANEL_T, SOLAR_PANEL_W, SOLAR_TILT_DEG, WALL_T, C_LEN, FAN_DIAM, EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PULL_CORD_BOTTOM_Z
+from tbs_constants import IP65_ENCL_W, IP65_ENCL_H, IP65_ENCL_D, IP65_ENCL_X, IP65_ENCL_Z0, SOLAR_ARRAY_Z, SOLAR_GAP, SOLAR_N, SOLAR_PANEL_L, SOLAR_PANEL_T, SOLAR_PANEL_W, SOLAR_TILT_DEG, WALL_T, C_LEN, FAN_DIAM, EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PULL_CORD_BOTTOM_Z
 
 TAGS = ["Context", "Context Loads", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Clips", "Lighting", "Labels"]
@@ -318,8 +318,8 @@ def power_core(external_links=True, links_only=False):
     # IP65 enclosure — ghosted weatherproof box over the fuse block + busbars + charge fuse (the DC
     # distribution terminals that need sealing), mounted ON the plywood (its back IS the plywood). The
     # MPPT, main disconnect, battery and inverter mount on the plywood outside it.
-    p.append(draw.ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + 5, 12, EP_H_LO,
-                         200, 140, 220, color=draw.C_STEEL, alpha=0.12))
+    p.append(draw.ruby_box("IP65 enclosure (ghosted, fuse block + busbars)", EP_X + IP65_ENCL_X, 12, IP65_ENCL_Z0,
+                         IP65_ENCL_W, IP65_ENCL_D, IP65_ENCL_H, color=draw.C_STEEL, alpha=0.12))
     # MPPT mounts on a plywood CROSS MEMBER that SPANS the two EP side lips (housed in a 9mm rebate in
     # each), exactly like the access panel below — NOT its own little sub-panel. Transparent, so the gear
     # behind reads through; the MPPT body surface-mounts on its front face (Yd = EP_CTRL_FACE_YD).

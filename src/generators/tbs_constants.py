@@ -765,6 +765,9 @@ SOLAR_ARRAY_Z  = 0       # array base on the ground
 # Placed within the EP volume (EP_X..EP_X+EP_W, Yd 0..ENCL_SHELL_D, EP_H_LO..EP_H_HI).
 # Sizes only; positions computed in the builder. Consumed by generate_electrical_model.py.
 ENCL_SHELL_D   = 165     # ghosted IP65 enclosure depth into the container (Yd, mm)
+IP65_ENCL_W, IP65_ENCL_H, IP65_ENCL_D = 290, 190, 140   # Gratury stainless IP65 box 290×190×140mm (Amazon B08282SQPT), mounted wide
+IP65_ENCL_X = 6                  # left edge, from EP_X — just inside the 18mm plywood side lip (lip interior = EP_X+6 .. EP_X+334)
+IP65_ENCL_Z0 = EP_H_LO + 15      # 1165 — bottom; clears the disconnect row (tops ≤ Z1129) and holds the fuse block / busbars / charge fuse (Z1190–1350)
 MPPT_W, MPPT_D, MPPT_H          = 185, 70, 100   # Victron SmartSolar 100/50 MPPT
 FUSEBLK_W, FUSEBLK_D, FUSEBLK_H = 164, 39, 84    # Blue Sea 5026: 6.472×1.518×3.315" = 164(X)×39(Yd,proud)×84(Z), 12-circuit, flip cover + neg bus [datasheet]
 BUSBAR_L, BUSBAR_W, BUSBAR_H    = 120, 20, 22    # + / − distribution busbars

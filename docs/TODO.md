@@ -63,7 +63,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - [ ] Signature Solar (10 AWG PV extension) → Off Grid Stores — $30
   - [~] McNichols grating clips — KEEP (owner, 2026-11-23); Fibergrate edge-seal kit → American Grating still open
   - [x] Harfington (2× uxcell e-stop) → Amazon B07VMT4JBN — $31.38 (done 2026-11-24)
-  - [ ] Polycase (ZH-080804 enclosure) → Amazon (listed alt)
+  - [x] Polycase (ZH-080804 enclosure) → Amazon B08282SQPT Gratury 290×190×140 stainless, $24.99 (done 2026-11-24)
   - [x] Central Coast Plastics (Dibond ACM) — KEEP (owner, 2026-11-24)
   - [~] Lowe's Hillman self-drillers → McMaster 90415A129 done (2026-11-23); misterworker foot valve — KEEP (owner).
         DripDepot pipe + end clamps (spray-retainer-clips, owner 2026-11-24) + tee — KEEP: Home Depot irrigation stops at 1/2in; the manifold is 3/4in.

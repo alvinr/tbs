@@ -1,18 +1,6 @@
-routing-sources-sha: cd0606d68acb
-model=water  pipes=633 solids=828  interferences=0
+routing-sources-sha: dd994bc752c0
+model=electrical  pipes=818 solids=4  interferences=0
 pipe-on-pipe crossings=0
 
 ── grip-bolt orientation/grip audit (--bolts, advisory) ──
-grip-bolt orientation/grip flags: 12  (0 OPEN, 12 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)
-  EDGE      Flange Self-Tapping Screw                axis Z  D4  edge 3.0mm < 5mm  in Spray Beam 38×38×1.6 304-SS   [OK] self-tapping flange screw into the thin 1.6mm RHS wall — a thread-former, not an edge-distance grip bolt
-  EDGE      Foot→plate bolt M12                      axis X  D12  edge 6.0mm < 18mm  in Foot plate                    [OK] short vertical anchor bolt — AABB axis/edge artifact; nominal edge = (IBC_FOOT_PLATE−PCD)/2 = 25mm ≥ 1.5·D
-  EDGE      M6×25 mount bolt 3                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
-  EDGE      M6×25 mount bolt 4                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
-  EDGE      M6×25 mount bolt 1                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
-  EDGE      M6×25 mount bolt 2                       axis Yd D6  edge 7.0mm < 9mm  in Disc-holder retaining ring    [OK] AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle
-  EDGE      IBC Wall Through-Bolt M12                axis Yd D14  edge 18.0mm < 21mm  in Wall Hanger Plate             [OK] drawn-D14 conservative; at nominal M12 the 18mm edge = 1.5·D exactly — OK
-  FLOATING  Frame-corner bolt (angle frame → bracket axis Yd  pierces no structural member @ (4591,2240,160)  [OK] film-plane corner bracket is a precision-mechanism member excluded from the structural solid set → reads floating
-  FLOATING  Frame-corner bolt (angle frame → bracket axis Yd  pierces no structural member @ (4591,2240,2252)  [OK] film-plane corner bracket is a precision-mechanism member excluded from the structural solid set → reads floating
-  PROJECT   IBC Wall Through-Bolt M12                axis Yd  shank 48mm past the grip @ (4644,-19,439)  [OK] projection = the container-wall penetration length (the wall shell is not in the structural solid set) — by design
-  PROJECT   Rail fixing bolt TR near                 axis Z   shank 33mm past the grip @ (4624,33,2318)  [OK] rail-fixing bolt — the projecting stem is thread length, by design
-  PROJECT   Rail fixing bolt TR far                  axis Z   shank 33mm past the grip @ (4624,2269,2318)  [OK] rail-fixing bolt — the projecting stem is thread length, by design
+grip-bolt orientation/grip flags: 0  (0 OPEN, 0 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)

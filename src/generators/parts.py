@@ -716,12 +716,12 @@ PARTS: list[Part] = [
               'Add DIN rail + standoffs for the DIN gear. A backboard is finish-agnostic, so it is CUT FROM THE '
               'CHEM-SHELF UV-white sheet (shelf-phenolic-ply) — no separate sheet purchased (Plywood Cut Sheets, '
               'sheet D). The UV-coated face is already sealed/wipeable (better than the former SANDEPLY).'),
-    Part("ip65-enclosure", "IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)", "electrical-distribution",
-         "electrical", 1, "ea", 46.93, 46.93, "Polycase", "Amazon", part_no="ZH-080804", url="https://www.polycase.com/zh-080804",
-         spec='Weatherproof IP65 box bolted to the plywood backboard, sealing the DC-distribution '
-              'terminals (Blue Sea 5026 fuse block + the +/- busbars + charge-line fuse) against '
-              'splash/dust. Its back panel is the plywood; the disconnect knob and cable glands pass '
-              'through the face.'),
+    Part("ip65-enclosure", "IP65 enclosure 290×190×140mm, stainless (fuse block + busbars, on the plywood)", "electrical-distribution",
+         "electrical", 1, "ea", 24.99, 24.99, "Amazon", part_no="B08282SQPT", url="https://www.amazon.com/dp/B08282SQPT",
+         spec='Gratury stainless-steel IP65 waterproof electrical box, 290×190×140mm, mounted wide on the plywood '
+              'backboard (IP65_ENCL_*). Seals the DC-distribution terminals (Blue Sea 5026 fuse block + the +/- '
+              'busbars + charge-line fuse) against splash/dust; cable glands through the face. Metal box: bond it '
+              'to the main-panel ground. $24.99 firm (2026-11-24).'),
     # — Circuit wiring: tinned hook-up primary, per-gauge red+black 100ft spools (§7.3 conductor
     # schedule). 2026-07-30: retired the wiring-kit + tinned-marine-wire catch-alls → per-gauge
     # SKUs, ALL tinned hook-up (Waytek has no marine <14AWG anyway). The $110

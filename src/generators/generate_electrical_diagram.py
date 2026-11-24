@@ -1562,7 +1562,7 @@ def draw_sheet5():
     internal feed one-line and a fuse schedule. BOTH axes are real mm: panel-relative X (0 = panel left = EP_X),
     Z = real height. Component sizes/positions read from tbs_constants (same as the 3D).
     """
-    from tbs_constants import (EP_H_LO, EP_H_HI, EP_W, EP_COL_W, EP_X, MPPT_W, MPPT_H,
+    from tbs_constants import (IP65_ENCL_W, IP65_ENCL_H, IP65_ENCL_D, IP65_ENCL_X, IP65_ENCL_Z0, EP_H_LO, EP_H_HI, EP_W, EP_COL_W, EP_X, MPPT_W, MPPT_H,
                                FUSEBLK_W, BUSBAR_L, BUSBAR_H, DISCONNECT_D, C_BATT,
                                BA_H_LO, BA_H_HI, BA_STACK_Z2, BA_STACK_TOP, BA_W,
                                INVERTER_W, INVERTER_H, INVERTER_Z, EP_POST_Z, PV_DISC_X, PV_DISC_Z, EP_DISC_Z,
@@ -1626,8 +1626,8 @@ def draw_sheet5():
     leader(ax, 55, dz + 35, LCX, 1020, "Reachable disconnect cluster\n(main · master · PV · E-stop)", fs=5.6, color=C_DIM, ha="right")
 
     # ── IP65 enclosure (fuse block 5026 + busbars + charge fuse) at chest height ──
-    ax.add_patch(R((10, eh0), 200, 220, fc="none", ec="#8A9AA8", lw=1.0, ls=(0, (4, 2)), zorder=3))
-    leader(ax, 10, eh0 + 200, LCX, 1470, "IP65 enclosure (DC terminals)", fs=5.6, color=C_DIM, ha="right")
+    ax.add_patch(R((IP65_ENCL_X, IP65_ENCL_Z0), IP65_ENCL_W, IP65_ENCL_H, fc="none", ec="#8A9AA8", lw=1.0, ls=(0, (4, 2)), zorder=3))
+    leader(ax, IP65_ENCL_X, IP65_ENCL_Z0 + IP65_ENCL_H - 20, LCX, 1470, f"IP65 enclosure (DC terminals)\n{IP65_ENCL_W}×{IP65_ENCL_H}×{IP65_ENCL_D}mm stainless", fs=5.6, color=C_DIM, ha="right")
     fb_x0, base_z = 15, eh0 + 40                          # 1190
     fbase_h, fuse_h = 28, 42
     ax.add_patch(R((fb_x0, base_z), FUSEBLK_W, fbase_h, fc="#2B2B30", ec=C_OUT, lw=0.9, zorder=4))

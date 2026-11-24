@@ -23,6 +23,14 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 - [x] `generate_grp_cutplan.py`, `generate_joint_options.py`, `generate_joint_study.py` fixed 2026-11-21: write to `DIAGRAMS_DIR`; the GRP cut plan now takes its piece outlines from the walkway 3D model and nests them automatically (still 2 panels).
 - [ ] Delete the fallback `.venv-py39` once the 3.14 venv has run a few sessions cleanly.
 
+## 📦 Shipping envelope (2026-11-24)
+
+- [ ] Explore bringing every externally mounted component inside the container envelope, so the
+  container ships at standard ISO dimensions (no protrusions to declare or protect). Inventory what
+  sits outside today (external power panel box, end-wall camlock ports X1/X3/X4 + dust caps, fan
+  hoods/louvres and duct stubs, cooler wall stub, exterior stay/hanger backing plates, PV disconnect,
+  solar mounts) and for each: recess, make removable for transport, or relocate inside.
+
 ## 🛒 Parts to source (SKU + price)
 
 - [~] Consolidate suppliers (2026-11-23). Duplicate names merged 2026-11-23 (~70 → 56: Metals Depot,

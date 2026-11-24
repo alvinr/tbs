@@ -22,7 +22,7 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
 steepens the print's contrast. It is a creative choice, but it changes how Part B is mixed (§0.3),
 how the sensitizer and the unwashed print are handled (§2.4, §2.5, §4.1), where the first wash drains
-(§4.2) and how the wash water is disposed of (§5.1, TU.7). Each of those steps gives the dichromate
+(§4.2) and how the wash water is disposed of (§5.1, TU.6). Each of those steps gives the dichromate
 variant in place; the basis is in [Wash-Water Classification](wash-water-classification.md).
 
 ## 3. Phase 0 — Pre-Departure
@@ -317,12 +317,14 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 ## 5. Phase 2 — Loading the Image Plane
 **Time: ~45 minutes. Red safelight only (circuit D) — no white light, no daylight.**
 
-### 2.1 Collection Capacity — GO/NO-GO
+### 2.1 Water Capacity — GO/NO-GO
 **Before mounting the muslin.**
 
 - [ ] 2.1.1 — Enter through the **drum**.
 - [ ] 2.1.2 — Check IBC-3 and IBC-4 each have room for one print: level at or below 940 L on the tote scale.
-- [ ] 2.1.3 — Either tote above 940 L: **NO-GO**. Pump it out (TU.7 onward) before printing.
+- [ ] 2.1.3 — Either tote above 940 L: **NO-GO**. Pump it out (TU.6 onward) before printing.
+- [ ] 2.1.4 — Check IBC-1 and IBC-2 each hold at least 90 L of Blue on the tote scale.
+- [ ] 2.1.5 — Either below 90 L: **NO-GO**. Top up Blue (TU.1 onward) before printing.
 
 ### 2.2 Mounting the Muslin
 
@@ -526,24 +528,23 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 
 Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints; ~<!-- BEGIN fact:prints_max_fill -->17<!-- END fact:prints_max_fill --> with the totes topped up), then repeat Phases 2–4.
 
-- [ ] TU.1 — Check the Blue level (IBC-1/IBC-2) before each print; top up before it runs dry.
-- [ ] TU.2 — Remove the X1 **dust cap**.
-- [ ] TU.3 — Connect the **bowser/tanker hose** to X1.
-- [ ] TU.4 — Fill (controlled at the bowser) and check the level.
-- [ ] TU.5 — Shut off at the bowser.
-- [ ] TU.6 — Disconnect and re-cap X1.
-- [ ] TU.7 — Book the hauler for the chemistry in use (§5.1.1).
-- [ ] TU.8 — Put on nitrile gloves.
-- [ ] TU.9 — Remove the **dust cap** on **X3** (Brown) or **X4** (Waste).
-- [ ] TU.10 — Connect the **hauler's hose**.
-- [ ] TU.11 — Brown (X3): open **BV-02**.
-- [ ] TU.12 — Waste (X4): open **BV-07**.
-- [ ] TU.13 — Switch ON that pump's local switch (**S-05** or **S-03**) — one tote at a time.
-- [ ] TU.14 — When the tote is empty, switch it OFF.
-- [ ] TU.15 — Close **BV-02** / **BV-07**.
-- [ ] TU.16 — Disconnect and re-cap the port.
-- [ ] TU.17 — File the hauler's paperwork (the manifest, for hazardous loads).
-- [ ] TU.18 — Resume from [Phase 2](#5-phase-2-loading-the-image-plane).
+- [ ] TU.1 — Remove the X1 **dust cap**.
+- [ ] TU.2 — Connect the **bowser/tanker hose** to X1.
+- [ ] TU.3 — Fill (controlled at the bowser) and check the level.
+- [ ] TU.4 — Shut off at the bowser.
+- [ ] TU.5 — Disconnect and re-cap X1.
+- [ ] TU.6 — Book the hauler for the chemistry in use (§5.1.1).
+- [ ] TU.7 — Put on nitrile gloves.
+- [ ] TU.8 — Remove the **dust cap** on **X3** (Brown) or **X4** (Waste).
+- [ ] TU.9 — Connect the **hauler's hose**.
+- [ ] TU.10 — Brown (X3): open **BV-02**.
+- [ ] TU.11 — Waste (X4): open **BV-07**.
+- [ ] TU.12 — Switch ON that pump's local switch (**S-05** or **S-03**) — one tote at a time.
+- [ ] TU.13 — When the tote is empty, switch it OFF.
+- [ ] TU.14 — Close **BV-02** / **BV-07**.
+- [ ] TU.15 — Disconnect and re-cap the port.
+- [ ] TU.16 — File the hauler's paperwork (the manifest, for hazardous loads).
+- [ ] TU.17 — Resume from [Phase 2](#5-phase-2-loading-the-image-plane).
 
 > **Before transport:** return the totes to their transport fill states — Blue drained, Waste within its return-haul limit ([§5.5](#55-transport-mode-conversion-packing-up)).
 
@@ -551,7 +552,7 @@ Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupp
 **Time: ~30 minutes. White light.**
 
 ### 5.1 Chemistry Disposal
-Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a tote to a storm drain, soil or waterway.
+Spent wash water leaves only through the X3/X4 ports (TU.6). Never discharge a tote to a storm drain, soil or waterway.
 
 - [ ] 5.1.1 — Keep the **tote caps and valves** closed between pump-outs.
 - [ ] 5.1.2 — Book disposal by chemistry ([Wash-Water Classification](wash-water-classification.md)):

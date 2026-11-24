@@ -159,7 +159,7 @@ and §13 for the optical line-of-sight clearance analysis.
 |------|-------|--------|
 | Exterior dimensions | 20 ft L × 8 ft W × 8 ft 6 in H | ISO 668; [eveoncontainers.com](https://www.eveoncontainers.com/en-US/resources/shipping-container-dimensions) |
 | Interior dimensions | 19 ft 4 in L × 7 ft 9 in W × 7 ft 10 in H | ISO 668 (confirmed) |
-| Tare weight (empty) | approx. 4,850 lbs (2,200 kg) | Hapag-Lloyd Container Spec |
+| Tare weight (empty) | approx. 5,180 lbs (2,350 kg) | [Hapag-Lloyd 20' Standard](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html) |
 | Steel wall thickness | 1.6mm corrugated Corten steel | Standard ISO construction |
 | Floor | 28mm laminated bamboo or hardwood | Standard ISO construction |
 | Door type | Double swing on one short end | ISO standard |

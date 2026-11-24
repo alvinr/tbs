@@ -376,6 +376,12 @@ def _ibc_stacking_frame_weight():
 # Component inventory
 # ═══════════════════════════════════════════════════════════════════════════
 
+# 20ft standard dry container — Hapag-Lloyd 20' Standard (22G1) published figures.
+CONTAINER_TARE_KG = 2350
+DOORS_KG = 280                       # two ISO door leaves, ~140 kg each
+ISO_MAX_GROSS_KG = 30480             # max gross (ISO 668 1CC rating; Hapag-Lloyd 20' Standard)
+
+
 def build_components():
     """Build the complete component list with calculated weights."""
 
@@ -397,9 +403,9 @@ def build_components():
 
     components = [
         # ── Container ────────────────────────────────────────────────────
-        Component("Container shell", "container", 1920.0,
+        Component("Container shell", "container", float(CONTAINER_TARE_KG - DOORS_KG),
                   0, C_LEN, 0, C_WID, 0, C_HGT, color=C_WALL,
-                  calc_note="Hapag-Lloyd 20ft ISO tare (2,200 kg) minus doors (280 kg)"),
+                  calc_note=f"Hapag-Lloyd 20ft standard tare ({CONTAINER_TARE_KG:,} kg) minus doors ({DOORS_KG} kg)"),
 
         # ── Cargo doors (2 leaves, ~140 kg each = 280 kg total) ─────
         # Closed (transport): both leaves at X≈-50 (exterior face), full Yd span
@@ -845,12 +851,12 @@ def sheet_dry(components):
     # Replace the default info box with a more detailed summary
     # (draw over the one placed by _draw_state_diagram)
     info = (f"DRY WEIGHT SUMMARY\n"
-            f"Container tare: 2,200 kg\n"
-            f"Equipment + structure: {total_dry - 2200:,.0f} kg\n"
+            f"Container tare: {CONTAINER_TARE_KG:,} kg\n"
+            f"Equipment + structure: {total_dry - CONTAINER_TARE_KG:,.0f} kg\n"
             f"Total dry: {total_dry:,.0f} kg\n"
             f"CG: X={x_cg:.0f}, Yd={yd_cg:.0f}\n"
             f"Z_cg: {z_cg:.0f}mm\n"
-            f"ISO max gross: 24,000 kg → margin: {24000 - total_dry:,.0f} kg")
+            f"ISO max gross: {ISO_MAX_GROSS_KG:,} kg → margin: {ISO_MAX_GROSS_KG - total_dry:,.0f} kg")
     ax.text(C_LEN + 100, C_WID * 0.5, info, fontsize=7, color=C_OUT,
             va="center", ha="left", **_FONT,
             bbox=dict(fc="white", ec=C_OUT, lw=0.8, pad=6))
@@ -1217,7 +1223,7 @@ def sheet_summary(components):
     table_lines = [rule, hdr, rule]
     for (state, label, _), (x_cg, yd_cg, z_cg, total) in zip(states, cg_points):
         clean_label = label.replace("\n", " ")
-        margin = 24000 - total
+        margin = ISO_MAX_GROSS_KG - total
         table_lines.append(
             f"{clean_label:<36}  {total:>10,.0f}  {x_cg:>10,.0f}  "
             f"{yd_cg:>10,.0f}  {z_cg:>10,.0f}  {margin:>12,.0f}")
@@ -1289,6 +1295,12 @@ def weight_values():
     v["wt-cat-structure"] = f"{cat['structure']:,}"
     v["wt-cat-equipment"] = f"{cat['equipment']:,}"
     v["wt-total-dry"]     = f"{total_dry:,}"
+    v["wt-tare-kg"]   = f"{CONTAINER_TARE_KG:,}"
+    v["wt-tare-lb"]   = f"{int(round(CONTAINER_TARE_KG * _LB_PER_KG, -1)):,}"
+    v["wt-gross-kg"]  = f"{ISO_MAX_GROSS_KG:,}"
+    v["wt-gross-lb"]  = f"{int(round(ISO_MAX_GROSS_KG * _LB_PER_KG, -1)):,}"
+    v["wt-payload-kg"] = f"{ISO_MAX_GROSS_KG - CONTAINER_TARE_KG:,}"
+    v["wt-payload-lb"] = f"{int(round((ISO_MAX_GROSS_KG - CONTAINER_TARE_KG) * _LB_PER_KG, -1)):,}"
     # §3.1–3.3 per-component rows (rounded, so each table sums to its subtotal)
     for c in dry:
         slug = _re.sub(r"[^a-z0-9]+", "-", c.name.lower()).strip("-")
@@ -1321,8 +1333,8 @@ def weight_values():
         v[f"wt-{k}-rr"]    = f"{sp['rear_pct']:.1f}"
         v[f"wt-{k}-nr"]    = f"{sp['near_pct']:.1f}"
         v[f"wt-{k}-fa"]    = f"{sp['far_pct']:.1f}"
-        v[f"wt-iso-{k}-margin"] = f"{24000 - total:,}"
-        v[f"wt-iso-{k}-util"]   = f"{100 * total / 24000:.1f}"
+        v[f"wt-iso-{k}-margin"] = f"{ISO_MAX_GROSS_KG - total:,}"
+        v[f"wt-iso-{k}-util"]   = f"{100 * total / ISO_MAX_GROSS_KG:.1f}"
 
     # §4.1/§4.2 liquid + loaded/exhausted totals; §6.4 CG migration
     v["wt-liquid-loaded"]   = f"{int(v['wt-loadedtx-total'].replace(',', '')) - total_dry:,}"
@@ -1457,8 +1469,8 @@ def main():
               f"{splits['rear_pct']:.1f}%")
         print(f"    Near/Far split:   {splits['near_pct']:.1f}% / "
               f"{splits['far_pct']:.1f}%")
-        print(f"    ISO 24,000 kg margin: {24000 - total:,.0f} kg "
-              f"({100 * (24000 - total) / 24000:.0f}%)")
+        print(f"    ISO {ISO_MAX_GROSS_KG:,} kg margin: {ISO_MAX_GROSS_KG - total:,.0f} kg "
+              f"({100 * (ISO_MAX_GROSS_KG - total) / ISO_MAX_GROSS_KG:.0f}%)")
 
     # Generate diagrams
     print("\nGenerating diagrams...")

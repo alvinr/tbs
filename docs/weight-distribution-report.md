@@ -23,9 +23,9 @@ changes during a photographic session.
 | Parameter | Value | Source |
 |-----------|-------|--------|
 | Container type | 20 ft standard ISO | ISO 668 |
-| Tare weight (empty container) | 2,200 kg (4,850 lbs) | Hapag-Lloyd Container Spec |
-| Max gross weight | 24,000 kg (52,910 lbs) | ISO 668 |
-| Max payload | 21,800 kg (48,060 lbs) | Gross − tare |
+| Tare weight (empty container) | <!-- BEGIN weight:wt-tare-kg -->2,350<!-- END weight:wt-tare-kg --> kg (<!-- BEGIN weight:wt-tare-lb -->5,180<!-- END weight:wt-tare-lb --> lbs) | [Hapag-Lloyd 20' Standard](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html) |
+| Max gross weight | <!-- BEGIN weight:wt-gross-kg -->30,480<!-- END weight:wt-gross-kg --> kg (<!-- BEGIN weight:wt-gross-lb -->67,200<!-- END weight:wt-gross-lb --> lbs) | [Hapag-Lloyd 20' Standard](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html); ISO 668 |
+| Max payload | <!-- BEGIN weight:wt-payload-kg -->28,130<!-- END weight:wt-payload-kg --> kg (<!-- BEGIN weight:wt-payload-lb -->62,020<!-- END weight:wt-payload-lb --> lbs) | Gross − tare |
 | Interior dimensions | 5,893 × 2,362 × 2,388mm | ISO 668 |
 
 ---
@@ -42,7 +42,7 @@ water 1,000 kg/m³.
 
 | Component | Weight (kg) | Position | Calculation Basis |
 |-----------|------------|----------|-------------------|
-| Container shell (excl. doors) | <!-- BEGIN weight:wt-c-container-shell -->1,920<!-- END weight:wt-c-container-shell --> | Full footprint | Hapag-Lloyd 20ft ISO tare (2,200 kg) minus doors (280 kg) |
+| Container shell (excl. doors) | <!-- BEGIN weight:wt-c-container-shell -->2,070<!-- END weight:wt-c-container-shell --> | Full footprint | Hapag-Lloyd 20ft standard tare (<!-- BEGIN weight:wt-tare-kg -->2,350<!-- END weight:wt-tare-kg --> kg) minus doors (280 kg) |
 | Cargo door — near leaf | <!-- BEGIN weight:wt-c-cargo-door-near -->140<!-- END weight:wt-c-cargo-door-near --> | Closed: X=−100 to −40 / Open: along near wall | ISO door leaf, ~140 kg each |
 | Cargo door — far leaf | <!-- BEGIN weight:wt-c-cargo-door-far -->140<!-- END weight:wt-c-cargo-door-far --> | Closed: X=−100 to −40 / Open: along far wall | ISO door leaf, ~140 kg each |
 
@@ -87,10 +87,10 @@ water 1,000 kg/m³.
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container (shell + doors) | <!-- BEGIN weight:wt-cat-container -->2,200<!-- END weight:wt-cat-container --> | <!-- BEGIN weight:wt-pct-container -->64.9<!-- END weight:wt-pct-container -->% |
-| Structure | <!-- BEGIN weight:wt-cat-structure -->656<!-- END weight:wt-cat-structure --> | <!-- BEGIN weight:wt-pct-structure -->19.4<!-- END weight:wt-pct-structure -->% |
-| Equipment | <!-- BEGIN weight:wt-cat-equipment -->534<!-- END weight:wt-cat-equipment --> | <!-- BEGIN weight:wt-pct-equipment -->15.8<!-- END weight:wt-pct-equipment -->% |
-| **Total dry** | **<!-- BEGIN weight:wt-total-dry -->3,390<!-- END weight:wt-total-dry -->** | **100%** |
+| Container (shell + doors) | <!-- BEGIN weight:wt-cat-container -->2,350<!-- END weight:wt-cat-container --> | <!-- BEGIN weight:wt-pct-container -->66.4<!-- END weight:wt-pct-container -->% |
+| Structure | <!-- BEGIN weight:wt-cat-structure -->656<!-- END weight:wt-cat-structure --> | <!-- BEGIN weight:wt-pct-structure -->18.5<!-- END weight:wt-pct-structure -->% |
+| Equipment | <!-- BEGIN weight:wt-cat-equipment -->534<!-- END weight:wt-cat-equipment --> | <!-- BEGIN weight:wt-pct-equipment -->15.1<!-- END weight:wt-pct-equipment -->% |
+| **Total dry** | **<!-- BEGIN weight:wt-total-dry -->3,540<!-- END weight:wt-total-dry -->** | **100%** |
 
 **Grating weight assumption:** 1" (25mm) molded GRP (fiberglass) grating, vinyl-ester resin with
 a grit top, weighs ≈12.7 kg/m² (McNichols MS-S-100, 2.60 lb/sf) over the 4.14 m² of deck. GRP is
@@ -113,7 +113,7 @@ during processing, not pre-loaded).
 | Blue IBC-2 water | 900 | 900 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,336–2,236) |
 | **Total liquid** | **1,800** | **1,800** | | |
 
-**Total loaded weight: <!-- BEGIN weight:wt-total-loaded -->5,190<!-- END weight:wt-total-loaded --> kg** (<!-- BEGIN weight:wt-total-dry -->3,390<!-- END weight:wt-total-dry --> dry + 1,800 liquid)
+**Total loaded weight: <!-- BEGIN weight:wt-total-loaded -->5,340<!-- END weight:wt-total-loaded --> kg** (<!-- BEGIN weight:wt-total-dry -->3,540<!-- END weight:wt-total-dry --> dry + 1,800 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -130,26 +130,26 @@ unrecovered residual — see [water-system report §3](water-system-report.md)).
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,260** | **1,260** | | |
 
-**Total exhausted weight: <!-- BEGIN weight:wt-total-exhausted -->4,650<!-- END weight:wt-total-exhausted --> kg** (<!-- BEGIN weight:wt-total-dry -->3,390<!-- END weight:wt-total-dry --> dry + 1,260 liquid)
+**Total exhausted weight: <!-- BEGIN weight:wt-total-exhausted -->4,800<!-- END weight:wt-total-exhausted --> kg** (<!-- BEGIN weight:wt-total-dry -->3,540<!-- END weight:wt-total-dry --> dry + 1,260 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | <!-- BEGIN weight:wt-dry-total -->3,390<!-- END weight:wt-dry-total --> | <!-- BEGIN weight:wt-dry-x -->2,729<!-- END weight:wt-dry-x --> | <!-- BEGIN weight:wt-dry-yd -->1,213<!-- END weight:wt-dry-yd --> | <!-- BEGIN weight:wt-dry-z -->1,111<!-- END weight:wt-dry-z --> | <!-- BEGIN weight:wt-dry-fr -->53.2<!-- END weight:wt-dry-fr -->/<!-- BEGIN weight:wt-dry-rr -->46.8<!-- END weight:wt-dry-rr -->% | <!-- BEGIN weight:wt-dry-nr -->48.1<!-- END weight:wt-dry-nr -->/<!-- BEGIN weight:wt-dry-fa -->51.9<!-- END weight:wt-dry-fa -->% |
-| Loaded Transport (Blue full) | <!-- BEGIN weight:wt-loadedtx-total -->5,190<!-- END weight:wt-loadedtx-total --> | <!-- BEGIN weight:wt-loadedtx-x -->3,615<!-- END weight:wt-loadedtx-x --> | <!-- BEGIN weight:wt-loadedtx-yd -->1,202<!-- END weight:wt-loadedtx-yd --> | <!-- BEGIN weight:wt-loadedtx-z -->1,345<!-- END weight:wt-loadedtx-z --> | <!-- BEGIN weight:wt-loadedtx-fr -->34.7<!-- END weight:wt-loadedtx-fr -->/<!-- BEGIN weight:wt-loadedtx-rr -->65.3<!-- END weight:wt-loadedtx-rr -->% | <!-- BEGIN weight:wt-loadedtx-nr -->48.7<!-- END weight:wt-loadedtx-nr -->/<!-- BEGIN weight:wt-loadedtx-fa -->51.3<!-- END weight:wt-loadedtx-fa -->% |
-| Camera Ready (Deployed) | <!-- BEGIN weight:wt-ready-total -->5,190<!-- END weight:wt-ready-total --> | <!-- BEGIN weight:wt-ready-x -->3,615<!-- END weight:wt-ready-x --> | <!-- BEGIN weight:wt-ready-yd -->1,188<!-- END weight:wt-ready-yd --> | <!-- BEGIN weight:wt-ready-z -->1,344<!-- END weight:wt-ready-z --> | <!-- BEGIN weight:wt-ready-fr -->34.7<!-- END weight:wt-ready-fr -->/<!-- BEGIN weight:wt-ready-rr -->65.3<!-- END weight:wt-ready-rr -->% | <!-- BEGIN weight:wt-ready-nr -->50.0<!-- END weight:wt-ready-nr -->/<!-- BEGIN weight:wt-ready-fa -->50.0<!-- END weight:wt-ready-fa -->% |
-| Materials Exhausted (Transport) | <!-- BEGIN weight:wt-exhausted-total -->4,650<!-- END weight:wt-exhausted-total --> | <!-- BEGIN weight:wt-exhausted-x -->3,422<!-- END weight:wt-exhausted-x --> | <!-- BEGIN weight:wt-exhausted-yd -->1,204<!-- END weight:wt-exhausted-yd --> | <!-- BEGIN weight:wt-exhausted-z -->941<!-- END weight:wt-exhausted-z --> | <!-- BEGIN weight:wt-exhausted-fr -->38.8<!-- END weight:wt-exhausted-fr -->/<!-- BEGIN weight:wt-exhausted-rr -->61.2<!-- END weight:wt-exhausted-rr -->% | <!-- BEGIN weight:wt-exhausted-nr -->48.6<!-- END weight:wt-exhausted-nr -->/<!-- BEGIN weight:wt-exhausted-fa -->51.4<!-- END weight:wt-exhausted-fa -->% |
+| Dry (Transport) | <!-- BEGIN weight:wt-dry-total -->3,540<!-- END weight:wt-dry-total --> | <!-- BEGIN weight:wt-dry-x -->2,738<!-- END weight:wt-dry-x --> | <!-- BEGIN weight:wt-dry-yd -->1,212<!-- END weight:wt-dry-yd --> | <!-- BEGIN weight:wt-dry-z -->1,115<!-- END weight:wt-dry-z --> | <!-- BEGIN weight:wt-dry-fr -->53.1<!-- END weight:wt-dry-fr -->/<!-- BEGIN weight:wt-dry-rr -->46.9<!-- END weight:wt-dry-rr -->% | <!-- BEGIN weight:wt-dry-nr -->48.2<!-- END weight:wt-dry-nr -->/<!-- BEGIN weight:wt-dry-fa -->51.8<!-- END weight:wt-dry-fa -->% |
+| Loaded Transport (Blue full) | <!-- BEGIN weight:wt-loadedtx-total -->5,340<!-- END weight:wt-loadedtx-total --> | <!-- BEGIN weight:wt-loadedtx-x -->3,597<!-- END weight:wt-loadedtx-x --> | <!-- BEGIN weight:wt-loadedtx-yd -->1,201<!-- END weight:wt-loadedtx-yd --> | <!-- BEGIN weight:wt-loadedtx-z -->1,341<!-- END weight:wt-loadedtx-z --> | <!-- BEGIN weight:wt-loadedtx-fr -->35.2<!-- END weight:wt-loadedtx-fr -->/<!-- BEGIN weight:wt-loadedtx-rr -->64.8<!-- END weight:wt-loadedtx-rr -->% | <!-- BEGIN weight:wt-loadedtx-nr -->48.8<!-- END weight:wt-loadedtx-nr -->/<!-- BEGIN weight:wt-loadedtx-fa -->51.2<!-- END weight:wt-loadedtx-fa -->% |
+| Camera Ready (Deployed) | <!-- BEGIN weight:wt-ready-total -->5,340<!-- END weight:wt-ready-total --> | <!-- BEGIN weight:wt-ready-x -->3,597<!-- END weight:wt-ready-x --> | <!-- BEGIN weight:wt-ready-yd -->1,188<!-- END weight:wt-ready-yd --> | <!-- BEGIN weight:wt-ready-z -->1,340<!-- END weight:wt-ready-z --> | <!-- BEGIN weight:wt-ready-fr -->35.2<!-- END weight:wt-ready-fr -->/<!-- BEGIN weight:wt-ready-rr -->64.8<!-- END weight:wt-ready-rr -->% | <!-- BEGIN weight:wt-ready-nr -->50.0<!-- END weight:wt-ready-nr -->/<!-- BEGIN weight:wt-ready-fa -->50.0<!-- END weight:wt-ready-fa -->% |
+| Materials Exhausted (Transport) | <!-- BEGIN weight:wt-exhausted-total -->4,800<!-- END weight:wt-exhausted-total --> | <!-- BEGIN weight:wt-exhausted-x -->3,407<!-- END weight:wt-exhausted-x --> | <!-- BEGIN weight:wt-exhausted-yd -->1,204<!-- END weight:wt-exhausted-yd --> | <!-- BEGIN weight:wt-exhausted-z -->949<!-- END weight:wt-exhausted-z --> | <!-- BEGIN weight:wt-exhausted-fr -->39.1<!-- END weight:wt-exhausted-fr -->/<!-- BEGIN weight:wt-exhausted-rr -->60.9<!-- END weight:wt-exhausted-rr -->% | <!-- BEGIN weight:wt-exhausted-nr -->48.6<!-- END weight:wt-exhausted-nr -->/<!-- BEGIN weight:wt-exhausted-fa -->51.4<!-- END weight:wt-exhausted-fa -->% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,800 kg) carried in the *transport* configuration — panel swung in, cargo doors
-closed. The water sits in the **top** tier, so its vertical CG is **Z=<!-- BEGIN weight:wt-loadedtx-z -->1,345<!-- END weight:wt-loadedtx-z -->mm —
-<!-- BEGIN weight:wt-mig-dz -->404<!-- END weight:wt-mig-dz -->mm higher** than the exhausted state (<!-- BEGIN weight:wt-exhausted-z -->941<!-- END weight:wt-exhausted-z -->mm), making it the **highest-CG
+closed. The water sits in the **top** tier, so its vertical CG is **Z=<!-- BEGIN weight:wt-loadedtx-z -->1,341<!-- END weight:wt-loadedtx-z -->mm —
+<!-- BEGIN weight:wt-mig-dz -->392<!-- END weight:wt-mig-dz -->mm higher** than the exhausted state (<!-- BEGIN weight:wt-exhausted-z -->949<!-- END weight:wt-exhausted-z -->mm), making it the **highest-CG
 transport case** that governs road-transport stability (tie-down and cornering).
-The exhausted (return) state is both lighter — **<!-- BEGIN weight:wt-total-exhausted -->4,650<!-- END weight:wt-total-exhausted --> kg**, since ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l --> kg of the
+The exhausted (return) state is both lighter — **<!-- BEGIN weight:wt-total-exhausted -->4,800<!-- END weight:wt-total-exhausted --> kg**, since ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l --> kg of the
 processed water is lost to the open process rather than recovered — and lower-CG,
 so it is never the governing case. Even at the loaded worst case the static sideways
-tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg <!-- BEGIN weight:wt-loadedtx-z -->1,345<!-- END weight:wt-loadedtx-z -->mm), so the deliberate
+tip threshold is **~41°** (½-width 1,181mm ÷ Z_cg <!-- BEGIN weight:wt-loadedtx-z -->1,341<!-- END weight:wt-loadedtx-z -->mm), so the deliberate
 Blue-on-top layout stays comfortably stable.
 
 ### 4.4 Optional Max-Blue-Fill Transport Case
@@ -161,12 +161,12 @@ that heavier load stays well within transport limits:
 
 | Loaded Transport | Gross mass | Z_cg | Static tip threshold |
 |------------------|-----------:|-----:|---------------------:|
-| Standard Blue fill (1,800L) | <!-- BEGIN weight:wt-fill-std-total -->5,190<!-- END weight:wt-fill-std-total --> kg | <!-- BEGIN weight:wt-fill-std-z -->1,345<!-- END weight:wt-fill-std-z -->mm | <!-- BEGIN weight:wt-fill-std-tip -->41.3<!-- END weight:wt-fill-std-tip -->° |
-| **Max Blue fill (1,900L)** | **<!-- BEGIN weight:wt-fill-max-total -->5,290<!-- END weight:wt-fill-max-total --> kg** | **<!-- BEGIN weight:wt-fill-max-z -->1,363<!-- END weight:wt-fill-max-z -->mm** | **<!-- BEGIN weight:wt-fill-max-tip -->40.9<!-- END weight:wt-fill-max-tip -->°** |
+| Standard Blue fill (1,800L) | <!-- BEGIN weight:wt-fill-std-total -->5,340<!-- END weight:wt-fill-std-total --> kg | <!-- BEGIN weight:wt-fill-std-z -->1,341<!-- END weight:wt-fill-std-z -->mm | <!-- BEGIN weight:wt-fill-std-tip -->41.4<!-- END weight:wt-fill-std-tip -->° |
+| **Max Blue fill (1,900L)** | **<!-- BEGIN weight:wt-fill-max-total -->5,440<!-- END weight:wt-fill-max-total --> kg** | **<!-- BEGIN weight:wt-fill-max-z -->1,358<!-- END weight:wt-fill-max-z -->mm** | **<!-- BEGIN weight:wt-fill-max-tip -->41.0<!-- END weight:wt-fill-max-tip -->°** |
 
-The extra ~100 kg sits in the top tier, raising the worst-case vertical CG only <!-- BEGIN weight:wt-fill-dz -->18<!-- END weight:wt-fill-dz -->mm and lowering
-the static sideways tip threshold to <!-- BEGIN weight:wt-fill-max-tip -->40.9<!-- END weight:wt-fill-max-tip -->° — still far above any rollover concern. Gross
-weight stays at ~22% of the [ISO 668](https://www.iso.org/standard/76912.html) 24,000 kg limit. The
+The extra ~100 kg sits in the top tier, raising the worst-case vertical CG only <!-- BEGIN weight:wt-fill-dz -->17<!-- END weight:wt-fill-dz -->mm and lowering
+the static sideways tip threshold to <!-- BEGIN weight:wt-fill-max-tip -->41.0<!-- END weight:wt-fill-max-tip -->° — still far above any rollover concern. Gross
+weight stays far inside the <!-- BEGIN weight:wt-gross-kg -->30,480<!-- END weight:wt-gross-kg --> kg maximum gross. The
 optional max-Blue-fill top-up is therefore transport-validated.
 
 ---
@@ -176,7 +176,7 @@ optional max-Blue-fill top-up is therefore transport-validated.
 ### 5.1 Summary Comparison
 
 Side-by-side comparison of the states with CG positions and a summary table.
-The dry state is nearly balanced; the camera-ready/loaded states shift the CG rearward by ~<!-- BEGIN weight:wt-cg-shift -->885<!-- END weight:wt-cg-shift -->mm (the lighter exhausted return state by ~<!-- BEGIN weight:wt-cg-shift-ex -->695<!-- END weight:wt-cg-shift-ex -->mm).
+The dry state is nearly balanced; the camera-ready/loaded states shift the CG rearward by ~<!-- BEGIN weight:wt-cg-shift -->860<!-- END weight:wt-cg-shift -->mm (the lighter exhausted return state by ~<!-- BEGIN weight:wt-cg-shift-ex -->670<!-- END weight:wt-cg-shift-ex -->mm).
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
@@ -193,7 +193,7 @@ is the densest zone.
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
-CG marker shows the loaded center of gravity at X=<!-- BEGIN weight:wt-ready-x -->3,615<!-- END weight:wt-ready-x -->, Yd=<!-- BEGIN weight:wt-ready-yd -->1,188<!-- END weight:wt-ready-yd -->.
+CG marker shows the loaded center of gravity at X=<!-- BEGIN weight:wt-ready-x -->3,597<!-- END weight:wt-ready-x -->, Yd=<!-- BEGIN weight:wt-ready-yd -->1,188<!-- END weight:wt-ready-yd -->.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
@@ -203,8 +203,8 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste IBCs, and ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l --> kg of it has
 been lost to the open process (evaporation, wet-print carryout, unrecovered residual — see
 [water-system report §3](water-system-report.md)), so only ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l --> kg is recovered. The hinged panel
-is swung ~56° about the pivot to its transport position. Total mass therefore drops to **<!-- BEGIN weight:wt-total-exhausted -->4,650<!-- END weight:wt-total-exhausted --> kg**
-(~<!-- BEGIN weight:wt-mass-drop -->540<!-- END weight:wt-mass-drop --> kg below the loaded state), and the vertical CG drops by <!-- BEGIN weight:wt-mig-dz -->404<!-- END weight:wt-mig-dz -->mm (Z: <!-- BEGIN weight:wt-loadedtx-z -->1,345<!-- END weight:wt-loadedtx-z --> → <!-- BEGIN weight:wt-exhausted-z -->941<!-- END weight:wt-exhausted-z -->mm) as the
+is swung ~56° about the pivot to its transport position. Total mass therefore drops to **<!-- BEGIN weight:wt-total-exhausted -->4,800<!-- END weight:wt-total-exhausted --> kg**
+(~<!-- BEGIN weight:wt-mass-drop -->540<!-- END weight:wt-mass-drop --> kg below the loaded state), and the vertical CG drops by <!-- BEGIN weight:wt-mig-dz -->392<!-- END weight:wt-mig-dz -->mm (Z: <!-- BEGIN weight:wt-loadedtx-z -->1,341<!-- END weight:wt-loadedtx-z --> → <!-- BEGIN weight:wt-exhausted-z -->949<!-- END weight:wt-exhausted-z -->mm) as the
 remaining water settles in the bottom tier. This is the lightest, lowest-CG transport state — never
 the governing case.
 
@@ -214,8 +214,8 @@ the governing case.
 
 The camera-ready water load (1,800 kg in the top-tier Blue IBCs) carried in
 transport configuration — panel swung in, cargo doors closed. The water is in
-the **top** tier, raising the vertical CG to **Z=<!-- BEGIN weight:wt-loadedtx-z -->1,345<!-- END weight:wt-loadedtx-z -->mm** (+<!-- BEGIN weight:wt-mig-dz -->404<!-- END weight:wt-mig-dz -->mm vs the lighter
-exhausted state at <!-- BEGIN weight:wt-exhausted-z -->941<!-- END weight:wt-exhausted-z -->mm). This is the worst-case transport vertical CG.
+the **top** tier, raising the vertical CG to **Z=<!-- BEGIN weight:wt-loadedtx-z -->1,341<!-- END weight:wt-loadedtx-z -->mm** (+<!-- BEGIN weight:wt-mig-dz -->392<!-- END weight:wt-mig-dz -->mm vs the lighter
+exhausted state at <!-- BEGIN weight:wt-exhausted-z -->949<!-- END weight:wt-exhausted-z -->mm). This is the worst-case transport vertical CG.
 
 ![TBS-001 — Weight Analysis: Loaded Transport](assets/weight-analysis-sheet5.png)
 
@@ -225,22 +225,22 @@ exhausted state at <!-- BEGIN weight:wt-exhausted-z -->941<!-- END weight:wt-exh
 
 ### 6.1 ISO Gross Weight Compliance
 
-All four states are well within the ISO 24,000 kg maximum gross weight:
+All four states are well within the <!-- BEGIN weight:wt-gross-kg -->30,480<!-- END weight:wt-gross-kg --> kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | <!-- BEGIN weight:wt-dry-total -->3,390<!-- END weight:wt-dry-total --> | <!-- BEGIN weight:wt-iso-dry-margin -->20,610<!-- END weight:wt-iso-dry-margin --> | <!-- BEGIN weight:wt-iso-dry-util -->14.1<!-- END weight:wt-iso-dry-util -->% |
-| Camera Ready | <!-- BEGIN weight:wt-ready-total -->5,190<!-- END weight:wt-ready-total --> | <!-- BEGIN weight:wt-iso-ready-margin -->18,810<!-- END weight:wt-iso-ready-margin --> | <!-- BEGIN weight:wt-iso-ready-util -->21.6<!-- END weight:wt-iso-ready-util -->% |
-| Materials Exhausted | <!-- BEGIN weight:wt-exhausted-total -->4,650<!-- END weight:wt-exhausted-total --> | <!-- BEGIN weight:wt-iso-exhausted-margin -->19,350<!-- END weight:wt-iso-exhausted-margin --> | <!-- BEGIN weight:wt-iso-exhausted-util -->19.4<!-- END weight:wt-iso-exhausted-util -->% |
-| Loaded Transport | <!-- BEGIN weight:wt-loadedtx-total -->5,190<!-- END weight:wt-loadedtx-total --> | <!-- BEGIN weight:wt-iso-loadedtx-margin -->18,810<!-- END weight:wt-iso-loadedtx-margin --> | <!-- BEGIN weight:wt-iso-loadedtx-util -->21.6<!-- END weight:wt-iso-loadedtx-util -->% |
+| Dry | <!-- BEGIN weight:wt-dry-total -->3,540<!-- END weight:wt-dry-total --> | <!-- BEGIN weight:wt-iso-dry-margin -->26,940<!-- END weight:wt-iso-dry-margin --> | <!-- BEGIN weight:wt-iso-dry-util -->11.6<!-- END weight:wt-iso-dry-util -->% |
+| Camera Ready | <!-- BEGIN weight:wt-ready-total -->5,340<!-- END weight:wt-ready-total --> | <!-- BEGIN weight:wt-iso-ready-margin -->25,140<!-- END weight:wt-iso-ready-margin --> | <!-- BEGIN weight:wt-iso-ready-util -->17.5<!-- END weight:wt-iso-ready-util -->% |
+| Materials Exhausted | <!-- BEGIN weight:wt-exhausted-total -->4,800<!-- END weight:wt-exhausted-total --> | <!-- BEGIN weight:wt-iso-exhausted-margin -->25,680<!-- END weight:wt-iso-exhausted-margin --> | <!-- BEGIN weight:wt-iso-exhausted-util -->15.7<!-- END weight:wt-iso-exhausted-util -->% |
+| Loaded Transport | <!-- BEGIN weight:wt-loadedtx-total -->5,340<!-- END weight:wt-loadedtx-total --> | <!-- BEGIN weight:wt-iso-loadedtx-margin -->25,140<!-- END weight:wt-iso-loadedtx-margin --> | <!-- BEGIN weight:wt-iso-loadedtx-util -->17.5<!-- END weight:wt-iso-loadedtx-util -->% |
 
-The container operates at about 19–21% of its rated capacity in all states.
+The container never reaches a fifth of its rated gross in any state.
 There is no structural concern from a gross weight perspective.
 
 ### 6.2 Left-Right Balance (Near/Far)
 
-The near/far split stays close to balanced in all states (<!-- BEGIN weight:wt-near-lo -->48.1<!-- END weight:wt-near-lo -->–<!-- BEGIN weight:wt-near-hi -->50.0<!-- END weight:wt-near-hi -->% near). The
-transport states lean slightly far (up to ~<!-- BEGIN weight:wt-far-hi -->51.9<!-- END weight:wt-far-hi -->% far) because the swung panel + drum carry
+The near/far split stays close to balanced in all states (<!-- BEGIN weight:wt-near-lo -->48.2<!-- END weight:wt-near-lo -->–<!-- BEGIN weight:wt-near-hi -->50.0<!-- END weight:wt-near-hi -->% near). The
+transport states lean slightly far (up to ~<!-- BEGIN weight:wt-far-hi -->51.8<!-- END weight:wt-far-hi -->% far) because the swung panel + drum carry
 their mass toward the far/pivot side. This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
 panel, battery, and solar controller totaling ~<!-- BEGIN weight:wt-near-elec -->28<!-- END weight:wt-near-elec --> kg), the pump manifold is on the Corridor Plumbing Panel
@@ -252,21 +252,21 @@ plumbing rather than a near-side counterweight board.
 
 ### 6.3 Front-Rear Balance
 
-The dry/transport state has a front-biased split (<!-- BEGIN weight:wt-dry-fr -->53.2<!-- END weight:wt-dry-fr -->/<!-- BEGIN weight:wt-dry-rr -->46.8<!-- END weight:wt-dry-rr -->%), with CG at
-X=<!-- BEGIN weight:wt-dry-x -->2,729<!-- END weight:wt-dry-x -->mm. This front bias comes from the cargo doors (<!-- BEGIN weight:wt-doors-total -->280<!-- END weight:wt-doors-total --> kg total) being
+The dry/transport state has a front-biased split (<!-- BEGIN weight:wt-dry-fr -->53.1<!-- END weight:wt-dry-fr -->/<!-- BEGIN weight:wt-dry-rr -->46.9<!-- END weight:wt-dry-rr -->%), with CG at
+X=<!-- BEGIN weight:wt-dry-x -->2,738<!-- END weight:wt-dry-x -->mm. This front bias comes from the cargo doors (<!-- BEGIN weight:wt-doors-total -->280<!-- END weight:wt-doors-total --> kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also swung ~56° about the pivot, keeping its mass
 in the front (door-end) half.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=<!-- BEGIN weight:wt-ready-x -->3,615<!-- END weight:wt-ready-x -->mm (~<!-- BEGIN weight:wt-cg-shift -->885<!-- END weight:wt-cg-shift -->mm past the dry CG). The doors
+the CG shifts rearward to X=<!-- BEGIN weight:wt-ready-x -->3,597<!-- END weight:wt-ready-x -->mm (~<!-- BEGIN weight:wt-cg-shift -->860<!-- END weight:wt-cg-shift -->mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1,221mm), redistributing
 <!-- BEGIN weight:wt-doors-total -->280<!-- END weight:wt-doors-total --> kg from X≈−70 to X≈610, while 1,800 kg of water loads in the IBC stack
-zone (X=4,674–5,893mm). This creates a <!-- BEGIN weight:wt-ready-fr -->34.7<!-- END weight:wt-ready-fr -->/<!-- BEGIN weight:wt-ready-rr -->65.3<!-- END weight:wt-ready-rr -->% front/rear split — the heavy
+zone (X=4,674–5,893mm). This creates a <!-- BEGIN weight:wt-ready-fr -->35.2<!-- END weight:wt-ready-fr -->/<!-- BEGIN weight:wt-ready-rr -->64.8<!-- END weight:wt-ready-rr -->% front/rear split — the heavy
 1,000L totes sit at the sealed end.
 
 **Transport implication:** When loaded for transport (materials exhausted,
-doors closed), the container's CG is at <!-- BEGIN weight:wt-cg-lengthpct -->58.1<!-- END weight:wt-cg-lengthpct -->% of the length from the cargo
+doors closed), the container's CG is at <!-- BEGIN weight:wt-cg-lengthpct -->57.8<!-- END weight:wt-cg-lengthpct -->% of the length from the cargo
 door end, so the load balances on a trailer with the rear (sealed) end over or
 near the trailer axle(s).
 
@@ -274,20 +274,20 @@ near the trailer axle(s).
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Loaded (top-tier water):** Z_cg = <!-- BEGIN weight:wt-loadedtx-z -->1,345<!-- END weight:wt-loadedtx-z -->mm (1,800 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = <!-- BEGIN weight:wt-exhausted-z -->941<!-- END weight:wt-exhausted-z -->mm (<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l --> kg of recovered water in bottom-tier IBCs)
-- **ΔZ = −<!-- BEGIN weight:wt-mig-dz -->404<!-- END weight:wt-mig-dz -->mm** (CG drops ~<!-- BEGIN weight:wt-mig-dz -->404<!-- END weight:wt-mig-dz -->mm during a session)
+- **Loaded (top-tier water):** Z_cg = <!-- BEGIN weight:wt-loadedtx-z -->1,341<!-- END weight:wt-loadedtx-z -->mm (1,800 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = <!-- BEGIN weight:wt-exhausted-z -->949<!-- END weight:wt-exhausted-z -->mm (<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l --> kg of recovered water in bottom-tier IBCs)
+- **ΔZ = −<!-- BEGIN weight:wt-mig-dz -->392<!-- END weight:wt-mig-dz -->mm** (CG drops ~<!-- BEGIN weight:wt-mig-dz -->392<!-- END weight:wt-mig-dz -->mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 1,800 kg of clean water is loaded into the top-tier Blue IBCs and processed during a
 session; ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l --> kg is recovered into the bottom-tier Brown/Waste IBCs and ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l --> kg is
-lost to the open process, so total mass drops from <!-- BEGIN weight:wt-total-loaded -->5,190<!-- END weight:wt-total-loaded --> to **<!-- BEGIN weight:wt-total-exhausted -->4,650<!-- END weight:wt-total-exhausted --> kg**. The water that
+lost to the open process, so total mass drops from <!-- BEGIN weight:wt-total-loaded -->5,340<!-- END weight:wt-total-loaded --> to **<!-- BEGIN weight:wt-total-exhausted -->4,800<!-- END weight:wt-total-exhausted --> kg**. The water that
 remains migrates from the top tier to the bottom tier, dropping the center of gravity by
-<!-- BEGIN weight:wt-mig-dz -->404<!-- END weight:wt-mig-dz -->mm and improving stability through the session.
+<!-- BEGIN weight:wt-mig-dz -->392<!-- END weight:wt-mig-dz -->mm and improving stability through the session.
 
 ### 6.5 Walkway Weight Sensitivity
 
-The walkway system contributes <!-- BEGIN weight:wt-walkway-total -->145<!-- END weight:wt-walkway-total --> kg (<!-- BEGIN weight:wt-walkway-pct -->4.3<!-- END weight:wt-walkway-pct -->% of dry weight), making it the
+The walkway system contributes <!-- BEGIN weight:wt-walkway-total -->145<!-- END weight:wt-walkway-total --> kg (<!-- BEGIN weight:wt-walkway-pct -->4.1<!-- END weight:wt-walkway-pct -->% of dry weight), making it the
 largest structural subsystem. The deck grating —
 1" (25mm) molded GRP (fiberglass) at ≈12.7 kg/m² — is the largest single line in the
 walkway; GRP is specified for corrosion immunity in the wet photo-chemistry

@@ -40,7 +40,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | B | Ventilation fan — intake (6") | 60W | Continuous during processing |
 | C1 | Water pumps — corridor **P-01/P-02/P-03/P-05** (12V DC; Shurflo 2088, one at a time) | <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W (one pump) | Intermittent (~30 min/print) |
 | C2 | Tray-drain pump **P-04** (12V DC Shurflo 2088) | <!-- BEGIN fact:pump_draw_w -->62<!-- END fact:pump_draw_w -->W | Intermittent — **may run with C1** (continuous-wash option, §7.3) |
-| D | Safelight — interior + vestibule | <!-- BEGIN fact:safelight_w -->39<!-- END fact:safelight_w -->W | Loading phase only (~45 min) |
+| D | Safelight — interior + drum | <!-- BEGIN fact:safelight_w -->39<!-- END fact:safelight_w -->W | Loading phase only (~45 min) |
 | E | Evaporative cooler — Hessaire MC18M (120V AC) via 12V→120V inverter | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | Continuous during operation |
 | F | White LED strip ×4 (general lighting) | ~106W | Non-operational periods only |
 | **Total peak (all on)** | | **<!-- BEGIN energy:peak-w -->486<!-- END energy:peak-w -->W** | Not all simultaneous |

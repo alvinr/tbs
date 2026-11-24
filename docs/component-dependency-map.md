@@ -225,7 +225,7 @@ ML-RBS remote contactor → m-Series main disconnect; external emergency E-stop 
 face trips the contactor (kills all DC from outside). 4 AWG ground wire + 8ft copper stake.*
 
 *Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
-C — water pumps P-01–P-05 (P-04 on the pinhole-wall filter skid, others in the IBC corridor); D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
+C — water pumps P-01–P-05 (P-04 on the pinhole-wall filter skid, others in the IBC corridor); D — safelight (interior + drum); E — evaporative cooler; F — ventilation fans.*
 
 *Reports: [Electrical](electrical-report.md) §4/§5/§7 (solar array, charge controller + battery + shore charger + external panel, wiring/enclosure/protection); [Electrical Safety](electrical-safety-report.md) §3/§5 (design controls, cascaded improvements).*
 

@@ -475,11 +475,11 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Wash-Water Classification](wash-water-classification.md) | Regulatory basis for disposing of the wash water — iron-only baseline non-hazardous, dichromate option hazardous (D007), generator category |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
-| [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, lighting, wiring diagrams |
+| [Electrical & Systems](electrical-report.md) | Power architecture, lighting, wiring diagrams |
 | [Electrical Safety](electrical-safety-report.md) | 12V DC hazard assessment — fire/arc/corrosion risks, existing controls, and the protective measures added |
 | [Daily Energy Use](daily-energy-report.md) | One-day-of-daylight consumption — prints, cooling, wash pumping, the per-resupply tank pump-out, and the solar/battery balance |
 | [Ventilation & Cooling](ventilation-report.md) | Fan system, evaporative cooler, light-safe baffle ducts, shade canopy, and operating modes |
-| [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
+| [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, light trap, cooling |
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |

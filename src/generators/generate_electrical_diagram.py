@@ -308,7 +308,7 @@ def draw_sheet1():
          "P-01/02/03/05, corridor panel (Yd=1046–1316)  |  one at a time  |  P-03/05 local sw S-03/05", C_PUMP_TINT),
         ("C2", "TRAY-DRAIN PUMP\n(P-04)",       "10A", "12 AWG", f"{PUMP_DRAW_W}W",
          "P-04, filter skid  |  own fuse  |  2-pole master switch gangs C1+C2", C_PUMP_TINT),
-        ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "12 AWG", f"{SAFELIGHT_W}W",
+        ("D", "SAFELIGHT\ninterior + drum",  "5A",  "12 AWG", f"{SAFELIGHT_W}W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
          "Inverter→AC unit  |  GFCI  |  200mm duct (see §7.6)", C_EVAP_TINT),

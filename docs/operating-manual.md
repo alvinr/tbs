@@ -400,7 +400,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 **Test strip (critical work):** coat a 200mm × full-height strip, expose in **5-minute steps** under a card mask, develop, and compare.
 
 ### 3.2 Opening the Shutter
-- [ ] 3.2.1 — Check the **vestibule outer door** is closed and latched.
+- [ ] 3.2.1 — Check both **drum-panel cam latches** are engaged.
 - [ ] 3.2.2 — Set the timer.
 - [ ] 3.2.3 — Open the **pinhole shutter** from the exterior handle.
 
@@ -409,8 +409,6 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 ### 3.3 Monitoring During Exposure
 - [ ] 3.3.1 — Every 15 minutes, read the battery voltage on the MPPT display.
 - [ ] 3.3.2 — Below 11.8V: switch off the **evaporative cooler**.
-- [ ] 3.3.3 — If the sky changes substantially, close the **shutter** and note the elapsed time.
-- [ ] 3.3.4 — When conditions return, re-open for the remaining time.
 
 ### 3.4 Closing the Shutter
 - [ ] 3.4.1 — At the calculated time, close the **shutter** from the exterior handle.

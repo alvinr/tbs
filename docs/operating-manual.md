@@ -36,7 +36,7 @@ Valve and pump tags are on the panel labels; the layout is in the [Plumbing Repo
 
 - [ ] 0.1.1 — Check the **master pump switch** (Electrical Panel) is OFF.
 - [ ] 0.1.2 — Check drain-pump switches **S-05** and **S-03** (near-upper side board) are OFF.
-- [ ] 0.1.3 — Close the **DN50 butterfly valves** on all four totes (IBC-1 to IBC-4).
+- [ ] 0.1.3 — Check the **outlet valve** on each tote (IBC-1 to IBC-4) is closed and capped. These valves stay closed.
 - [ ] 0.1.4 — Close **BV-01** and **BV-03** (pump suctions).
 - [ ] 0.1.5 — Close **BV-02** and **BV-07** (drain-pump suctions).
 - [ ] 0.1.6 — Close **BV-04** (TAP-01).
@@ -56,27 +56,25 @@ Valve and pump tags are on the panel labels; the layout is in the [Plumbing Repo
 
 **Operating positions**
 
-- [ ] 0.1.17 — Open the **DN50 butterfly valves** on IBC-1 and IBC-2 (Blue).
-- [ ] 0.1.18 — Open the **DN50 butterfly valve** on IBC-3 (Brown). IBC-4 stays closed.
-- [ ] 0.1.19 — Open **BV-01** (P-01 suction).
-- [ ] 0.1.20 — Open **BV-03** (P-02 suction).
-- [ ] 0.1.21 — Set **BV-05** to Blue.
-- [ ] 0.1.22 — Set **3W-DV-02** to Brown (IBC-3).
-- [ ] 0.1.23 — Open the Brown and Waste tote vents **BV-10** (IBC-3) and **BV-11** (IBC-4).
+- [ ] 0.1.17 — Open **BV-01** (P-01 suction).
+- [ ] 0.1.18 — Open **BV-03** (P-02 suction).
+- [ ] 0.1.19 — Set **BV-05** to Blue.
+- [ ] 0.1.20 — Set **3W-DV-02** to Brown (IBC-3).
+- [ ] 0.1.21 — Open the Brown and Waste tote vents **BV-10** (IBC-3) and **BV-11** (IBC-4).
 
 **Test**
 
-- [ ] 0.1.24 — Open **BV-06** (spray on).
-- [ ] 0.1.25 — Switch ON **P-01** (circuit C1).
-- [ ] 0.1.26 — Run the **spray bar** for 60 seconds.
-- [ ] 0.1.27 — Check the spray pattern is even across the full image-plane width.
-- [ ] 0.1.28 — Check all pipe joints for drips.
-- [ ] 0.1.29 — Tighten any weeping **fittings**.
-- [ ] 0.1.30 — Switch **P-01** OFF.
-- [ ] 0.1.31 — Close **BV-06**.
-- [ ] 0.1.32 — Check the P-04 **suction pickup** is seated in the sump well.
-- [ ] 0.1.33 — Check the P-04 **suction hose** is connected over the tray rim.
-- [ ] 0.1.34 — Close all four tote vents (**BV-08** to **BV-11**) before the container is lifted.
+- [ ] 0.1.22 — Open **BV-06** (spray on).
+- [ ] 0.1.23 — Switch ON **P-01** (circuit C1).
+- [ ] 0.1.24 — Run the **spray bar** for 60 seconds.
+- [ ] 0.1.25 — Check the spray pattern is even across the full image-plane width.
+- [ ] 0.1.26 — Check all pipe joints for drips.
+- [ ] 0.1.27 — Tighten any weeping **fittings**.
+- [ ] 0.1.28 — Switch **P-01** OFF.
+- [ ] 0.1.29 — Close **BV-06**.
+- [ ] 0.1.30 — Check the P-04 **suction pickup** is seated in the sump well.
+- [ ] 0.1.31 — Check the P-04 **suction hose** is connected over the tray rim.
+- [ ] 0.1.32 — Close all four tote vents (**BV-08** to **BV-11**) before the container is lifted.
 
 ### 0.2 Chemistry — Part A (Ferric Ammonium Oxalate)
 **Lighting: white light.**
@@ -298,7 +296,7 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.8.8 — Seal any leaks with black silicone or gaffer tape.
 - [ ] 1.8.9 — Repeat the inspection.
 
-**GO/NO-GO checkpoint:** All leaks sealed. Interior below 35°C. Battery above 12.4V. Blue supply flows evenly at the spray bar (§0.1.27).
+**GO/NO-GO checkpoint:** All leaks sealed. Interior below 35°C. Battery above 12.4V. Blue supply flows evenly at the spray bar (§0.1.25).
 
 ### 1.9 Film Plane — Tilt, Swing and Focus
 Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-report.md).
@@ -530,10 +528,10 @@ Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupp
 - [ ] TU.9 — Remove the **dust cap** on **X3** (Brown) or **X4** (Waste).
 - [ ] TU.10 — Connect the **hauler's hose**.
 - [ ] TU.11 — Brown (X3): open **BV-02**.
-- [ ] TU.12 — Waste (X4): open the **IBC-4 butterfly valve** and **BV-07**.
+- [ ] TU.12 — Waste (X4): open **BV-07**.
 - [ ] TU.13 — Switch ON that pump's local switch (**S-05** or **S-03**) — one tote at a time.
 - [ ] TU.14 — When the tote is empty, switch it OFF.
-- [ ] TU.15 — Close **BV-02** / **BV-07** (and the **IBC-4 butterfly valve**).
+- [ ] TU.15 — Close **BV-02** / **BV-07**.
 - [ ] TU.16 — Disconnect and re-cap the port.
 - [ ] TU.17 — File the hauler's paperwork (the manifest, for hazardous loads).
 - [ ] TU.18 — Resume from [Phase 2](#5-phase-2-loading-the-image-plane).

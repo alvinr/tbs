@@ -13,9 +13,9 @@ the other options are for self-haul or frequent repositioning.
 | Specification | TBS-001 (20 ft standard) |
 |---------------|--------------------------|
 | Container tare (empty) | <!-- BEGIN weight:wt-tx-container-kg -->2,350<!-- END weight:wt-tx-container-kg --> kg (<!-- BEGIN weight:wt-tx-container-lb -->5,180<!-- END weight:wt-tx-container-lb --> lb) |
-| Camera fit-out (structure + equipment) | <!-- BEGIN weight:wt-tx-fitout-kg -->1,190<!-- END weight:wt-tx-fitout-kg --> kg (<!-- BEGIN weight:wt-tx-fitout-lb -->2,620<!-- END weight:wt-tx-fitout-lb --> lb) |
-| **Dry (drained) transport weight** | **<!-- BEGIN weight:wt-dry-total -->3,540<!-- END weight:wt-dry-total --> kg (<!-- BEGIN weight:wt-tx-dry-lb -->7,800<!-- END weight:wt-tx-dry-lb --> lb)** |
-| **Loaded transport weight** (Blue water in the top-tier totes) | **<!-- BEGIN weight:wt-loadedtx-total -->5,340<!-- END weight:wt-loadedtx-total --> kg (<!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lb)** |
+| Camera fit-out (structure + equipment) | <!-- BEGIN weight:wt-tx-fitout-kg -->1,191<!-- END weight:wt-tx-fitout-kg --> kg (<!-- BEGIN weight:wt-tx-fitout-lb -->2,630<!-- END weight:wt-tx-fitout-lb --> lb) |
+| **Dry (drained) transport weight** | **<!-- BEGIN weight:wt-dry-total -->3,541<!-- END weight:wt-dry-total --> kg (<!-- BEGIN weight:wt-tx-dry-lb -->7,810<!-- END weight:wt-tx-dry-lb --> lb)** |
+| **Loaded transport weight** (Blue water in the top-tier totes) | **<!-- BEGIN weight:wt-loadedtx-total -->5,341<!-- END weight:wt-loadedtx-total --> kg (<!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lb)** |
 | External length × width × height | 20 ft 0 in × 8 ft 0 in × 8 ft 6 in |
 | Width with fittings | 8 ft 6 in |
 
@@ -24,7 +24,7 @@ gives the center of gravity for each transport case. A standard lane is 12 ft wi
 permit is needed on a flatbed, and 8 ft 6 in is well under the 13 ft 6 in US height limit.
 
 **For this project:** the camera is never moved empty. The haul weight is the dry
-<!-- BEGIN weight:wt-tx-dry-lb -->7,800<!-- END weight:wt-tx-dry-lb --> lb, or <!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lb with the Blue water aboard, and every
+<!-- BEGIN weight:wt-tx-dry-lb -->7,810<!-- END weight:wt-tx-dry-lb --> lb, or <!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lb with the Blue water aboard, and every
 trailer, truck and license calculation below uses those figures.
 
 ---
@@ -98,7 +98,7 @@ Owning and operating a tilt-bed truck requires **CDL Class B or Class A** depend
 
 ### Haul weight and bed tilt
 The outbound leg runs with the Blue totes full, so the truck carries the loaded camera,
-**<!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lbs (<!-- BEGIN weight:wt-loadedtx-total -->5,340<!-- END weight:wt-loadedtx-total --> kg)**, not an empty container. Quote that weight when booking and confirm the
+**<!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lbs (<!-- BEGIN weight:wt-loadedtx-total -->5,341<!-- END weight:wt-loadedtx-total --> kg)**, not an empty container. Quote that weight when booking and confirm the
 tilt-bed is rated for it.
 
 Tilting the bed puts a steady g·sin(θ) along the container's length on the full totes. The IBC
@@ -187,7 +187,7 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 ## 6. Option D — Heavy-Duty Pickup Truck + Gooseneck Trailer (Dry Camera Only)
 
 ### Feasibility
-This option suits only the **dry, drained camera (<!-- BEGIN weight:wt-tx-dry-lb -->7,800<!-- END weight:wt-tx-dry-lb --> lbs)**, which is already well past an
+This option suits only the **dry, drained camera (<!-- BEGIN weight:wt-tx-dry-lb -->7,810<!-- END weight:wt-tx-dry-lb --> lbs)**, which is already well past an
 empty container (~<!-- BEGIN weight:wt-tx-container-lb -->5,180<!-- END weight:wt-tx-container-lb --> lbs). On a ~5,000–6,000 lb gooseneck the trailer load is about
 13,000 lbs, and the gooseneck pin weight lands on the truck bed, so check both the truck's gooseneck
 towing capacity and its bed payload against the loaded trailer. With the Blue water aboard (<!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lbs) the
@@ -202,7 +202,7 @@ trailer load rises to ~17,000 lbs, beyond a pickup-based rig.
 | Hitch receiver | 2½" or gooseneck ball | Gooseneck ball (2⁵⁄₁₆") |
 | Example vehicle | Ford F-450 Super Duty | Ford F-550, Ram 5500 |
 
-*A standard F-150 or F-250 cannot tow the camera: even the empty container (~<!-- BEGIN weight:wt-tx-container-lb -->5,180<!-- END weight:wt-tx-container-lb --> lbs) on a ~5,000–6,000 lb gooseneck exceeds their capacity, before the <!-- BEGIN weight:wt-tx-fitout-lb -->2,620<!-- END weight:wt-tx-fitout-lb --> lb fit-out is added.*
+*A standard F-150 or F-250 cannot tow the camera: even the empty container (~<!-- BEGIN weight:wt-tx-container-lb -->5,180<!-- END weight:wt-tx-container-lb --> lbs) on a ~5,000–6,000 lb gooseneck exceeds their capacity, before the <!-- BEGIN weight:wt-tx-fitout-lb -->2,630<!-- END weight:wt-tx-fitout-lb --> lb fit-out is added.*
 
 ### Trailer options for 20 ft containers
 
@@ -232,7 +232,7 @@ trailer load rises to ~17,000 lbs, beyond a pickup-based rig.
 
 ## 7. Option E — Specialty Container Trailers (Self-Loading)
 
-These products eliminate the crane/forklift requirement by using hydraulics or a dolly-under system. Designed specifically for pickup trucks or semi tractors. Each must be rated for the camera's haul weight (<!-- BEGIN weight:wt-tx-dry-lb -->7,800<!-- END weight:wt-tx-dry-lb --> lbs dry, <!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lbs loaded), not an empty container.
+These products eliminate the crane/forklift requirement by using hydraulics or a dolly-under system. Designed specifically for pickup trucks or semi tractors. Each must be rated for the camera's haul weight (<!-- BEGIN weight:wt-tx-dry-lb -->7,810<!-- END weight:wt-tx-dry-lb --> lbs dry, <!-- BEGIN weight:wt-tx-loaded-lb -->11,770<!-- END weight:wt-tx-loaded-lb --> lbs loaded), not an empty container.
 
 ### QuickLoadz 20 ft
 - **Price:** ~$30,000–$40,000 new

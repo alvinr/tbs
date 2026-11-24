@@ -43,36 +43,40 @@ Valve and pump tags are on the panel labels; the layout is in the [Plumbing Repo
 - [ ] 0.1.7 — Close **BV-06** (spray off).
 - [ ] 0.1.8 — Check the X3 and X4 dust caps are on.
 - [ ] 0.1.9 — Confirm Brown IBC-3 and Waste IBC-4 are empty.
+- [ ] 0.1.10 — Open the Blue tote vents **BV-08** (IBC-1) and **BV-09** (IBC-2).
+- [ ] 0.1.11 — Check all four vent screens are clear.
 
 **Fill — before the container is lifted**
 
-- [ ] 0.1.10 — Remove the X1 dust cap.
-- [ ] 0.1.11 — Connect the supply hose to X1.
-- [ ] 0.1.12 — Fill the Blue totes: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of IBC-1 and IBC-2 (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all).
-- [ ] 0.1.13 — Disconnect the hose.
-- [ ] 0.1.14 — Re-cap X1.
+- [ ] 0.1.12 — Remove the X1 dust cap.
+- [ ] 0.1.13 — Connect the supply hose to X1.
+- [ ] 0.1.14 — Fill the Blue totes: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of IBC-1 and IBC-2 (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all).
+- [ ] 0.1.15 — Disconnect the hose.
+- [ ] 0.1.16 — Re-cap X1.
 
 **Operating positions**
 
-- [ ] 0.1.15 — Open the DN50 butterfly valves on IBC-1 and IBC-2 (Blue).
-- [ ] 0.1.16 — Open the DN50 butterfly valve on IBC-3 (Brown). IBC-4 stays closed.
-- [ ] 0.1.17 — Open **BV-01** (P-01 suction).
-- [ ] 0.1.18 — Open **BV-03** (P-02 suction).
-- [ ] 0.1.19 — Set **BV-05** to Blue.
-- [ ] 0.1.20 — Set 3W-DV-02 to Brown (IBC-3).
+- [ ] 0.1.17 — Open the DN50 butterfly valves on IBC-1 and IBC-2 (Blue).
+- [ ] 0.1.18 — Open the DN50 butterfly valve on IBC-3 (Brown). IBC-4 stays closed.
+- [ ] 0.1.19 — Open **BV-01** (P-01 suction).
+- [ ] 0.1.20 — Open **BV-03** (P-02 suction).
+- [ ] 0.1.21 — Set **BV-05** to Blue.
+- [ ] 0.1.22 — Set 3W-DV-02 to Brown (IBC-3).
+- [ ] 0.1.23 — Open the Brown and Waste tote vents **BV-10** (IBC-3) and **BV-11** (IBC-4).
 
 **Test**
 
-- [ ] 0.1.21 — Open **BV-06** (spray on).
-- [ ] 0.1.22 — Switch ON P-01 (circuit C1).
-- [ ] 0.1.23 — Run the spray bar for 60 seconds.
-- [ ] 0.1.24 — Check the spray pattern is even across the full image-plane width.
-- [ ] 0.1.25 — Check all pipe joints for drips.
-- [ ] 0.1.26 — Tighten any weeping fittings.
-- [ ] 0.1.27 — Switch P-01 OFF.
-- [ ] 0.1.28 — Close **BV-06**.
-- [ ] 0.1.29 — Check the P-04 suction pickup is seated in the sump well.
-- [ ] 0.1.30 — Check the P-04 suction hose is connected over the tray rim.
+- [ ] 0.1.24 — Open **BV-06** (spray on).
+- [ ] 0.1.25 — Switch ON P-01 (circuit C1).
+- [ ] 0.1.26 — Run the spray bar for 60 seconds.
+- [ ] 0.1.27 — Check the spray pattern is even across the full image-plane width.
+- [ ] 0.1.28 — Check all pipe joints for drips.
+- [ ] 0.1.29 — Tighten any weeping fittings.
+- [ ] 0.1.30 — Switch P-01 OFF.
+- [ ] 0.1.31 — Close **BV-06**.
+- [ ] 0.1.32 — Check the P-04 suction pickup is seated in the sump well.
+- [ ] 0.1.33 — Check the P-04 suction hose is connected over the tray rim.
+- [ ] 0.1.34 — Close all four tote vents (**BV-08** to **BV-11**) before the container is lifted.
 
 ### 0.2 Chemistry — Part A (Ferric Ammonium Oxalate)
 **Lighting: white light.**
@@ -205,30 +209,31 @@ The container arrives in transport mode: panel swung in and held by the two wall
 ![Cargo-door end — Transport vs Operational (56° panel swing)](assets/assembly-overview-plan.png)
 
 - [ ] 1.3.1 — Open and secure the cargo doors.
-- [ ] 1.3.2 — Slack both wall-stay turnbuckles.
-- [ ] 1.3.3 — Pull the cotter and clevis pin at each wall-anchor eye.
-- [ ] 1.3.4 — Swing each stay clear (or unpin both ends and stow it).
-- [ ] 1.3.5 — Release the 2 ratchet straps on the evaporative cooler (near-walkway stowage).
-- [ ] 1.3.6 — Carry the cooler out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb, one person).
-- [ ] 1.3.7 — Set the cooler on the ground beside the pinhole wall, near the Ø200mm duct stub.
-- [ ] 1.3.8 — Remove the weatherproof cap from the wall stub.
-- [ ] 1.3.9 — Connect the flex duct from the cooler outlet to the wall stub collar.
-- [ ] 1.3.10 — Tighten the hose clamp.
-- [ ] 1.3.11 — Fill the cooler reservoir (~18 L) from TAP-01 (open BV-04, then close it).
-- [ ] 1.3.12 — Swing the panel back ~56° to the door plane, assisted.
-- [ ] 1.3.13 — Control its momentum at the stop.
-- [ ] 1.3.14 — Lift and turn both 1619A74 cam latches to latch the panel to the door frame.
-- [ ] 1.3.15 — Set each apron strip (near + far) onto its 45° base chamfer.
-- [ ] 1.3.16 — Butt each strip up to the leaf lip.
-- [ ] 1.3.17 — Close the two bottom 1590A13 draw latches on each strip (from inside).
-- [ ] 1.3.18 — Close the two span draw latches on each strip (from the door side).
-- [ ] 1.3.19 — Check the EPDM seals at the chamfer, lip and strip ends are seated.
-- [ ] 1.3.20 — Drop each left film rail (TL + BL) into its saddles.
-- [ ] 1.3.21 — Clamp each rail down.
-- [ ] 1.3.22 — Check the film plane is square and planar to datum.
-- [ ] 1.3.23 — Refit the left walkway and the door-end near-deck lift-out.
-- [ ] 1.3.24 — Un-pin the revolving drum.
-- [ ] 1.3.25 — Do the dark-adaptation check (§1.4.5).
+- [ ] 1.3.2 — Open all four tote vents (**BV-08** to **BV-11**).
+- [ ] 1.3.3 — Slack both wall-stay turnbuckles.
+- [ ] 1.3.4 — Pull the cotter and clevis pin at each wall-anchor eye.
+- [ ] 1.3.5 — Swing each stay clear (or unpin both ends and stow it).
+- [ ] 1.3.6 — Release the 2 ratchet straps on the evaporative cooler (near-walkway stowage).
+- [ ] 1.3.7 — Carry the cooler out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb, one person).
+- [ ] 1.3.8 — Set the cooler on the ground beside the pinhole wall, near the Ø200mm duct stub.
+- [ ] 1.3.9 — Remove the weatherproof cap from the wall stub.
+- [ ] 1.3.10 — Connect the flex duct from the cooler outlet to the wall stub collar.
+- [ ] 1.3.11 — Tighten the hose clamp.
+- [ ] 1.3.12 — Fill the cooler reservoir (~18 L) from TAP-01 (open BV-04, then close it).
+- [ ] 1.3.13 — Swing the panel back ~56° to the door plane, assisted.
+- [ ] 1.3.14 — Control its momentum at the stop.
+- [ ] 1.3.15 — Lift and turn both 1619A74 cam latches to latch the panel to the door frame.
+- [ ] 1.3.16 — Set each apron strip (near + far) onto its 45° base chamfer.
+- [ ] 1.3.17 — Butt each strip up to the leaf lip.
+- [ ] 1.3.18 — Close the two bottom 1590A13 draw latches on each strip (from inside).
+- [ ] 1.3.19 — Close the two span draw latches on each strip (from the door side).
+- [ ] 1.3.20 — Check the EPDM seals at the chamfer, lip and strip ends are seated.
+- [ ] 1.3.21 — Drop each left film rail (TL + BL) into its saddles.
+- [ ] 1.3.22 — Clamp each rail down.
+- [ ] 1.3.23 — Check the film plane is square and planar to datum.
+- [ ] 1.3.24 — Refit the left walkway and the door-end near-deck lift-out.
+- [ ] 1.3.25 — Un-pin the revolving drum.
+- [ ] 1.3.26 — Do the dark-adaptation check (§1.4.5).
 
 ### 1.4 Light Trap — Revolving Drum Panel
 - [ ] 1.4.1 — Check the drum panel is closed.
@@ -293,7 +298,7 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.8.8 — Seal any leaks with black silicone or gaffer tape.
 - [ ] 1.8.9 — Repeat the inspection.
 
-**GO/NO-GO checkpoint:** All leaks sealed. Interior below 35°C. Battery above 12.4V. Blue supply flows evenly at the spray bar (§0.1.24).
+**GO/NO-GO checkpoint:** All leaks sealed. Interior below 35°C. Battery above 12.4V. Blue supply flows evenly at the spray bar (§0.1.27).
 
 ### 1.9 Film Plane — Tilt, Swing and Focus
 Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-report.md).
@@ -615,9 +620,10 @@ Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a t
 - [ ] 5.5.35 — Switch off all circuits except the safelight standby.
 - [ ] 5.5.36 — Tighten all IBC tote ratchet straps ([IBC Stacking Report §4.2](ibc-stacking-report.md)).
 - [ ] 5.5.37 — Re-check their tension after the first 50 km.
-- [ ] 5.5.38 — Check dust caps are on X1, X3 and X4.
-- [ ] 5.5.39 — Check BV-02 and BV-07 are closed.
-- [ ] 5.5.40 — Check S-05 and S-03 are OFF.
+- [ ] 5.5.38 — Close all four tote vents (**BV-08** to **BV-11**).
+- [ ] 5.5.39 — Check dust caps are on X1, X3 and X4.
+- [ ] 5.5.40 — Check BV-02 and BV-07 are closed.
+- [ ] 5.5.41 — Check S-05 and S-03 are OFF.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 Follow [§1.3](#13-mode-conversion-transport-to-operational), then re-deploy the chemistry prep shelf (§1.7.3) and do the dark-adaptation check (§1.4.5).
@@ -633,6 +639,7 @@ Recurring upkeep between deployments. The design reason for each item is in the 
 | Flush Brown IBC-3 | Every 5 prints | Rinse with clean water and inspect for sediment. The rinse goes out with the Brown pump-out (X3), on the route for the chemistry in use. |
 | Drain and rinse the Blue IBCs | Annually, or before long storage | Prevents biofilm. |
 | Inspect the IBC-4 valve and cap | Before every transport | Check for leaks. |
+| Tote vents (BV-08 to BV-11) | Monthly | Check each insect screen is clear. Check each vent valve turns freely. |
 
 Wear nitrile gloves and eye protection when handling the wash tray, liner or filter cartridges: the
 fine Prussian blue particles irritate skin and eyes.

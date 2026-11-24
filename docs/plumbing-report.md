@@ -184,10 +184,22 @@ pump, providing steady flow to the spray bar.
 | BV-05 | 1/2" | supply | Spray Blue/Brown **SELECTOR** — 1/2″ 3-way divert (same valve as DV-01/02) |
 | BV-06 | 1/2" | spray bar | Spray-bar **ON/OFF** — 1/2″ 2-way ball valve |
 | BV-07 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
+| BV-08 | 3/4" | IBC-1 | Tote vent (Blue) — open for fill and operation, closed for transport |
+| BV-09 | 3/4" | IBC-2 | Tote vent (Blue) |
+| BV-10 | 3/4" | IBC-3 | Tote vent (Brown) |
+| BV-11 | 3/4" | IBC-4 | Tote vent (Waste) |
 
 BV-01/BV-02/BV-03/BV-07 are the Corridor panel pump-suction isolation valves; **BV-04**
 isolates the TAP-01 chemistry tap. These five, and BV-06, are 1/2" Banjo V050FP quarter-turn
 **2-way** ball valves (Grainger 803HZ1).
+
+**Tote vents (BV-08 to BV-11).** Each tote has a secondary side-entry high on its corridor face: a
+3/4" bulkhead, a ball valve, and a down-turned elbow with an insect screen, open into the corridor. It
+lets air out while a tote fills (X1, or P-04 / the filter return into IBC-3, the waste legs into IBC-4)
+and lets air in while a pump draws it down, so the tote is never pressurized or pulled into a vacuum.
+The down-turned outlet sends any overfill to the corridor floor. The valves close for transport,
+when Blue travels full. A float-type air/vacuum relief valve can replace the elbow later without
+changing the fitting.
 
 **Spray selection uses two 1/2″ valves, BV-05 and BV-06,** rather than one 3-way L-port. Both the
 Blue (fresh) and Brown (recycle) lines converge here, and the operator needs three states: Blue →

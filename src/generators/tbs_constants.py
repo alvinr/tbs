@@ -1549,6 +1549,14 @@ SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 # X1 fill tees internally to BOTH Blue totes (parallel fill, no X2 port, no cross-connect)
 EXT_PANEL_YD = C_WID // 2   # = 1181mm — panel centered on container width
 EXT_FILL_1_H = 2250    # X1: Blue fill port height (mm) — feeds the Blue side-entry T near the top of both top-tier totes (~Z2150), gravity feed; gravity-linked across the corridor
+# Tote VENTS (2026-11-24) — one secondary side-entry per IBC, high on its corridor face: 3/4in bulkhead →
+# ball valve (BV-08 IBC-1, BV-09 IBC-2, BV-10 IBC-3, BV-11 IBC-4) → down-turned elbow with an insect
+# screen, open into the corridor. Air out while filling, air in while pumping out; closed for transport.
+IBC_VENT_X     = 5700   # vent X on the tote corridor faces (clear of the X1 fill X5500 and the frame uprights)
+IBC_VENT_Z_TOP = 2250   # top-tier (Blue) vent Z — level with the X1 fill entry, above the 900 L fill line
+IBC_VENT_Z_BOT = 1100   # bottom-tier (Brown / Waste) vent Z — just under the bottle top (Z1148)
+IBC_VENT_OUT   = 110    # stub length out from the tote face to the elbow (mm)
+IBC_VENT_DROP  = 70     # down-turned outlet length below the stub (mm)
 EXT_DRAIN_3_H = 1502   # X3: Brown drain port height (mm) — P-05 discharge level; the run goes straight out along the spine near face to the wall
 EXT_DRAIN_4_H = 1620   # X4: Waste drain port height (mm) — P-03 discharge drops to it at the end wall, on the spine far face
 # Legacy aliases for downstream code

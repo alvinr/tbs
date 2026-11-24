@@ -14,7 +14,7 @@ All prices USD.
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,996 | $8,362 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $7,082 | $8,448 |
 | 6. Electrical — power, circuits, wiring | $3,562 | $3,667 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,556 | $2,036 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $349 | $349 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,494** | **~$36,923** |
+| **TOTAL (base build + 50-print run)** | **~$28,580** | **~$37,009** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -377,8 +377,12 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
+| Tote vent ball valve, 3/4in PVC (BV-08 to BV-11) | 4 ea | US Plastic Corp | water | $32 |
+| Tote vent bulkhead, 3/4in, polypropylene | 4 ea | US Plastic Corp | water | $32 |
+| Tote vent insect screen, 3/4in stainless mesh | 4 ea | Amazon | water | $12 |
+| Tote vent outlet, 3/4in 90° elbow + nipple, PVC | 4 ea | Local fab | water | $10 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Local fab | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,342–$1,389** |
+| **plumbing-fittings subtotal** | | | | **$1,428–$1,475** |
 
 ### seals-gaskets
 
@@ -534,12 +538,12 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Local fab | 91 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,351–$7,711 |
+| Local fab | 92 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,361–$7,721 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
 | McMaster-Carr | 100 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,948–$2,956 |
-| US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
-| Amazon | 49 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,527–$2,606 |
+| US Plastic Corp | 21 | plastics-sheet, plumbing-fittings | $2,777–$2,824 |
+| Amazon | 50 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,539–$2,618 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |

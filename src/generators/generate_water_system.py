@@ -23,7 +23,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 from matplotlib.gridspec import GridSpec
-from tbs_constants import C_LEN, C_WID, WALL_T, CORRIDOR_YD_NEAR, CORRIDOR_W, EQPANEL_T, BB_OD, PWP_PANEL_X0, PWP_PANEL_X1, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_YD, TAP_X, SPRAY_BEAM_X_L, SPRAY_BEAM_X_R, SPRAY_BEAM_SPAN, PROC_TRAY_YD_FAR, C_HGT, IBC_COL_X, IBC_W, IBC_D, ZONE_L_END, ZONE_R_START, BLUE_IBC_Y, IBC_FAR_Y, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_RIM, PROC_TRAY_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, DIAGRAMS_DIR
+from tbs_constants import C_PIPE_FITTING, C_LEN, C_WID, WALL_T, CORRIDOR_YD_NEAR, CORRIDOR_W, EQPANEL_T, BB_OD, PWP_PANEL_X0, PWP_PANEL_X1, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_YD, TAP_X, SPRAY_BEAM_X_L, SPRAY_BEAM_X_R, SPRAY_BEAM_SPAN, PROC_TRAY_YD_FAR, C_HGT, IBC_COL_X, IBC_W, IBC_D, ZONE_L_END, ZONE_R_START, BLUE_IBC_Y, IBC_FAR_Y, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_RIM, PROC_TRAY_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, DIAGRAMS_DIR
 import os
 from tbs_title_block import title_block
 import sys as _sys
@@ -95,6 +95,20 @@ def pump(ax, x, y, color=C_BLUE, zorder=5, r=2.8125):
                        (x + r*0.65, y)],
                       fc=color, ec=color, zorder=zorder + 1)
     ax.add_patch(tri)
+
+def tote_vent(ax, cx, cy, w, h, tag, color, label_left=False):
+    """Tote vent on the P&ID: stub up off the tote top (right), ball valve, down-turned screened outlet."""
+    x, yt = cx + w / 2 - 5, cy + h / 2
+    pipe(ax, x, yt, x, yt + 9, C_PIPE_FITTING, lw=1.2)
+    pipe(ax, x, yt + 9, x + 5, yt + 9, C_PIPE_FITTING, lw=1.2)
+    pipe(ax, x + 5, yt + 9, x + 5, yt + 5.5, C_PIPE_FITTING, lw=1.2)
+    ax.plot([x + 3.8, x + 6.2], [yt + 5.2, yt + 5.2], color="#3A3A3A", lw=1.6, zorder=6)   # insect screen
+    valve(ax, x, yt + 4.5, color=color, size=1.0)
+    if label_left:
+        ax.text(x - 1.5, yt + 9, f"{tag} vent", ha="right", va="center", fontsize=4.6, color=color, zorder=7)
+    else:
+        ax.text(x + 6.5, yt + 9, f"{tag} vent", ha="left", va="center", fontsize=4.6, color=color, zorder=7)
+
 
 def valve(ax, x, y, color=C_BLUE, zorder=5, size=1.5, label="V"):
     """Draw a ball valve symbol (bowtie inside white circle)."""
@@ -277,6 +291,8 @@ def draw_sheet1():
     # ═══ BLUE SYSTEM — clean, fully ISOLATED from recycle/waste ═════════════════════
     tank(ax1, 37.5, 187.5, 35, 35, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2, label="IBC-1", sublabel="264 gal (1000L)\nCLEAN A (~900L)")
     tank(ax1, 82.5, 187.5, 35, 35, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2, label="IBC-2", sublabel="264 gal (1000L)\nCLEAN B (~900L)")
+    tote_vent(ax1, 37.5, 187.5, 35, 35, "BV-08", C_BLUE)
+    tote_vent(ax1, 82.5, 187.5, 35, 35, "BV-09", C_BLUE)
 
     ext_port(ax1, 37.5, 241.25, color=C_BLUE, label="X1")
     ax1.text(37.5, 249.5, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5, color=C_BLUE, style="italic")
@@ -321,6 +337,7 @@ def draw_sheet1():
 
     # ═══ BROWN SYSTEM — buffer + recycled-spray pump ═══════════════════════════════
     tank(ax1, 160, 205, 35, 35, fc="#D7CCC8", ec=C_BROWN_IBC, lw=2, label="IBC-3", sublabel="264 gal (1000L)\nUSED BUFFER")
+    tote_vent(ax1, 160, 205, 35, 35, "BV-10", C_BROWN)
 
     # IBC-3 inflow = DV-01 recycle ONLY
     pipe(ax1, IBC3_RISER, L_DVREC, IBC3_RISER, 213.75, C_BROWN, style="--"); arrow_pipe(ax1, IBC3_RISER, 197.5, IBC3_RISER, 205, color=C_BROWN)
@@ -397,6 +414,7 @@ def draw_sheet1():
 
     # ═══ BLACK SYSTEM — waste ══════════════════════════════════════════════════════
     tank(ax1, W_X, W_Y, W_W, W_H, fc="#D5D5D0", ec=C_WASTE_IBC, lw=2, label="IBC-4", sublabel="264 gal (1000L)\nWASTE")
+    tote_vent(ax1, W_X, W_Y, W_W, W_H, "BV-11", C_BLACK, label_left=True)
     pipe(ax1, WRX, WASTE_LO, WRX, 187.5, C_BLACK)             # waste riser up the LEFT of IBC-4 (outside; fresh/recycled hump over it)
     arrow_pipe(ax1, WRX, 167.5, WRX, 175, color=C_BLACK)
     pipe(ax1, WRX, 187.5, W_X - W_W / 2 + 3, 187.5, C_BLACK) # elbow RIGHT into the IBC-4 left wall near the top

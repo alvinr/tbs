@@ -48,6 +48,10 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 - [ ] Then check the tote vents (BV-08 to BV-11), the X1 side entries and the planned tote-valve tee against the measurements.
 - [ ] Improved IBC tote graphic (fill cap + outlet): see "Use the totes' own openings" below.
 
+## ☀️ Solar panels — transport stowage + tie-downs (2026-11-24)
+
+- [ ] Choose where the three solar panels ride inside the container in transport and add tie-downs for them (anchor points + straps), in the 3D model, the right report and the BOM. The manual carries them out in §1.3.13 and back in at §5.5.34 ("stow them") — add the location and the tie-down step once decided.
+
 ## 🛒 Parts to source (SKU + price)
 
 - [~] Consolidate suppliers (2026-11-23). Duplicate names merged 2026-11-23 (~70 → 56: Metals Depot,

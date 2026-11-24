@@ -1552,10 +1552,10 @@ EXT_FILL_1_H = 2250    # X1: Blue fill port height (mm) — feeds the Blue side-
 # Tote VENTS (2026-11-24) — one secondary side-entry per IBC, high on its WALKWAY (−X) face so it can be
 # reached from the right walkway: 3/4in bulkhead → ball valve (BV-08 IBC-1, BV-09 IBC-2, BV-10 IBC-3,
 # BV-11 IBC-4) → down-turned elbow with an insect screen. Air out while filling, air in while pumping
-# out; closed for transport. Clear of the front retaining bars (Z950/1500/1950) and the film-plane corner
-# saddles (Yd < 118, > 2244).
-IBC_VENT_YD_NEAR = 300  # near-column (IBC-1 / IBC-3) vent Yd on the walkway face
-IBC_VENT_YD_FAR  = 2060 # far-column (IBC-2 / IBC-4) vent Yd on the walkway face
+# out; closed for transport. Next to the corridor, clear of the front retaining bars + their corridor-end
+# cleats (Z942–1001 / 1492–1551 / 1942–2001) and the corridor frame uprights (Yd1046–1097, 1265–1316).
+IBC_VENT_YD_NEAR = 930  # near-column (IBC-1 / IBC-3) vent Yd — beside the IBC corridor (tote edge Yd1046)
+IBC_VENT_YD_FAR  = 1432 # far-column (IBC-2 / IBC-4) vent Yd — beside the IBC corridor (tote edge Yd1316)
 IBC_VENT_Z_TOP = 2250   # top-tier (Blue) vent Z — above the top retaining bar and the 900 L fill line
 IBC_VENT_Z_BOT = 1100   # bottom-tier (Brown / Waste) vent Z — above the lower bar, under the bottle top (Z1148)
 IBC_VENT_OUT   = 110    # stub length out from the tote face toward the walkway (mm)

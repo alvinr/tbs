@@ -243,7 +243,7 @@ C — water pumps P-01–P-05 (P-04 on the pinhole-wall filter skid, others in t
 
 *Components: 1" PVC header + isolation valves, 4× 12V pumps on plumbing panel (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
-two 0.75 L pressure accumulators — ACC-01 (corridor, damps the main filter loop) and ACC-02 (on the filter skid, damps the recycle-spray pump P-02), DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
+two 0.75 L pressure accumulators — ACC-01 (corridor, damps the main filter loop) and ACC-02 (on the filter skid, damps the recycle-spray pump P-02), 1" bulkhead fittings through the tote walls for every tote connection (the totes' own outlet valves are not used),
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 & IBC-2), Circuit C.
 Mounted on 18mm exterior ply plumbing panel (near IBC column face), in the IBC plumbing corridor.*
 
@@ -285,7 +285,7 @@ for the few generators not yet repointed (overview Blue-trunk shelf, walkway/wei
 | IBC dimensions | same as Blue | `IBC_W`, `IBC_D`, `IBC_H_600` |
 
 *Components: 1× 1,000L caged composite IBC (Y-stacked behind Blue stack, right end zone),
-DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
+1" bulkhead through the tote wall at the bottom pickup (the tote's own outlet valve is not used),
 3-stage Big Blue filter bank (5μm sediment → KDF-55 → carbon, wall-mounted on the filter skid), Shurflo P-04 (tray drain),
 3-way diverter valves 3W-DV-01 and 3W-DV-02, SV-01 pH sample tap.
 Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom).*
@@ -303,7 +303,7 @@ Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-c
 | Waste IBC color code | Black | `C_WASTE_IBC` |
 
 *Components: 1× 1,000L caged composite IBC tote (4th IBC in 2×2 stack, right end zone),
-DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
+1" bulkhead through the tote wall at the bottom pickup (the tote's own outlet valve is not used),
 2" NPT bulkhead fittings for external drain/fill (X4), reinforcing plates for external ports,
 P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). Filled via side-entry near the top from the filter reject line (no top-cap access).*
 

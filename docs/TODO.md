@@ -106,6 +106,9 @@ Deferred until after the editorial review: it reworks the water system and plumb
 
 **What changes if adopted:** P&ID sheet 1; corridor water model (drop `_side_entry` / `_bottom_pickup` / `BROWN_TAP` / equalization; add a valve adapter + tee per tote); the X1 route; parts (an adapter per tote for the valve thread: S60×6 coarse on Schütz, 2" NPS male on ULINE H-3886; ULINE H-12033 2" NPS → 2" camlock is a candidate; maybe the 8× S60×6 adapters already listed); BV-08..11 if vented caps are used; the plumbing, water-system and IBC reports; operating-manual §0.1 / TU / §5.5 (the DN50 valves become the fill/draw valves); re-send water, overview, IBC stack and construction.
 
+**Done 2026-11-24 (interim):** reports, parts (8× `ibc-tote-bulkhead` replace the S60 adapters + reducers), IBC frame sheet 1 and IBC stacking sheets 4–5 now describe the wall-penetration design; the manual only checks the tote outlet valves are closed.
+**Still stale on IBC stacking sheets 4–5 (found 2026-11-24):** they show Blue outlet valves VB1/VB2/VB3 and V1–V4 and "1\" HDPE SDR-11" pipe; the 3D model has P-01 suction from IBC-1 via BV-01 and 1" PVC. Redraw with this work.
+
 **Graphic first (helps decide):** draw each tote's **top fill opening + cap** (a circle, DN150 / 6", top center) and a **tap-like outlet** (2" valve, bottom center, `IBC_VALVE_Z`) on the face set by the orientation above, in the 3D tote and on the IBC 2D sheets. Placeholder positions until a tote is measured.
 
 ## 🏷️ SketchUp file metadata — set Author on every .skp (2026-11-21)

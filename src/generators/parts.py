@@ -174,7 +174,7 @@ PARTS: list[Part] = [
     Part("ibc-tote-1000l", "IBC tote (1,000 L caged)", "water-equipment",
          "water", 4, "ea", 150, 150, "SoCal reconditioner", "Repackify",
          url="https://www.repackify.com/buy-ibc-totes/california",
-         spec="Reconditioned food-grade (prior-food-contents) 275-gal/1,000L caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150.",
+         spec="Reconditioned food-grade (prior-food-contents) 275-gal/1,000L caged composite tote, with its own outlet valve (not used: kept closed and capped) — all connections are 1in bulkheads through the tote wall. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150.",
          dims="1,219×1,016×1,168", modeled_const="IBC_W/IBC_D/IBC_H_1000", audit_status="✅ FIXED (v2)"),
     Part("bulkhead-2in", 'Bulkhead fitting 2" NPT (polypropylene)', "plumbing-fittings",
          "water", 3, "ea", 21.14, 21.14, "US Plastic Corp", part_no="32200", url="https://www.usplastic.com/catalog/item.aspx?itemid=32200",
@@ -310,7 +310,7 @@ PARTS: list[Part] = [
     Part("pvc-adapter-half", '1/2" PVC slip×MNPT male adapter', "plumbing-fittings",
          "water", 24, "ea", 0.79, 0.79, "Home Depot", part_no="PVC021090600HD", url="https://www.homedepot.com/p/203811636", spec='½" landings (24 — P&ID takeoff 2026-07-28, +ACC-02 2026-08-04): 6× BV ball valves (BV-01–06, run side) + 5× pump discharges (P-01–05, hose→run) + 3W-DV-02 (3 ports) + SV-01/SV-02 taps (2) + accumulator ACC-01 (1, slip×FPT) + accumulator ACC-02 (2 — inline IN+OUT on the recycle-spray line) + 2× ½" unions (4, slip×MNPT each side) + bushing-reducer ½" run side (1). Charlotte PVC021090600HD.'),
     Part("pvc-adapter-1in", '1" PVC slip×MNPT male adapter', "plumbing-fittings",
-         "water", 26, "ea", 1.16, 1.16, "Home Depot", part_no="PVC021091000HD", url="https://www.homedepot.com/p/203811640", spec='1" landings (26 — P&ID takeoff 2026-07-28): 6× V100 valves (V1/V3/V4, VB1–3, run side) + 8× s60-adapter IBC-valve landings (each lands on its own 1" glued-run segment) + 3W-DV-01 (3 ports) + CV-1 (2 ports) + 5× filter housing ports (F-01 OUT, F-02 IN/OUT, F-03 IN/OUT; F-01 IN = bushing-reducer) + 2× Blue equalization bulkheads. Charlotte PVC021091000HD.'),
+         "water", 26, "ea", 1.16, 1.16, "Home Depot", part_no="PVC021091000HD", url="https://www.homedepot.com/p/203811640", spec='1" landings (26 — P&ID takeoff 2026-07-28): 6× V100 valves (V1/V3/V4, VB1–3, run side) + 8× tote-bulkhead landings (each lands on its own 1" glued-run segment) + 3W-DV-01 (3 ports) + CV-1 (2 ports) + 5× filter housing ports (F-01 OUT, F-02 IN/OUT, F-03 IN/OUT; F-01 IN = bushing-reducer) + 2× Blue equalization bulkheads. Charlotte PVC021091000HD.'),
     # Joint convention §5.1 — Option C hybrid (2026-07-27): permanent slip couplings on the run,
     # true unions only where a whole sub-assembly pulls as a unit (per-component service is already
     # covered by the threaded ports on pumps/filters/valves).
@@ -322,21 +322,18 @@ PARTS: list[Part] = [
          "water", 1, "ea", 2.86, 2.86, "Home Depot", part_no="PVC021121800HD", url="https://www.homedepot.com/p/204836713", spec="P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing"),
     # IBC tote → 1" PVC run: FLEXIBLE-JUMPER connection (2026-07-29). A semi-rigid plumbing
     # panel flexing against fixed totes would fatigue a solvent-welded PVC joint, so a short 1" flex
-    # hose de-couples each tote outlet from the rigid run. Chain per tote outlet (×8), + one jumper at each end
-    # of the Blue equalization tie (×2, bulkhead 1" FNPT → barb-m → hose → barb-f → adapter-1in) = 10 jumpers:
-    # S60x6 valve → s60-adapter (→2"MNPT) → s60-reducer (→1"FNPT) → ibc-flex-barb-m → flex hose
-    # (cut from the tray-suction-hose coil) → ibc-flex-barb-f → pvc-adapter-1in (1"MNPT) → glued 1" PVC.
+    # hose de-couples each tote connection from the rigid run. Chain per tote-wall connection (×8), + one jumper
+    # at each end of the Blue equalization tie (×2) = 10 jumpers: 1" tote bulkhead (FNPT) → ibc-flex-barb-m →
+    # flex hose (cut from the tray-suction-hose coil) → ibc-flex-barb-f → pvc-adapter-1in (1"MNPT) → glued 1" PVC.
     # Camlock idea dropped — quick-release not a driver (totes are fixed in place once installed).
-    Part("s60-adapter", 'S60×6 female buttress → 2" MNPT IBC tote adapter', "plumbing-fittings",
-         "water", 8, "ea", 9.99, 9.99, "Amazon", part_no="B095SCHBC6", url="https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6", spec='IBC DN50 tote outlet (male S60×6) → 2" male NPT, polypropylene (Granatan). No US single-piece S60→1" NPT exists (the 1" ones are BSP or garden-hose thread), so reduce 2"→1" via s60-reducer. $9.99 firm (2026-07-29).'),
-    Part("s60-reducer", '2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)', "plumbing-fittings",
-         "water", 8, "ea", 3.21, 3.21, "Home Depot", part_no="PVC021071300HD", url="https://www.homedepot.com/p/203811533", spec='Charlotte 2"×1" PVC Sch-40 reducer bushing, SPIGOT×SLIP (solvent-weld), $3.21 (2026-07-29). INTERFACE FLAG: the s60-adapter output is 2" MALE NPT and a spigot×slip bushing is glue-only, so it needs a 2" MPT×socket transition to mate (or swap to a 2"FNPT×1" reducer). Verify the tote-adapter interface at the bench.'),
+    Part("ibc-tote-bulkhead", '1" bulkhead tank fitting through the tote wall (tote connections)', "plumbing-fittings",
+         "water", 8, "ea", 12.62, 12.62, "US Plastic Corp", part_no="32194", url="https://www.usplastic.com/catalog/item.aspx?itemid=32194", spec='One per tote-wall connection (8): X1 fill side-entries into IBC-1 and IBC-2, P-01 suction (IBC-1), IBC-3 bottom tap (P-02/P-05), DV-02 return (IBC-3), waste-merge entry (IBC-4), X4 pickup (IBC-4), + 1 spare. 1" FNPT both sides; the ibc-flex-barb-m threads in. Same fitting as the Blue equalization tie. The totes\' own outlet valves are not used. $12.62 firm (2026-07-28).'),
     Part("ibc-flex-barb-m", '1" MNPT × 1" hose barb (Banjo HB100)', "plumbing-fittings",
-         "water", 10, "ea", 1.79, 1.79, "US Plastic Corp", part_no="31527", url="https://www.usplastic.com/catalog/item.aspx?itemid=135135", spec='Tote-side barb (×10: 8 tote outlets + 2 Blue equalization bulkheads) — 1" MNPT threads onto the reduced tote-adapter port (or the 1" FNPT of an equalization bulkhead); flex hose slips onto the barb. Banjo HB100 glass-reinforced PP, 300 psi. $1.79 firm (2026-07-29).'),
+         "water", 10, "ea", 1.79, 1.79, "US Plastic Corp", part_no="31527", url="https://www.usplastic.com/catalog/item.aspx?itemid=135135", spec='Tote-side barb (×10: 8 tote-wall bulkheads + 2 Blue equalization bulkheads) — 1" MNPT threads into the 1" FNPT of the bulkhead; flex hose slips onto the barb. Banjo HB100 glass-reinforced PP, 300 psi. $1.79 firm (2026-07-29).'),
     Part("ibc-flex-barb-f", '1" FNPT × 1" hose barb (Banjo)', "plumbing-fittings",
          "water", 10, "ea", 3.00, 3.00, "US Plastic Corp", part_no="31544", url="https://www.usplastic.com/catalog/item.aspx?itemid=135154", spec='Run-side barb (×10, one per flex jumper) — flex hose slips on; its 1" FNPT receives the pvc-adapter-1in (1" MNPT) that glues to the run. Banjo glass-reinforced PP. $3.00 firm (2026-07-29).'),
     Part("ibc-flex-clamp", '#20 stainless hose clamp (10-pack)', "fasteners-hardware",
-         "water", 3, "10-pack", 18.52, 18.52, "Home Depot", part_no="IDL0410PK", url="https://www.homedepot.com/p/330548109", spec='2 clamps per flex jumper × 10 (8 tote outlets + 2 Blue equalization ends) = 20 (3× 10-packs, 10 spare). Apollo 300-series SS #12 (½in–1¼in), external. $18.52/10-pack (2026-07-29). SIZE FLAG: verify the #12 (max 1¼in) closes over the 1¼in-OD tray-suction hose + barb — a #16 may be needed if it bottoms out.'),
+         "water", 3, "10-pack", 18.52, 18.52, "Home Depot", part_no="IDL0410PK", url="https://www.homedepot.com/p/330548109", spec='2 clamps per flex jumper × 10 (8 tote-wall connections + 2 Blue equalization ends) = 20 (3× 10-packs, 10 spare). Apollo 300-series SS #12 (½in–1¼in), external. $18.52/10-pack (2026-07-29). SIZE FLAG: verify the #12 (max 1¼in) closes over the 1¼in-OD tray-suction hose + barb — a #16 may be needed if it bottoms out.'),
     Part("blue-equalization-tie", '1" bulkhead tank-body fittings (Blue equalization cross-tie)', "plumbing-fittings",
          "water", 2, "ea", 12.62, 12.62, "US Plastic Corp", spec='Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" PVC stock). Confirmed firm $12.62 (2026-07-28); SKU 32194 (alternate listing itemid 65992).', part_no="32194", url="https://www.usplastic.com/catalog/item.aspx?itemid=32194"),
     Part("check-valve-1in", '1" NPT spring check valve (CV1 — X1 fill)', "plumbing-fittings",

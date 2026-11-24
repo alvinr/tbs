@@ -656,7 +656,7 @@ def sheet1():
     # (short leader, rule 67), clear above the PALLET BASE callout below it.
     leader(ax, (BLUE_IBC_Y + IBC_D - IBC_CAGE_INSET), (IBC_VALVE_Z),
            (BLUE_IBC_Y + IBC_D - 80), (IBC_VALVE_Z + 75),
-           f"DN50 VALVE (S60×6)\nZ={IBC_VALVE_Z}mm\nCORRIDOR FACE",
+           f"TOTE OUTLET VALVE\n(UNUSED, CLOSED)\nZ={IBC_VALVE_Z}mm",
            color=C_CAGE, fs=5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
@@ -689,7 +689,7 @@ def sheet1():
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage."
         f"   v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
-        f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
+        f"9. Tote outlet valve faces the corridor, CL Z={IBC_VALVE_Z}mm above each tote base; unused (closed). Connections are 1\" bulkheads through the tote wall.",
         f"10. Total frame weight: ~123 kg (incl. 4 feet + rings + 8 front bars + 8 hangers + 8 exterior plates + rear-panel brackets + 4 friction mats).",
     ]
     draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=23,

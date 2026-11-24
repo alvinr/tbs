@@ -45,7 +45,7 @@ Plumbing Panel.
 | Pallet base height | 168mm (includes feet/runners) |
 | Cage upright tube | Ø25mm |
 | Cage top rail | 25mm OD |
-| Drain valve | 2" (DN50) butterfly valve, bottom center of one face. The thread varies by maker: S60×6 coarse on the Schütz, 2" NPS male on ULINE H-3886. Schütz also offers DN80 butterfly, DN150 screw-on butterfly and DN50 ball valves ([datasheet](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/)). Valve height above the base (`IBC_VALVE_Z`) is not published; confirm on a supplied tote |
+| Outlet valve (not used) | Factory 2" (DN50) butterfly valve, bottom center of one face; kept closed and capped. Every connection in this design is a 1" bulkhead through the tote wall ([Plumbing Report](plumbing-report.md)). The thread varies by maker: S60×6 coarse on the Schütz, 2" NPS male on ULINE H-3886. Schütz also offers DN80 butterfly, DN150 screw-on butterfly and DN50 ball valves ([datasheet](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/)). Valve height above the base (`IBC_VALVE_Z`) is not published; confirm on a supplied tote |
 | Top fill cap | DN150 screw cap on the Schütz (DN225 and DN400 lid optional); 6" cap on ULINE H-3886. Not used in service (see Fill) |
 | Stacking rating | 2-high in transport for contents up to density 1.5; 4-high static ([Schütz datasheet](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/)) |
 | Fill | **side entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom stacked) |
@@ -380,8 +380,8 @@ provide vertical tie-down. Together these restrain both tiers in all six DOF.
 
 ## 5. Drain Valve Access
 
-The bottom-tier drain valves (DN50 butterfly, corridor-facing) are reached
-directly from the **open corridor front**: the Corridor Plumbing Panel sits at the corridor mouth
+The bottom-tier tote connections (1" bulkheads through the corridor face) and the totes' own outlet
+valves (unused, closed) are reached directly from the **open corridor front**: the Corridor Plumbing Panel sits at the corridor mouth
 and there is no load-bearing base frame, so no access gates are needed. The operator reaches in
 from the right walkway.
 
@@ -413,8 +413,8 @@ in [§7](#7-internal-plumbing).)
 ## 7. Internal Plumbing
 
 All internal supply and return lines route through the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor
-between the near and far IBC columns, reaching each tote's corridor-facing DN50
-butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
+between the near and far IBC columns, reaching each tote through 1" bulkhead fittings in its
+corridor face, each with a short flex jumper. The totes' own outlet valves are not used. The pipe specification, the per-circuit routing
 (X1 Blue pressurized fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
 and the recycle returns), and the valve schedule are specified in the
 [Water System Report](water-system-report.md) §4 and §7. The corridor pumps on the
@@ -516,7 +516,7 @@ the stacking structure and the totes it restrains.
 
 The frame is a painted, shop-welded box whose field joints are all bolted (§3.8), so its upkeep is
 inspection and re-torque to the §3.5 schedule rather than rework. The wear items are the ratchet
-straps, the DN50 valve seals and the camlock gaskets. The inspection schedule and procedures are in
+straps, the tote-wall bulkhead seals, the closed tote outlet valves and the camlock gaskets. The inspection schedule and procedures are in
 the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---

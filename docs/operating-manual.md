@@ -683,7 +683,7 @@ For deep cleaning or nozzle service, lift out the right walkway grate and extrac
 | Interval | Task |
 |----------|------|
 | Every use | Visually inspect ratchet strap tension before transport |
-| Every 10 prints | Inspect IBC valve seals (DN50 butterfly) for drips; tighten or replace O-ring |
+| Every 10 prints | Inspect the tote-wall bulkheads and the closed tote outlet valves for drips; tighten or replace the gasket |
 | Every 10 prints | Check external camlock fittings for cross-threading; clean dust caps |
 | Every 6 months | Inspect lashing-ring welds for cracking; load-test straps |
 | Every 6 months | Inspect lashing rings + ratchet straps for wear; re-tension straps |

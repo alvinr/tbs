@@ -377,7 +377,7 @@ IBC-1 + IBC-2 (Blue, in parallel)
 ```
 
 P-01 draws from the Blue IBC manifold (the two Blue totes in parallel on the 1"
-PVC manifold, through their DN50 tote valves), pressurizes through ACC-01 (0.75L accumulator),
+PVC manifold, through a 1" bulkhead in the IBC-1 tote wall), pressurizes through ACC-01 (0.75L accumulator),
 and delivers through the selector BV-05 and the on/off BV-06 on the pinhole wall. A 4m flexible hose
 connects BV-06 to the spray bar center feed bulkhead.
 

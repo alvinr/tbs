@@ -1119,9 +1119,9 @@ def sheet4():
         "  tier shown dashed.",
         "2. All internal pipe 1\" HDPE SDR-11",
         "   (2\" NPT at bulkhead unions).",
-        "3. IBC valve faces point toward corridor.",
-        "   DN50 butterfly valve (S60×6 thread) at each IBC.",
-        "4. S60×6 to 1\" NPT adapters at each IBC (8× total).",
+        "3. Tote connections: 1\" bulkheads through the corridor face.",
+        "   The totes' own outlet valves are unused (closed).",
+        "4. 1\" flex jumper at each tote bulkhead (8× + 2 equalization).",
         "5. Ball valves (Banjo V100FP) at each IBC connection.",
         f"6. Pipes routed through {CORRIDOR_W}mm plumbing corridor,",
         "   behind the panel support frame (clear of uprights).",
@@ -1486,8 +1486,7 @@ def sheet5():
     # ── Blue outflow manifold (X-direction, into the page) ───────────────────
     # Two isolation valves (V-B1, V-B2) — one per IBC outlet — join at tee
     # in corridor, then V-B3 after tee → single pipe to P-01 → spray bar.
-    # Blue IBCs use their built-in DN50 butterfly valve (S60×6 thread) on the
-    # corridor-facing face, ~185mm above the platform they sit on.
+    # Blue outlets: 1" bulkheads low in the corridor face (the totes' own outlet valves are unused).
     top_tier_base = platform_z  # floor of top-tier IBCs
     blue_out_z = top_tier_base + drain_conn_z  # drain valve height on top-tier
 
@@ -1562,12 +1561,12 @@ def sheet5():
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, (near_col_r), (drain_conn_z),
            (BLUE_IBC_Y + IBC_D * 0.7), (drain_conn_z - 80),
-           "X3 ← IBC-3 VALVE\n(DN50, S60×6, BROWN\nBOTTOM NEAR)\n1\" HDPE",
+           "X3 ← IBC-3 BOTTOM TAP\n(1\" BULKHEAD, BROWN\nBOTTOM NEAR)",
            color=C_PIPE_BROWN, fs=5.5,
            ha="right", va="top", arrow_style="-|>", font=FONT)
     leader(ax, (far_col_l), (drain_conn_z),
            (IBC_FAR_Y + IBC_D * 0.5), (drain_conn_z - 80),
-           "X4 ← IBC-4 VALVE\n(DN50, S60×6, WASTE\nBOTTOM FAR)\n1\" HDPE",
+           "X4 ← IBC-4 BOTTOM PICKUP\n(1\" BULKHEAD, WASTE\nBOTTOM FAR)",
            color=C_PIPE_BLACK, fs=5.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
 
@@ -1657,7 +1656,7 @@ def sheet5():
             [y_cv - (cv_vs + 3), y_cv + (cv_vs + 3)],
             color=C_OUT, lw=1.8, zorder=16)
     ax.text(leg_x + (-10), y_cv,
-            "CHECK VALVE (CV-1 1\" on the X1 gravity fill; CV-2/CV-3 ½\" on the waste legs into the IBC-4 merge)",
+            "CHECK VALVE (CV-1 1\" on the X1 fill; CV-2/CV-3 ½\" on the waste legs into the IBC-4 merge)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
@@ -1683,17 +1682,17 @@ def sheet5():
         "INTERNAL PLUMBING ELEVATION NOTES:",
         "1. Sealed end wall internal plumbing, from inside looking +X (near/pinhole wall at right, far wall at left). All internal pipe 1\" ",
         "   HDPE SDR-11 (2\" NPT at bulkhead unions).",
-        "2. IBC valve faces point toward plumbing corridor. DN50 butterfly valve (S60×6 thread), ~185mm above floor.",
+        "2. Every tote connection is a 1\" bulkhead through the tote's corridor face. The totes' own outlet valves are unused (closed).",
         "3. X1 fill: a corridor header tees to BOTH Blue totes; each branch SIDE-ENTERS the tote's corridor face near the top (Z=2156), penetrating",
         "   150mm past a flange. NO top-cap access — the 1000L direct-stack leaves ~52mm headroom. Filled in parallel; a low 1\" equalization",
         "   tie (bulkhead + 1\" flex jumper at EACH tote, off this view at X5500) balances the two Blue levels.",
-        "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total), each with a 1\" flex jumper to the rigid run.",
+        "4. Each tote bulkhead (8×) carries a 1\" flex jumper to the rigid run.",
         "5. Fill header + drains run in the clear corridor behind the panel support frame (clear of the uprights), matching the 3D model.",
-        "6. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
+        "6. Blue outflow: IBC-1 outlet → VB1 → tee ← VB2 ← IBC-2 outlet; after tee → VB3 → P-01 → spray bar.",
         "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
         f"8. Drains are PUMPED: P-05 (Brown) → X3 (Z={EXT_DRAIN_3_H}mm), P-03 (Waste) → X4 (Z={EXT_DRAIN_4_H}mm) — both ports sit above the bottom-tier totes' outlets.",
         "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
-        "10. Check valves: CV-1 (1\" NPT spring) on the X1 gravity fill; CV-2/CV-3 (½\") on the two waste legs into the IBC-4 merge tee, so",
+        "10. Check valves: CV-1 (1\" NPT spring) on the X1 fill; CV-2/CV-3 (½\") on the two waste legs into the IBC-4 merge tee, so",
         "    one leg can't back-feed the other. The X3/X4 drains are pump-driven (P-05/P-03); the Shurflo 2088 pumps have integral checks.",
         "11. RECYCLE: P-04 draws from the tray sump → SV-02 → 3W-DV-02 (filter train F1→F3, or heavy-contam waste → IBC-4). The filter train",
         "    exits SV-01 → 3W-DV-01: pH pass → IBC-3 (Brown buffer) via side-entry, pH fail → IBC-4. P-02 draws IBC-3 for the recycled (wash 1) spray.",

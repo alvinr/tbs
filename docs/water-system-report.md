@@ -146,7 +146,7 @@ IBC-1 ──┐
 IBC-2 ──┘
 ```
 
-- The two Blue totes feed a 1" PVC manifold through their DN50 tote valves; BV-01 isolates the P-01 suction. A **1" equalization cross-tie** at the base keeps their levels balanced as P-01 draws and X1 refills. Like every tote connection, the tie lands on each tote through a short 1" flex jumper, so the rigid PVC can't fatigue as the totes settle independently
+- P-01 draws from IBC-1 through a 1" bulkhead low in its tote wall; BV-01 isolates the P-01 suction. A **1" equalization cross-tie** at the base keeps their levels balanced as P-01 draws and X1 refills. Like every tote connection, the tie lands on each tote through a short 1" flex jumper, so the rigid PVC can't fatigue as the totes settle independently
 - **P-01:** Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - **ACC-01:** 0.75L pressure accumulator — smooths pump cycling and holds pressure when the pump is off
 - **Check valves:** **CV-1** on the X1 fill — the one flow path with no on-board pump. The Shurflo 2088s carry an **integral check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so the pumped supply legs do not need an additional check valve. The two waste legs are the exception (§4.3)
@@ -207,7 +207,7 @@ FROM 3W-DV-02 (wash 1 under the dichromate option; heavily contaminated drain wa
 ```
 
 - The DV-01 and DV-02 waste legs join at a tee just before IBC-4. Each leg carries a check valve below the tee — **CV-2** (DV-01) and **CV-3** (DV-02) — so one leg cannot back-feed the other and the IBC-4 riser cannot drain back through DV-01 into the filter train
-- IBC-4 stays in the stacking frame. It has a DN50 butterfly valve (S60×6 thread) and is pumped out by **P-03** through **X4** into the hauler's tanker, without opening the cargo doors. Brown (IBC-3) leaves the same way through **X3** by **P-05**
+- IBC-4 stays in the stacking frame. It is pumped out by **P-03**, from a bottom pickup through its tote wall, through **X4** into the hauler's tanker, without opening the cargo doors. Brown (IBC-3) leaves the same way through **X3** by **P-05**
 - **Disposal route** follows the chemistry choice (§2.3):
 
 | Chemistry | IBC-4 (Waste, via X4) | IBC-3 (Brown, via X3) |

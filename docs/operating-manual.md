@@ -338,7 +338,7 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 | Humidity | Action |
 |----------|--------|
 | Below 30% (typical Palm Springs) | Mist the muslin lightly with plain water 5 min before coating |
-| 30–65% | Coat normally |
+| 30–70% | Coat normally |
 | Above 70% | **NO-GO** — do not mix; wait for the humidity to drop (the coat may not dry, risking fog) |
 
 - [ ] 2.2.1 — Read the hygrometer.

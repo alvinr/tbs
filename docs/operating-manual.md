@@ -492,7 +492,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 - [ ] 4.2.23 — Still above pH 7.5: set **DV-01** to Waste.
 
 ### 4.3 Drying
-**White light or daylight.** The muslin leaves through the door opening, with the hinged panel swung in and held by the top stay.
+**White light or daylight.**
 
 - [ ] 4.3.1 — Park the **drum** in its closed position.
 - [ ] 4.3.2 — Pin its rotation.

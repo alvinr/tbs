@@ -46,7 +46,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - top fill cap: size and position;
   - pallet base height.
 - [ ] Then check the tote vents (BV-08 to BV-11), the X1 side entries and the planned tote-valve tee against the measurements.
-- [ ] Improved IBC tote graphic showing the top fill cap and the bottom outlet valve (scope pending).
+- [ ] Improved IBC tote graphic (fill cap + outlet): see "Use the totes' own openings" below.
 
 ## 🛒 Parts to source (SKU + price)
 
@@ -82,10 +82,31 @@ Spec'd 2026-11-20, priced as estimates in `parts.py`; rows are in `src/generator
 - [ ] `check-valve-half` — CV-2 / CV-3: 1/2" PVC spring check valve on the waste legs into the IBC-4 merge (×2)
 - [ ] `spray-manifold-clips` — cushioned 3/4" pipe clips for the spray manifold mount (10-pack)
 
-## 🛢️ Tote connections through the DN50 valve, not the tote wall (2026-11-21) — DECISION PENDING
-- The reports say every tote connects through its DN50 butterfly valve (S60×6), but `water.skp` (`generate_corridor_water_panel.py` `_side_entry` / `_bottom_pickup`) cuts flanged penetrations through the tote walls: X1 fill → IBC-1/IBC-2 side-entries, DV-02 → IBC-3, merge → IBC-4, Blue #1 → P-01 suction, plus bottom pickups. The 3D model and the docs disagree.
-- Proposal: one S60×6 → 2" NPT adapter + tee on each valve, with fill and draw both through it; no tote-wall cuts. Needs a go-ahead (generator + 2D + docs + 3D re-send).
-- The fill/draw split is a tee just outside each valve. Blue: X1 joins the existing Blue manifold, so no new tee. IBC-3: tee to the DV-01 return + the P-02/P-05 suction. IBC-4: tee to the waste merge + the P-03 suction. Watch: with fill and draw running at once, the return can short-circuit across the tee to the pump without mixing in the tote (matters for IBC-3 pH buffering).
+## 🛢️ Use the totes' own openings — no tote-wall penetrations (2026-11-24) — FEASIBILITY DONE, DECISION PENDING
+Deferred until after the editorial review: it reworks the water system and plumbing (fragile). Supersedes the 2026-11-21 "connect through the DN50 valve" note.
+
+**Today's design (`generate_corridor_water_panel.py`, water.skp):** about 13 flanged cuts through the tote walls, all on the **corridor face** except the vents:
+- IBC-1: X1 fill side-entry (`_side_entry`, high), P-01 suction side-entry, Blue equalization end (low), vent BV-08 (walkway face).
+- IBC-2: X1 fill side-entry, Blue equalization end, vent BV-09.
+- IBC-3: shared bottom tap → P-02 / P-05 (`BROWN_TAP`), DV-02 return side-entry (guarded `if not sump_on_skid`, marked obsolete), vent BV-10.
+- IBC-4: waste-merge side-entry (`MERGE4`), X4 bottom pickup → P-03 (`_bottom_pickup`), vent BV-11.
+- The totes' own outlet valves are NOT modeled in 3D; only `IBC_VALVE_Z` (185mm, unsourced) on the 2D IBC frame drawing, which puts the valve on the corridor face.
+
+**Orientation:** each tote's 1,219mm (48"/1,200) side runs along X; the 1,016mm (40"/1,000) side runs along Yd. So the **corridor face is the long (1,200) side**; the walkway face (X 4,674) and the end-wall face (X 5,893, flush to the wall, no access) are the short (1,000) sides. The totes cannot turn 90°: 2 × 1,219 + corridor > the 2,362mm width.
+- Valve on a **1,200 side** → it faces the corridor (current assumption) or, rotated 180°, the near/far wall (no access). Works.
+- Valve on a **1,000 side** → it faces the walkway (X 4,674) or the end wall (no access). Only the walkway face works: every tote connection would leave on the walkway face at the tote's Yd center (Yd ≈ 538 / 1,824) and route round to the corridor panel. Big re-route.
+- **Unknown until a tote is measured** (see "Measure a supplied IBC tote"). The Schütz datasheet and ULINE H-3886 don't say.
+
+**Feasibility, per tote (one bottom valve + one top cap each):**
+- **Blue IBC-1/IBC-2: feasible, and simpler.** The X1 fill now has a pressurized supply (2026-11-24), so it can fill from the bottom through the valves. One Blue manifold joins both valves: X1 (via CV-1) in, P-01 suction out. The shared manifold also does the equalization, so the separate equalization tie goes. Removes 5 cuts.
+- **Waste IBC-4: feasible.** A tee at the valve takes the waste merge in and the P-03 pump-out. They never run at the same time. Removes 2 cuts.
+- **Brown IBC-3: feasible with a trade-off.** A tee at the valve takes the DV-01/DV-02 return in and the P-02/P-05 suction. While the spray loop runs, the return short-circuits across the tee to P-02 without mixing in the tote, which weakens IBC-3's pH buffering. Mitigation to evaluate: return through the top cap instead. Removes 1–2 cuts.
+- **Vents: the hard part.** A vent must be above the water, so only the top cap can replace the 4 side vents. Top-tier caps have about 52mm to the ceiling minus the cage rail; bottom-tier caps sit under the upper tote's pallet. Neither is reachable by hand. Options: (a) a low-profile vented cap (pressure/vacuum relief) in the DN150/6" opening, passive, so BV-08..11 and their manual steps go; (b) keep the 4 small vent cuts (3/4"). Needs the cap-to-ceiling / cap-to-pallet clearance measured.
+- Net: about 13 cuts → 0 (vented caps) or 4 (vent cuts only).
+
+**What changes if adopted:** P&ID sheet 1; corridor water model (drop `_side_entry` / `_bottom_pickup` / `BROWN_TAP` / equalization; add a valve adapter + tee per tote); the X1 route; parts (an adapter per tote for the valve thread: S60×6 coarse on Schütz, 2" NPS male on ULINE H-3886; ULINE H-12033 2" NPS → 2" camlock is a candidate; maybe the 8× S60×6 adapters already listed); BV-08..11 if vented caps are used; the plumbing, water-system and IBC reports; operating-manual §0.1 / TU / §5.5 (the DN50 valves become the fill/draw valves); re-send water, overview, IBC stack and construction.
+
+**Graphic first (helps decide):** draw each tote's **top fill opening + cap** (a circle, DN150 / 6", top center) and a **tap-like outlet** (2" valve, bottom center, `IBC_VALVE_Z`) on the face set by the orientation above, in the 3D tote and on the IBC 2D sheets. Placeholder positions until a tote is measured.
 
 ## 🏷️ SketchUp file metadata — set Author on every .skp (2026-11-21)
 - The .skp files carry an Author field that is currently unset. Set it on all 11 models from the generators (the same place name/description are force-stamped on `--send`), so it survives a regen. Check whether SketchUp persists it across save → reopen (name/description do not; see the Sketchfab notes) before relying on it.

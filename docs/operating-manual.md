@@ -598,33 +598,37 @@ Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a t
 - [ ] 5.5.12 — Drain the **cooler reservoir** completely.
 - [ ] 5.5.13 — Unplug and stow the **cooler's cord**.
 - [ ] 5.5.14 — Open the **Circuit-E disconnect** (Blue Sea 6006).
-- [ ] 5.5.15 — Carry the **cooler** in (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb).
-- [ ] 5.5.16 — Set it on its ply base on the near-walkway wide section.
-- [ ] 5.5.17 — Strap it down with the 2 ratchet straps.
-- [ ] 5.5.18 — Check the anti-slide cleats.
-- [ ] 5.5.19 — Stow the **flex duct** alongside.
-- [ ] 5.5.20 — Lift out the **left walkway** and the door-end near-deck section.
-- [ ] 5.5.21 — Release the **clamp bar** on each left film rail (TL + BL).
-- [ ] 5.5.22 — Lift each **rail** straight up out of its saddles.
-- [ ] 5.5.23 — Stow the **rails** clipped to the near wall.
-- [ ] 5.5.24 — Release the four **1590A13 draw latches** on each apron strip.
-- [ ] 5.5.25 — Lift each **strip** off its chamfer.
-- [ ] 5.5.26 — Stow both **strips** strapped inside.
-- [ ] 5.5.27 — Release both **1619A74 cam latches** on the panel.
-- [ ] 5.5.28 — Swing the **panel** ~56° inboard, assisted.
-- [ ] 5.5.29 — Control its momentum at the stop.
-- [ ] 5.5.30 — Pin each **turnbuckle jaw** to its panel lug (a spacer washer each side, cotter in).
-- [ ] 5.5.31 — Pin the other **jaw** to its wall-anchor eye (spacer washers, cotter in).
-- [ ] 5.5.32 — Tension each **turnbuckle**.
-- [ ] 5.5.33 — Tighten both **jam nuts** against each body.
-- [ ] 5.5.34 — Close and latch the **cargo doors**.
-- [ ] 5.5.35 — Switch off all circuits except the safelight standby.
-- [ ] 5.5.36 — Tighten all **IBC tote ratchet straps** ([IBC Stacking Report §4.2](ibc-stacking-report.md)).
-- [ ] 5.5.37 — Re-check their tension after the first 50 km.
-- [ ] 5.5.38 — Close all four tote vents (**BV-08** to **BV-11**).
-- [ ] 5.5.39 — Check **dust caps** are on X1, X3 and X4.
-- [ ] 5.5.40 — Check **BV-02** and **BV-07** are closed.
-- [ ] 5.5.41 — Check **S-05** and **S-03** are OFF.
+- [ ] 5.5.15 — Lift out the **left walkway** and the door-end near-deck section.
+- [ ] 5.5.16 — Release the **clamp bar** on each left film rail (TL + BL).
+- [ ] 5.5.17 — Lift each **rail** straight up out of its saddles.
+- [ ] 5.5.18 — Stow the **rails** clipped to the near wall.
+- [ ] 5.5.19 — Release the four **1590A13 draw latches** on each apron strip.
+- [ ] 5.5.20 — Lift each **strip** off its chamfer.
+- [ ] 5.5.21 — Stow both **strips** strapped inside.
+- [ ] 5.5.22 — Release both **1619A74 cam latches** on the panel.
+- [ ] 5.5.23 — Swing the **panel** ~56° inboard, assisted.
+- [ ] 5.5.24 — Control its momentum at the stop.
+- [ ] 5.5.25 — Pin the top **turnbuckle jaw** to its panel lug (a spacer washer each side, cotter in).
+- [ ] 5.5.26 — Pin the other jaw to the top wall-anchor eye (spacer washers, cotter in).
+- [ ] 5.5.27 — Tension the top **turnbuckle**.
+- [ ] 5.5.28 — Tighten both **jam nuts** on the top turnbuckle.
+- [ ] 5.5.29 — Carry the **cooler** in (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb).
+- [ ] 5.5.30 — Set it on its ply base on the near-walkway wide section.
+- [ ] 5.5.31 — Strap it down with the 2 ratchet straps.
+- [ ] 5.5.32 — Check the anti-slide cleats.
+- [ ] 5.5.33 — Stow the **flex duct** alongside.
+- [ ] 5.5.34 — Pin the bottom **turnbuckle jaw** to its panel lug (a spacer washer each side, cotter in).
+- [ ] 5.5.35 — Pin the other jaw to the bottom wall-anchor eye (spacer washers, cotter in).
+- [ ] 5.5.36 — Tension the bottom **turnbuckle**.
+- [ ] 5.5.37 — Tighten both **jam nuts** on the bottom turnbuckle.
+- [ ] 5.5.38 — Close and latch the **cargo doors**.
+- [ ] 5.5.39 — Switch off all circuits except the safelight standby.
+- [ ] 5.5.40 — Tighten all **IBC tote ratchet straps** ([IBC Stacking Report §4.2](ibc-stacking-report.md)).
+- [ ] 5.5.41 — Re-check their tension after the first 50 km.
+- [ ] 5.5.42 — Close all four tote vents (**BV-08** to **BV-11**).
+- [ ] 5.5.43 — Check **dust caps** are on X1, X3 and X4.
+- [ ] 5.5.44 — Check **BV-02** and **BV-07** are closed.
+- [ ] 5.5.45 — Check **S-05** and **S-03** are OFF.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 Follow [§1.3](#13-mode-conversion-transport-to-operational), then re-deploy the chemistry prep shelf (§1.7.3) and do the dark-adaptation check (§1.4.5).
@@ -703,7 +707,7 @@ For deep cleaning or nozzle service, lift out the right walkway grate and extrac
 |----------|------|
 | Monthly | Inspect the hinge, chain stays and quick-links, and the wall-plate bolts for corrosion and tightness |
 
-Deployment and stowing are in §1.7.3 and §5.5.1.
+Deployment and stowing are in §1.7.3 and §5.5.7.
 
 ### Hinged panel and light trap ([Hinged Panel Report §9](hinged-panel-report.md))
 

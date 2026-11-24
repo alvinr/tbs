@@ -439,7 +439,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 - [ ] 4.2.7 — First print after a resupply (IBC-3 empty): use Blue instead — **BV-05** to Blue, run **P-01**, not P-02.
 - [ ] 4.2.8 — **Pass 1:** traverse the **spray bar** across the whole surface with the pole (~50mm/s, ~44s a pass) for **5 minutes**.
 - [ ] 4.2.9 — Switch to **white light** (Circuit F).
-- [ ] 4.2.10 — Baseline: if the drain water looks like chemistry, set **3W-DV-02** to Waste.
+- [ ] 4.2.10 — Baseline: if the drain water is deep yellow, orange or green, set **3W-DV-02** to Waste.
 - [ ] 4.2.11 — **Pass 2:** set **BV-05** to Blue.
 - [ ] 4.2.12 — Switch to **P-01** (P-02 off).
 - [ ] 4.2.13 — Dichromate option: set **3W-DV-02** back to Brown.
@@ -476,7 +476,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 
 - **Brown (default):** baseline washes, and passes 2–3 with the dichromate option.
 - **Waste — dichromate option, pass 1:** always.
-- **Waste — any time the drain water looks like chemistry** (deep yellow, orange or green), after a spill, or when a failed coat washes off. Clear to pale yellow goes to Brown.
+- **Waste — any time the drain water is deep yellow, orange or green** (unwashed sensitizer), after a spill, or when a failed coat washes off. Clear to pale yellow goes to Brown.
 
 **3W-DV-01 (filter output)** — draw ~50 ml at SV-01 and read the pH:
 

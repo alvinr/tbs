@@ -543,7 +543,7 @@ the consumable: F-03 (carbon) lasts ~40 prints, F-01 (sediment) ~50 and F-02 (KD
 Every component that needs service lands on a threaded interface (§4.1), the Big Blue sumps hang
 clear of the backing ply for cartridge changes (§6.1), and ACC-01 holds a 30 PSI pre-charge. The
 inspection schedule and service procedures are in the
-[Operating Manual — Maintenance](operating-manual.md#maintenance).
+[Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

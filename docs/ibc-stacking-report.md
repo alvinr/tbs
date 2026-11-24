@@ -515,7 +515,7 @@ the stacking structure and the totes it restrains.
 The frame is a painted, shop-welded box whose field joints are all bolted (§3.8), so its upkeep is
 inspection and re-torque to the §3.5 schedule rather than rework. The wear items are the ratchet
 straps, the DN50 valve seals and the camlock gaskets. The inspection schedule and procedures are in
-the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

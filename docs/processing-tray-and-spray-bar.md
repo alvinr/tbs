@@ -598,7 +598,7 @@ pickup tube lifts out of its well (§2.3), and the beam extracts through the rig
 the grate lifts out and the beam comes up through that opening, so the gantry needs no in-tray
 lift-out or quick-release. The spray setup, wash passes and Brown recycling passes are in the
 [Operating Manual — Phase 4](operating-manual.md#42-development-in-water); the cleaning and inspection
-schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+schedule is in the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

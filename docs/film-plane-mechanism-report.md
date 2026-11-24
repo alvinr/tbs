@@ -236,7 +236,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 ## 8. Maintenance
 
-The mechanism runs **dry**: the acetal skates and UHMW slide pads take no lubricant, so grit on the rails — not lubrication — is the wear driver. The wear and expendable parts are the acetal rollers, the UHMW pads, the U-joint boots and the plain-6061 frame angle (bare 6061 pits sooner than anodized); the cam clamps hold a set position through transport. The recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+The mechanism runs **dry**: the acetal skates and UHMW slide pads take no lubricant, so grit on the rails — not lubrication — is the wear driver. The wear and expendable parts are the acetal rollers, the UHMW pads, the U-joint boots and the plain-6061 frame angle (bare 6061 pits sooner than anodized); the cam clamps hold a set position through transport. The recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

@@ -101,7 +101,7 @@ The pinhole wall (the scene-facing long side wall) is corrugated steel, so the f
 
 ## 7. Quick-Change
 
-The holder is designed for a tool-free carrier swap. The four M6 knurled thumb screws are the only fasteners between the carrier and the outside world: releasing them frees the retaining ring, and the carrier (pinhole board or lens board) lifts straight out of the Ø82 counterbore seat. The new carrier drops onto the washer in the same seat, and the ring, drawn down evenly by the thumb screws, re-clamps it. A swap takes about 30 seconds; the carrier-swap steps are an operating task ([Operating Manual — Changing the Front-Board Carrier](operating-manual.md#changing-the-front-board-carrier-pinhole-lens)). The whole front board can also be unbolted from the wall-frame adapter (4× M6) if the plate itself needs service.
+The holder is designed for a tool-free carrier swap. The four M6 knurled thumb screws are the only fasteners between the carrier and the outside world: releasing them frees the retaining ring, and the carrier (pinhole board or lens board) lifts straight out of the Ø82 counterbore seat. The new carrier drops onto the washer in the same seat, and the ring, drawn down evenly by the thumb screws, re-clamps it. A swap takes about 30 seconds; the carrier-swap steps are an operating task ([Operating Manual — Changing the Front-Board Carrier](operating-manual.md#11-changing-the-front-board-carrier-pinhole-lens)). The whole front board can also be unbolted from the wall-frame adapter (4× M6) if the plate itself needs service.
 
 ---
 

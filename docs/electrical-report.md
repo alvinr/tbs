@@ -386,7 +386,7 @@ switches S-05 / S-03, distribution block).*
 
 ## 9. Maintenance
 
-The system is built for inspection rather than routine intervention: every connection is labeled and reachable from the EP or the trunking, the battery state of charge reads remotely over Bluetooth (Victron Connect), and the wear items are the connectors (Anderson Powerpole, Deutsch DT, MC4), the power-panel gasket, the pull-cord switches and the solar panel surfaces. The Circuit-E GFCI carries a periodic trip test ([Electrical Safety Report §7](electrical-safety-report.md)). The power-down order is [Operating Manual §5.3](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+The system is built for inspection rather than routine intervention: every connection is labeled and reachable from the EP or the trunking, the battery state of charge reads remotely over Bluetooth (Victron Connect), and the wear items are the connectors (Anderson Powerpole, Deutsch DT, MC4), the power-panel gasket, the pull-cord switches and the solar panel surfaces. The Circuit-E GFCI carries a periodic trip test ([Electrical Safety Report §7](electrical-safety-report.md)). The power-down order is [Operating Manual §5.3](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

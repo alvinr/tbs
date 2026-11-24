@@ -144,7 +144,7 @@ disconnect, the GFCI trip test — are in the [Operating Manual](operating-manua
 
 Each protective measure is verified once at commissioning, before first use. The recurring
 in-service checks (wet-zone connectors, GFCI trip test, terminal condition, site supply) are
-operating tasks and live in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+operating tasks and live in the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 | When | Check |
 |---|---|

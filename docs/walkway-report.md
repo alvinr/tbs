@@ -609,7 +609,7 @@ See the **[Master Shopping List, filtered to the walkway system](master-shopping
 
 ## 12. Maintenance
 
-The walkway is a bolted steel structure with GRP grating, so its upkeep is fastener tightness (bracket, CJ end-plate, combined-plate and floor-anchor bolts), corrosion on the exterior reinforcing plates and the right-walkway welds and cleats, and wear of the GRP grit top. The left-walkway lift-out and re-fit for transport are [Operating Manual §1.3 and §5.5](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+The walkway is a bolted steel structure with GRP grating, so its upkeep is fastener tightness (bracket, CJ end-plate, combined-plate and floor-anchor bolts), corrosion on the exterior reinforcing plates and the right-walkway welds and cleats, and wear of the GRP grit top. The left-walkway lift-out and re-fit for transport are [Operating Manual §1.3 and §5.5](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

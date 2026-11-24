@@ -4,7 +4,7 @@
 
 > **Before you begin:** Read this manual end-to-end once before your first deployment. Each phase has a time estimate and a GO/NO-GO checkpoint. Do not proceed past a checkpoint unless all conditions are met.
 
-## Quick Reference
+## 1. Quick Reference
 | Phase | What | Time |
 |-------|------|------|
 | 0 | Pre-departure (home/workshop) | ~2 hours |
@@ -15,9 +15,9 @@
 | 5 | Cleanup and close-down | ~30 min |
 | **Total** | **First print, ideal conditions** | **~5–5.5 hours** |
 
-Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~2–4. See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
+Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~2–4. See the [Exposure Adjustment Table](#12-exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
-## Chemistry Choice — With or Without Ammonium Dichromate
+## 2. Chemistry Choice — With or Without Ammonium Dichromate
 
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
 steepens the print's contrast. It is a creative choice, but it changes three procedures and the
@@ -33,7 +33,7 @@ disposal of the wash water ([Water System Report §2](water-system-report.md); t
 Once a tote has received dichromate wash water, it stays on the dichromate disposal route until it is
 pumped out. Switching back to the baseline does not clean it.
 
-## Phase 0 — Pre-Departure
+## 3. Phase 0 — Pre-Departure
 **Time: ~2 hours. Complete the day before or morning of shoot day at your workshop/home.**
 **Lighting: normal white light throughout this phase.**
 
@@ -78,7 +78,7 @@ iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 
 Part B holds the ferricyanide, at ⅓ of the ferric ammonium oxalate mass (Ware's 3:1 ratio), in ~half the working
 volume. For the dichromate option it also carries the dichromate (see
-[Chemistry Choice](#chemistry-choice-with-or-without-ammonium-dichromate)).
+[Chemistry Choice](#2-chemistry-choice-with-or-without-ammonium-dichromate)).
 
 | Tier (per print) | Potassium ferricyanide | Part B water |
 |---|---|---|
@@ -134,7 +134,7 @@ same across strength tiers: Ware's baseline is **0.1%**, raised for more contras
 
 **GO/NO-GO checkpoint:** Water system tested and IBCs filled. Part A and Part B prepared and sealed. All equipment packed. Container interior inspected (if accessible).
 
-## Phase 1 — Site Setup
+## 4. Phase 1 — Site Setup
 **Time: ~1.5 hours. Complete on arrival at site.**
 **Lighting: normal white light / daylight.**
 
@@ -224,7 +224,7 @@ Set the plane for the shot before loading. The corner-depth table is in the
   - **Compound (limited):** set all four to a coordinated set of depths.
 - [ ] 1.9.2 — Confirm all four cam clamps are locked.
 
-## Phase 2 — Loading the Image Plane
+## 5. Phase 2 — Loading the Image Plane
 **Time: ~45 minutes. Entire phase performed under RED LIGHT only (circuit D).**
 **Lighting: RED LED safelight. No white light, no daylight.**
 
@@ -302,7 +302,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 **GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitizer dry to touch. Drum panel latched.
 
-## Phase 3 — Exposure
+## 6. Phase 3 — Exposure
 **Time: ~30–45 minutes baseline + adjustment (Ware formula). Shutter operated entirely from outside.**
 **Lighting: N/A — operator is outside the container.**
 
@@ -340,7 +340,7 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 
 **GO/NO-GO checkpoint:** Shutter confirmed closed. Elapsed time within ± 2 min of target.
 
-## Phase 4 — Development
+## 7. Phase 4 — Development
 **Time: ~20 minutes.**
 **Lighting: RED LED safelight (Circuit D) on entry, then switch to WHITE LIGHT (Circuit F) after first wash begins.**
 
@@ -364,7 +364,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 Circuit C is dual-fused (**C1** corridor supply pumps, **C2** tray-drain P-04) so a supply pump and the drain run **at the same time**, both gated by the one 2-pole master pump switch. Both Shurflo 2088s move ~3.5 GPM, so the drain keeps pace with the spray and the tray holds a shallow, constantly-refreshed film — fresh water in at the bar, used water out at the sump ([Water System Report §3](water-system-report.md) gives the water per print).
 
 - [ ] 4.2.2 — Switch ON the master pump switch — **P-02 (Brown recycle supply) and P-04 (tray drain) both run.** P-02 feeds the spray bar from the IBC-3 buffer; P-04 continuously lifts the sump water through 3W-DV-02 and the filter train back toward IBC-3. Confirm BV-01 and BV-03 are open (0.1.2). *(First print after a resupply: IBC-3 is empty — run this pass on Blue: BV-05 to Blue, P-01 instead of P-02.)*
-- [ ] 4.2.3 — **Recycled first wash:** set BV-05 to Brown (recycled) and open BV-06. Set 3W-DV-02 by the [chemistry choice](#chemistry-choice-with-or-without-ammonium-dichromate): **Brown** for the baseline, **Waste (IBC-4)** for the dichromate option. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (orange-tinged with the dichromate option). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(Baseline: if the drain water is heavily contaminated, set 3W-DV-02 to Waste instead — see the diverter decisions below.)*
+- [ ] 4.2.3 — **Recycled first wash:** set BV-05 to Brown (recycled) and open BV-06. Set 3W-DV-02 by the [chemistry choice](#2-chemistry-choice-with-or-without-ammonium-dichromate): **Brown** for the baseline, **Waste (IBC-4)** for the dichromate option. Using the pole, slowly traverse the spray bar across the full surface (~50mm/second, ~44s/pass) and keep traversing for **5 minutes** — water flows continuously over the print and drains as fast as it arrives, so the tray never fills. This is the leaching wash: it runs yellow-green as unreacted sensitizer clears (orange-tinged with the dichromate option). **Switch to WHITE LIGHT now (Circuit F)** — the print is safe once washing begins. *(Baseline: if the drain water is heavily contaminated, set 3W-DV-02 to Waste instead — see the diverter decisions below.)*
 - [ ] 4.2.4 — **Clean wash:** set BV-05 to Blue (fresh) and bring up **P-01**; P-02 idles. Dichromate option: return 3W-DV-02 to **Brown** now. P-04 keeps draining throughout. Continue the traverse for ~5 minutes.
 - [ ] 4.2.5 — **Final rinse:** keep BV-05 on Blue (P-01) for a final ~5-minute clean-Blue flush, P-04 still draining.
 - [ ] 4.2.6 — **Stop:** close BV-06 (spray off), let P-04 run ~30 seconds to clear the sump, then switch OFF the master pump switch. Total wash ~15 minutes (**3 passes**).
@@ -432,7 +432,7 @@ DV-01 sits after the filter skid (F1→F2→F3) and the SV-01 sample tap. After 
 - [ ] 4.3.3 — Drying time: 20–60 minutes depending on temperature and airflow. The blue intensifies as the image oxidizes in air.
 - [ ] 4.3.4 — Final color appears approximately 30 minutes after the print appears dry to the touch.
 
-## Extended Deployment — On-Site Water Top-Up (optional)
+## 8. Extended Deployment — On-Site Water Top-Up (optional)
 **Lighting: normal — all top-up is external; the container stays sealed and dark.**
 
 A single hauled Blue fill supports ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints (up to ~<!-- BEGIN fact:prints_max_fill -->17<!-- END fact:prints_max_fill --> if the Blue totes are topped toward
@@ -445,13 +445,13 @@ required for a normal 1–2 print outing.
 - [ ] TU.1 — Check the **Blue level (IBC-1/IBC-2)** before each print. Plan a top-up *before* it runs dry mid-wash, not after.
 - [ ] TU.2 — **Resupply Blue:** remove the X1 dust cap and connect the water bowser/tanker hose to the **X1** camlock inlet on the sealed end wall. X1 gravity-feeds through check valve CV-1 and tees to both Blue totes in parallel (side-entry near the top); the fill is controlled at the bowser. Confirm the level, then shut off at the bowser, disconnect, and re-cap X1.
 - [ ] TU.3 — **Discharge Brown/Waste** when they near their working levels. Book the hauler for the chemistry in use first (§5.1.1): a liquid-waste hauler for the baseline, a **licensed hazardous-waste hauler** for IBC-4 under the dichromate option (and IBC-3 until it is measured). Wearing nitrile gloves, remove the dust cap and connect the hauler's tanker hose to the **X3** (Brown) and/or **X4** (Waste) camlock port. Open the drain suction — **BV-02** for P-05 (X3), or the IBC-4 butterfly valve and **BV-07** for P-03 (X4) — and switch on that pump's local switch (**S-05** or **S-03**; one tote at a time) to empty the tote. Then switch it OFF, close BV-02 / BV-07 (and the IBC-4 butterfly valve), disconnect and re-cap, and file the hauler's paperwork (the manifest, for hazardous loads).
-- [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
+- [ ] TU.4 — With supply restored and collection capacity freed, resume the print cycle from [Phase 2](#5-phase-2-loading-the-image-plane). Print count per deployment is now set by water logistics (bowser visits, disposal access), not tote volume.
 
 > **Before transport:** return the totes to their validated fill states — Blue drained, Waste within
 > its return-haul limit — per [§5.5](#55-transport-mode-conversion-packing-up). On-site top-up does
 > **not** change the transport fill limits.
 
-## Phase 5 — Cleanup and Close-Down
+## 9. Phase 5 — Cleanup and Close-Down
 **Time: ~30 minutes.**
 **Lighting: WHITE LIGHT.**
 
@@ -509,7 +509,7 @@ The stepped hinged panel + drum SWING ~56° inboard about the vertical pivot pos
 
 Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → release wall stays → swing the panel back ~56° to the door plane → latch panel → re-fit the two pull-out apron strips (seat in the chamfer, butt the lip, throw the draw latches to lock) → re-fit the left film rails + left walkway → place cooler on ground and connect flex duct → un-pin drum → re-deploy the chemistry prep shelf and re-check its level → check the walkway sections sit level → dark-adaptation check.
 
-## Maintenance
+## 10. Maintenance
 
 Recurring upkeep between deployments. The design reason for each item is in the subsystem report cited.
 
@@ -673,7 +673,7 @@ Use insulated tools at the busbar.
 | Every 6 months | Check the thumb screws are finger-tight and the retaining ring seats flat |
 | As needed | Store spare pinhole boards flat in a protective sleeve — the SS-302 shim is easily creased |
 
-## Changing the Front-Board Carrier (Pinhole ↔ Lens)
+## 11. Changing the Front-Board Carrier (Pinhole ↔ Lens)
 No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinhole-disc-holder-report.md)).
 
 - [ ] FB.1 — Loosen the four M6 knurled thumb screws.
@@ -682,7 +682,7 @@ No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinh
 - [ ] FB.4 — Fit the new carrier (a pinhole board, or a lens board) into the seat, against the washer.
 - [ ] FB.5 — Replace the retaining ring and finger-tighten the four thumb screws evenly. Swap time: about 30 seconds.
 
-## Exposure Adjustment Table
+## 12. Exposure Adjustment Table
 *Full reference table for use in Phase 3.*
 
 | Condition | Exposure | Note |
@@ -695,7 +695,7 @@ No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinh
 | Winter mid-latitude | 55 min | |
 | Thin haze + early sun | 105 min | Multiply factors: 1.5 × 2.0 |
 
-## Troubleshooting
+## 13. Troubleshooting
 
 | Symptom | Likely cause | Action |
 |---------|-------------|--------|
@@ -705,10 +705,10 @@ No tools — finger-operated thumb screws ([Pinhole Disc Holder Report §7](pinh
 | Soft or blurred image | Muslin slack at coating or during exposure | Re-tension: re-seat the nylon clamps and check the bottom-edge securing; check frame is not vibrating in wind |
 | Blue haze (fogging) in shadows | Light leak or sensitizer exposed to UV before loading | Re-inspect light trap; check sensitizer storage |
 | Uneven color — cool/warm zones | Humidity variation across coating | Ensure even pre-misting if in dry climate |
-| Correct exposure but contrast too low | Iron-only sensitizer on a flat scene | Consider the [dichromate option](#chemistry-choice-with-or-without-ammonium-dichromate); it changes the wash and disposal steps |
+| Correct exposure but contrast too low | Iron-only sensitizer on a flat scene | Consider the [dichromate option](#2-chemistry-choice-with-or-without-ammonium-dichromate); it changes the wash and disposal steps |
 
 
-## See Also
+## 14. See Also
 - [Electrical Report](electrical-report.md) — power system and circuits; [Hinged Panel Report](hinged-panel-report.md) — light trap; [Ventilation Report](ventilation-report.md) — cooling
 - [Film Plane Mechanism](film-plane-mechanism-report.md) — image plane adjustment and setup
 - [Pinhole Disc Holder (Front Board)](pinhole-disc-holder-report.md) — quick-change pinhole disc / lens swap procedure

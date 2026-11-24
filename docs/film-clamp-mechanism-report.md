@@ -52,7 +52,7 @@ See the **[Master Shopping List, filtered to the clamp system](master-shopping-l
 
 ## 5. Maintenance
 
-The clamps are inexpensive off-the-shelf consumables: a clamp whose spring has weakened or whose body has cracked is replaced rather than repaired. The HDPE filler strip is a long-life part. Mounting the muslin is [Operating Manual §2.4](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+The clamps are inexpensive off-the-shelf consumables: a clamp whose spring has weakened or whose body has cracked is replaced rather than repaired. The HDPE filler strip is a long-life part. Mounting the muslin is [Operating Manual §2.4](operating-manual.md); the recurring inspection schedule is in the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

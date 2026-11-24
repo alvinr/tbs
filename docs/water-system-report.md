@@ -296,7 +296,7 @@ The water-system budget, including the processing tray, spray bar, and IBC stack
 
 ## 9. Maintenance
 
-The storage side needs little upkeep by design: the totes are closed, opaque vessels and the plumbing is PVC throughout. Three tasks recur: flushing sediment from the Brown buffer, rinsing the Blue totes against biofilm before long storage, and checking the IBC-4 valve and cap before transport. Filter cartridges, pipe joints, pumps and the accumulator are covered in the [Plumbing Report §9](plumbing-report.md). The intervals and procedures are in the [Operating Manual — Maintenance](operating-manual.md#maintenance).
+The storage side needs little upkeep by design: the totes are closed, opaque vessels and the plumbing is PVC throughout. Three tasks recur: flushing sediment from the Brown buffer, rinsing the Blue totes against biofilm before long storage, and checking the IBC-4 valve and cap before transport. Filter cartridges, pipe joints, pumps and the accumulator are covered in the [Plumbing Report §9](plumbing-report.md). The intervals and procedures are in the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 ---
 

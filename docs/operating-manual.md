@@ -21,7 +21,7 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
 steepens the print's contrast. It is a creative choice, but it changes how Part B is mixed (§0.3),
-how the sensitizer and the unwashed print are handled (§2.1, §2.5, §4.1), where the first wash drains
+how the sensitizer and the unwashed print are handled (§2.1, §2.4, §4.1), where the first wash drains
 (§4.2) and how the wash water is disposed of (§5.1, TU.3). Each of those steps gives the dichromate
 variant in place; the basis is in [Wash-Water Classification](wash-water-classification.md).
 
@@ -219,23 +219,24 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.3.11 — Tighten the **hose clamp**.
 - [ ] 1.3.12 — Fill the **cooler reservoir** (~18 L) from TAP-01 (open **BV-04**, then close it).
 - [ ] 1.3.13 — Carry the three **solar panels** out through the door opening.
-- [ ] 1.3.14 — Slack the top **wall-stay turnbuckle**.
-- [ ] 1.3.15 — Pull the **cotter** and clevis pin at the top wall-anchor eye.
-- [ ] 1.3.16 — Swing the top **stay** clear (or unpin both ends and stow it).
-- [ ] 1.3.17 — Swing the **panel** back ~56° to the door plane, assisted.
-- [ ] 1.3.18 — Control its momentum at the stop.
-- [ ] 1.3.19 — Lift and turn both **1619A74 cam latches** to latch the panel to the door frame.
-- [ ] 1.3.20 — Set each **apron strip** (near + far) onto its 45° base chamfer.
-- [ ] 1.3.21 — Butt each **strip** up to the leaf lip.
-- [ ] 1.3.22 — Close the two bottom **1590A13 draw latches** on each strip (from inside).
-- [ ] 1.3.23 — Close the two **span draw latches** on each strip (from the door side).
-- [ ] 1.3.24 — Check the EPDM seals at the chamfer, lip and strip ends are seated.
-- [ ] 1.3.25 — Drop each **left film rail** (TL + BL) into its saddles.
-- [ ] 1.3.26 — Clamp each **rail** down.
-- [ ] 1.3.27 — Check the film plane is square and planar to datum.
-- [ ] 1.3.28 — Refit the **left walkway** and the door-end near-deck lift-out.
-- [ ] 1.3.29 — Un-pin the **revolving drum**.
-- [ ] 1.3.30 — Do the dark-adaptation check (§1.4.5).
+- [ ] 1.3.14 — Carry in all the equipment from the §0.4 checklist.
+- [ ] 1.3.15 — Slack the top **wall-stay turnbuckle**.
+- [ ] 1.3.16 — Pull the **cotter** and clevis pin at the top wall-anchor eye.
+- [ ] 1.3.17 — Swing the top **stay** clear (or unpin both ends and stow it).
+- [ ] 1.3.18 — Swing the **panel** back ~56° to the door plane, assisted.
+- [ ] 1.3.19 — Control its momentum at the stop.
+- [ ] 1.3.20 — Lift and turn both **1619A74 cam latches** to latch the panel to the door frame.
+- [ ] 1.3.21 — Set each **apron strip** (near + far) onto its 45° base chamfer.
+- [ ] 1.3.22 — Butt each **strip** up to the leaf lip.
+- [ ] 1.3.23 — Close the two bottom **1590A13 draw latches** on each strip (from inside).
+- [ ] 1.3.24 — Close the two **span draw latches** on each strip (from the door side).
+- [ ] 1.3.25 — Check the EPDM seals at the chamfer, lip and strip ends are seated.
+- [ ] 1.3.26 — Drop each **left film rail** (TL + BL) into its saddles.
+- [ ] 1.3.27 — Clamp each **rail** down.
+- [ ] 1.3.28 — Check the film plane is square and planar to datum.
+- [ ] 1.3.29 — Refit the **left walkway** and the door-end near-deck lift-out.
+- [ ] 1.3.30 — Un-pin the **revolving drum**.
+- [ ] 1.3.31 — Do the dark-adaptation check (§1.4.5).
 
 ### 1.4 Light Trap — Revolving Drum Panel
 - [ ] 1.4.1 — Check the **drum panel** is closed.
@@ -343,54 +344,44 @@ Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-
 - [ ] 2.2.1 — Read the hygrometer.
 - [ ] 2.2.2 — Act per the table.
 
-### 2.3 Entering via the Light Trap
-- [ ] 2.3.1 — Check the **drum panel** is latched.
-- [ ] 2.3.2 — Carry all equipment to the drum entry side.
-- [ ] 2.3.3 — Step into the **drum** opening.
-- [ ] 2.3.4 — Turn the **drum** 180° (pull handle inside) until the opening faces the interior.
-- [ ] 2.3.5 — Step out.
-- [ ] 2.3.6 — Pass the equipment through the same way, one item at a time.
-- [ ] 2.3.7 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
-
-> **Rule:** do not wedge anything in the drum opening. Anything too large for the drum is loaded after sunset with the panel unlatched and swung open.
-
-### 2.4 Mounting the Muslin
+### 2.3 Mounting the Muslin
 
 ![Muslin clamp layout — top + 2 sides at 150mm centers (58 clamps); the bottom edge is left unclamped](assets/film-plane-muslin-clamp-layout.png)
 
-- [ ] 2.4.1 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
-- [ ] 2.4.2 — Take out the pre-cut muslin.
-- [ ] 2.4.3 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
-- [ ] 2.4.4 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.4.5 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
-- [ ] 2.4.6 — Tension the unclamped bottom edge downward.
-- [ ] 2.4.7 — Secure it flat against the plane so it cannot flap.
-- [ ] 2.4.8 — From 2 meters, check for wrinkles or sags under the safelight.
+- [ ] 2.3.1 — Switch ON the **safelight** (circuit D, electrical panel). **Red only.**
+- [ ] 2.3.2 — Check the **HDPE filler strip** is seated in the frame's L channel on the three clamped edges.
+- [ ] 2.3.3 — Take out the pre-cut muslin.
+- [ ] 2.3.4 — Clamp the **top edge** first: hook each nylon spring clamp over the frame edge at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps).
+- [ ] 2.3.5 — Clamp the **left edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.3.6 — Clamp the **right edge** (14 clamps), pulling the fabric taut outward.
+- [ ] 2.3.7 — Tension the unclamped bottom edge downward.
+- [ ] 2.3.8 — Secure it flat against the plane so it cannot flap.
+- [ ] 2.3.9 — From 2 meters, check for wrinkles or sags under the safelight.
 
-### 2.5 Applying the Sensitizer
+### 2.4 Applying the Sensitizer
 **Aim to finish within 20 minutes.**
 
-- [ ] 2.5.1 — Put on gloves (plus glasses and apron with the dichromate option).
-- [ ] 2.5.2 — Load the **foam roller**.
-- [ ] 2.5.3 — Roll the excess off on scrap card — evenly loaded, not dripping.
-- [ ] 2.5.4 — **First coat:** roll horizontally, left to right, top to bottom, 50% overlap.
-- [ ] 2.5.5 — **Second coat, while the first is still wet:** roll vertically, top to bottom.
-- [ ] 2.5.6 — Brush the last 50mm of each edge with a foam brush.
-- [ ] 2.5.7 — Lift the **roller** out of the tray (it skins over if left in sensitizer).
-- [ ] 2.5.8 — Set the **tray** and **roller** aside for cleanup (§5.1.5) — never pour leftover sensitizer down a drain.
+- [ ] 2.4.1 — Put on gloves (plus glasses and apron with the dichromate option).
+- [ ] 2.4.2 — Load the **foam roller**.
+- [ ] 2.4.3 — Roll the excess off on scrap card — evenly loaded, not dripping.
+- [ ] 2.4.4 — **First coat:** roll horizontally, left to right, top to bottom, 50% overlap.
+- [ ] 2.4.5 — **Second coat, while the first is still wet:** roll vertically, top to bottom.
+- [ ] 2.4.6 — Brush the last 50mm of each edge with a foam brush.
+- [ ] 2.4.7 — Lift the **roller** out of the tray (it skins over if left in sensitizer).
+- [ ] 2.4.8 — Set the **tray** and **roller** aside for cleanup (§5.1.5) — never pour leftover sensitizer down a drain.
 
-### 2.6 Tack-Drying
-- [ ] 2.6.1 — Run **fans A and B** on **low**, not aimed at the coated surface.
-- [ ] 2.6.2 — Wait **15–20 minutes** until the coat turns from glossy to matte.
-- [ ] 2.6.3 — Touch a corner with a gloved fingertip: nothing transfers.
+### 2.5 Tack-Drying
+- [ ] 2.5.1 — Run **fans A and B** on **low**, not aimed at the coated surface.
+- [ ] 2.5.2 — Wait **15–20 minutes** until the coat turns from glossy to matte.
+- [ ] 2.5.3 — Touch a corner with a gloved fingertip: nothing transfers.
 
 > **Do not proceed with a wet coat.**
 
-### 2.7 Exiting via the Light Trap
-- [ ] 2.7.1 — Switch OFF the **safelight**.
-- [ ] 2.7.2 — Step into the **drum** from the interior side.
-- [ ] 2.7.3 — Turn it 180° until the opening faces the exterior.
-- [ ] 2.7.4 — Step out.
+### 2.6 Exiting via the Light Trap
+- [ ] 2.6.1 — Switch OFF the **safelight**.
+- [ ] 2.6.2 — Step into the **drum** from the interior side.
+- [ ] 2.6.3 — Turn it 180° until the opening faces the exterior.
+- [ ] 2.6.4 — Step out.
 
 **GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitizer dry to touch. Drum panel latched.
 
@@ -437,7 +428,7 @@ Baseline: **30–45 minutes** in direct sun, mid-morning to mid-afternoon, summe
 **Lighting: red safelight on entry; white light (Circuit F) once the first wash begins.**
 
 ### 4.1 Entering and Removing the Muslin
-- [ ] 4.1.1 — Enter through the **drum** (§2.3.1).
+- [ ] 4.1.1 — Enter through the **drum**.
 - [ ] 4.1.2 — Switch ON the **safelight** (**red**).
 - [ ] 4.1.3 — Put on gloves (the unwashed print carries sensitizer).
 - [ ] 4.1.4 — Open the **clamps** top-down, supporting the fabric as it releases.

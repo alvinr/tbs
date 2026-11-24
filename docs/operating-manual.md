@@ -296,9 +296,8 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.8.4 — Switch OFF the **safelight** (circuit D).
 - [ ] 1.8.5 — Stand still **5 minutes** for dark adaptation.
 - [ ] 1.8.6 — Inspect all seams, door perimeters and duct penetrations for light.
-- [ ] 1.8.7 — Exit.
-- [ ] 1.8.8 — Seal any leaks with black silicone or gaffer tape.
-- [ ] 1.8.9 — Repeat the inspection.
+- [ ] 1.8.7 — Seal any leaks with black silicone or gaffer tape.
+- [ ] 1.8.8 — Repeat the inspection.
 
 **GO/NO-GO checkpoint:** All leaks sealed. Interior below 35°C. Battery above 12.4V. Blue supply flows evenly at the spray bar (§0.1.25).
 

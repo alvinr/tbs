@@ -107,18 +107,33 @@ same across strength tiers: Ware's baseline is **0.1%**, raised for more contras
 > **Storage:** Part A and Part B stock solutions keep for 6–8 weeks in sealed dark bottles. Mixed together (the working sensitizer), shelf life is 4–6 hours. Mix only what you need per session.
 
 ### 0.4 Equipment Checklist
-- [ ] 0.4.1 — Nitrile gloves (minimum 4 pairs)
-- [ ] 0.4.2 — 18" foam roller + roller tray (two sets — one per coat pass)
-- [ ] 0.4.3 — 2 × 2-liter mixing jugs (graduated)
-- [ ] 0.4.4 — Funnel and stirring rod
-- [ ] 0.4.5 — Digital scale (1g resolution)
-- [ ] 0.4.6 — Digital hygrometer
+Everything below is in the [Master Shopping List](master-shopping-list.md?system=print-tools,safety) (print-tools + safety).
+
+**Chemistry and coating**
+- [ ] 0.4.1 — Part A bottle and Part B bottle (sealed, labeled — Part B relabeled if it carries dichromate, §0.3.6)
+- [ ] 0.4.2 — 3 × 2-liter graduated mixing jugs (Part A, Part B, and one for the working sensitizer, §2.1)
+- [ ] 0.4.3 — Funnel and stirring rod
+- [ ] 0.4.4 — Digital scale (1 g resolution)
+- [ ] 0.4.5 — 18" foam rollers + 2 roller trays (one set per coat pass), and 4" foam brushes for the edges (§2.5.4)
+- [ ] 0.4.6 — Spray bottle (misting in low humidity, §2.2)
 - [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — cut to fit the washable tray area, clear of the rims + near-rim sump; clamped inboard on the ACM, no hem). Pre-wash it twice in hot water with no detergent to remove the sizing (starch filler), which repels the sensitizer, and dry it fully before coating.
-- [ ] 0.4.8 — Part A bottle (sealed, labeled)
-- [ ] 0.4.9 — Part B bottle (sealed, labeled)
-- [ ] 0.4.10 — Timer (phone or dedicated)
-- [ ] 0.4.11 — Spirit level
-- [ ] 0.4.12 — Black silicone sealant + gaffer tape (light-leak repair)
+
+**Measurement**
+- [ ] 0.4.8 — Digital thermometer-hygrometer (humidity before coating §2.2; interior temperature before entry, §1.6)
+- [ ] 0.4.9 — pH test strips (quick wash-water check; the pH meter stays on the filter skid)
+- [ ] 0.4.10 — Timer (exposure, Phase 3)
+- [ ] 0.4.11 — Spirit level (§1.1.1)
+
+**PPE and safety**
+- [ ] 0.4.12 — Nitrile gloves (minimum 4 pairs)
+- [ ] 0.4.13 — UV-blocking safety glasses and a full-length chemical-resistant apron (sensitizer handling; required with the dichromate option)
+- [ ] 0.4.14 — Red LED headlamp (working under the safelight, Phase 2)
+- [ ] 0.4.15 — First aid kit and ABC fire extinguisher in place; drinking water and sunscreen for the operator
+
+**Repair and access**
+- [ ] 0.4.16 — Black silicone sealant + gaffer tape (light-leak repair)
+- [ ] 0.4.17 — Folding step stool (top of the image plane)
+- [ ] 0.4.18 — Consumables restock on hand: spare roller covers, brushes and gloves
 
 ### 0.5 Container Pre-Check (if accessible)
 - [ ] 0.5.1 — Inspect interior: no water ingress or condensation on image plane.
@@ -239,7 +254,7 @@ Set the plane for the shot before loading. The corner-depth table is in the
 
 > **Volume basis:** ~120 ml/m²/coat (muslin, sourced — [AlternativePhotography](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) / [Jacquard](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/)) × **2 coats** (§2.5 is two wet-on-wet passes, not one) × <!-- BEGIN fact:image_area_m2 -->9.19<!-- END fact:image_area_m2 --> m². **Confirm by trial T1** — [Sensitizer Trials](sensitizer-trials.md). Mix 1:1 by volume.
 
-- [ ] 2.1.1 — Pour equal volumes of Part A and Part B into a third jug. Stir gently. The mix turns yellow-green.
+- [ ] 2.1.1 — Pour equal volumes of Part A and Part B into the third jug. *Dichromate option: the working sensitizer now carries a Category 1A carcinogen — gloves, UV glasses and apron on before mixing, and keep it off skin.* Stir gently. The mix turns yellow-green.
 - [ ] 2.1.2 — Pour into the roller tray immediately.
 
 > **The mixed sensitizer is UV-sensitive.** It is safe under red LED safelight but must not be exposed to daylight, blue sky light, or white LED light once mixed. Work quickly once inside.
@@ -280,11 +295,11 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 ### 2.5 Applying the Sensitizer
 **Lighting: RED LED safelight only. Work efficiently — aim to complete coating within 20 minutes.**
 
-- [ ] 2.5.1 — Load the foam roller with sensitizer. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
+- [ ] 2.5.1 — Gloves on (and glasses + apron with the dichromate option). Load the foam roller with sensitizer. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
 - [ ] 2.5.2 — **First coat:** roll horizontally from left to right across the full width of the muslin. Even strokes, 50% overlap. Work top to bottom.
 - [ ] 2.5.3 — **Second coat — wet-on-wet (apply while the first is still wet):** roll vertically, top to bottom. The cross-direction second coat lays down the remaining sensitizer and evens the coverage. *Two coats is why the working volume is ~<!-- BEGIN fact:sensitizer_l_per_print -->2.2<!-- END fact:sensitizer_l_per_print --> L (§2.1), not ~<!-- BEGIN fact:sensitizer_part_l -->1.1<!-- END fact:sensitizer_part_l --> L — budget for both.*
 - [ ] 2.5.4 — Check edges — roller tends to undercoat at the far edges. Finish with a hand-held foam brush on the last 50mm of each edge.
-- [ ] 2.5.5 — Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitizer — it will skin over.**
+- [ ] 2.5.5 — Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitizer — it will skin over.** Leftover sensitizer goes to Waste at cleanup (§5.1.2), never down a drain — with the dichromate option it carries chromium.
 
 ### 2.6 Tack-Drying
 **Lighting: RED LED safelight only.**
@@ -346,7 +361,7 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 
 ### 4.1 Entering and Removing the Muslin
 - [ ] 4.1.1 — Enter via light trap (same procedure as Phase 2.3). Switch safelight ON (**red light**).
-- [ ] 4.1.2 — Squeeze each spring clip open to release the muslin — work top-down, supporting the fabric weight as the upper clamps release. The image is latent at this point and may be barely visible as a pale yellow ghost.
+- [ ] 4.1.2 — Gloves on: the unwashed print still carries sensitizer (and chromium with the dichromate option). Squeeze each spring clip open to release the muslin — work top-down, supporting the fabric weight as the upper clamps release. The image is latent at this point and may be barely visible as a pale yellow ghost.
 - [ ] 4.1.3 — Roll the spray-bar gantry to the **near (pinhole-wall) end** of its travel and park it there.
 - [ ] 4.1.4 — Feed the exposed muslin face-up down through the **far muslin-drop slot** (image-plane side) and draw it across the tray toward the parked beam until it lies flat on the LDPE liner over the washable area. The beam then rolls back over the laid muslin to wash ([Processing Tray & Spray Bar §2.8 and §3.4](processing-tray-and-spray-bar.md)).
 

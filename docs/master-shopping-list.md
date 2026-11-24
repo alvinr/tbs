@@ -23,9 +23,9 @@ All prices USD.
 | 7d. Chemistry prep shelf (fold-down UV-white ply board + hinge/stays + TAP-01 trunk extension) | $268 | $280 |
 | 8. Cooling & ventilation | $788 | $938 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
-| 10. Printmaking tools & consumables | $240 | $240 |
+| 10. Printmaking tools & consumables | $349 | $349 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,385** | **~$36,814** |
+| **TOTAL (base build + 50-print run)** | **~$28,494** | **~$36,923** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -490,23 +490,30 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B0BWFW5481) (B0BWFW5481) | 1 pack | Amazon | water | $24 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | 2 bag | Amazon | water | $60 |
 | Consumables restock — foam rollers, brushes, gloves | 1 session | Local fab | print-tools | $50 |
+| Digital scale, 1 g resolution, ≥2 kg | 1 ea | Amazon | print-tools | $25 |
+| Digital thermometer-hygrometer | 1 ea | Amazon | print-tools | $12 |
 | Digital timer | 1 ea | Amazon | print-tools | $15 |
 | Fire extinguisher, ABC, 5 lb | 1 ea | Local fab | safety | $40 |
 | First aid kit, ANSI Class A | 1 ea | Amazon | safety | $35 |
 | Foam brush, 4in wide | 6 ea | Local fab | print-tools | $15 |
 | Foam roller, 18in wide | 3 ea | Local fab | print-tools | $30 |
 | Folding step stool | 1 ea | Local fab | print-tools | $25 |
+| Funnel + stirring rod set | 1 set | Amazon | print-tools | $8 |
+| Gaffer tape, black, 2in | 1 roll | Amazon | print-tools | $15 |
 | GFCI outlet tester | 1 ea | Local fab | safety | $12 |
 | Insulated drinking water jug, 1 gal | 2 ea | Amazon | safety | $30 |
+| Mixing jug, 2 L, graduated, HDPE/PP | 3 ea | Amazon | print-tools | $24 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | 2 box | Amazon | water | $30 |
 | Non-contact voltage tester | 1 ea | Amazon | safety | $25 |
+| Paint roller tray, 18in | 2 ea | Local fab | print-tools | $10 |
 | [pH calibration solution set](https://www.amazon.com/dp/B09DCP4HNH) (B09DCP4HNH) | 1 set | Amazon | water | $8 |
 | pH test strips | 1 pack | Amazon | print-tools | $10 |
 | Red LED safelight headlamp | 2 ea | Amazon | print-tools | $30 |
+| Spirit level, 24in | 1 ea | Local fab | print-tools | $15 |
 | Spray bottle, 1 liter | 2 ea | Amazon | print-tools | $15 |
 | Sunscreen SPF 50+, pump bottle | 2 ea | Amazon | safety | $20 |
 | UV-blocking safety glasses | 2 pair | Amazon | print-tools | $20 |
-| **tools-safety subtotal** | | | | **$659** |
+| **tools-safety subtotal** | | | | **$768** |
 
 ### water-equipment
 
@@ -527,12 +534,12 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Local fab | 89 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,326–$7,686 |
+| Local fab | 91 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,351–$7,711 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
 | McMaster-Carr | 100 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,948–$2,956 |
 | US Plastic Corp | 19 | plastics-sheet, plumbing-fittings | $2,713–$2,760 |
-| Amazon | 44 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,443–$2,522 |
+| Amazon | 49 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,527–$2,606 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |

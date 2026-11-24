@@ -45,7 +45,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
   - [~] buyDeutsch → Waytek Amphenol AT set done (2026-11-23, $42.07); AutomationDirect 4 AWG ground wire → Waytek still to source
   - [ ] Signature Solar (10 AWG PV extension) → Off Grid Stores — $30
   - [~] McNichols grating clips — KEEP (owner, 2026-11-23); Fibergrate edge-seal kit → American Grating still open
-  - [ ] Harfington (2× uxcell e-stop) → Amazon (same uxcell part) — $26
+  - [x] Harfington (2× uxcell e-stop) → Amazon B07VMT4JBN — $31.38 (done 2026-11-24)
   - [ ] Polycase (ZH-080804 enclosure) → Amazon (listed alt)
   - [x] Central Coast Plastics (Dibond ACM) — KEEP (owner, 2026-11-24)
   - [~] Lowe's Hillman self-drillers → McMaster 90415A129 done (2026-11-23); misterworker foot valve — KEEP (owner).

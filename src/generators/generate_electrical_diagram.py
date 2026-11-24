@@ -1820,7 +1820,7 @@ def draw_sheet6():
     # Leviton W5320 WR duplex under a 5981-UCL bubble in-use cover
     draw_wr_duplex_outlet(ax_a, DT_X, DT_Y)
 
-    # Emergency cut-off (E-stop) — Harfington 22mm red mushroom on yellow bezel
+    # Emergency cut-off (E-stop) — 22mm red mushroom on yellow bezel
     draw_estop_22mm(ax_a, ESTOP_X, ESTOP_Y, r=ESTOP_R)
 
     # Title

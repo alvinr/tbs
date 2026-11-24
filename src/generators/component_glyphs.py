@@ -5,7 +5,7 @@
 
 So the panel diagrams read as manufacturing blueprints: each glyph matches its
 real component (Powerwerx MC4 bulkhead, the weatherproof NEMA inlet, the Leviton
-W5320 WR duplex under the 5981-UCL in-use cover, the Harfington 22mm mushroom),
+W5320 WR duplex under the 5981-UCL in-use cover, the 22mm mushroom E-stop),
 not a generic box. Front-view renderings centred on (cx, cy); call from any
 diagram generator. All dimensions are drawing units (the caller sets the scale)."""
 
@@ -68,7 +68,7 @@ def draw_wr_duplex_outlet(ax, cx, cy, w=40, h=58, z=6):
 
 
 def draw_estop_22mm(ax, cx, cy, r=20, z=6):
-    """Harfington 22mm red mushroom E-stop on a safety-yellow bezel."""
+    """22mm red mushroom E-stop on a safety-yellow bezel."""
     ax.add_patch(mpatches.Circle((cx, cy), r * 1.3, fc=C_RING, ec=C_OUT, lw=1.4, zorder=z))
     ax.add_patch(mpatches.Circle((cx, cy), r, fc=C_ESTOP, ec="#7A1810", lw=1.4, zorder=z + 0.4))
     ax.add_patch(mpatches.Circle((cx, cy), r * 0.55, fc="#D8382A", ec="none", zorder=z + 0.5))

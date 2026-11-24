@@ -159,9 +159,9 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [Deutsch DT 2-pin connectors, IP67 (exterior penetrations)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | 10 set | Waytek Wire | electrical | $30 |
 | Drain-pump switches S-05 / S-03 — 1-pole (SPST) IP67 sealed rocker 12V ≥10A, in a surface box | 2 ea | Amazon | electrical | $20–$40 |
 | [Equipotential bonding kit — 6 AWG jumper + ring lugs](https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56) (21WJ56) | 1 ea | Grainger | electrical | $96 |
-| [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
+| [External emergency cut-off — red mushroom switch](https://www.amazon.com/dp/B07VMT4JBN) (B07VMT4JBN) | 1 ea | Amazon | electrical | $16 |
 | [HitLights 12V COB LED strip 4000K, 16.4ft reel (Circuit F, ×2)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) (L2712V-40D3-1630-U) | 2 reel | HitLights | electrical | $75–$85 |
-| [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
+| [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.amazon.com/dp/B07VMT4JBN) (B07VMT4JBN) | 1 ea | Amazon | electrical | $16 |
 | [Inverter DC protection — 40A ANL fuse + Blue Sea 5005 holder + Blue Sea 6006 disconnect (Circuit-E inverter feed)](https://powerwerx.com/blue-sea-5005-anl-fuse-block-cover) (5005-BSS + 6006) | 1 set | Powerwerx | electrical | $80 |
 | [IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)](https://www.polycase.com/zh-080804) (ZH-080804) | 1 ea | Polycase | electrical | $47 |
 | [LED Profiles 981 slimline channel + diffuser, 8 ft (×7)](https://ledprofiles.com/collections/all-led-channels/products/slimline-ultra-low-profile-led-channel-981-series) (981ASL) | 7 8ft length | LED Profiles | electrical | $189 |
@@ -177,7 +177,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | [Sealed wet-zone connectors — 6× Amphenol AT (Deutsch DT-compatible) 2-pin pairs (pump circuits)](https://www.waytekwire.com/product/amphenol-sine-systems-at04-2p-blu-2-way-connector) (AT04-2P-BLU / AT06-2S-BLU) | 1 lot | Waytek Wire | electrical | $42 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$2,206–$2,236** |
+| **electrical-distribution subtotal** | | | | **$2,212–$2,242** |
 
 ### electrical-power
 
@@ -543,7 +543,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
 | McMaster-Carr | 100 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,948–$2,956 |
 | US Plastic Corp | 21 | plastics-sheet, plumbing-fittings | $2,777–$2,824 |
-| Amazon | 50 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,539–$2,618 |
+| Amazon | 52 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,571–$2,650 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |
 | Grainger | 10 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $1,682 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,383 |
@@ -579,7 +579,6 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Ruland | 1 | fasteners-hardware | $28–$33 |
 | Signature Solar | 1 | electrical-distribution | $30 |
 | SK Grimes | 1 | optics | $10–$30 |
-| Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | misterworker | 1 | plumbing-fittings | $14 |
 | shared (Plywood Cut Sheets) | 3 | timber-ply | $0 |

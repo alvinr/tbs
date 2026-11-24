@@ -32,30 +32,47 @@ variant in place; the basis is in [Wash-Water Classification](wash-water-classif
 ### 0.1 Water System
 Valve and pump tags are on the panel labels; the layout is in the [Plumbing Report](plumbing-report.md).
 
-- [ ] 0.1.1 — Confirm Brown IBC-3 and Waste IBC-4 are empty.
-- [ ] 0.1.2 — Remove the X1 dust cap.
-- [ ] 0.1.3 — Connect the supply hose to X1.
-- [ ] 0.1.4 — Fill the Blue totes: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of IBC-1 and IBC-2 (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all). Fill before the container is lifted.
-- [ ] 0.1.5 — Disconnect the hose and re-cap X1.
-- [ ] 0.1.6 — Check drain-pump switches **S-05** and **S-03** (near-upper side board) are OFF.
-- [ ] 0.1.7 — Open the DN50 butterfly valves on IBC-1, IBC-2 (Blue) and IBC-3 (Brown).
-- [ ] 0.1.8 — Check the IBC-4 butterfly valve is closed.
-- [ ] 0.1.9 — Open **BV-01** (P-01 suction).
-- [ ] 0.1.10 — Open **BV-03** (P-02 suction).
-- [ ] 0.1.11 — Check **BV-02** and **BV-07** (drain-pump suctions) are closed.
-- [ ] 0.1.12 — Check **BV-04** (TAP-01) is closed.
-- [ ] 0.1.13 — Set **BV-05** to Blue.
-- [ ] 0.1.14 — Open **BV-06** (spray on).
-- [ ] 0.1.15 — Switch on P-01 (circuit C1).
-- [ ] 0.1.16 — Run the spray bar for 60 seconds.
-- [ ] 0.1.17 — Check the spray pattern is even across the full image-plane width.
-- [ ] 0.1.18 — Check all pipe joints for drips.
-- [ ] 0.1.19 — Tighten any weeping fittings.
-- [ ] 0.1.20 — Switch P-01 OFF.
-- [ ] 0.1.21 — Close **BV-06**.
-- [ ] 0.1.22 — Check the P-04 suction pickup is seated in the sump well.
-- [ ] 0.1.23 — Check the P-04 suction hose is connected over the tray rim.
-- [ ] 0.1.24 — Set 3W-DV-02 to Brown (IBC-3).
+**Starting positions (before filling)**
+
+- [ ] 0.1.1 — Check all pumps are OFF.
+- [ ] 0.1.2 — Check drain-pump switches **S-05** and **S-03** (near-upper side board) are OFF.
+- [ ] 0.1.3 — Close the DN50 butterfly valves on all four totes (IBC-1 to IBC-4).
+- [ ] 0.1.4 — Close **BV-01** and **BV-03** (pump suctions).
+- [ ] 0.1.5 — Close **BV-02** and **BV-07** (drain-pump suctions).
+- [ ] 0.1.6 — Close **BV-04** (TAP-01).
+- [ ] 0.1.7 — Close **BV-06** (spray off).
+- [ ] 0.1.8 — Check the X3 and X4 dust caps are on.
+- [ ] 0.1.9 — Confirm Brown IBC-3 and Waste IBC-4 are empty.
+
+**Fill — before the container is lifted**
+
+- [ ] 0.1.10 — Remove the X1 dust cap.
+- [ ] 0.1.11 — Connect the supply hose to X1.
+- [ ] 0.1.12 — Fill the Blue totes: <!-- BEGIN fact:blue_fill_per_tote_l -->900<!-- END fact:blue_fill_per_tote_l --> L in each of IBC-1 and IBC-2 (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L, <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal in all).
+- [ ] 0.1.13 — Disconnect the hose.
+- [ ] 0.1.14 — Re-cap X1.
+
+**Operating positions**
+
+- [ ] 0.1.15 — Open the DN50 butterfly valves on IBC-1 and IBC-2 (Blue).
+- [ ] 0.1.16 — Open the DN50 butterfly valve on IBC-3 (Brown). IBC-4 stays closed.
+- [ ] 0.1.17 — Open **BV-01** (P-01 suction).
+- [ ] 0.1.18 — Open **BV-03** (P-02 suction).
+- [ ] 0.1.19 — Set **BV-05** to Blue.
+- [ ] 0.1.20 — Set 3W-DV-02 to Brown (IBC-3).
+
+**Test**
+
+- [ ] 0.1.21 — Open **BV-06** (spray on).
+- [ ] 0.1.22 — Switch ON P-01 (circuit C1).
+- [ ] 0.1.23 — Run the spray bar for 60 seconds.
+- [ ] 0.1.24 — Check the spray pattern is even across the full image-plane width.
+- [ ] 0.1.25 — Check all pipe joints for drips.
+- [ ] 0.1.26 — Tighten any weeping fittings.
+- [ ] 0.1.27 — Switch P-01 OFF.
+- [ ] 0.1.28 — Close **BV-06**.
+- [ ] 0.1.29 — Check the P-04 suction pickup is seated in the sump well.
+- [ ] 0.1.30 — Check the P-04 suction hose is connected over the tray rim.
 
 ### 0.2 Chemistry — Part A (Ferric Ammonium Oxalate)
 **Lighting: white light.**
@@ -276,7 +293,7 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.8.8 — Seal any leaks with black silicone or gaffer tape.
 - [ ] 1.8.9 — Repeat the inspection.
 
-**GO/NO-GO checkpoint:** All leaks sealed. Interior below 35°C. Battery above 12.4V. Blue supply flows evenly at the spray bar (§0.1.16).
+**GO/NO-GO checkpoint:** All leaks sealed. Interior below 35°C. Battery above 12.4V. Blue supply flows evenly at the spray bar (§0.1.24).
 
 ### 1.9 Film Plane — Tilt, Swing and Focus
 Corner depths are in the [Film Plane Mechanism Report §5](film-plane-mechanism-report.md).

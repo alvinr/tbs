@@ -208,16 +208,16 @@ The container arrives in transport mode: panel swung in and held by the two wall
 
 - [ ] 1.3.1 — Open and secure the **cargo doors**.
 - [ ] 1.3.2 — Open all four tote vents (**BV-08** to **BV-11**).
-- [ ] 1.3.3 — Release the 2 **ratchet straps** on the evaporative cooler (near-walkway stowage).
-- [ ] 1.3.4 — Carry the **cooler** out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb, one person).
-- [ ] 1.3.5 — Set the **cooler** on the ground beside the pinhole wall, near the Ø200mm duct stub.
-- [ ] 1.3.6 — Remove the **weatherproof cap** from the wall stub.
-- [ ] 1.3.7 — Connect the **flex duct** from the cooler outlet to the wall stub collar.
-- [ ] 1.3.8 — Tighten the **hose clamp**.
-- [ ] 1.3.9 — Fill the **cooler reservoir** (~18 L) from TAP-01 (open **BV-04**, then close it).
-- [ ] 1.3.10 — Slack the bottom **wall-stay turnbuckle**.
-- [ ] 1.3.11 — Pull the **cotter** and clevis pin at the bottom wall-anchor eye.
-- [ ] 1.3.12 — Swing the bottom **stay** clear (or unpin both ends and stow it).
+- [ ] 1.3.3 — Slack the bottom **wall-stay turnbuckle**.
+- [ ] 1.3.4 — Pull the **cotter** and clevis pin at the bottom wall-anchor eye.
+- [ ] 1.3.5 — Swing the bottom **stay** clear (or unpin both ends and stow it).
+- [ ] 1.3.6 — Release the 2 **ratchet straps** on the evaporative cooler (near-walkway stowage).
+- [ ] 1.3.7 — Carry the **cooler** out through the door opening (~<!-- BEGIN fact:cooler_weight_kg -->7<!-- END fact:cooler_weight_kg --> kg / <!-- BEGIN fact:cooler_weight_lb -->16<!-- END fact:cooler_weight_lb --> lb, one person).
+- [ ] 1.3.8 — Set the **cooler** on the ground beside the pinhole wall, near the Ø200mm duct stub.
+- [ ] 1.3.9 — Remove the **weatherproof cap** from the wall stub.
+- [ ] 1.3.10 — Connect the **flex duct** from the cooler outlet to the wall stub collar.
+- [ ] 1.3.11 — Tighten the **hose clamp**.
+- [ ] 1.3.12 — Fill the **cooler reservoir** (~18 L) from TAP-01 (open **BV-04**, then close it).
 - [ ] 1.3.13 — Slack the top **wall-stay turnbuckle**.
 - [ ] 1.3.14 — Pull the **cotter** and clevis pin at the top wall-anchor eye.
 - [ ] 1.3.15 — Swing the top **stay** clear (or unpin both ends and stow it).

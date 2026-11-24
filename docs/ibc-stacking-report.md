@@ -40,14 +40,16 @@ Plumbing Panel.
 |-----------|-------|
 | Model | Schütz Ecobulk MX 1000, sold in the US as **<!-- BEGIN fact:ibc_nominal_gal -->275<!-- END fact:ibc_nominal_gal --> gal** (or an equivalent US 48×40 caged composite 275-gal tote) |
 | Capacity | <!-- BEGIN fact:ibc_nominal_gal -->275<!-- END fact:ibc_nominal_gal --> US gal = <!-- BEGIN fact:ibc_nominal_l -->1,041<!-- END fact:ibc_nominal_l --> L brim per tote, about 4% more than the European 1,000 L size. The design caps each fill at <!-- BEGIN fact:ibc_capacity_l -->1,000<!-- END fact:ibc_capacity_l --> L, leaving <!-- BEGIN fact:ibc_capacity_margin_l -->41<!-- END fact:ibc_capacity_margin_l --> L of headspace. All four totes are identical; working fills are set in the [Water System Report](water-system-report.md) §1 |
-| Overall dimensions | 1,219 × 1,016 × 1,168mm (W × D × H) |
+| Overall dimensions | 1,219 × 1,016 × 1,168mm (W × D × H) — the US 48 × 40 × 46" format ([ULINE H-3886](https://www.uline.com/Product/Detail/H-3886/)); the metric Schütz MX 1000 is 1,200 × 1,000 × 1,160mm ([Schütz Ecobulk MX datasheet, 08/2023](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/)), so the design envelope covers both |
 | Pallet format | US 48" × 40" composite |
 | Pallet base height | 168mm (includes feet/runners) |
 | Cage upright tube | Ø25mm |
 | Cage top rail | 25mm OD |
-| Drain valve | DN50 butterfly valve, S60×6 thread |
+| Drain valve | 2" (DN50) butterfly valve, bottom center of one face. The thread varies by maker: S60×6 coarse on the Schütz, 2" NPS male on ULINE H-3886. Schütz also offers DN80 butterfly, DN150 screw-on butterfly and DN50 ball valves ([datasheet](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/)). Valve height above the base (`IBC_VALVE_Z`) is not published; confirm on a supplied tote |
+| Top fill cap | DN150 screw cap on the Schütz (DN225 and DN400 lid optional); 6" cap on ULINE H-3886. Not used in service (see Fill) |
+| Stacking rating | 2-high in transport for contents up to density 1.5; 4-high static ([Schütz datasheet](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/)) |
 | Fill | **side entry near the top** (no top-cap access — only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom stacked) |
-| Tare weight | ~65 kg per tote |
+| Tare weight | 65 kg per tote, design value. Published: 56 kg (steel pallet) / 59 kg (plastic pallet) for the Schütz MX 1000 ([datasheet](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/)), 128 lb / 58 kg for ULINE H-3886 |
 | Full weight (at the <!-- BEGIN fact:ibc_capacity_l -->1,000<!-- END fact:ibc_capacity_l --> L design ceiling) | ~1,065 kg per tote |
 | Total tare (4 totes) | ~260 kg; water load see [weight-distribution report](weight-distribution-report.md) |
 
@@ -523,7 +525,8 @@ the [Operating Manual — Maintenance](operating-manual.md#10-maintenance).
 
 | Item | Source |
 |------|--------|
-| Schütz Ecobulk MX 1000 (275 gal) IBC | [Schütz USA — Ecobulk MX](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US sizes 275 / 330 gal, DN50 butterfly outlet, DN150 screw-cap fill opening, UN31HA1/Y |
+| Schütz Ecobulk MX 1000 (275 gal) IBC | [Schütz USA — Ecobulk MX](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) and its datasheet (08/2023) — 1,200 × 1,000 × 1,160mm, 56–59 kg, outlet and fill-opening options, UN 31HA1/Y, 2-high dynamic / 4-high static stacking |
+| US 275-gal tote (48 × 40 × 46") | [ULINE H-3886](https://www.uline.com/Product/Detail/H-3886/) — steel pallet, 2" butterfly valve with male NPS outlet, 6" fill cap, 128 lb, UN 31HA1/Y |
 | Weld-on lashing ring | [McMaster-Carr #3028T31](https://www.mcmaster.com/3028t31/) — 1½" ID, ½" thick, 6,600 lb WLL |
 | Floor cross-member structure + non-standardization (§3.6) | [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) (intermediate members ≤1,000mm, or flat underside) · [CED Engineering D06-006 — Shipping Containers](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) (box/C/Z/I members) · [CIMC cross-member spec](https://www.cimc-equilink.com/media/3659.html) (C-section SPA-H Corten ~4–4.5mm, ~45mm flange) · [Discover Containers](https://www.discovercontainers.com/shipping-container-components-classifications/) (spacing not standardized, varies by maker) |
 | Plumbing fittings, pipe, valves, camlock, pumps | Specified in the [Plumbing Report](plumbing-report.md); sourced in the [Master Shopping List](master-shopping-list.md?system=water) |

@@ -38,6 +38,16 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 - [ ] **Pivot plate to processing tray distance** — confirm the clearance and fix it.
 - Default fix direction: alter the plate / bracket to suit, not the tray.
 
+## 📏 Measure a supplied IBC tote (2026-11-24)
+
+- [ ] Measure one tote when the totes arrive. Neither the Schütz datasheet nor ULINE H-3886 publishes these:
+  - outlet valve: type, size and thread (S60×6 coarse vs 2" NPS), which face it is on, and its centerline height above the base (`IBC_VALVE_Z`, now 185mm, unsourced);
+  - cage: tube diameter and the horizontal/vertical bar spacing on the corridor and walkway faces;
+  - top fill cap: size and position;
+  - pallet base height.
+- [ ] Then check the tote vents (BV-08 to BV-11), the X1 side entries and the planned tote-valve tee against the measurements.
+- [ ] Improved IBC tote graphic showing the top fill cap and the bottom outlet valve (scope pending).
+
 ## 🛒 Parts to source (SKU + price)
 
 - [~] Consolidate suppliers (2026-11-23). Duplicate names merged 2026-11-23 (~70 → 56: Metals Depot,

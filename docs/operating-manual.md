@@ -218,23 +218,24 @@ The container arrives in transport mode: panel swung in and held by the two wall
 - [ ] 1.3.10 — Connect the **flex duct** from the cooler outlet to the wall stub collar.
 - [ ] 1.3.11 — Tighten the **hose clamp**.
 - [ ] 1.3.12 — Fill the **cooler reservoir** (~18 L) from TAP-01 (open **BV-04**, then close it).
-- [ ] 1.3.13 — Slack the top **wall-stay turnbuckle**.
-- [ ] 1.3.14 — Pull the **cotter** and clevis pin at the top wall-anchor eye.
-- [ ] 1.3.15 — Swing the top **stay** clear (or unpin both ends and stow it).
-- [ ] 1.3.16 — Swing the **panel** back ~56° to the door plane, assisted.
-- [ ] 1.3.17 — Control its momentum at the stop.
-- [ ] 1.3.18 — Lift and turn both **1619A74 cam latches** to latch the panel to the door frame.
-- [ ] 1.3.19 — Set each **apron strip** (near + far) onto its 45° base chamfer.
-- [ ] 1.3.20 — Butt each **strip** up to the leaf lip.
-- [ ] 1.3.21 — Close the two bottom **1590A13 draw latches** on each strip (from inside).
-- [ ] 1.3.22 — Close the two **span draw latches** on each strip (from the door side).
-- [ ] 1.3.23 — Check the EPDM seals at the chamfer, lip and strip ends are seated.
-- [ ] 1.3.24 — Drop each **left film rail** (TL + BL) into its saddles.
-- [ ] 1.3.25 — Clamp each **rail** down.
-- [ ] 1.3.26 — Check the film plane is square and planar to datum.
-- [ ] 1.3.27 — Refit the **left walkway** and the door-end near-deck lift-out.
-- [ ] 1.3.28 — Un-pin the **revolving drum**.
-- [ ] 1.3.29 — Do the dark-adaptation check (§1.4.5).
+- [ ] 1.3.13 — Carry the three **solar panels** out through the door opening.
+- [ ] 1.3.14 — Slack the top **wall-stay turnbuckle**.
+- [ ] 1.3.15 — Pull the **cotter** and clevis pin at the top wall-anchor eye.
+- [ ] 1.3.16 — Swing the top **stay** clear (or unpin both ends and stow it).
+- [ ] 1.3.17 — Swing the **panel** back ~56° to the door plane, assisted.
+- [ ] 1.3.18 — Control its momentum at the stop.
+- [ ] 1.3.19 — Lift and turn both **1619A74 cam latches** to latch the panel to the door frame.
+- [ ] 1.3.20 — Set each **apron strip** (near + far) onto its 45° base chamfer.
+- [ ] 1.3.21 — Butt each **strip** up to the leaf lip.
+- [ ] 1.3.22 — Close the two bottom **1590A13 draw latches** on each strip (from inside).
+- [ ] 1.3.23 — Close the two **span draw latches** on each strip (from the door side).
+- [ ] 1.3.24 — Check the EPDM seals at the chamfer, lip and strip ends are seated.
+- [ ] 1.3.25 — Drop each **left film rail** (TL + BL) into its saddles.
+- [ ] 1.3.26 — Clamp each **rail** down.
+- [ ] 1.3.27 — Check the film plane is square and planar to datum.
+- [ ] 1.3.28 — Refit the **left walkway** and the door-end near-deck lift-out.
+- [ ] 1.3.29 — Un-pin the **revolving drum**.
+- [ ] 1.3.30 — Do the dark-adaptation check (§1.4.5).
 
 ### 1.4 Light Trap — Revolving Drum Panel
 - [ ] 1.4.1 — Check the **drum panel** is closed.
@@ -617,18 +618,19 @@ Spent wash water leaves only through the X3/X4 ports (TU.7). Never discharge a t
 - [ ] 5.5.31 — Strap it down with the 2 ratchet straps.
 - [ ] 5.5.32 — Check the anti-slide cleats.
 - [ ] 5.5.33 — Stow the **flex duct** alongside.
-- [ ] 5.5.34 — Pin the bottom **turnbuckle jaw** to its panel lug (a spacer washer each side, cotter in).
-- [ ] 5.5.35 — Pin the other jaw to the bottom wall-anchor eye (spacer washers, cotter in).
-- [ ] 5.5.36 — Tension the bottom **turnbuckle**.
-- [ ] 5.5.37 — Tighten both **jam nuts** on the bottom turnbuckle.
-- [ ] 5.5.38 — Close and latch the **cargo doors**.
-- [ ] 5.5.39 — Switch off all circuits except the safelight standby.
-- [ ] 5.5.40 — Tighten all **IBC tote ratchet straps** ([IBC Stacking Report §4.2](ibc-stacking-report.md)).
-- [ ] 5.5.41 — Re-check their tension after the first 50 km.
-- [ ] 5.5.42 — Close all four tote vents (**BV-08** to **BV-11**).
-- [ ] 5.5.43 — Check **dust caps** are on X1, X3 and X4.
-- [ ] 5.5.44 — Check **BV-02** and **BV-07** are closed.
-- [ ] 5.5.45 — Check **S-05** and **S-03** are OFF.
+- [ ] 5.5.34 — Carry the three **solar panels** in and stow them.
+- [ ] 5.5.35 — Pin the bottom **turnbuckle jaw** to its panel lug (a spacer washer each side, cotter in).
+- [ ] 5.5.36 — Pin the other jaw to the bottom wall-anchor eye (spacer washers, cotter in).
+- [ ] 5.5.37 — Tension the bottom **turnbuckle**.
+- [ ] 5.5.38 — Tighten both **jam nuts** on the bottom turnbuckle.
+- [ ] 5.5.39 — Close and latch the **cargo doors**.
+- [ ] 5.5.40 — Switch off all circuits except the safelight standby.
+- [ ] 5.5.41 — Tighten all **IBC tote ratchet straps** ([IBC Stacking Report §4.2](ibc-stacking-report.md)).
+- [ ] 5.5.42 — Re-check their tension after the first 50 km.
+- [ ] 5.5.43 — Close all four tote vents (**BV-08** to **BV-11**).
+- [ ] 5.5.44 — Check **dust caps** are on X1, X3 and X4.
+- [ ] 5.5.45 — Check **BV-02** and **BV-07** are closed.
+- [ ] 5.5.46 — Check **S-05** and **S-03** are OFF.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 Follow [§1.3](#13-mode-conversion-transport-to-operational), then re-deploy the chemistry prep shelf (§1.7.3) and do the dark-adaptation check (§1.4.5).

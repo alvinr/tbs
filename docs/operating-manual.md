@@ -291,9 +291,9 @@ The container arrives in transport mode: panel swung in and held by the two wall
 
 ### 1.8 Light-Leak Inspection
 - [ ] 1.8.1 — Check both **drum-panel cam latches** are engaged.
-- [ ] 1.8.2 — Switch ON the **safelight** (circuit D, **red only**).
-- [ ] 1.8.3 — Enter through the **drum**.
-- [ ] 1.8.4 — Switch OFF the **safelight**.
+- [ ] 1.8.2 — Enter through the **drum**.
+- [ ] 1.8.3 — Switch OFF the **white light** (circuit F).
+- [ ] 1.8.4 — Switch OFF the **safelight** (circuit D).
 - [ ] 1.8.5 — Stand still **5 minutes** for dark adaptation.
 - [ ] 1.8.6 — Inspect all seams, door perimeters and duct penetrations for light.
 - [ ] 1.8.7 — Exit.

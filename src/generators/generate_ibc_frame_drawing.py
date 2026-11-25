@@ -255,7 +255,7 @@ def _foot_plan(ax, cx, post_yd, *, zo=7):
 # ═══════════════════════════════════════════════════════════════════════════════
 # Ghost IBC helpers — show cage/pallet anatomy as context for frame interface
 # ═══════════════════════════════════════════════════════════════════════════════
-def _ghost_ibc_elev(ax, yd, z_base, width, *, label="", zo=2.5):
+def _ghost_ibc_elev(ax, yd, z_base, width, *, label="", zo=2.5, valve="face"):
     """Draw a ghost IBC in elevation view showing pallet, bottle, cage anatomy.
 
     yd      — left edge Yd position
@@ -308,11 +308,10 @@ def _ghost_ibc_elev(ax, yd, z_base, width, *, label="", zo=2.5):
             [(mid_z), (mid_z)],
             color=C_CAGE, lw=0.5, alpha=0.25, zorder=zo + 0.2)
 
-    # Drain valve position (corridor-facing side — on the right edge for near
-    # column, left edge for far column; caller can adjust)
-    valve_z = z_base + IBC_VALVE_Z
-    # Small circle representing valve
-    ax.add_patch(Circle(((yd + width - IBC_CAGE_INSET), (valve_z)),
+    # Outlet valve is centered on the 1,000mm (walkway, -X) face: face-on when
+    # looking along X, on the -X edge when looking along Yd.
+    valve_y = yd + width / 2 if valve == "face" else yd + IBC_CAGE_INSET
+    ax.add_patch(Circle(((valve_y), (z_base + IBC_VALVE_Z)),
                          (15), fc=C_CAGE, ec=C_CAGE, lw=0.8,
                          alpha=0.25, zorder=zo + 0.4))
 
@@ -321,17 +320,6 @@ def _ghost_ibc_elev(ax, yd, z_base, width, *, label="", zo=2.5):
         ax.text((yd + width / 2), (z_base + IBC_H_1000 / 2), label,
                 ha="center", va="center", fontsize=5.5, color=C_CAGE,
                 alpha=0.5, **FONT, zorder=zo + 0.5)
-
-
-def _ghost_ibc_elev_far(ax, yd, z_base, width, *, label="", zo=2.5):
-    """Ghost IBC for far column — drain valve on LEFT (corridor) side."""
-    _ghost_ibc_elev(ax, yd, z_base, width, label=label, zo=zo)
-    # Override valve position to left side
-    valve_z = z_base + IBC_VALVE_Z
-    # Remove the default right-side valve by drawing over it, then draw on left
-    ax.add_patch(Circle(((yd + IBC_CAGE_INSET), (valve_z)),
-                         (15), fc=C_CAGE, ec=C_CAGE, lw=0.8,
-                         alpha=0.25, zorder=zo + 0.4))
 
 
 def _ghost_ibc_plan(ax, x, yd, w, d, *, label="", zo=2.5):
@@ -370,6 +358,9 @@ def _ghost_ibc_plan(ax, x, yd, w, d, *, label="", zo=2.5):
         ax.plot([(x + 20), (x + w - 20)],
                 [(runner_yd), (runner_yd)],
                 color=C_PALLET, lw=1.5, alpha=0.2, zorder=zo + 0.1)
+
+    ax.add_patch(Circle(((x), (yd + d / 2)), (15), fc=C_CAGE, ec=C_CAGE, lw=0.8,
+                         alpha=0.25, zorder=zo + 0.4))
 
     if label:
         ax.text((x + w / 2), (yd + d / 2), label,
@@ -462,12 +453,12 @@ def sheet1():
     plat_top = PLATFORM_Z                       # 1168 — top tier bears directly on the lower tote
     _ghost_ibc_elev(ax, BLUE_IBC_Y, 0, IBC_D,
                     label="IBC-3\n(BROWN, BOT NEAR)")
-    _ghost_ibc_elev_far(ax, IBC_FAR_Y, 0, IBC_D,
+    _ghost_ibc_elev(ax, IBC_FAR_Y, 0, IBC_D,
                         label="IBC-4\n(WASTE, BOT FAR)")
     # Top tier (direct-stack)
     _ghost_ibc_elev(ax, BLUE_IBC_Y, plat_top, IBC_D,
                     label="IBC-1\n(BLUE, TOP NEAR)")
-    _ghost_ibc_elev_far(ax, IBC_FAR_Y, plat_top, IBC_D,
+    _ghost_ibc_elev(ax, IBC_FAR_Y, plat_top, IBC_D,
                         label="IBC-2\n(BLUE, TOP FAR)")
 
     # ── Front pair of the deep 4-leg box — two full-height corridor uprights.
@@ -657,16 +648,16 @@ def sheet1():
            arrow_style="-|>", font=FONT)
 
     # ── IBC anatomy labels ──────────────────────────────────────────────────
-    leader(ax, (BLUE_IBC_Y + IBC_D / 2), (IBC_PALLET_H / 2),
-           (BLUE_IBC_Y + IBC_D / 2 - 70), (IBC_PALLET_H + 60),
+    leader(ax, (BLUE_IBC_Y + IBC_D * 0.8), (IBC_PALLET_H - 20),
+           (BLUE_IBC_Y + IBC_D * 0.8 - 70), (IBC_PALLET_H + 60),
            f"PALLET BASE\n{IBC_PALLET_H}mm (STEEL/PLASTIC)\nFORK POCKETS",
            color=C_PALLET, fs=5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
     # Pull the valve callout into the bottom-tier face just left of the valve
     # (short leader, rule 67), clear above the PALLET BASE callout below it.
-    leader(ax, (BLUE_IBC_Y + IBC_D - IBC_CAGE_INSET), (IBC_VALVE_Z),
-           (BLUE_IBC_Y + IBC_D - 80), (IBC_VALVE_Z + 75),
+    leader(ax, (BLUE_IBC_Y + IBC_D / 2), (IBC_VALVE_Z),
+           (BLUE_IBC_Y + IBC_D / 2 - 80), (IBC_VALVE_Z + 75),
            f"TOTE OUTLET VALVE\n(UNUSED, CLOSED)\nZ={IBC_VALVE_Z}mm",
            color=C_CAGE, fs=5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -700,7 +691,7 @@ def sheet1():
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage."
         f"   v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
-        f"9. Tote outlet valve faces the corridor, CL Z={IBC_VALVE_Z}mm above each tote base; unused (closed). Connections are 1\" bulkheads through the tote wall.",
+        f"9. Tote outlet valve is centered on the 1,000mm walkway (-X) face, CL Z={IBC_VALVE_Z}mm above each tote base; unused (closed). Connections are 1\" bulkheads through the tote wall.",
         f"10. Total frame weight: ~123 kg (incl. 4 feet + rings + 8 front bars + 8 hangers + 8 exterior plates + rear-panel brackets + 4 friction mats).",
     ]
     draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=23,
@@ -767,10 +758,10 @@ def sheet2():
     ibc_x_offset = (FRAME_FOOTPRINT_D - IBC_W) / 2 + 200# ~32.5mm
     plat_top = PLATFORM_Z + FRAME_RHS + MAT_T
     # Bottom tier
-    _ghost_ibc_elev(ax, ibc_x_offset, 0, IBC_W,
+    _ghost_ibc_elev(ax, ibc_x_offset, 0, IBC_W, valve="edge",
                     label="BOTTOM TIER\n(IBC-3 OR IBC-4)")
     # Top tier
-    _ghost_ibc_elev(ax, ibc_x_offset, plat_top, IBC_W,
+    _ghost_ibc_elev(ax, ibc_x_offset, plat_top, IBC_W, valve="edge",
                     label="TOP TIER\n(IBC-1 OR IBC-2)")
 
     # ── Uprights (deep 4-leg box: front pair + back pair, 450mm apart) ───────

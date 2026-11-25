@@ -3025,7 +3025,7 @@ Plumbing Panel.</p>
 </tr>
 <tr>
 <td>Overall dimensions</td>
-<td>1,219 × 1,016 × 1,168mm (W × D × H)</td>
+<td>1,219 × 1,016 × 1,168mm (W × D × H) — the US 48 × 40 × 46" format (<a href="https://www.uline.com/Product/Detail/H-3886/">ULINE H-3886</a>); the metric Schütz MX 1000 is 1,200 × 1,000 × 1,160mm (<a href="https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/">Schütz Ecobulk MX datasheet, 08/2023</a>), so the design envelope covers both</td>
 </tr>
 <tr>
 <td>Pallet format</td>
@@ -3044,8 +3044,16 @@ Plumbing Panel.</p>
 <td>25mm OD</td>
 </tr>
 <tr>
-<td>Drain valve</td>
-<td>DN50 butterfly valve, S60×6 thread</td>
+<td>Outlet valve (not used)</td>
+<td>Factory 2" (DN50) butterfly valve, bottom center of one face; kept closed and capped. Every connection in this design is a 1" bulkhead through the tote wall (<a href="../plumbing-report/">Plumbing Report</a>). The thread varies by maker: S60×6 coarse on the Schütz, 2" NPS male on ULINE H-3886. Schütz also offers DN80 butterfly, DN150 screw-on butterfly and DN50 ball valves (<a href="https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/">datasheet</a>). Valve height above the base (<code>IBC_VALVE_Z</code>) is not published; confirm on a supplied tote</td>
+</tr>
+<tr>
+<td>Top fill cap</td>
+<td>DN150 screw cap on the Schütz (DN225 and DN400 lid optional); 6" cap on ULINE H-3886. Not used in service (see Fill)</td>
+</tr>
+<tr>
+<td>Stacking rating</td>
+<td>2-high in transport for contents up to density 1.5; 4-high static (<a href="https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/">Schütz datasheet</a>)</td>
 </tr>
 <tr>
 <td>Fill</td>
@@ -3053,7 +3061,7 @@ Plumbing Panel.</p>
 </tr>
 <tr>
 <td>Tare weight</td>
-<td>~65 kg per tote</td>
+<td>65 kg per tote, design value. Published: 56 kg (steel pallet) / 59 kg (plastic pallet) for the Schütz MX 1000 (<a href="https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/">datasheet</a>), 128 lb / 58 kg for ULINE H-3886</td>
 </tr>
 <tr>
 <td>Full weight (at the <!-- BEGIN fact:ibc_capacity_l -->1,000<!-- END fact:ibc_capacity_l --> L design ceiling)</td>
@@ -3827,8 +3835,8 @@ provide vertical tie-down. Together these restrain both tiers in all six DOF.</p
 <p><img alt="TBS-001 IBC Stacking — Sheet 2: Securing Arrangement" src="../assets/ibc-stacking-sheet2.png" /></p>
 <hr />
 <h2 id="5-drain-valve-access">5. Drain Valve Access<a class="headerlink" href="#5-drain-valve-access" title="Permanent link">&para;</a></h2>
-<p>The bottom-tier drain valves (DN50 butterfly, corridor-facing) are reached
-directly from the <strong>open corridor front</strong>: the Corridor Plumbing Panel sits at the corridor mouth
+<p>The bottom-tier tote connections (1" bulkheads through the corridor face) and the totes' own outlet
+valves (unused, closed) are reached directly from the <strong>open corridor front</strong>: the Corridor Plumbing Panel sits at the corridor mouth
 and there is no load-bearing base frame, so no access gates are needed. The operator reaches in
 from the right walkway.</p>
 <hr />
@@ -3852,8 +3860,8 @@ in <a href="#7-internal-plumbing">§7</a>.)</p>
 <hr />
 <h2 id="7-internal-plumbing">7. Internal Plumbing<a class="headerlink" href="#7-internal-plumbing" title="Permanent link">&para;</a></h2>
 <p>All internal supply and return lines route through the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor
-between the near and far IBC columns, reaching each tote's corridor-facing DN50
-butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
+between the near and far IBC columns, reaching each tote through 1" bulkhead fittings in its
+corridor face, each with a short flex jumper. The totes' own outlet valves are not used. The pipe specification, the per-circuit routing
 (X1 Blue pressurized fill teed to both top totes, X3 Brown and X4 Waste pumped drains,
 and the recycle returns), and the valve schedule are specified in the
 <a href="../water-system-report/">Water System Report</a> §4 and §7. The corridor pumps on the
@@ -3944,7 +3952,7 @@ the stacking structure and the totes it restrains.</p>
 <h2 id="10-maintenance-schedule">10. Maintenance Schedule<a class="headerlink" href="#10-maintenance-schedule" title="Permanent link">&para;</a></h2>
 <p>The frame is a painted, shop-welded box whose field joints are all bolted (§3.8), so its upkeep is
 inspection and re-torque to the §3.5 schedule rather than rework. The wear items are the ratchet
-straps, the DN50 valve seals and the camlock gaskets. The inspection schedule and procedures are in
+straps, the tote-wall bulkhead seals, the closed tote outlet valves and the camlock gaskets. The inspection schedule and procedures are in
 the <a href="../operating-manual/#10-maintenance">Operating Manual — Maintenance</a>.</p>
 <hr />
 <h2 id="11-sources">11. Sources<a class="headerlink" href="#11-sources" title="Permanent link">&para;</a></h2>
@@ -3958,7 +3966,11 @@ the <a href="../operating-manual/#10-maintenance">Operating Manual — Maintenan
 <tbody>
 <tr>
 <td>Schütz Ecobulk MX 1000 (275 gal) IBC</td>
-<td><a href="https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/">Schütz USA — Ecobulk MX</a> — US sizes 275 / 330 gal, DN50 butterfly outlet, DN150 screw-cap fill opening, UN31HA1/Y</td>
+<td><a href="https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/">Schütz USA — Ecobulk MX</a> and its datasheet (08/2023) — 1,200 × 1,000 × 1,160mm, 56–59 kg, outlet and fill-opening options, UN 31HA1/Y, 2-high dynamic / 4-high static stacking</td>
+</tr>
+<tr>
+<td>US 275-gal tote (48 × 40 × 46")</td>
+<td><a href="https://www.uline.com/Product/Detail/H-3886/">ULINE H-3886</a> — steel pallet, 2" butterfly valve with male NPS outlet, 6" fill cap, 128 lb, UN 31HA1/Y</td>
 </tr>
 <tr>
 <td>Weld-on lashing ring</td>

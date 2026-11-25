@@ -340,7 +340,7 @@ Equipment in the IBC corridor is shadow-free.*
 | Swung door clearance | +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_clearance_mm -->mm (bay front-right corner, to the closed-door inner face) | — |
 
 *Components: Ø89×8mm CHS pivot post on a thrust collar + top/bottom hub bearings (51118 thrust +
-2× Ø90 journal), 200×140×20 floor/roof mount plates (floor plate on the left floor-anchor sub-plate),
+2× Ø90 journal), 170×140×20 floor/roof mount plates (floor plate on the left floor-anchor sub-plate),
 drum support cage (2×2×0.120in steel SHS), top + bottom wall stays + 4-bolt wall anchor
 plates, 4× drop-in rail saddles + tapered dowels (for the removable left film rails).*
 

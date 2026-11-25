@@ -1379,10 +1379,10 @@ LEFT_SUBPLATE_YD0 = min(LEFT_WK_CANT_LEG_YDS) - LEFT_WK_CANT_FOOT[1] // 2 - 30  
 LEFT_SUBPLATE_YD1 = C_WID - FLOOR_SUBPLATE_WALL_GAP                                  # 2357
 # Pivot-post floor/roof mount plates: rectangular, since the post axis is only 75mm off the far wall
 # (a round plate would run into it) and the floor plate must stay off the tray (X ≤ PROC_TRAY_X_L).
-PIVOT_PLATE_W  = 200    # X (mm)
+PIVOT_PLATE_W  = 170    # X (mm) — 2026-11-24: 200→170 so the tray-side edge sits 20mm off the tray (was 5mm)
 PIVOT_PLATE_D  = 140    # Yd (mm) — wall-side edge at PIVOT_YD + 70 = 2357
 PIVOT_PLATE_T  = 20
-PIVOT_PLATE_BOLT_DX = 70   # 4× M12 at ±70 X / ±45 Yd (140×90 pattern; edge 30 / 25mm)
+PIVOT_PLATE_BOLT_DX = 60   # 4× M12 at ±60 X / ±45 Yd (120×90 pattern; edge 25 / 25mm); head clears the Ø89 post by ~5mm
 PIVOT_PLATE_BOLT_DY = 45
 PIVOT_BUSH_Z   = (220, 2050)   # bottom / top iglide journal-bushing Z (mm) — the hub's overturning couple
 assert PIVOT_YD + PIVOT_PLATE_D / 2 <= C_WID - FLOOR_SUBPLATE_WALL_GAP

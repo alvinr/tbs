@@ -470,7 +470,7 @@ doors by +<!-- BEGIN fact:swung_door_clearance_mm -->29<!-- END fact:swung_door_
 
 The whole movable assembly swings on a **fixed Ø89×8 CHS post** (3" NPS Sch-80, S355 —
 shared with the film plane's far-left rail ends), running floor→roof and **bolted at both ends**
-to 200 × 140 × 20mm mount plates. The post axis is only 75mm off the far wall, so the plates are
+to 170 × 140 × 20mm mount plates. The post axis is only 75mm off the far wall, so the plates are
 rectangular to stay clear of it. The floor plate bolts down with 4× M12 into tapped bosses on the
 **left floor-anchor sub-plate** — the same self-tapped strongback the five walkway legs use, run on
 to the far wall (§5.2 of the [Walkway Report](walkway-report.md#52-floor-anchoring-sub-plate-strongback)),

@@ -37,6 +37,8 @@ import sys, os, json
 from collections import defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sketchup_client import send_ruby
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'generators'))
+from tbs_constants import PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR
 
 # Pipe-on-pipe crossings whose midpoint is above this Z are in the ceiling cable-trunk band — conductors
 # bundled in the 40x25 PVC trunk share the channel by design, so they're a bundle, not a collision.
@@ -790,7 +792,7 @@ def main():
     # (The real basin is open geometry, so enforce the footprint with a synthetic box.)  Only the
     # sump drain — which connects to the sump — is allowed (key "sump").
     solids.append({"n": "PROCESSING TRAY (exclusion zone)", "p": "synthetic", "cat": "tray", "key": "sump",
-                   "mn": [170, 80, 0], "mx": [4629, 2280, 130]})
+                   "mn": [PROC_TRAY_X_L, PROC_TRAY_YD_NEAR, 0], "mx": [PROC_TRAY_X_R, PROC_TRAY_YD_FAR, 130]})
 
     # SANCTIONED Rule 5a exception: the four corridor↔pinhole-wall lines run as a flat RIBBON in the
     # dead space UNDER the right-walkway grate (over the tray's outer margin, below the grate), by

@@ -28,13 +28,7 @@ from matplotlib.patches import Circle, Rectangle
 
 sys.path.insert(0, os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "models"))
-from tbs_constants import (                                    # noqa: E402
-    DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_WOOD,
-    LT_CAGE_BOT,
-    PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, PWP_PANEL_NOTCH_BR, PWP_PANEL_NOTCH_TR, SHELF_W, SHELF_DEPTH,
-    FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, FAN_B_FIXED_W,
-    EP_COL_W, EP_H_HI, BA_H_LO,
-)
+from tbs_constants import DIAGRAMS_DIR, DIAGRAM_DPI, FONT, C_OUT, C_DIM, C_WOOD, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_H, PWP_PANEL_NOTCH_BR, PWP_PANEL_NOTCH_TR, SHELF_W, SHELF_DEPTH, FAN_B_BAND_W_CUT, FAN_B_BAND_H_CUT, FAN_B_FIXED_W, EP_COL_W, EP_H_HI, BA_H_LO
 import generate_corridor_water_panel as cwp                    # noqa: E402  (corridor ply piece dims — single source)
 import generate_lighttrap_model as lt                          # noqa: E402  (apron/stub bounding blanks — single source; 3D is authoritative)
 from tbs_drawing import draw_notes, leader                     # noqa: E402

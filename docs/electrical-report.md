@@ -353,7 +353,7 @@ code-anchored rules:
 
 The AC branch is energized only during sessions: the inverter DC disconnect isolates it
 otherwise, and the cooler cord unplugs from the in-use-covered GFCI outlet and stows inside
-for transport ([Operating Manual §5.3, §5.5](operating-manual.md)). The
+for transport ([Operating Manual §5.2, §5.5](operating-manual.md)). The
 [Electrical Safety Report](electrical-safety-report.md) carries the full hazard assessment
 including this AC branch.
 

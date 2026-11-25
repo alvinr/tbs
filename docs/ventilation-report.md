@@ -173,7 +173,7 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 
 ## 7. Operating Modes
 
-The table sets the fan, cooler and shade duty for each phase of a session; the switching steps are in [Operating Manual §1.6 and §5.2](operating-manual.md).
+The table sets the fan, cooler and shade duty for each phase of a session; the switching steps are in [Operating Manual §1.6 and §5.1](operating-manual.md).
 
 | Mode | Intake (Fan B) | Exhaust (Fan A) | Evap cooler | Shade |
 |------|---------------|----------------|-------------|-------|

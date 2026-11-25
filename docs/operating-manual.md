@@ -22,7 +22,7 @@ Baseline exposure is **30–45 minutes** under direct full sun, ISO equivalent ~
 Decide this **before mixing Part B**. The baseline sensitizer is iron-only. Adding ammonium dichromate
 steepens the print's contrast. It is a creative choice, but it changes how Part B is mixed (§0.3),
 how the sensitizer and the unwashed print are handled (§2.4, §2.5, §4.1), where the first wash drains
-(§4.2) and how the wash water is disposed of (§5.1, TU.6). Each of those steps gives the dichromate
+(§4.2) and how the wash water is disposed of (§5.4, TU.6). Each of those steps gives the dichromate
 variant in place; the basis is in [Wash-Water Classification](wash-water-classification.md).
 
 ## 3. Phase 0 — Pre-Departure
@@ -533,7 +533,7 @@ Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupp
 - [ ] TU.3 — Fill (controlled at the bowser) and check the level.
 - [ ] TU.4 — Shut off at the bowser.
 - [ ] TU.5 — Disconnect and re-cap X1.
-- [ ] TU.6 — Book the hauler for the chemistry in use (§5.1.1).
+- [ ] TU.6 — Book the hauler for the chemistry in use (§5.4.2).
 - [ ] TU.7 — Put on nitrile gloves.
 - [ ] TU.8 — Remove the **dust cap** on **X3** (Brown) or **X4** (Waste).
 - [ ] TU.9 — Connect the **hauler's hose**.
@@ -551,47 +551,48 @@ Use this for stays longer than one Blue fill (~<!-- BEGIN fact:prints_per_resupp
 ## 9. Phase 5 — Cleanup and Close-Down
 **Time: ~30 minutes. White light.**
 
-### 5.1 Chemistry Disposal
+### 5.1 After Each Print
+- [ ] 5.1.1 — Put on nitrile gloves.
+- [ ] 5.1.2 — Set **3W-DV-02** to **Waste**.
+- [ ] 5.1.3 — Pour leftover working sensitizer into the tray.
+- [ ] 5.1.4 — Run **P-04** to drain it.
+- [ ] 5.1.5 — Rinse the **roller trays**, rollers and brushes in the tray right away.
+- [ ] 5.1.6 — Park the **spray bar** at either end of its travel.
+- [ ] 5.1.7 — Detach the **telescoping pole** and stow it.
+- [ ] 5.1.8 — Check **fans A and B** are running (circuits A and B).
+- [ ] 5.1.9 — Ventilate at least **30 minutes** after development (longer when hot).
+
+### 5.2 End of Day
+- [ ] 5.2.1 — Seal Part A and Part B in their dark bottles (they keep 6–8 weeks).
+- [ ] 5.2.2 — Switch OFF the **evaporative cooler** (circuit E).
+- [ ] 5.2.3 — Switch OFF the **master pump switch** (circuit C).
+- [ ] 5.2.4 — Switch OFF the **ventilation fans** (circuits A and B).
+- [ ] 5.2.5 — Switch OFF the **safelight** (circuit D).
+- [ ] 5.2.6 — Switch OFF the **white light** (circuit F).
+- [ ] 5.2.7 — Disconnect the **solar inputs** at the MPPT controller.
+- [ ] 5.2.8 — Leave the **shore charger** connected overnight if available.
+
+### 5.3 Securing the Container Overnight
+- [ ] 5.3.1 — Engage both **drum-panel cam latches**.
+- [ ] 5.3.2 — Unattended overnight: fit the **locking bar** across the drum panel.
+- [ ] 5.3.3 — Cap all **exterior ventilation duct stubs**.
+- [ ] 5.3.4 — Lay the **solar panels** flat or fold them if wind is expected.
+
+### 5.4 Wash-Water Disposal
 Spent wash water leaves only through the X3/X4 ports (TU.6). Never discharge a tote to a storm drain, soil or waterway.
 
-- [ ] 5.1.1 — Keep the **tote caps and valves** closed between pump-outs.
-- [ ] 5.1.2 — Book disposal by chemistry ([Wash-Water Classification](wash-water-classification.md)):
+- [ ] 5.4.1 — Keep the **tote caps and valves** closed between pump-outs.
+- [ ] 5.4.2 — Book disposal by chemistry ([Wash-Water Classification](wash-water-classification.md)):
   - **Baseline:** a liquid-waste hauler or a wastewater plant that accepts it — after the one-time check ([Sensitizer Trials T6](sensitizer-trials.md)).
   - **Dichromate option:** IBC-4 always to a **licensed hazardous-waste hauler**, on a manifest. IBC-3 the same until Brown measures below 5 mg/L chromium ([Sensitizer Trials T7](sensitizer-trials.md)).
   - Once a tote has received dichromate wash water, it stays on the dichromate route until pumped out.
-- [ ] 5.1.3 — Keep each manifest with the disposal record.
-- [ ] 5.1.4 — Log the hazardous kilograms each month (they set the generator category).
-- [ ] 5.1.5 — Seal Part A and Part B in their dark bottles (6–8 weeks).
-- [ ] 5.1.6 — Set **3W-DV-02** to **Waste**.
-- [ ] 5.1.7 — Pour leftover working sensitizer into the tray.
-- [ ] 5.1.8 — Run **P-04** to drain it.
-- [ ] 5.1.9 — Put on nitrile gloves.
-- [ ] 5.1.10 — Rinse the **roller trays**, rollers and brushes in the tray (**3W-DV-02** on Waste) right away.
-- [ ] 5.1.11 — Park the **spray bar** at either end of its travel.
-- [ ] 5.1.12 — Detach the **telescoping pole** and stow it.
-
-### 5.2 Container Ventilation
-- [ ] 5.2.1 — Check **fans A and B** are running (circuits A and B).
-- [ ] 5.2.2 — Ventilate at least **30 minutes** after development (longer when hot).
-
-### 5.3 Power-Down Sequence
-- [ ] 5.3.1 — **Evaporative cooler** (circuit E).
-- [ ] 5.3.2 — Water pumps (circuit C).
-- [ ] 5.3.3 — Ventilation fans (circuits A, B).
-- [ ] 5.3.4 — Safelight (circuit D) and white light (circuit F).
-- [ ] 5.3.5 — Disconnect the **solar inputs** at the MPPT controller.
-- [ ] 5.3.6 — Leave the **shore charger** connected overnight if available.
-
-### 5.4 Securing the Container (Operational Mode)
-- [ ] 5.4.1 — Engage both **drum-panel cam latches**.
-- [ ] 5.4.2 — Unattended overnight: fit the locking bar across the drum panel.
-- [ ] 5.4.3 — Cap all **exterior ventilation duct stubs**.
-- [ ] 5.4.4 — Lay the **solar panels** flat or fold them if wind is expected.
+- [ ] 5.4.3 — Keep each manifest with the disposal record.
+- [ ] 5.4.4 — Log the hazardous kilograms each month (they set the generator category).
 
 ### 5.5 Transport Mode Conversion (Packing Up)
 **Time: ~10 minutes. Single-person operation.**
 
-- [ ] 5.5.1 — Switch off **Fan B**.
+- [ ] 5.5.1 — Do the after-print and end-of-day steps (§5.1, §5.2).
 - [ ] 5.5.2 — Stow all interior items.
 - [ ] 5.5.3 — Return the **film-plane cross-slides** to datum.
 - [ ] 5.5.4 — Lock all four corners at matching depth with their cam clamps.

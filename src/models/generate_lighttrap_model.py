@@ -50,7 +50,7 @@ DRUM_CX, DRUM_CY, DRUM_R, DRUM_H = ov.DRUM_CX, ov.DRUM_CY, ov.DRUM_R, ov.DRUM_H_
 PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X)
 PANEL_CORNER_T = ov.PANEL_CORNER_T            # corner-zone thickness (report §2.1)
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 217 — center-zone leaf-bottom (= tbs_constants, via ov)
-from tbs_constants import PANEL_FLOOR_GAP_SIDE
+from tbs_constants import PANEL_FLOOR_GAP_SIDE, FLOOR_PLATE_T
 from tbs_constants import PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CUT_YD, PANEL_FAN_BAND_Z   # panel_pivot (Phase 1)
 from tbs_constants import DOOR_FRAME_FACE, DOOR_FRAME_DEPTH, CARGO_DOOR_LEAF_T
 PANEL_FLOOR_GAP_SIDE = PANEL_FLOOR_GAP_SIDE   # 282 — corner-zone stepped bottom (clears the bare walkway cantilever legs; hingepanel Sheet 15)
@@ -1309,7 +1309,7 @@ _STRIP_NEAR    = (0, YD_L)                 # near corner zone Yd (0..653)
 _STRIP_FAR     = (YD_R, C_WID - APRON_FIX_W)  # far corner zone Yd (1709..2162)
 
 # Cut-sheet blanks — SINGLE SOURCE for the plywood cut sheet + hingepanel Sheet 16.
-APRON_BASE_BLANK = (C_WID, APRON_BASE_TOP)                                     # (2362, 130) — fixed full-width base
+APRON_BASE_BLANK = (C_WID, APRON_BASE_TOP - FLOOR_PLATE_T)                     # (2362, 122) — fixed full-width base, on the 8mm sub-plate
 APRON_NEAR_BLANK = (_STRIP_NEAR[1] - _STRIP_NEAR[0], _STRIP_TOP - APRON_BASE_TOP)  # (653, 152) — near pull-out strip
 APRON_FAR_BLANK  = (_STRIP_FAR[1] - _STRIP_FAR[0], _STRIP_TOP - APRON_BASE_TOP)    # (453, 152) — far pull-out strip
 STUB_BLANK = (PIVOT_YD - (C_WID - APRON_FIX_W), CORNER_BOT - APRON_BASE_TOP)       # (125, 152) — far-pivot region (far_leaf bottom)
@@ -1334,7 +1334,7 @@ _Z_BODY = APRON_BASE_TOP - APRON_CHAM   # 112 — base body top / chamfer bottom
 
 
 def apron_base_geom():
-    """FIXED full-width base (Z0..130), continuous — never moves. 18mm ply (X22..40), built as ONE
+    """FIXED full-width base (Z8..130, on the floor-anchor sub-plate), continuous — never moves. 18mm ply (X22..40), built as ONE
     continuous prism per Yd zone (chamfer integral to the base, not a separate wedge): the corner zones
     have the 45° chamfered top (ext-low X22=Z112 → int-high X40=Z130) = the pull-out strip seat (Sheet 16
     Detail D); the center + far-pivot top is flat at Z130. Plus a strip brush over the drum-cage width
@@ -1344,19 +1344,12 @@ def apron_base_geom():
             (_STRIP_NEAR[1], _STRIP_FAR[0], False),      # center drum bay — flat top
             (_STRIP_FAR[0], _STRIP_FAR[1], True),        # far corner — chamfered strip seat
             (_STRIP_FAR[1], C_WID, False)]               # far-pivot — flat top
-    # The left floor-anchor sub-plate runs from X0 under the base: over its Yd span the base bottom is
-    # notched to sit ON the plate (Z = FLOOR_PLATE_T), elsewhere it stands on the floor.
-    from tbs_constants import LEFT_SUBPLATE_YD0 as pY0, LEFT_SUBPLATE_YD1 as pY1, FLOOR_PLATE_T
-    cuts = sorted({0, pY0, pY1, C_WID} | {y for s in segs for y in s[:2]})
+    # The base stands ON the left floor-anchor sub-plate (which runs under it from X0), so it starts at Z = FLOOR_PLATE_T.
     parts = []
     for y0, y1, cham in segs:
         top = [(40, APRON_BASE_TOP), (APRON_X0, _Z_BODY)] if cham else [(40, APRON_BASE_TOP), (APRON_X0, APRON_BASE_TOP)]
-        for a, b in zip(cuts, cuts[1:]):
-            if a < y0 or b > y1:
-                continue
-            zb = FLOOR_PLATE_T if pY0 <= a and b <= pY1 else 0
-            parts.append(_prism_xz("Apron fixed base (chamfered seat)" if cham else "Apron fixed base",
-                         [(APRON_X0, zb), (40, zb)] + top, a, b - a, C_PLY, 1.0))
+        parts.append(_prism_xz("Apron fixed base (chamfered seat)" if cham else "Apron fixed base",
+                     [(APRON_X0, FLOOR_PLATE_T), (40, FLOOR_PLATE_T)] + top, y0, y1 - y0, C_PLY, 1.0))
     parts.append(ruby_box("Apron base top brush (cage)", -1, cgL, APRON_BASE_TOP, 30, cgR - cgL, LT_CAGE_BOT - APRON_BASE_TOP, color=C_SEAL))
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12

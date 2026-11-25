@@ -58,7 +58,7 @@ PINHOLE_HALF = _r5up(PINHOLE_W / 2)                      # 900  — blank for ea
 # + 2 lip battens B1 + 2 strip battens B2. The cut sheet carries each bounding BLANK (rounded up); the 45° chamfer / lip
 # lap / cam-latch holes are dimensioned on hingepanel Sheet 16.
 APR_BASE_W  = _r5up(lt.APRON_BASE_BLANK[0])            # 2365 — fixed full-width base width (2362)
-APR_BASE_H  = LT_CAGE_BOT - 10                         # 130  — base height, floor→cage (already 5mm)
+APR_BASE_H  = _r5up(lt.APRON_BASE_BLANK[1])            # 125  — base height (122, sub-plate top → 10mm under the cage)
 APR_NEAR_W  = _r5up(lt.APRON_NEAR_BLANK[0])            # 655  — near pull-out strip width (653)
 APR_FAR_W   = _r5up(lt.APRON_FAR_BLANK[0])             # 455  — far pull-out strip width (453)
 APR_STRIP_H = _r5up(lt.APRON_NEAR_BLANK[1])            # 155  — pull-out strip height (152), both strips
@@ -107,7 +107,7 @@ GROUPS = [
             ("Pipe-clip standoff blocks", 40, 40, 1, "one 40×40mm block under EVERY water-pipe P-clip (18mm, stacked or cut to depth for the wider standoffs) — cut from this group's OFFCUTS, no extra stock"),
         ]),
         dict(key="panel-bottom-apron", stock=STOCK_8x4, pieces=[
-            ("Apron fixed base (full width)", APR_BASE_W, APR_BASE_H, 1, "FIXED full-width base Z0–130, continuous across the door bottom — never moves; 18mm, flat-black interior; hingepanel Sheet 16"),
+            ("Apron fixed base (full width)", APR_BASE_W, APR_BASE_H, 1, "FIXED full-width base Z8–130 (on the floor-anchor sub-plate), continuous across the door bottom — never moves; 18mm, flat-black interior; hingepanel Sheet 16"),
             ("Near pull-out apron strip", APR_NEAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip Z130–282, near corner — 45° bottom chamfer + top lip butt; profile on hingepanel Sheet 16"),
             ("Far pull-out apron strip", APR_FAR_W, APR_STRIP_H, 1, "REMOVABLE corner strip, far corner; profile on hingepanel Sheet 16"),
             ("Near leaf lip batten B1", APR_NEAR_W, APR_LIP_H, 1, "flat ply lip lapped on the leaf exterior face, near corner — CSK wood screws; Sheet 16 Detail E"),

@@ -50,7 +50,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 
 ## ☀️ Solar panels — transport stowage + tie-downs (2026-11-24)
 
-- [ ] Choose where the three solar panels ride inside the container in transport and add tie-downs for them (anchor points + straps), in the 3D model, the right report and the BOM. The manual carries them out in §1.3.13 and back in at §5.5.34 ("stow them") — add the location and the tie-down step once decided.
+- [ ] Choose where the three solar panels ride inside the container in transport and add tie-downs for them (anchor points + straps), in the 3D model, the right report and the BOM. The manual carries them out in §1.3.13 and back in at §5.5.35 ("stow them") — add the location and the tie-down step once decided.
 
 ## 🛒 Parts to source (SKU + price)
 

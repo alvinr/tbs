@@ -41,7 +41,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 ## 📏 Measure a supplied IBC tote (2026-11-24)
 
 - [ ] Measure one tote when the totes arrive. Neither the Schütz datasheet nor ULINE H-3886 publishes these:
-  - outlet valve: type, size and thread (S60×6 coarse vs 2" NPS), which face it is on, and its centerline height above the base (`IBC_VALVE_Z`, now 185mm, unsourced);
+  - outlet valve: type, size and thread (S60×6 coarse vs 2" NPS), thread (face, centering and 140mm CL height now confirmed by Schütz, 2026-11-25);
   - cage: tube diameter and the horizontal/vertical bar spacing on the corridor and walkway faces;
   - top fill cap: size and position;
   - pallet base height.
@@ -94,7 +94,7 @@ Deferred until after the editorial review: it reworks the water system and plumb
 - IBC-2: X1 fill side-entry, Blue equalization end, vent BV-09.
 - IBC-3: shared bottom tap → P-02 / P-05 (`BROWN_TAP`), DV-02 return side-entry (guarded `if not sump_on_skid`, marked obsolete), vent BV-10.
 - IBC-4: waste-merge side-entry (`MERGE4`), X4 bottom pickup → P-03 (`_bottom_pickup`), vent BV-11.
-- The totes' own outlet valves are NOT modeled in 3D; only `IBC_VALVE_Z` (185mm, unsourced) on the 2D IBC frame drawing, which puts the valve on the corridor face.
+- The totes' own outlet valves are NOT modeled in 3D; only `IBC_VALVE_Z` (185mm, unsourced; Schütz says 140mm) on the 2D IBC frame drawing, which puts the valve on the corridor face (Schütz: it is on the 1,000mm walkway face).
 
 **Orientation:** each tote's 1,219mm (48"/1,200) side runs along X; the 1,016mm (40"/1,000) side runs along Yd. So the **corridor face is the long (1,200) side**; the walkway face (X 4,674) and the end-wall face (X 5,893, flush to the wall, no access) are the short (1,000) sides. The totes cannot turn 90°: 2 × 1,219 + corridor > the 2,362mm width.
 - Valve on a **1,200 side** → it faces the corridor (current assumption) or, rotated 180°, the near/far wall (no access). Works.
@@ -114,7 +114,7 @@ Deferred until after the editorial review: it reworks the water system and plumb
 **Still stale on IBC stacking sheets 4–5 (found 2026-11-24):** they show Blue outlet valves VB1/VB2/VB3 and V1–V4 and "1\" HDPE SDR-11" pipe; the 3D model has P-01 suction from IBC-1 via BV-01 and 1" PVC. Redraw with this work.
 
 **Research log (2026-11-24, branch `ibc-and-pivot-redesign`):**
-- **Valve face — provisional: the 1,000mm (40") face.** A top-view product photo (owner, 2026-11-24) shows the outlet's metal surround on a short edge of the footprint, and the tap sits inside the tote envelope (no projection). With the totes' 1,219 side along X, that face is the walkway face (X 4,674) or the sealed end wall (no access) — so all native-port connections would leave on the walkway side. Confirm with Schütz or a measured tote. Previously: not published. Not stated by Schütz (datasheet), ULINE H-3886, Greif GC 275H, or the tote guides at ibctoteguide.com, ibctotestx.com, repackify.com, ibctanks.ca, ibcrecyclingsolution.com, ibcrecyclingdetroit.com. Note sent to Schütz (tcs@schuetz.net) for an MX 1000 dimensioned drawing; otherwise measure a supplied tote.
+- **Valve face — CONFIRMED by Schütz (2026-11-25) for the standard MX 1000: the outlet is on the 1,000mm face, centered on it; the standard DN50 outlet valve's centerline is 140mm above the floor for both pallet types.** With the totes' 1,219 side along X, the 1,000mm faces are the walkway face (X 4,674) and the sealed end wall (no access), so all native-port connections leave on the walkway side. `IBC_VALVE_Z` (185mm, unsourced) should become 140mm. Earlier: a top-view product photo (owner, 2026-11-24) showed the outlet surround on a short edge; no published source (datasheet, ULINE H-3886, Greif GC 275H, six tote guides) states it.
 - **Valve:** 2" (50mm) at the bottom; ball or butterfly. Thread varies: S60×6 coarse (European-style, Schütz), 2" NPT male (ibcrecyclingdetroit.com sizing guide; S60×6 → 2" NPT adapter listed), 2" NPS male (ULINE H-3886), BSP on imports. Height and protrusion: not published.
 - **Fill opening:** 6" (150mm) screw cap, coarse buttress thread, EPDM gasket 150 OD × 125 ID × 3mm (ibcrecyclingdetroit.com). Cap height: not published.
 - **Cage:** 25mm (1") tube (matches `IBC_CAGE_TUBE_D`); mesh 4" × 8" (100 × 200mm) (ibcrecyclingdetroit.com).

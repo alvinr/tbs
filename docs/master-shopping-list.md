@@ -14,7 +14,7 @@ All prices USD.
 | 2. Interior conversion (light-seal, paint, ventilation) | $446 | $563 |
 | 3. Pinhole optics plate | $35 | $70 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,933 | $4,391 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $7,077 | $8,443 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $7,054 | $8,400 |
 | 6. Electrical — power, circuits, wiring | $3,545 | $3,650 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $3,384 | $4,220 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,556 | $2,036 |
@@ -25,7 +25,7 @@ All prices USD.
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,230 | $3,040 |
 | 10. Printmaking tools & consumables | $349 | $349 |
 | 11. Safety & PPE | $162 | $162 |
-| **TOTAL (base build + 50-print run)** | **~$28,558** | **~$36,987** |
+| **TOTAL (base build + 50-print run)** | **~$28,535** | **~$36,944** |
 <!-- END costing:master-summary -->
 
 *Optional additions: lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -230,7 +230,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [M8 flat washer, SS](https://www.mcmaster.com/98689A673/) (98689A673) | 4 ea | McMaster-Carr | shelf | $1 |
 | [M8 split lock washer, 304 SS](https://www.mcmaster.com/91111A132/) (91111A132) | 32 ea | McMaster-Carr | film | $4 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | 484 ea | McMaster-Carr | film, ibc-frame, walkway | $47 |
-| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 137 ea | McMaster-Carr | film, ibc-frame, walkway | $16 |
+| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 129 ea | McMaster-Carr | film, ibc-frame, walkway | $15 |
 | [M4×0.7 hex nut, 304 SS](https://www.mcmaster.com/91828A231/) (91828A231) | 24 ea | McMaster-Carr | film | $2 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | 12 ea | McMaster-Carr | tray | $1 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 52 ea | McMaster-Carr | electrical, film, spray | $2 |
@@ -256,7 +256,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 3 ft | McMaster-Carr | ibc-frame | $39 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling screw, #14×3½″ 410 SS (sub-plate → cross-members)](https://www.mcmaster.com/90822A536/) (90822A536) | 12 ea | McMaster-Carr | ibc-frame | $16 |
-| [M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 16 ea | McMaster-Carr | ibc-frame | $14 |
+| [M12×30 hex bolt, Gr.8.8 zinc (foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 8 ea | McMaster-Carr | ibc-frame | $7 |
 | [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Local fab | ibc-frame | $68 |
 | [Bearing retaining rings + upper end-retainer plate](https://www.mcmaster.com/90154A895/) (90154A895) | 1 lot | McMaster-Carr | lightlock | $17–$18 |
 | [Bolts/nuts/isolation washers — cap/ring/collar/stile/handle/edge/housing](https://www.mcmaster.com/91294A328/) (91294A328) | 1 lot | McMaster-Carr | lightlock | $95 |
@@ -311,7 +311,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | [M12×30 hex bolt, Gr.8.8 zinc (leg foot → sub-plate tapped boss)](https://www.mcmaster.com/91280A716/) (91280A716) | 20 ea | McMaster-Carr | walkway | $17 |
 | [Wall-bolt crush sleeve stock — 1in OD × 0.188in wall DOM steel tube](https://www.mcmaster.com/7767T62-7767T236/) (7767T62) | 9 ft | McMaster-Carr | walkway | $116 |
-| **fasteners-hardware subtotal** | | | | **$2,614–$2,881** |
+| **fasteners-hardware subtotal** | | | | **$2,606–$2,873** |
 
 ### optics
 
@@ -414,7 +414,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [1" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | 6 stick | Local fab | ventilation | $131 |
-| 12mm steel plate, 150 × 150 cut | 4 ea | Steel service center | ibc-frame | $20–$40 |
+| 12mm steel plate, 150 × 101 cut | 4 ea | Steel service center | ibc-frame | $20–$40 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Steel service center | ibc-frame | $120–$180 |
 | 2×2×0.120in steel SHS (6 m bulk lengths) | 4 ea | Steel service center | panel | $120–$160 |
 | [3/8" PRE-KEYED 316 SS rotary shaft — U-joint stub shafts (1× 36")](https://www.grainger.com/product/Keyed-Rotary-Shaft-3-8-in-822UN5) (822UN5) | 1 lot | Grainger | film | $52 |
@@ -438,7 +438,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 8 ea | Local fab | ventilation | $12 |
 | Fabricated flanged wall-penetration box (front face + flange) | 1 lot | Local fab | electrical | $60–$100 |
 | Floor-anchor sub-plate (strongback) — steel ~2,170×280×8mm A36 | 1 ea | Steel service center | walkway | $90–$180 |
-| Floor-anchor sub-plate (strongback) — steel ~650×450×8mm A36 | 1 ea | Steel service center | ibc-frame | $40–$85 |
+| Floor-anchor sub-plate (strongback) — steel ~600×270×8mm A36 | 1 ea | Steel service center | ibc-frame | $25–$50 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Metals Depot | walkway | $65–$105 |
 | Front-bar L-cleat angle 8mm A36 (bar seat, BC-C/BC-W) | 8 ea | Steel service center | ibc-frame | $6–$20 |
 | Hinge wall cleat, 6mm steel | 1 lot | Local fab | shelf | $10 |
@@ -461,7 +461,7 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Steel service center | film | $68 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Steel service center | film | $160 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Steel service center | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,582–$5,309** |
+| **steel-structural subtotal** | | | | **$3,567–$5,274** |
 
 ### substrate-fabric
 
@@ -539,8 +539,8 @@ pending. The cyanotype recipe and per-print reagent basis are in the
 |----------|-----------|-------|-----------|
 | Local fab | 91 | adhesives-finishes, aluminum, ducting-ventilation, electrical-distribution, fabrication-labor, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, timber-ply, tools-safety | $5,335–$7,695 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,340–$3,157 |
-| McMaster-Carr | 100 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,948–$2,956 |
+| Steel service center | 24 | aluminum, ducting-ventilation, steel-structural | $2,325–$3,122 |
+| McMaster-Carr | 100 | adhesives-finishes, aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $2,940–$2,948 |
 | US Plastic Corp | 22 | plastics-sheet, plumbing-fittings | $2,878–$2,925 |
 | Amazon | 52 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, seals-gaskets, tools-safety, water-equipment | $2,516–$2,595 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,229–$1,939 |

@@ -979,8 +979,12 @@ IBC_FRONT_BAR_W    = 50    # bar width, vertical (mm)
 IBC_FRONT_BAR_T    = 3     # bar wall thickness (mm)
 IBC_FRONT_BAR_N_PER_TIER = 2   # bars per tote face (upper + lower) — R5
 # Floor feet — one under each of the 4 corridor uprights
-IBC_FOOT_PLATE     = 150   # square floor flange plate side (mm)
-IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
+IBC_FOOT_PLATE     = 150   # foot plate length along X (mm)
+IBC_FOOT_PLATE_T   = 12    # foot plate thickness (mm)
+IBC_FOOT_TAB       = 50    # foot plate's CORRIDOR-side tab past the upright's inboard face (mm) — the plate runs
+                           # from the upright's outer (tote-side) face inboard only, so nothing reaches under a
+                           # bottom-tote pallet; the bolt row sits mid-tab (25mm edge distance)
+IBC_FOOT_PLATE_D   = IBC_FRAME_RHS + IBC_FOOT_TAB   # 100.8 — foot plate depth along Yd (upright + tab)
 FLOOR_PLATE_T      = 8     # floor-anchor sub-plate (strongback) thickness (mm) — the shared steel plate the
                            # feet/legs bolt to and that self-taps into the cross-members (container floor
                            # members aren't standardized; ISO 1496-1). The feet sit ON this plate, so the
@@ -988,13 +992,12 @@ FLOOR_PLATE_T      = 8     # floor-anchor sub-plate (strongback) thickness (mm) 
                            # amount — the frame TOP (TOP_Z, tote-stack-derived) and everything above are
                            # unchanged. Shared IBC + walkway. See ibc-stacking §3.4a / walkway §5.1a.
 IBC_FOOT_BOLT_D    = 12    # M12 floor anchor bolt
-IBC_FOOT_BOLT_PCD  = 100   # bolt square pitch on flange (mm) — ±50mm from CL
-IBC_FOOT_BOLT_N    = 4     # anchor bolts per foot
+IBC_FOOT_BOLT_PCD  = 100   # X pitch of the foot's bolt pair (mm) — ±50mm from the plate CL, in the tab
+IBC_FOOT_BOLT_N    = 2     # foot→sub-plate bolts per foot (one row, in the corridor-side tab)
 IBC_FRONT_RAIL_H   = 35    # FRONT bottom Yd-rail height (mm, < the full RHS 50.8) — stays LOW on the foot
                            # plates but trimmed so its top (12+35=47) clears the lowest corridor pipe (blue at Z50)
-IBC_FRONT_RAIL_W   = 20    # FRONT bottom Yd-rail WIDTH in X (mm, < the full RHS 50.8) — narrowed + centred on
-                           # the foot plates so it runs BETWEEN the two foot-bolt columns (bolts straddle it,
-                           # heads clear for install/torque — no access holes needed)
+IBC_FRONT_RAIL_W   = 20    # FRONT bottom Yd-rail WIDTH in X (mm, < the full RHS 50.8) — narrowed + flush with the
+                           # front uprights' +X face so it runs BETWEEN the front foot's two bolts (heads clear)
 # Film-plane CORNER SEAT — welded wall seat bracket that props each film-plane
 # platform-beam OUTER end at the side wall (renamed from IBC_WBKT_* 2026-08-15:
 # the name misread as the IBC wall hanger, but this is the film-plane corner seat;
@@ -1030,7 +1033,7 @@ PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
 # The two FRONT corridor floor feet (under the film-plane-side uprights, FRONT_X) sit at the tray's
 # right edge; the standard 150×150 plate + inboard anchors reach UNDER the basin (X4604) and foul it.
 # Shift ONLY the front feet OUTBOARD so the plate + anchors clear the tray rim by IBC_FOOT_TRAY_GAP —
-# the 150×150×12 plate + 4×M12@PCD100 spec is UNCHANGED (validated), only the X station moves. Derived
+# the plate + bolt spec is unchanged, only the X station moves. Derived
 # from PROC_TRAY_X_R so a tray-edge change carries the feet with it (can't drift back into the basin).
 IBC_FOOT_TRAY_GAP    = 5    # front foot plate inboard edge → tray rim clearance (mm)
 _IBC_FRONT_FOOT_X0_STD = (IBC_COL_X - 20 + IBC_FRAME_RHS / 2) - IBC_FOOT_PLATE / 2   # 4604.4 — std inboard edge (centered on FRONT_X upright)

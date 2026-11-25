@@ -39,19 +39,28 @@ PITCH = 305.0           # ~12 in NOMINAL (representative — varies by maker)
 BAND = 50.0             # screwable top-flange band width shown (~45mm CIMC)
 MEMBERS = [round(i * PITCH) for i in range(int(k.C_LEN / PITCH) + 1)]
 
-g, rhs = ibc.FRAME_X0_GLOBAL, ibc.FRAME_RHS
-FP, PCD = k.IBC_FOOT_PLATE, k.IBC_FOOT_BOLT_PCD
+rhs = ibc.FRAME_RHS
+FP, FD, PCD = k.IBC_FOOT_PLATE, k.IBC_FOOT_PLATE_D, k.IBC_FOOT_BOLT_PCD
+IBC_FRONT_X = k.IBC_COL_X - 20            # front upright pair's −X face (= the 3D FRONT_X)
 
 
 def ibc_feet():
+    """Each foot runs from its upright's tote-side face inboard; the 2 bolts sit mid-tab."""
     out = []
     for fx, dx in ((ibc.FX_FRONT, k.IBC_FRONT_FOOT_DX), (ibc.FX_BACK, 0)):
-        cx = g + fx + rhs / 2 + dx
-        for yd in (ibc.POST_NEAR_YD, ibc.POST_FAR_YD):
-            cy = yd + rhs / 2
-            holes = [(cx + sx, cy + sy) for sx in (-PCD/2, PCD/2) for sy in (-PCD/2, PCD/2)]
-            out.append((cx, cy, FP, FP, holes))
+        cx = IBC_FRONT_X + fx + rhs / 2 + dx
+        for yd, sy in ((ibc.POST_NEAR_YD, +1), (ibc.POST_FAR_YD + rhs, -1)):
+            cy = yd + sy * FD / 2
+            by = yd + sy * (rhs + k.IBC_FOOT_TAB / 2)
+            out.append((cx, cy, FP, FD, [(cx - PCD / 2, by), (cx + PCD / 2, by)]))
     return out
+
+
+def ibc_subplate():
+    """Corridor-only: between the uprights' outer faces; front foot −X edge → back foot +X edge + 30."""
+    fx = [f[0] for f in ibc_feet()]
+    x0, x1 = min(fx) - FP / 2, max(fx) + FP / 2 + 30
+    return x0, ibc.POST_NEAR_YD, x1 - x0, ibc.POST_FAR_YD + rhs - ibc.POST_NEAR_YD
 
 
 def wk_feet():
@@ -121,9 +130,8 @@ def plot_region(ax, x0, x1, title, holes_on=True, hole_r=9, plate=None):
 # ──────────────────────────────────────────────────────────────────────────────
 def _draw_plates(ax):
     """Overlay the two sub-plate FOOTPRINTS (dashed) on a plan axes."""
-    ibc_fx = [f[0] for f in ibc_feet()]; ibc_fy = [f[1] for f in ibc_feet()]
-    ax.add_patch(Rectangle((min(ibc_fx) - 110, min(ibc_fy) - 110),
-                           (max(ibc_fx) - min(ibc_fx)) + 220, (max(ibc_fy) - min(ibc_fy)) + 220,
+    px, py, pw, ph = ibc_subplate()
+    ax.add_patch(Rectangle((px, py), pw, ph,
                            facecolor=C_PLATE, alpha=0.30, edgecolor=C_IBC, lw=1.8, ls=(0, (6, 3)), zorder=3))
     # left plate: cargo-door sill (X0) → tray edge, under the 5 walkway legs + the pivot post
     ax.add_patch(Rectangle((0, k.LEFT_SUBPLATE_YD0), k.PROC_TRAY_X_L, k.LEFT_SUBPLATE_YD1 - k.LEFT_SUBPLATE_YD0,
@@ -168,7 +176,7 @@ def sheet(fig):
     plot_region(ax_near, -120, 560, "DOOR-END CLUSTER — walkway plate (sill → tray edge) under 5 legs + pivot")
     _draw_plates(ax_near)
     ax_seal = fig.add_axes([0.52, 0.49, 0.44, 0.185])
-    plot_region(ax_seal, 4480, 5240, "SEALED-END CLUSTER — IBC: ONE plate under 4 feet")
+    plot_region(ax_seal, 4480, 5300, "SEALED-END CLUSTER — IBC: ONE plate under 4 feet")
     _draw_plates(ax_seal)
 
     _legend(fig, 0.45)

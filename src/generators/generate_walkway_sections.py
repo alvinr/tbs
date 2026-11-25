@@ -33,6 +33,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
 import generate_pinhole_water_panel as pw    # P-02/DV-01/SV-01 + ribbon corridor ends (water.skp build)
 from tbs_constants import IBC_COL_X, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_W, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z, spray_beam_top_z, DIAGRAMS_DIR
+from tbs_constants import IBC_FOOT_PLATE, IBC_FOOT_PLATE_D, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FOOT_TRAY_GAP, IBC_FRONT_FOOT_DX
 from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_DIM, C_STEEL, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
 
 # ── Palette (C_OUT/C_DIM from tbs_constants) ─────────────────────────────────────
@@ -90,12 +91,13 @@ def _ribbon_circles(ax, z=None, r=None, z0=12, label=False, fs=5.4):
         ax.add_patch(Circle((xx, z), r * 0.42, facecolor="white", edgecolor=col, lw=0.5, zorder=z0 + 1))
 
 # ── Cantilever-zone members (diagram-of-record detail dims, verified against live water.skp) ──
-# water.skp restraint = cp.frame() DEEP 4-leg box: FRONT upright X4654, front foot X4604-4754
-# (the foot's left edge sits 25mm UNDER the tray right edge X4629).
+# water.skp restraint = cp.frame() DEEP 4-leg box: FRONT upright X4654; the front foot is shifted +X
+# (IBC_FRONT_FOOT_DX) so its left edge clears the tray right edge by IBC_FOOT_TRAY_GAP.
 ARM_X0, ARM_X1, ARM_ZB, ARM_ZT = WALKWAY_RIGHT_X, 4654, 70, 115   # RWK cantilever arm — clamps to the deep-box upright X4654 (reconciled from 4734)
 UP_X0, UP_X1 = 4654, 4704            # corridor deep-box FRONT upright (50×50 RHS)
-FOOT_X0, FOOT_X1, FOOT_ZT = 4604, 4754, 12                        # front floor foot 150×150×12 — EXTENDS under the tray
-M12_XS = [4629, 4729]                # 4× M12 on 100 PCD (cx 4679 ± 50)
+_FOOT_CX = cp.FRONT_X + cp.S / 2 + IBC_FRONT_FOOT_DX
+FOOT_X0, FOOT_X1, FOOT_ZT = _FOOT_CX - IBC_FOOT_PLATE / 2, _FOOT_CX + IBC_FOOT_PLATE / 2, IBC_FOOT_PLATE_T   # front floor foot
+M12_XS = [_FOOT_CX - IBC_FOOT_BOLT_PCD / 2, _FOOT_CX + IBC_FOOT_BOLT_PCD / 2]   # the foot's 2× M12 (corridor-side tab)
 BRAIL_X0, BRAIL_X1, BRAIL_Z = 4704, 5104, 50                      # deep-box BOTTOM ring rail (X), Z0-50
 RAIL_X0, RAIL_X1, RAIL_ZB, RAIL_ZT = 4654, 4674, 560, 610         # front retaining bar (ring rail) Z560
 
@@ -508,14 +510,14 @@ def sheet3():
     # ── Deep-box FRONT upright + front foot (extends UNDER the tray) + M12 + bottom rail + retaining bar ──
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, Z_HI - Z_LO, C_STEEL, lw=1.0, z0=6)                  # front upright X4654-4704
     _rect(ax, BRAIL_X0, 0, X_HI - BRAIL_X0, BRAIL_Z, C_STEEL, lw=0.9, z0=5)                 # deep-box bottom ring rail (→X5104)
-    _rect(ax, FOOT_X0, 0, FOOT_X1 - FOOT_X0, FOOT_ZT, C_STEEL, lw=0.9, z0=8)                # front foot (X4604-4754, under tray)
+    _rect(ax, FOOT_X0, 0, FOOT_X1 - FOOT_X0, FOOT_ZT, C_STEEL, lw=0.9, z0=8)                # front foot
     for mx in M12_XS:
         _rect(ax, mx - 6, 0, 12, 16, "#6A6A72", lw=0.5, z0=9)
     _rect(ax, RAIL_X0, RAIL_ZB, RAIL_X1 - RAIL_X0, RAIL_ZT - RAIL_ZB, C_STEEL, lw=0.9, z0=7)  # retaining bar Z560
     leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FRONT upright\n(50×50 RHS, X4654)",
            color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 175, 35,
-           "front floor foot 150×150×12 + 4× M12 —\nLEFT EDGE (X4604) EXTENDS 25mm UNDER THE TRAY",
+           f"front floor foot {IBC_FOOT_PLATE}×{IBC_FOOT_PLATE_D:.0f}×{IBC_FOOT_PLATE_T} + {IBC_FOOT_BOLT_N}× M12 —\nLEFT EDGE (X{FOOT_X0:.0f}) {IBC_FOOT_TRAY_GAP}mm CLEAR OF THE TRAY",
            color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, X_HI - 60, BRAIL_Z, X_HI - 40, 92, "bottom ring rail (Z0–50)",
            color=C_DIM, fs=5.6, ha="right", va="center", arrow_style="-|>", font=FONT)
@@ -732,12 +734,12 @@ def sheet5():
     # far upright + far foot (also under tray) + M12 + bottom rail + retaining bar
     _rect(ax, UP_X0, 0, UP_X1 - UP_X0, Z_HI - Z_LO, C_STEEL, lw=1.0, z0=6)                     # far upright X4654-4704
     _rect(ax, BRAIL_X0, 0, X_HI - BRAIL_X0, BRAIL_Z, C_STEEL, lw=0.9, z0=5)                    # bottom ring rail
-    _rect(ax, FOOT_X0, 0, FOOT_X1 - FOOT_X0, FOOT_ZT, C_STEEL, lw=0.9, z0=8)                   # far foot (under tray)
+    _rect(ax, FOOT_X0, 0, FOOT_X1 - FOOT_X0, FOOT_ZT, C_STEEL, lw=0.9, z0=8)                   # far foot
     for mx in M12_XS:
         _rect(ax, mx - 6, 0, 12, 16, "#6A6A72", lw=0.5, z0=9)
     _rect(ax, RAIL_X0, RAIL_ZB, RAIL_X1 - RAIL_X0, RAIL_ZT - RAIL_ZB, C_STEEL, lw=0.9, z0=7)   # retaining bar
     leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FAR upright\n(50×50 RHS)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 150, 35, "far floor foot 150×150×12 —\nLEFT EDGE EXTENDS 25mm UNDER THE TRAY", color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 150, 35, f"far floor foot {IBC_FOOT_PLATE}×{IBC_FOOT_PLATE_D:.0f}×{IBC_FOOT_PLATE_T} —\nLEFT EDGE {IBC_FOOT_TRAY_GAP}mm CLEAR OF THE TRAY", color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, (RAIL_X0 + RAIL_X1) / 2, RAIL_ZT, RAIL_X1 + 54, RAIL_ZT + 40, "retaining bar (ring rail)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     # nearest corridor lane (blue SV-01 → DV-01 return, Yd1241) — ghost, -Yd of this plane
     ax.add_patch(Circle((4772, 235), OD / 2, facecolor="none", edgecolor=C_BLUE, lw=1.4, ls="--", zorder=9))

@@ -36,7 +36,7 @@ outstanding work, not a history log). Detailed sub-trackers are linked where the
 - [x] **Pivot plate → sub-plate bolt (M12) inside the tray exclusion zone** — false alarm: the checker's tray box was the stale X170; now from `PROC_TRAY_*` (2026-11-24).
 - [x] **Apron vs floor sub-plate** — the sub-plate (X0, anchored on the door sill) ran through the apron base; the base is now notched 8mm to sit on it (2026-11-25).
 - [x] **Pivot plate to processing tray distance** — plate 200→170mm, 20mm off the tray (2026-11-24).
-- [ ] **Bottom IBC pallets sit on the corridor-frame feet** — the new floor sub-plate check flags it: the frame's sub-plate (Yd 966–1,396) and foot plates (Yd 996–1,146 / 1,216–1,366, bolt heads to Z29) reach 80mm / 50mm under the IBC-3 and IBC-4 pallets (Yd ≤1,046 / ≥1,316), which are drawn on the floor at Z0. Decide: pull the plate + feet inside the corridor, or raise the totes.
+- [x] **Bottom IBC pallets sit on the corridor-frame feet** — the new floor sub-plate check flags it: the frame's sub-plate (Yd 966–1,396) and foot plates (Yd 996–1,146 / 1,216–1,366, bolt heads to Z29) reach 80mm / 50mm under the IBC-3 and IBC-4 pallets (Yd ≤1,046 / ≥1,316), which are drawn on the floor at Z0. Decide: pull the plate + feet inside the corridor, or raise the totes. **Done 2026-11-25:** feet and sub-plate are corridor-only. Each foot (150×101×12) runs from its upright's tote-side face inboard, and its 50mm corridor-side tab carries 2× M12. The sub-plate spans only Yd 1,046–1,316 (X 4,634–5,234). Live check: 0 sub-plate penetrations.
 
 ## 📏 Measure a supplied IBC tote (2026-11-24)
 

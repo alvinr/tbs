@@ -1,6 +1,10 @@
-routing-sources-sha: dd994bc752c0
-model=electrical  pipes=818 solids=4  interferences=0
+routing-sources-sha: 626b7597b0a3
+model=ibc-stack  pipes=517 solids=231  interferences=0
 pipe-on-pipe crossings=0
+floor sub-plate penetrations=0
 
 ── grip-bolt orientation/grip audit (--bolts, advisory) ──
-grip-bolt orientation/grip flags: 0  (0 OPEN, 0 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)
+grip-bolt orientation/grip flags: 3  (0 OPEN, 3 sanctioned)  (EDGE = hole < 1.5xD from a member edge; FLOATING = pierces nothing; PROJECT = shank > 25mm past the grip)
+  EDGE      Foot→plate bolt M12                      axis X  D12  edge 6.0mm < 18mm  in Foot plate                    [OK] short vertical anchor bolt — AABB axis/edge artifact; nominal edge = 25mm ≥ 1.5·D both ways ((IBC_FOOT_PLATE−PCD)/2 in X, IBC_FOOT_TAB/2 in Yd)
+  EDGE      IBC Wall Through-Bolt M12                axis Yd D14  edge 18.0mm < 21mm  in Wall Hanger Plate             [OK] drawn-D14 conservative; at nominal M12 the 18mm edge = 1.5·D exactly — OK
+  PROJECT   IBC Wall Through-Bolt M12                axis Yd  shank 48mm past the grip @ (4644,-19,439)  [OK] projection = the container-wall penetration length (the wall shell is not in the structural solid set) — by design

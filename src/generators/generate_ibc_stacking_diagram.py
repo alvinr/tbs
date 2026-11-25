@@ -23,7 +23,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Polygon, Circle
 
-from tbs_constants import C_LEN, C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, WALKWAY_W, WALKWAY_RIGHT_X, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H, EQPANEL_X, EQPANEL_T, EQPANEL_YD, PANEL_FRAME_X, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, BB_OD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, WALKWAY_W, WALKWAY_RIGHT_X, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H, EQPANEL_X, EQPANEL_T, EQPANEL_YD, PANEL_FRAME_X, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_PLATE_D, IBC_FOOT_TAB, IBC_FOOT_BOLT_N, BB_OD, DIAGRAMS_DIR
 sys_models = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
 if sys_models not in os.sys.path:
     os.sys.path.insert(0, sys_models)
@@ -204,15 +204,13 @@ def sheet1():
            "TOP + BOTTOM RINGS\n50.8×50.8×3 RHS — tie the near +\nfar uprights (back pair too)",
            color=C_FRAME, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
-    # Floor flange feet under each upright.
-    foot_half = IBC_FOOT_PLATE / 2
+    # Floor feet: each runs from its upright's tote-side face inboard (corridor-side tab carries the bolts).
     for uyd in corridor_uprights:
-        fcy = uyd + IBC_FRAME_RHS / 2
-        ax.add_patch(Rectangle(((fcy - foot_half), (0)), (IBC_FOOT_PLATE),
-                               (IBC_FOOT_PLATE_T), fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=8))
-        for d in (-IBC_FOOT_BOLT_PCD / 2, IBC_FOOT_BOLT_PCD / 2):
-            ax.plot([(fcy + d), (fcy + d)], [(IBC_FOOT_PLATE_T), (-26)],
-                    color=C_BOLT, lw=1.8, zorder=9)
+        inner = uyd + IBC_FRAME_RHS / 2 < C_WID / 2
+        f0 = uyd if inner else uyd + IBC_FRAME_RHS - IBC_FOOT_PLATE_D
+        by = uyd + IBC_FRAME_RHS + IBC_FOOT_TAB / 2 if inner else uyd - IBC_FOOT_TAB / 2
+        ax.add_patch(Rectangle((f0, 0), IBC_FOOT_PLATE_D, IBC_FOOT_PLATE_T, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=8))
+        ax.plot([by, by], [IBC_FOOT_PLATE_T, -26], color=C_BOLT, lw=1.8, zorder=9)
 
     # Direct-stack junction line (totes bear cage-on-cage, no deck).
     for col_l, col_r in [(BLUE_IBC_Y, near_col_r), (IBC_FAR_Y, IBC_FAR_Y + IBC_D)]:
@@ -289,8 +287,8 @@ def sheet1():
         "CROSS-SECTION NOTES:",
         "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
         f"2. 4x identical 275-gal (~1000 L) caged composite IBCs. Each: 65kg tare, {IBC_W}x{IBC_D}x{IBC_H_1000}mm. v2 layout: Brown/Waste bottom, Blue on top (clean supply, 1600 L total).",
-        f"3. RESTRAINT-ONLY frame: a DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet",
-        f"   ({IBC_FOOT_BOLT_N}x M12 each). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
+        f"3. RESTRAINT-ONLY frame: a DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_D:.0f}x{IBC_FOOT_PLATE_T} floor feet",
+        f"   ({IBC_FOOT_BOLT_N}x M12 each, in the corridor-side tab — nothing under a pallet). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         "5. Front retaining bars (8x, 2/tote face, Z500/950 + Z1500/1950 — two per face for the loaded-transport case) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
         f"6. D-ring lashing holders on the front bars ({DRING_WLL}kg WLL); ratchet straps over each stack tie down to them.",

@@ -159,7 +159,7 @@ The two bars give **defense in depth**: as positive blocking they pass on their 
 - **Wall joist hangers** — **one identical 2-bolt hanger per bar**, each **through-bolted (2 × M12×70) to a 60×205×8mm exterior backing plate** on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. That is 16 wall penetrations in all (8 hangers × 2 bolts). M12×70 (partial thread, the single standardized zinc wall length) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger). The wall is one 1.6mm corrugated sheet, so a 1in OD × 0.188in wall steel **crush sleeve** on each bolt fills the corrugation hollow behind the backing plate; without it the bolt preload would collapse the corrugation. Each sleeve is cut to the hollow measured on the purchased container (see [Walkway §3.1](walkway-report.md#31-cantilever-bracket-design) for the shared detail and check). **Both ends of the bar use the same L-cleat** — the corridor-end **BC-C** and the wall-end **BC-W** each drop the bar into an L-angle and run a single horizontal M12×65 through the L's vertical leg + the bar's 50mm web, with a small nut-side **backing plate** spreading the load into the bar's far web.
 - **Friction matting** under each tote interface is the primary friction lever — it resists half the tote weight, lifting the bar margin about 2.7× and directly answering the "totes must not shift" requirement.
 - **Weld-on lashing rings + 2 straps/stack** (3,333 lb / ~<!-- BEGIN fact:strap_assembly_wll_kg -->1,512<!-- END fact:strap_assembly_wll_kg --> kg per strap) provide vertical tie-down against the forward-tipping mode of the tall loaded stack (CG Z≈1,345mm) and supplement lateral restraint; the totes are otherwise wall-trapped.
-- **Floor feet** (150×150×12, 4 × M12 each) bolt to a shared floor-anchor sub-plate (§3.6) that self-taps into the steel cross-members, anchoring the uprights against uplift and transferring loads into the container structure.
+- **Floor feet** (150×101×12, 2 × M12 each) bolt to a shared floor-anchor sub-plate (§3.6) that self-taps into the steel cross-members, anchoring the uprights against uplift and transferring loads into the container structure.
 
 **Service + walkway load cases** (the same frame also carries the plumbing panel and the walkway — both **non-governing** vs the transport case):
 
@@ -181,7 +181,7 @@ are the standard values for the grade.
 | ID | Joint | Fastener | Grade | Qty | Torque | Washers | Locking |
 |----|-------|----------|-------|-----|--------|---------|---------|
 | FA1 | Floor-anchor sub-plate → cross-members (self-tap) — a shared steel plate (§3.6) spanning the members the 4 feet cross; self-drillers fix it down through the plate + ply into each member flange, driven from above | #14×3½″ self-driller (90822A536) | 410 SS | container-dependent (~12; 2–3 per member spanned) | driven to seat — no torque (self-drilling) | bonded washer | thread-forming, self-locking |
-| FA2 | Foot-plate → sub-plate (tapped boss) — each 150×150×12 welded foot bolts down into tapped bosses on the sub-plate (drive from above, no underside access) | M12×30 into tapped boss | Gr.8.8 zinc | 4 per foot × 4 = 16 | snug + locker (near-zero uplift demand) | split-lock under head | thread-locker (tapped boss) |
+| FA2 | Foot-plate → sub-plate (tapped boss) — each 150×101×12 welded foot bolts down through its corridor-side tab into tapped bosses on the sub-plate (drive from above, no underside access) | M12×30 into tapped boss | Gr.8.8 zinc | 2 per foot × 4 = 8 | snug + locker (near-zero uplift demand) | split-lock under head | thread-locker (tapped boss) |
 | BC-C | Front-bar corridor end → upright **L-cleat** — the bar drops into the L, **1 HORIZONTAL** bolt through the vertical leg + the bar's tall 50 mm web (the L-corner carries the load; the bolt secures the unsupported direction) | M12×65 hex (92800A481, 18-8 SS) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize (stainless galls → torqued lower than 8.8; no impact driver) | flat | nyloc nut |
 | WH | Wall hanger → side wall → exterior backing plate | M12×70 through-bolt (91280A732) | Gr.8.8 zinc | 16 | **~90 N·m** (85–95 band) | flat (head, outside) + flat + split-lock (nut, inside) | plain nut + split-lock washer |
 | RP1 | Rear panel → L-bracket upstand (off the back upright) | M8 hex into captive 5/16 tee-nut set from the ply BACK face (tension pulls the flange against the wood) | zinc | 6 brackets | snug + locker (light static load) | flat washer under head | thread-locker |
@@ -230,7 +230,9 @@ The four feet do **not** bolt straight to the container floor. They bolt to a sh
 
 The sub-plate exists because the container floor cross-members are **not dimensionally standardized**. [ISO 1496-1](https://law.resource.org/pub/us/cfr/ibr/004/iso.1496-1.1990.pdf) — the series-1 freight-container standard — fixes only that intermediate transverse members sit **≤1,000mm apart** (or the container has a flat underside); it never prescribes a pitch or station. In practice the largest builder, [CIMC](https://www.cimc-equilink.com/media/3659.html), uses a stamped C-section SPA-H Corten member ~4–4.5mm thick with a ~45mm top flange at ~300mm pitch, but [the pitch, count, and stations vary by maker](https://www.discovercontainers.com/shipping-container-components-classifications/) and any forklift pockets interrupt the pattern. Bolting a fixed 4-bolt foot pattern (Ø100mm PCD) straight down therefore cannot guarantee a member under each bolt — mapped on Sheet 1, the feet land in the gaps. The strongback decouples the foot pattern from the unknown pitch: a plate ≥1,000mm long is geometrically certain to cross a member, and self-drillers ([#14×3½″, 410 SS](https://www.cedengineering.com/userfiles/D06-006%20-%20Shipping%20Containers%20-%20US.pdf) — the point drills the ~4mm member flange) fix it down wherever the members fall. Each screw develops ~5.3 kN pull-out in 4mm steel, far above the near-zero FA uplift demand.
 
-> **Plate dimensions are container-dependent.** The ~650×450×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed members. The feet and their Ø100mm PCD bolt pattern do **not** change — only the plate adapts to the box.
+Both the sub-plate and the feet stay inside the corridor. Each foot runs from its upright's tote-side face inboard: the upright sits on the outer part of the plate and a 50mm corridor-side tab carries the two bolts. The sub-plate spans only between the uprights' outer faces (Yd 1,046–1,316). Nothing sits under a bottom-tote pallet, so the totes stand directly on the floor.
+
+> **Plate dimensions are container-dependent.** The ~600×270×8mm plate size, the number of members spanned, and the TEK count are **finalized against the actual acquired container** — survey the cross-member stations (and any forklift pockets) on receipt, then cut the plate and drill its TEK clearance holes to the surveyed members. The feet and their bolt pattern (2 per foot, 100mm pitch) do **not** change — only the plate adapts to the box.
 
 ![Floor Anchoring — Sub-Plate (Strongback) Standard: cross-member map + plate footprints + anchor stack](assets/floor-anchor-map.png)
 
@@ -317,7 +319,7 @@ Cut sizes are member-to-member butt lengths — add saw kerf per shop practice.
 | Ring rail — Yd (cross) | 50.8×50.8×3 SHS (2×2×0.120in) | A500 Gr.B | 168.4 mm | 4 | 2 rings (top+bottom) × 2 X-faces; butts between uprights |
 | Ring rail — X (deep) | 50.8×50.8×3 SHS (2×2×0.120in) | A500 Gr.B | 399.2 mm | 4 | 2 rings × 2 Yd-faces; ties front↔back uprights |
 | Front retaining bar | 50×20×3 RHS | A500 Gr.B | 1,042 mm | 8 | 2 per tote face (near+far columns identical length) |
-| Foot plate | 150×150×12 plate | A36 plate | 150×150×12 mm | 4 | 4× Ø12mm anchor holes on Ø100 PCD |
+| Foot plate | 150×101×12 plate | A36 plate | 150×101×12 mm | 4 | 2× Ø14mm holes, 100mm apart, mid-way along the 50mm corridor-side tab |
 | Exterior wall backing plate | 8 mm plate | A36 plate | 60×204.8×8 mm | 8 | one per wall hanger; spreads the M12×70 load into the corrugated wall |
 | Wall joist hanger | 4 mm plate | A36 plate | back 205 + seat 70, ×60 wide | 8 | Simpson-style U-pocket; seat fillet-welded to the back-plate (W5) |
 | Front-bar cleat (BC-C/W3) | 8 mm angle | A36 plate | leg 90 + upstand 59, ×20 wide | 8 | L-angle: horizontal leg (bar sits on it) + upstand fillet-welded to the upright |
@@ -473,7 +475,7 @@ relevant sections above; the full set is collected here and in the [diagram gall
 **Sheet 6 — Weld map: a schematic front elevation with every fillet weld W1–W6 ticked to where it lands on the frame (W1 upright↔ring, W2 foot↔upright, W3 bar-end cleat↔upright, W4 lashing ring↔bar, W5 wall-hanger seat↔back-plate, W6 ribbon cross-beam↔walkway bearer), alongside the full weld schedule (size, all-around vs both-legs, qty, and the governing SF)**
 ![TBS-001 IBC Frame — Sheet 6](assets/ibc-frame-sheet6.png)
 
-**Plate Schedule Sheet 1 — Structural plates drawn 1:1 for the shop: PLATE 1 IBC floor foot (150×150×12, 4× Ø14 @ 100 sq PCD), PLATE 2 wall-hanger exterior backing (60×205×8, 2× Ø14 @ 169), PLATE 3 wall-hanger pocket (folded 4 mm back-plate + 70 seat, WH + BC-W holes) — each with outline dims, hole Ø + center positions, thickness, material, and qty**
+**Plate Schedule Sheet 1 — Structural plates drawn 1:1 for the shop: PLATE 1 IBC floor foot (150×101×12, 2× Ø14 @ 100 in the corridor-side tab), PLATE 2 wall-hanger exterior backing (60×205×8, 2× Ø14 @ 169), PLATE 3 wall-hanger pocket (folded 4 mm back-plate + 70 seat, WH + BC-W holes) — each with outline dims, hole Ø + center positions, thickness, material, and qty**
 ![TBS-001 IBC Frame — Plate Schedule Sheet 1](assets/ibc-plate-schedule-sheet1.png)
 
 **Plate Schedule Sheet 2 — Bar-end L-cleat + welded angle brackets drawn 1:1: PLATE 4 bar-end L-cleat (8 mm L-angle, 90 long; the bar drops into the corner, 1 horizontal Ø14 for M12×65 through the vertical leg + the bar's 50 mm web, BC-C/W3), PLATE 5 rear-panel tab (50×50×5, Ø9/M8, RP1), PLATE 6 side-panel pipe-run L-bracket (1×1×⅛, Ø7/¼-20, SP1) — L-section end + drilled-leg face for each**
@@ -506,9 +508,9 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,419<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$2,036<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,396<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,993<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | <!-- BEGIN costing:ibc-totes -->$600<!-- END costing:ibc-totes --> | <!-- BEGIN costing:ibc-totes -->$600<!-- END costing:ibc-totes --> |
-| **Total** | **<!-- BEGIN costing:ibc-total-low -->$2,019<!-- END costing:ibc-total-low -->** | **<!-- BEGIN costing:ibc-total-high -->$2,636<!-- END costing:ibc-total-high -->** |
+| **Total** | **<!-- BEGIN costing:ibc-total-low -->$1,996<!-- END costing:ibc-total-low -->** | **<!-- BEGIN costing:ibc-total-high -->$2,593<!-- END costing:ibc-total-high -->** |
 
 ---
 

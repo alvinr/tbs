@@ -20,8 +20,9 @@ Frame concept (ibc-reconfig-v2 — restraint-only deep 4-leg box):
   deck), so the frame only RESTRAINS.  It is a DEEP 4-LEG BOX at the corridor mouth:
   a FRONT upright pair (X4654) + a BACK pair 450mm behind (X5104), each column at
   Yd 1046/1266, tied by butt-jointed top + bottom rings.  Each of the 4 legs is
-  anchored to the floor by a 150×150×12 flange plate that bolts (4× M12, FA2) to a
-  shared floor-anchor sub-plate self-tapped into the cross-members (FA1); the front feet reach ~25mm under the tray edge.  The box carries the Corridor pump panel +
+  anchored to the floor by a foot plate that runs from the leg's tote-side face inboard only and bolts
+  (2× M12 in its corridor-side tab, FA2) to a corridor-only floor-anchor sub-plate self-tapped into the
+  cross-members (FA1); nothing reaches under a bottom-tote pallet, and the front feet clear the tray.  The box carries the Corridor pump panel +
   drain-riser spine on its BACK uprights.  Transport restraint is by front retaining
   8 bars (2/tier: Z500/950 + Z1500/1950) whose wall ends drop into Simpson-style joist hangers through-
   bolted to exterior backing plates, plus D-ring lashing.  Geometry matches the 3D
@@ -42,7 +43,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
 from tbs_constants import WALL_SLEEVE_OD, WALL_SLEEVE_ID
-from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, FLOOR_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FRONT_FOOT_DX, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
+from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_PLATE_D, IBC_FOOT_TAB, FLOOR_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FRONT_FOOT_DX, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_CL, C_DIM, C_STEEL
@@ -110,13 +111,15 @@ ARM_YDS     = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)  # 1046, 1266 
 C_ARM       = "#9098A0"                            # walkway-steel (distinct from frame)
 
 # Floor flange foot (under each corridor upright)
-FOOT_PLATE   = IBC_FOOT_PLATE     # 150mm square
+FOOT_PLATE   = IBC_FOOT_PLATE     # 150mm along X
+FOOT_PLATE_D = IBC_FOOT_PLATE_D   # 100.8mm along Yd — upright + corridor-side tab
+FOOT_TAB     = IBC_FOOT_TAB       # 50mm tab past the upright's inboard face (bolt row mid-tab)
 FOOT_PLATE_T = IBC_FOOT_PLATE_T   # 12mm thick
 PT           = FLOOR_PLATE_T       # floor-anchor sub-plate (strongback) thickness — the feet SIT ON it, so the
                                    # upright base rises by PT and the post is cut shorter by PT (frame top fixed)
 FOOT_BOLT_D  = IBC_FOOT_BOLT_D    # M12
-FOOT_BOLT_PCD = IBC_FOOT_BOLT_PCD # 100mm square pitch
-FOOT_BOLT_N  = IBC_FOOT_BOLT_N    # 4 per foot
+FOOT_BOLT_PCD = IBC_FOOT_BOLT_PCD # 100mm X pitch of the bolt pair
+FOOT_BOLT_N  = IBC_FOOT_BOLT_N    # 2 per foot
 
 # ── IBC anatomy derived heights ─────────────────────────────────────────────
 # (base constants imported from tbs_constants.py)
@@ -207,38 +210,46 @@ def _break(ax, x, y0, y1, *, amp=8, zo=11):
 # ═══════════════════════════════════════════════════════════════════════════════
 # Floor flange foot helpers (anchor each corridor upright to the container floor)
 # ═══════════════════════════════════════════════════════════════════════════════
-def _foot_elev(ax, c, *, zo=7):
-    """Welded 150×150×12 floor flange foot in elevation (edge-on), sitting ON the
-    floor-anchor sub-plate (drawn once per view by `_subplate_elev`).  The foot top
-    = PT (the upright base), so the post is cut shorter by the plate thickness and
-    the frame top is unchanged.  `c` = horizontal position (Yd or X)."""
-    half = FOOT_PLATE / 2
-    _rhs_rect(ax, c - half, PT - FOOT_PLATE_T, FOOT_PLATE, FOOT_PLATE_T, fc=C_STEEL, lw=1.4, zo=zo)
+def _foot_elev(ax, x0, w, *, zo=7):
+    """Welded 12mm floor foot in elevation (edge-on), spanning x0..x0+w and sitting ON the
+    floor-anchor sub-plate (drawn once per view by `_subplate_elev`).  The foot top = PT (the
+    upright base), so the post is cut shorter by the plate thickness and the frame top is unchanged."""
+    _rhs_rect(ax, x0, PT - FOOT_PLATE_T, w, FOOT_PLATE_T, fc=C_STEEL, lw=1.4, zo=zo)
 
 
-def _subplate_elev(ax, c_lo, c_hi, *, zo=6):
-    """The ONE floor-anchor sub-plate (strongback) spanning all the feet in this
-    view, lying on the floor; winged TEKs self-tap it into the cross-members (FA1).
-    Container-dependent length — drawn to span the visible feet + a margin."""
-    x0, x1 = c_lo - FOOT_PLATE / 2 - 55, c_hi + FOOT_PLATE / 2 + 55
+def _foot_yd(post_yd):
+    """Yd span of a foot: from the upright's OUTER (tote-side) face, inboard through the corridor-side
+    tab — nothing reaches under a bottom-tote pallet.  Returns (yd0, yd1, bolt-row yd)."""
+    if post_yd < C_WID / 2:
+        return post_yd, post_yd + FOOT_PLATE_D, post_yd + FRAME_RHS + FOOT_TAB / 2
+    y1 = post_yd + FRAME_RHS
+    return y1 - FOOT_PLATE_D, y1, y1 - FRAME_RHS - FOOT_TAB / 2
+
+
+def _subplate_elev(ax, x0, x1, *, zo=6):
+    """The ONE floor-anchor sub-plate (strongback) under all the feet, lying on the floor; winged
+    TEKs self-tap it into the cross-members (FA1).  Container-dependent length."""
     _rhs_rect(ax, x0, -FOOT_PLATE_T, x1 - x0, PT, fc=C_STEEL, lw=1.2, zo=zo)                 # sub-plate on the floor
-    n = max(4, round((x1 - x0) / 95))
+    n = max(3, round((x1 - x0) / 95))
     for i in range(n):                                                                       # winged TEKs: plate → floor/members
         xx = x0 + (i + 0.5) * (x1 - x0) / n
         ax.plot([xx, xx], [PT - FOOT_PLATE_T, -FOOT_PLATE_T - 26], color=C_BOLT, lw=1.4, zorder=zo + 1)
         ax.plot(xx, -FOOT_PLATE_T - 26, 'v', color=C_BOLT, ms=3.5, mew=0, zorder=zo + 1)
 
 
-def _foot_plan(ax, cx, cyd, *, zo=7):
-    """Floor flange foot in plan (face-on 150×150 square + 4 anchor bolts)."""
-    half = FOOT_PLATE / 2
-    ax.add_patch(Rectangle(((cx - half), (cyd - half)),
-                            (FOOT_PLATE), (FOOT_PLATE),
-                            fc=C_STEEL, ec=C_OUT, lw=1.2, alpha=0.5, zorder=zo))
+def _subplate_x():
+    """Frame-local X span of the sub-plate: front foot's −X edge → back foot's +X edge + 30mm."""
+    return (FX_FRONT + FRAME_RHS / 2 + IBC_FRONT_FOOT_DX - FOOT_PLATE / 2,
+            FX_BACK + FRAME_RHS / 2 + FOOT_PLATE / 2 + 30)
+
+
+def _foot_plan(ax, cx, post_yd, *, zo=7):
+    """Floor foot in plan: 150mm (X) × upright+tab (Yd), with the 2 bolts in the corridor-side tab."""
+    y0, y1, by = _foot_yd(post_yd)
+    ax.add_patch(Rectangle((cx - FOOT_PLATE / 2, y0), FOOT_PLATE, y1 - y0,
+                           fc=C_STEEL, ec=C_OUT, lw=1.2, alpha=0.5, zorder=zo))
     for dx in (-FOOT_BOLT_PCD / 2, FOOT_BOLT_PCD / 2):
-        for dy in (-FOOT_BOLT_PCD / 2, FOOT_BOLT_PCD / 2):
-            ax.plot((cx + dx), (cyd + dy), 'o', color=C_OUT, ms=4,
-                    mfc='white', mew=1.2, zorder=zo + 1)
+        ax.plot((cx + dx), by, 'o', color=C_OUT, ms=4, mfc='white', mew=1.2, zorder=zo + 1)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -394,7 +405,7 @@ def _cut_list(ax, x, y):
         f"  4   ring rail (Yd)        2×2×0.120 RHS  {ring_yd:.0f}",
         f"  4   ring rail (X)         2×2×0.120 RHS  {ring_x:.0f}",
         f"  8   front retaining bar   50×20×3 RHS    {NEAR_COL_R:.0f}",
-        f"  4   floor foot plate      12mm A36       150×150",
+        f"  4   floor foot plate      12mm A36       {FOOT_PLATE}×{FOOT_PLATE_D:.0f}",
         f"  1   floor-anchor sub-plate {FLOOR_PLATE_T:.0f}mm A36       container-dep.",
         f"  8   wall backing plate    8mm A36        60×205",
         f"  8   wall joist hanger     4mm weldment   per detail",
@@ -415,7 +426,7 @@ def _datum_tol_block(ax, x, y):
         " foot coplanarity ⟂A ......... ±1.5",
         f" upright plumb ⟂A ............ ±2 over {TOP_Z - PT:.0f}",
         " frame diagonal square ....... ±3",
-        " foot M12 hole PCD (100) ..... ±0.5",
+        f" foot M12 hole pitch ({FOOT_BOLT_PCD}) .. ±0.5",
         " bar-seat / hanger-pocket Z .. ±2",
         " backing-plate M12 holes ..... ±1",
         " corridor clear width ........ +2 / −0",
@@ -470,11 +481,11 @@ def sheet1():
                   POST_FAR_YD - (POST_NEAR_YD + FRAME_RHS), FRAME_RHS,
                   fc=C_FRAME, alpha=0.7, lw=1.2, zo=6)
 
-    # Floor flange feet on the ONE floor-anchor sub-plate (spans both front feet).
-    foot_cs = [uyd + FRAME_RHS / 2 for uyd in (POST_NEAR_YD, POST_FAR_YD)]
-    _subplate_elev(ax, min(foot_cs), max(foot_cs))
-    for c in foot_cs:
-        _foot_elev(ax, c)
+    # Floor feet on the ONE floor-anchor sub-plate — corridor-only, between the uprights' outer faces.
+    _subplate_elev(ax, POST_NEAR_YD, POST_FAR_YD + FRAME_RHS)
+    for uyd in (POST_NEAR_YD, POST_FAR_YD):
+        y0, y1, _ = _foot_yd(uyd)
+        _foot_elev(ax, y0, y1 - y0)
 
     # Direct-stack junction line (totes bear cage-on-cage — no deck, 52mm headroom).
     for col_l, col_r in [(BLUE_IBC_Y, NEAR_COL_R), (IBC_FAR_Y, IBC_FAR_Y + IBC_D)]:
@@ -623,7 +634,7 @@ def sheet1():
 
     leader(ax, (POST_NEAR_YD - FRAME_RHS * 0.3), (FOOT_PLATE_T / 2),
            (POST_NEAR_YD - 220), (140),
-           "FLOOR FLANGE FOOT (FA2)\n150×150×12 PLATE, 4× M12 TO THE\nFLOOR-ANCHOR SUB-PLATE (FA1 → cross-members)\n(×4, one per leg)",
+           f"FLOOR FOOT (FA2)\n{FOOT_PLATE}×{FOOT_PLATE_D:.0f}×{FOOT_PLATE_T} PLATE, {FOOT_BOLT_N}× M12 IN THE\nCORRIDOR-SIDE TAB TO THE FLOOR-ANCHOR\nSUB-PLATE (FA1 → cross-members) (×4, one per leg)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -680,7 +691,7 @@ def sheet1():
         f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Fillet welds per §3.5 schedule (W1 upright↔ring 5mm, W2 foot↔upright 6mm, W3 cleat 4mm, W4 lashing ring 6mm), continuous / all-around.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers)."
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
-        f"3. Floor flange feet (×4): 150×150×12mm plate welded to each leg base; each bolts (4× M12, FA2) to the floor-anchor sub-plate (FA1 → cross-members; §3.4a). Front feet reach ~25mm under the tray.",
+        f"3. Floor feet (×4): {FOOT_PLATE}×{FOOT_PLATE_D:.0f}×{FOOT_PLATE_T}mm plate welded to each leg base, flush with its tote-side face; each bolts ({FOOT_BOLT_N}× M12 in the {FOOT_TAB}mm corridor-side tab, FA2) to the corridor-only floor-anchor sub-plate (FA1 → cross-members; §3.4a). Front feet shift +{IBC_FRONT_FOOT_DX:.0f}mm clear of the tray.",
         f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — two per face for the loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into"
          "   a Simpson-style wall joist"
         f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×70) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall; a steel crush sleeve on each bolt fills the corrugation hollow so the preload cannot collapse it.",
@@ -772,10 +783,9 @@ def sheet2():
                   fc=C_FRAME, alpha=0.5, lw=1.2, zo=4)
 
     # ── Floor flange feet on the ONE floor-anchor sub-plate (spans front+back feet) ──
-    foot_cs = [fx + FRAME_RHS / 2 + (IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0) for fx in FX_POSTS]
-    _subplate_elev(ax, min(foot_cs), max(foot_cs))
-    for c in foot_cs:
-        _foot_elev(ax, c)
+    _subplate_elev(ax, *_subplate_x())
+    for fx in FX_POSTS:
+        _foot_elev(ax, fx + FRAME_RHS / 2 + (IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0) - FOOT_PLATE / 2, FOOT_PLATE)
 
     # ── Direct-stack junction line (totes bear cage-on-cage — no deck) ──────
     ax.plot([(ibc_x_offset), (ibc_x_offset + IBC_W)], [(PLATFORM_Z)] * 2,
@@ -880,8 +890,8 @@ def sheet2():
          "   back uprights; the direct-stacked totes need only restraint.",
         f"2. Totes DIRECT-STACK cage-on-cage at Z={PLATFORM_Z}mm (no deck, 52mm",
          "   headroom). Restraint = box + front retaining bars + lashing.",
-         "3. Each upright base (×4): 150×150×12mm floor flange plate, 4× M12 to the ONE floor-anchor",
-         "   sub-plate (self-taps to the cross-members, §3.4a); front feet reach ~25mm under the tray.",
+         f"3. Each upright base (×4): {FOOT_PLATE}×{FOOT_PLATE_D:.0f}×{FOOT_PLATE_T}mm foot plate, {FOOT_BOLT_N}× M12 (corridor-side tab) to the ONE",
+         "   corridor-only floor-anchor sub-plate (self-taps to the cross-members, §3.4a); front feet clear the tray.",
          "4. Front retaining bars (Z500/950 + Z1500/1950) stop the totes sliding out the",
          "   front; wall ends drop into Simpson-style joist hangers.",
         f"5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 2×1×0.120in steel clamp to the",
@@ -987,25 +997,22 @@ def sheet3():
 
     # ── Floor flange feet (projected, under the 4 box legs: front + back) ────
     # The FRONT feet are shifted OUTBOARD (+X, toward the corridor) by IBC_FRONT_FOOT_DX so the
-    # 150×150 plate + inboard anchors clear the processing-tray basin (the plate spec is unchanged).
+    # foot plate + its bolts clear the processing-tray basin.
     # The ONE floor-anchor sub-plate footprint (spans all 4 feet), drawn under them.
-    _fxs = [fx + FRAME_RHS / 2 + (IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0) for fx in FX_POSTS]
-    _fyds = [post_yd + FRAME_RHS / 2 for post_yd in (POST_NEAR_YD, POST_FAR_YD)]
-    _m = FOOT_PLATE / 2 + 45
-    _px0, _px1 = min(_fxs) - _m, max(_fxs) + _m
-    _py0, _py1 = min(_fyds) - _m, max(_fyds) + _m
+    _px0, _px1 = _subplate_x()
+    _py0, _py1 = POST_NEAR_YD, POST_FAR_YD + FRAME_RHS
     ax.add_patch(Rectangle((_px0, _py0), _px1 - _px0, _py1 - _py0, fc=C_STEEL, ec=C_OUT,
                            lw=1.2, ls=(0, (5, 3)), alpha=0.22, zorder=3))
     leader(ax, _px0, (_py0 + _py1) / 2, _px0 - 120, (_py0 + _py1) / 2 + 140,
-           "FLOOR-ANCHOR SUB-PLATE\n(ONE plate, all 4 feet;\nself-taps to the cross-members, FA1)",
+           "FLOOR-ANCHOR SUB-PLATE\n(ONE plate, all 4 feet, corridor only;\nself-taps to the cross-members, FA1)",
            color=C_DIM, fs=5, ha="right", va="bottom", arrow_style="-|>", font=FONT)
     for fx in FX_POSTS:
         foot_dx = IBC_FRONT_FOOT_DX if fx == FX_FRONT else 0
         for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
-            _foot_plan(ax, fx + FRAME_RHS / 2 + foot_dx, post_yd + FRAME_RHS / 2)
-    leader(ax, (FX_FRONT + FRAME_RHS / 2 + IBC_FRONT_FOOT_DX), (POST_FAR_YD + FRAME_RHS / 2 + FOOT_PLATE / 2),
+            _foot_plan(ax, fx + FRAME_RHS / 2 + foot_dx, post_yd)
+    leader(ax, (FX_FRONT + FRAME_RHS / 2 + IBC_FRONT_FOOT_DX), (_foot_yd(POST_FAR_YD)[0]),
            (FX_FRONT - 40), (POST_FAR_YD + 150),
-           f"FRONT FEET OFFSET +{IBC_FRONT_FOOT_DX:.0f}mm OUTBOARD\n(clear the processing tray; plate spec unchanged)",
+           f"FRONT FEET OFFSET +{IBC_FRONT_FOOT_DX:.0f}mm OUTBOARD\n(clear the processing tray)",
            color=C_OUT, fs=5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ──────────────────────────────────────────────────────────
@@ -1149,7 +1156,8 @@ def sheet3():
     notes = [
         "PLAN VIEW NOTES (RESTRAINT-ONLY FRAME):",
         "1. DEEP 4-LEG BOX: 4 uprights (front + back pair, 450mm apart) at Yd 1046/1266 on",
-        "150×150×12 floor flange feet (4× M12 each), tied by top + bottom rings. It carries the",
+        f"{FOOT_PLATE}×{FOOT_PLATE_D:.0f}×{FOOT_PLATE_T} floor feet ({FOOT_BOLT_N}× M12 each, corridor side), tied by",
+        "top + bottom rings. It carries the",
         "Corridor pump panel + drain-riser spine on the back uprights; totes need only restraint.",
         "2. Front retaining bars run in Yd at the IBC front (wall -> upright per column) — they",
         "stop the totes sliding out the front; wall ends drop into Simpson-style joist hangers.",

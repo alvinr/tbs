@@ -343,7 +343,7 @@ def _ibc_stacking_frame_weight():
       • 4 full-height uprights — a FRONT pair (X4654) + a BACK pair 450mm behind
         (X5104), ~2.30m, 2×2×0.120in steel
       • top + bottom rings (butt-jointed Yd-rails + X-rails tying the 4 legs)
-      • 4 floor flange feet, 150×150×12mm + 16 M12 anchors (front feet under the tray)
+      • 4 floor feet, 150×101×12mm + 8 M12 into the corridor-only sub-plate
       • 6 rear-panel mount brackets on the back uprights
       • front retaining bars (8: 2 bars/face × 2 tiers × 2 columns, 50×20×3 RHS) trap the totes
         — two per face for the loaded-transport case (ibc_frame_load.py)

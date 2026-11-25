@@ -672,7 +672,7 @@ _SANCTIONED_BOLT = [
     ("FP combined beam TEK screw", "RWk Long beam", "EDGE",
      "TEK self-driller (half-lap hold-down) into the beam flange — thread-former, no 1.5·D edge rule"),
     ("Foot→plate bolt M12", "Foot plate", "EDGE",
-     "short vertical anchor bolt — AABB axis/edge artifact; nominal edge = (IBC_FOOT_PLATE−PCD)/2 = 25mm ≥ 1.5·D"),
+     "short vertical anchor bolt — AABB axis/edge artifact; nominal edge = 25mm ≥ 1.5·D both ways ((IBC_FOOT_PLATE−PCD)/2 in X, IBC_FOOT_TAB/2 in Yd)"),
     ("mount bolt", "Disc-holder retaining ring", "EDGE",
      "AABB artifact — the Ø150 mount bolts sit at r75, outside the Ø120 retaining ring (r60); the ring's square bounding box corners onto the bolt circle"),
     ("Door frame anchor M10", "EPDM", "EDGE",

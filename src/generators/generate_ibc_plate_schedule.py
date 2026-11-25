@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
 from tbs_constants import STEEL_ANGLE_LEG, STEEL_ANGLE_T
-from tbs_constants import (IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD,
+from tbs_constants import (IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_PLATE_D, IBC_FOOT_TAB, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD,
                            IBC_FOOT_BOLT_N, IBC_FRAME_RHS, IBC_FRONT_BAR_D, IBC_FRONT_BAR_W,
                            IBC_FRONT_FOOT_DX, DIAGRAM_DPI, FONT, BG, DIAGRAMS_DIR,
                            C_OUT, C_CL, C_DIM, C_STEEL)
@@ -116,34 +116,37 @@ def sheet1():
     ax.text(670, 405, "PLATE FABRICATION SCHEDULE — STRUCTURAL PLATES", fontsize=12,
             fontweight="bold", ha="center", **FONT)
 
-    # ── PLATE 1 — IBC FLOOR FOOT (150×150×12, 4× Ø14 @ 100 sq PCD) ──
+    # ── PLATE 1 — IBC FLOOR FOOT (150×101×12, upright at the tote-side edge, 2× Ø14 in the corridor-side tab) ──
+    FD = IBC_FOOT_PLATE_D
     _panel(ax, 20, 40, 420, 340, "PLATE 1 — IBC FLOOR FOOT", "A36 · 12 mm · ×4 (2 back + 2 front-offset)")
     cx, cy = 175, 205
     fdx = IBC_FRONT_FOOT_DX
-    ax.add_patch(Rectangle((cx - FOOT_W/2, cy - FOOT_W/2), FOOT_W, FOOT_W, fc=C_STEEL, ec=C_OUT, lw=1.6, zorder=4))
-    # BACK feet (×2): upright welded at the plate CENTER
-    ax.add_patch(Rectangle((cx - IBC_FRAME_RHS/2, cy - IBC_FRAME_RHS/2), IBC_FRAME_RHS, IBC_FRAME_RHS,
+    y0, y1 = cy - FD/2, cy + FD/2
+    ax.add_patch(Rectangle((cx - FOOT_W/2, y0), FOOT_W, FD, fc=C_STEEL, ec=C_OUT, lw=1.6, zorder=4))
+    # upright footprint flush with the TOTE-SIDE edge (top); BACK ×2 centered in X, FRONT ×2 DX toward the tray
+    ax.add_patch(Rectangle((cx - IBC_FRAME_RHS/2, y1 - IBC_FRAME_RHS), IBC_FRAME_RHS, IBC_FRAME_RHS,
                            fc="none", ec=C_CL, lw=0.9, ls=(0, (5, 3)), zorder=5))
-    ax.text(cx, cy + 9, "BACK ×2\nupright CL", fontsize=4.3, ha="center", va="center", color=C_CL, **FONT, zorder=6)
-    # FRONT feet (×2): the plate is shifted +DX OUTBOARD (clears the tray) so the upright welds DX toward
-    # the TRAY side of the plate center — a DIFFERENT weld position, same plate + hole pattern.
-    ax.add_patch(Rectangle((cx - fdx - IBC_FRAME_RHS/2, cy - IBC_FRAME_RHS/2), IBC_FRAME_RHS, IBC_FRAME_RHS,
+    ax.text(cx, y1 - IBC_FRAME_RHS/2, "BACK ×2\nupright", fontsize=4.3, ha="center", va="center", color=C_CL, **FONT, zorder=6)
+    ax.add_patch(Rectangle((cx - fdx - IBC_FRAME_RHS/2, y1 - IBC_FRAME_RHS), IBC_FRAME_RHS, IBC_FRAME_RHS,
                            fc="none", ec="#B03030", lw=1.0, ls=(0, (2, 2)), zorder=6))
-    ax.text(cx - fdx, cy - 11, "FRONT ×2", fontsize=4.3, ha="center", va="center", color="#B03030", **FONT, zorder=7)
-    draw_dim_h(ax, cx - fdx, cx, cy + IBC_FRAME_RHS/2 + 8, f"{int(round(fdx))}mm", fs=5, font=FONT)
+    ax.text(cx - FOOT_W/2 - 6, y1 - IBC_FRAME_RHS/2, "FRONT ×2", fontsize=4.3, ha="right", va="center", color="#B03030", **FONT, zorder=7)
+    draw_dim_h(ax, cx - fdx, cx, y1 + 10, f"{int(round(fdx))}mm", fs=5, font=FONT)
+    hy = y0 + IBC_FOOT_TAB/2
     for sx in (-1, 1):
-        for sy in (-1, 1):
-            _hole(ax, cx + sx*FOOT_PCD/2, cy + sy*FOOT_PCD/2, FOOT_BOLT_D + 2)
-    draw_dim_h(ax, cx - FOOT_W/2, cx + FOOT_W/2, cy + FOOT_W/2 + 26, f"{FOOT_W}mm", fs=6, font=FONT)
-    draw_dim_v(ax, cx + FOOT_W/2 + 22, cy - FOOT_W/2, cy + FOOT_W/2, f"{FOOT_W}mm", fs=6, font=FONT)
-    draw_dim_h(ax, cx - FOOT_PCD/2, cx + FOOT_PCD/2, cy - FOOT_W/2 - 20, f"{FOOT_PCD}mm PCD", fs=6, font=FONT, above=False)
-    draw_dim_v(ax, cx - FOOT_W/2 - 22, cy - FOOT_PCD/2, cy + FOOT_PCD/2, f"{FOOT_PCD}mm", fs=6, font=FONT)
-    _specbox(ax, 300, 308, [f"4× Ø{FOOT_BOLT_D+2} (M{FOOT_BOLT_D})",
-                            f"@ {FOOT_PCD}×{FOOT_PCD} sq PCD",
-                            "holes centered on plate",
-                            "BACK ×2: weld upright @ CL",
-                            f"FRONT ×2: weld {int(round(fdx))}mm",
-                            "toward tray (Frame Sh.3)"])
+        _hole(ax, cx + sx*FOOT_PCD/2, hy, FOOT_BOLT_D + 2)
+    ax.text(cx, y1 + 64, "TOTE SIDE (upright outer face)", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
+    ax.text(cx, y0 - 58, "CORRIDOR-SIDE TAB", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
+    draw_dim_h(ax, cx - FOOT_W/2, cx + FOOT_W/2, y1 + 34, f"{FOOT_W}mm", fs=6, font=FONT)
+    draw_dim_v(ax, cx + FOOT_W/2 + 22, y0, y1, f"{FD:.1f}mm", fs=6, font=FONT)
+    draw_dim_v(ax, cx + FOOT_W/2 + 48, y0, y1 - IBC_FRAME_RHS, f"{IBC_FOOT_TAB}mm TAB", fs=5.5, font=FONT)
+    draw_dim_h(ax, cx - FOOT_PCD/2, cx + FOOT_PCD/2, y0 - 20, f"{FOOT_PCD}mm", fs=6, font=FONT, above=False)
+    draw_dim_v(ax, cx - FOOT_W/2 - 22, y0, hy, f"{IBC_FOOT_TAB // 2}mm", fs=6, font=FONT)
+    _specbox(ax, 300, 308, [f"{FOOT_N}× Ø{FOOT_BOLT_D+2} (M{FOOT_BOLT_D})",
+                            f"{FOOT_PCD} apart, mid-tab",
+                            "upright flush with the",
+                            "tote-side edge",
+                            "BACK ×2: upright @ X CL",
+                            f"FRONT ×2: {int(round(fdx))}mm to tray"])
 
     # ── PLATE 2 — WALL-HANGER BACKING (60×205×8, 2× Ø14) ──
     _panel(ax, 460, 40, 420, 340, "PLATE 2 — WALL-HANGER BACKING", "A36 · 8 mm · ×8 (exterior)")

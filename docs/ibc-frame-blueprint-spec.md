@@ -61,7 +61,7 @@ load case). Follows [`fp-corner-blueprint-spec.md`](fp-corner-blueprint-spec.md)
 | Element | Spec |
 |---|---|
 | Frame | 2×2×0.120in (50.8×50.8×3.05) **A500 Gr.B RHS** — deep 4-leg box, front pair X4654 + back pair X5104, butt-jointed top + bottom rings; **restraint-only** (no vertical service load) |
-| Floor feet | 4 × **150×150×12** steel flange plate, **4× M12** each into a shared floor-anchor **sub-plate** (self-tapped to the cross-members; §3.4a) (front feet reach ~25 mm under the tray) |
+| Floor feet | 4 × **150×101×12** steel plate (upright flush with the tote-side edge, 50 mm corridor-side tab), **2× M12** each through the tab into a shared corridor-only floor-anchor **sub-plate** (self-tapped to the cross-members; §3.4a); front feet shift +X clear of the tray |
 | Front retaining bars | **8 × 50×20×3 RHS — 2 per tote face** (R5), wall→upright per column, span ~1,046 mm |
 | Anti-slip matting | 4 × certified anti-slip mat (**μ ≥ 0.6**) under the tote interfaces |
 | Front-bar → upright L-cleats | **M12×65** 18-8 SS (92800A481), **1 horizontal bolt per cleat** through the L's vertical leg + the bar's 50 mm web — corridor end (BC-C) + wall end (BC-W), 8 + 8 = 16 |
@@ -101,7 +101,7 @@ sheet. Elements to check, each with an EN 12195-1 design force → capacity → 
 - [x] **Front retaining bar** (50×20×3 RHS, ~1,046 mm span) — bending + shear under the top-tote forward thrust (0.8 g, friction-credited).
 - [x] **Wall-hanger bolt group** — 4× M12×70 Gr.8.8 in shear + **backing-plate bearing / corrugated-wall pull-through** (100×135×8 plate). The corrugation-depth (30 mm) is the pull-through assumption — ties to the parked procurement gate.
 - [x] **Front-bar → upright cleat** — M12×65 18-8 SS shear (1 horizontal bolt through the L leg + the bar's 50 mm web).
-- [x] **Floor-foot anchors** — 4× M12 per foot into the floor-anchor sub-plate's tapped bosses (FA2); the plate self-taps to the cross-members (FA1), carrying shear + uplift (§3.4a).
+- [x] **Floor-foot anchors** — 2× M12 per foot into the floor-anchor sub-plate's tapped bosses (FA2); the plate self-taps to the cross-members (FA1), carrying shear + uplift (§3.4a).
 - [x] **Lashing ring + strap** — 6,600 lb ring / 3,333 lb strap WLL vs the EN 12195-1 vertical + lateral tie-down demand.
 - [ ] **Weld throats** — ring→bar, upright↔ring, foot↔upright fillet throat vs demand → **moved to Phase B** (weld schedule).
 

@@ -36,11 +36,9 @@ EQT     = ov.EQPANEL_T                    # 18mm ply
 # Frame base + FRONT bottom Yd-rail X-center, hoisted to module scope so the 2D corridor
 # section (generate_walkway_sections Sheet 4) draws the SAME rail box from one source.  The
 # feet sit on the floor-anchor sub-plate + foot plate, so the base ring floats at FRAME_BASE_Z
-# (not on the floor); the front rail is narrowed + centred on the front foot plates.
+# (not on the floor); the front rail is narrowed + flush with the front uprights' +X face.
 FRAME_BASE_Z  = ov.FLOOR_PLATE_T + ov.IBC_FOOT_PLATE_T          # 20 — upright/rail base Z
-_FCX          = FRONT_X + S / 2 + ov.IBC_FRONT_FOOT_DX
-_FPX1         = min(_FCX + ov.IBC_FOOT_PLATE / 2, FRONT_X + S)
-FRONT_RAIL_CX = ((_FCX - ov.IBC_FOOT_PLATE / 2) + _FPX1) / 2    # 4669.4 — narrowed front-rail center
+FRONT_RAIL_CX = FRONT_X + S - ov.IBC_FRONT_RAIL_W / 2           # 4694.8 — narrowed front-rail center
 C_BOLT  = "#3A3A42"
 C_HANDLE = "#C0202A"                      # red diverter handle
 
@@ -192,8 +190,8 @@ def frame(part="all"):
     base = FRAME_BASE_Z                                    # upright base — feet SIT ON the sub-plate on the floor; the post is cut shorter by pt, TOP_Z fixed
     up_yds = (YD_NEAR, YD_FAR - S)
     box_xs = (FRONT_X, BACK_X)
-    # The low front Yd-rail is NARROWED (IBC_FRONT_RAIL_W) and centred on the front foot plates so it runs
-    # BETWEEN the two foot-bolt columns — the bolts straddle it and their heads stay clear (no access holes).
+    # The low front Yd-rail is NARROWED (IBC_FRONT_RAIL_W) and flush with the front uprights' +X face so it
+    # runs BETWEEN the front foot's two bolts — their heads stay clear (no access holes).
     front_rail_cx = FRONT_RAIL_CX
     if posts:
         for ux in box_xs:                                  # 4 corner uprights
@@ -202,9 +200,8 @@ def frame(part="all"):
     if rails:
         for rz in (base, TOP_Z - S):                       # bottom ring on the foot plate + top ring, rails BUTT between uprights
             for ux in box_xs:
-                # The FRONT bottom Yd-rail is LOW (IBC_FRONT_RAIL_H) + NARROW (IBC_FRONT_RAIL_W), centred on
-                # the foot plates so it runs between the two bolt columns — the foot bolts straddle it with
-                # the heads clear (no access holes, no riser-corridor clash).  The corridor blue clears it
+                # The FRONT bottom Yd-rail is LOW (IBC_FRONT_RAIL_H) + NARROW (IBC_FRONT_RAIL_W), flush with the
+                # uprights' +X face so the front foot bolts straddle it with the heads clear (no access holes).  The corridor blue clears it
                 # overhead: the supply trunk crosses at Z210 and only drops to the flush Z104.5 lane at X4641,
                 # −X of the rail face — there is no low Z50 crossing.
                 front_bot = rz == base and ux == FRONT_X
@@ -213,36 +210,26 @@ def frame(part="all"):
             for yd in up_yds:
                 p.append(draw.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=draw.C_STEEL))
     if posts:
-        # floor feet (plate + 4× M12) under each upright, sitting ON the floor-anchor SUB-PLATE (strongback).
-        # FRONT feet still shift outboard (foot_dx) to clear the processing-tray basin on the −X side, and the
-        # plate's +X (tote-side) overhang is TRIMMED to the upright's +X face.  FA2 bolts run from the foot top
-        # down into the sub-plate's tapped bosses; the sub-plate self-taps into the cross-members (FA1 — the
-        # winged TEKs are a container-dependent fab detail, drawn on the floor-anchor 2D sheet, not modeled here).
-        fp, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_BOLT_PCD // 2
-        # ── ONE sub-plate spanning the 4 feet, on the floor (Z0→pt) ──
-        _fx, _fy = [], []
+        # Floor feet: each upright stands on a foot plate that runs from its outer (tote-side) face INBOARD
+        # only — a corridor-side tab (IBC_FOOT_TAB) carries the 2× M12 into the sub-plate's tapped bosses, so
+        # neither plate reaches under a bottom-tote pallet.  The FRONT feet shift +X (IBC_FRONT_FOOT_DX) to
+        # clear the processing-tray basin.  The sub-plate spans the corridor between the uprights' outer faces
+        # and self-taps into the cross-members (FA1 — winged TEKs are a container-dependent fab detail, drawn
+        # on the floor-anchor 2D sheet, not modeled here).
+        fp, fd, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_PLATE_D, ov.IBC_FOOT_BOLT_PCD / 2
+        feet = []
         for ux in box_xs:
-            _fdx = ov.IBC_FRONT_FOOT_DX if ux == FRONT_X else 0.0
-            for yd in up_yds:
-                cx, cy = ux + S / 2 + _fdx, yd + S / 2
-                px1 = min(cx + fp / 2, ux + S) if ux == FRONT_X else cx + fp / 2
-                _fx += [cx - fp / 2, px1]; _fy += [cy - fp / 2, cy + fp / 2]
-        _m = 30
-        p.append(draw.ruby_box("Floor-anchor sub-plate", min(_fx) - _m, min(_fy) - _m, 0,
-                               (max(_fx) - min(_fx)) + 2 * _m, (max(_fy) - min(_fy)) + 2 * _m, pt, color=draw.C_STEEL))
-        for ux in box_xs:
-            front = ux == FRONT_X
-            foot_dx = ov.IBC_FRONT_FOOT_DX if front else 0.0
-            for yd in up_yds:
-                cx, cy = ux + S / 2 + foot_dx, yd + S / 2
-                px0 = cx - fp / 2                                      # −X edge (tray-cleared via foot_dx)
-                px1 = min(cx + fp / 2, ux + S) if front else cx + fp / 2   # trim +X to the upright face (front only)
-                pcx, pxw = (px0 + px1) / 2, px1 - px0
-                bpx = min(bpc, pxw / 2 - 13)                           # X bolt half-spacing that fits the (trimmed) plate
-                p.append(draw.ruby_box("Foot plate", px0, cy - fp / 2, pt, pxw, fp, ft, color=draw.C_STEEL))   # foot ON the sub-plate
-                for dx in (-bpx, bpx):
-                    for dy in (-bpc, bpc):
-                        p.append(draw.ruby_bolt("Foot→plate bolt M12", pcx + dx, cy + dy, pt, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # FA2 into the sub-plate boss
+            cx = ux + S / 2 + (ov.IBC_FRONT_FOOT_DX if ux == FRONT_X else 0.0)
+            for yd, sy in ((YD_NEAR, +1), (YD_FAR, -1)):
+                y0 = yd if sy > 0 else yd - fd
+                feet.append((cx - fp / 2, y0, yd + sy * (S + ov.IBC_FOOT_TAB / 2)))
+        sx0 = min(f[0] for f in feet)
+        sx1 = max(f[0] for f in feet) + fp + 30
+        p.append(draw.ruby_box("Floor-anchor sub-plate", sx0, YD_NEAR, 0, sx1 - sx0, YD_FAR - YD_NEAR, pt, color=draw.C_STEEL))
+        for px0, y0, by in feet:
+            p.append(draw.ruby_box("Foot plate", px0, y0, pt, fp, fd, ft, color=draw.C_STEEL))   # foot ON the sub-plate
+            for dx in (-bpc, bpc):
+                p.append(draw.ruby_bolt("Foot→plate bolt M12", px0 + fp / 2 + dx, by, pt, ft, radius=7, axis="z", color=C_BOLT, head="far", nut=None))  # FA2 into the sub-plate boss
         # REAR-panel mount brackets (on the back uprights, behind the panel): ONE piece of 1×1×3/16 angle
         # (the walkway bearer stock) — a leg flat on the upright's inboard face, TEK-screwed (RP2), and an
         # upstand behind the ply that the rear panel bolts through (RP1).

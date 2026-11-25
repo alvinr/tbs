@@ -33,7 +33,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)),
 import generate_corridor_water_panel as cp   # ribbon geometry (single source)
 import generate_pinhole_water_panel as pw    # P-02/DV-01/SV-01 + ribbon corridor ends (water.skp build)
 from tbs_constants import IBC_COL_X, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_W, RWK_BEARER_W, RWK_BEARER_XS, RWK_BEARER_Z0, PROC_TRAY_X_R, PROC_TRAY_X_L, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_DRAIN_X, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, tray_rim_top_z, spray_beam_top_z, DIAGRAMS_DIR
-from tbs_constants import IBC_FOOT_PLATE, IBC_FOOT_PLATE_D, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FOOT_TRAY_GAP, IBC_FRONT_FOOT_DX
+from tbs_constants import FLOOR_PLATE_T, IBC_FOOT_PLATE, IBC_FOOT_PLATE_D, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_FOOT_TRAY_GAP, IBC_FRONT_FOOT_DX
 from tbs_constants import DIAGRAM_DPI, FONT, BG, C_OUT, C_DIM, C_STEEL, C_PIPE_FRESH, C_PIPE_RECYCLE, C_PIPE_WASTE
 
 # ── Palette (C_OUT/C_DIM from tbs_constants) ─────────────────────────────────────
@@ -94,17 +94,32 @@ def _ribbon_circles(ax, z=None, r=None, z0=12, label=False, fs=5.4):
 # water.skp restraint = cp.frame() DEEP 4-leg box: FRONT upright X4654; the front foot is shifted +X
 # (IBC_FRONT_FOOT_DX) so its left edge clears the tray right edge by IBC_FOOT_TRAY_GAP.
 ARM_X0, ARM_X1, ARM_ZB, ARM_ZT = WALKWAY_RIGHT_X, 4654, 70, 115   # RWK cantilever arm — clamps to the deep-box upright X4654 (reconciled from 4734)
-UP_X0, UP_X1 = 4654, 4704            # corridor deep-box FRONT upright (50×50 RHS)
+UP_X0, UP_X1 = cp.FRONT_X, cp.FRONT_X + cp.S                     # corridor deep-box FRONT upright (2×2 SHS)
+SUB_ZT = FLOOR_PLATE_T                                             # floor-anchor sub-plate Z0–8 (feet + rails sit on it)
+FRAME_Z0 = cp.FRAME_BASE_Z                                         # upright + bottom-rail base Z20 (on the foot plate)
 _FOOT_CX = cp.FRONT_X + cp.S / 2 + IBC_FRONT_FOOT_DX
-FOOT_X0, FOOT_X1, FOOT_ZT = _FOOT_CX - IBC_FOOT_PLATE / 2, _FOOT_CX + IBC_FOOT_PLATE / 2, IBC_FOOT_PLATE_T   # front floor foot
-M12_XS = [_FOOT_CX - IBC_FOOT_BOLT_PCD / 2, _FOOT_CX + IBC_FOOT_BOLT_PCD / 2]   # the foot's 2× M12 (corridor-side tab)
-BRAIL_X0, BRAIL_X1, BRAIL_Z = 4704, 5104, 50                      # deep-box BOTTOM ring rail (X), Z0-50
+FOOT_X0, FOOT_X1 = _FOOT_CX - IBC_FOOT_PLATE / 2, _FOOT_CX + IBC_FOOT_PLATE / 2   # front floor foot, Z8–20
+SUB_X0, SUB_X1 = FOOT_X0, cp.BACK_X + cp.S / 2 + IBC_FOOT_PLATE / 2 + 30          # sub-plate X span (= the 3D)
+M12_XS = [_FOOT_CX - IBC_FOOT_BOLT_PCD / 2, _FOOT_CX + IBC_FOOT_BOLT_PCD / 2]   # the foot's bolts (corridor-side tab, beyond the cut)
+BRAIL_X0, BRAIL_Z = UP_X1, FRAME_Z0 + cp.S                        # deep-box BOTTOM ring rail (X), Z20–70.8 — BRAIL_Z = its top
 RAIL_X0, RAIL_X1, RAIL_ZB, RAIL_ZT = 4654, 4674, 560, 610         # front retaining bar (ring rail) Z560
 
 
 def _rect(ax, x, z, w, h, fc, ec=C_OUT, lw=0.9, hatch=None, z0=5, alpha=1.0, ls="-"):
     ax.add_patch(Rectangle((x, z), w, h, facecolor=fc, edgecolor=ec,
                             linewidth=lw, hatch=hatch, zorder=z0, alpha=alpha, linestyle=ls))
+
+
+def _frame_base(ax, x_hi, z_top):
+    """Deep-box frame base in a cut at an upright's Yd: sub-plate on the floor, foot plate on it, upright +
+    bottom ring rail standing on the foot, the foot bolts (in the corridor-side tab, beyond the cut)."""
+    _rect(ax, SUB_X0, 0, min(SUB_X1, x_hi) - SUB_X0, SUB_ZT, C_STEEL, lw=0.9, z0=8, hatch="////")      # sub-plate
+    _rect(ax, FOOT_X0, SUB_ZT, FOOT_X1 - FOOT_X0, IBC_FOOT_PLATE_T, C_STEEL, lw=0.9, z0=8)           # foot plate
+    _rect(ax, UP_X0, FRAME_Z0, UP_X1 - UP_X0, z_top - FRAME_Z0, C_STEEL, lw=1.0, z0=6)               # upright
+    _rect(ax, BRAIL_X0, FRAME_Z0, x_hi - BRAIL_X0, BRAIL_Z - FRAME_Z0, C_STEEL, lw=0.9, z0=5)        # bottom ring rail
+    for mx in M12_XS:                                                     # bolt heads beyond the cut, hidden by the upright/rail
+        _rect(ax, mx - 9, FRAME_Z0, 18, 8, "none", ec=C_OUT, lw=0.7, z0=10, ls=(0, (2, 1.5)))
+
 
 
 def _crossing_gaps(a, b, obstacles, gap):
@@ -508,18 +523,17 @@ def sheet3():
            color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Deep-box FRONT upright + front foot (extends UNDER the tray) + M12 + bottom rail + retaining bar ──
-    _rect(ax, UP_X0, 0, UP_X1 - UP_X0, Z_HI - Z_LO, C_STEEL, lw=1.0, z0=6)                  # front upright X4654-4704
-    _rect(ax, BRAIL_X0, 0, X_HI - BRAIL_X0, BRAIL_Z, C_STEEL, lw=0.9, z0=5)                 # deep-box bottom ring rail (→X5104)
-    _rect(ax, FOOT_X0, 0, FOOT_X1 - FOOT_X0, FOOT_ZT, C_STEEL, lw=0.9, z0=8)                # front foot
-    for mx in M12_XS:
-        _rect(ax, mx - 6, 0, 12, 16, "#6A6A72", lw=0.5, z0=9)
+    _frame_base(ax, X_HI, Z_HI - Z_LO)
     _rect(ax, RAIL_X0, RAIL_ZB, RAIL_X1 - RAIL_X0, RAIL_ZT - RAIL_ZB, C_STEEL, lw=0.9, z0=7)  # retaining bar Z560
     leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FRONT upright\n(50×50 RHS, X4654)",
            color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 175, 35,
-           f"front floor foot {IBC_FOOT_PLATE}×{IBC_FOOT_PLATE_D:.0f}×{IBC_FOOT_PLATE_T} + {IBC_FOOT_BOLT_N}× M12 —\nLEFT EDGE (X{FOOT_X0:.0f}) {IBC_FOOT_TRAY_GAP}mm CLEAR OF THE TRAY",
-           color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, X_HI - 60, BRAIL_Z, X_HI - 40, 92, "bottom ring rail (Z0–50)",
+    leader(ax, FOOT_X1 - 12, SUB_ZT + IBC_FOOT_PLATE_T / 2, 4716, 190,
+           f"front floor foot {IBC_FOOT_PLATE}×{IBC_FOOT_PLATE_D:.0f}×{IBC_FOOT_PLATE_T}\n(Z{SUB_ZT}–{FRAME_Z0}); left edge\n{IBC_FOOT_TRAY_GAP}mm clear of the tray;\n{IBC_FOOT_BOLT_N}× M12 beyond the cut (dashed)",
+           color="#B03030", fs=5.2, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, 4860, SUB_ZT / 2, 4716, 140,
+           f"floor-anchor sub-plate {SUB_ZT}mm\n(Z0–{SUB_ZT}), corridor only (FA1)",
+           color=C_DIM, fs=5.2, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, X_HI - 60, BRAIL_Z, X_HI - 40, 92, f"bottom ring rail (Z{FRAME_Z0}–{BRAIL_Z:.0f})",
            color=C_DIM, fs=5.6, ha="right", va="center", arrow_style="-|>", font=FONT)
     leader(ax, (RAIL_X0 + RAIL_X1) / 2, RAIL_ZT, RAIL_X1 + 24, RAIL_ZT + 40,
            "retaining bar (ring rail) Z560", color=C_DIM, fs=6, ha="left", va="center",
@@ -543,17 +557,17 @@ def sheet3():
             fontsize=5.0, ha="center", va="center", color=C_DIM, zorder=10, **FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_v(ax, X_HI - 34, BRAIL_Z, RAIL_ZB, f"{RAIL_ZB - BRAIL_Z}mm\n(rail→rail)", offset=5, fs=5.4, font=FONT)
+    draw_dim_v(ax, X_HI - 34, BRAIL_Z, RAIL_ZB, f"{RAIL_ZB - BRAIL_Z:.0f}mm\n(rail→rail)", offset=5, fs=5.4, font=FONT)
     draw_dim_v(ax, ARM_X0 - 22, 0, ARM_ZB, f"{ARM_ZB}mm\nunder arm", offset=5, fs=5.4, font=FONT)
-    draw_dim_h(ax, PROC_TRAY_X_R, UP_X0, 30, f"{UP_X0 - PROC_TRAY_X_R}mm gap\n(rim→upright)", offset=4, fs=5.2, above=False, font=FONT)
+    draw_dim_h(ax, PROC_TRAY_X_R, UP_X0, 40, f"{UP_X0 - PROC_TRAY_X_R}mm gap\n(rim→upright)", offset=4, fs=5.2, above=True, font=FONT)
 
     notes = [
         "SECTION D-D NOTES  (frame = water.skp deep-box cp.frame())",
-        "1. X–Z cut through the NEAR cantilever (Yd≈1066).  The corridor restraint is the DEEP 4-leg box: FRONT upright X4654, front foot 150×150 at X4604–4754 — its LEFT EDGE sits 25mm UNDER the tray.",
+        f"1. X–Z cut through the NEAR cantilever (Yd≈1066).  The corridor restraint is the DEEP 4-leg box: FRONT upright X4654, front foot X{FOOT_X0:.0f}–{FOOT_X1:.0f} (Z{SUB_ZT}–{FRAME_Z0}) on the {SUB_ZT}mm floor-anchor sub-plate, its left edge {IBC_FOOT_TRAY_GAP}mm clear of the tray; the upright and bottom ring rail stand on the foot at Z{FRAME_Z0}.",
         "2. The four-lane ribbon LOOPS UP OVER the cantilever here: it rose through the grate at Yd1000 and crests at Z142 (RIBBON_OVER_Z), passing OVER the arm top (Z115) and grate (Z130) — never through the steel (Rule 5).  It drops back through the grate past Yd1120.",
         "3. No pipe threads the tray-rim↔upright gap at this plane — the old low-crosser pinch is designed out by the loop-over.",
         "4. Past the cantilever each lane stays FLUSH (Z104.5) and crosses the OPEN corridor bay (Yd~1097–1266) — the outer beam is omitted between the two cantilever arms, so there is no beam to cross — then drops the tray-edge slot (X4629–4654, clear of the carriage) into the corridor — in-plane in E-E.",
-        "5. STATUS: (a) front foot / M12 CLEARS under the raised tray pan; (b) RWK cantilever arm reconciled to the deep-box upright (X4654); (c) the ribbon crest clears the arm top — no soffit graze; (d) the flush ribbon clears the spray-carriage crown (Z66) by ~28mm.",
+        "5. STATUS: (a) front foot + sub-plate clear the tray; (b) RWK cantilever arm reconciled to the deep-box upright (X4654); (c) the ribbon crest clears the arm top — no soffit graze; (d) the flush ribbon clears the spray-carriage crown (Z66) by ~28mm.",
     ]
     draw_notes(ax, notes, X_LO + 8, Z_HI - 60, 7.6, fs=6.2,
                font=FONT, width=285, wrap=72, border_color=C_DIM, border_lw=0.7)
@@ -732,14 +746,10 @@ def sheet5():
     leader(ax, 4500, ARM_ZB, 4358, 60, "walkway support: far cantilever arm (Z70–115)\n+ long bearers (Z80–115, hatched)", color="#3A3A40", fs=5.2, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, WALKWAY_RIGHT_X + 90, WALKWAY_H, 4358, 175, "right walkway grate deck (Z115–130)", color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     # far upright + far foot (also under tray) + M12 + bottom rail + retaining bar
-    _rect(ax, UP_X0, 0, UP_X1 - UP_X0, Z_HI - Z_LO, C_STEEL, lw=1.0, z0=6)                     # far upright X4654-4704
-    _rect(ax, BRAIL_X0, 0, X_HI - BRAIL_X0, BRAIL_Z, C_STEEL, lw=0.9, z0=5)                    # bottom ring rail
-    _rect(ax, FOOT_X0, 0, FOOT_X1 - FOOT_X0, FOOT_ZT, C_STEEL, lw=0.9, z0=8)                   # far foot
-    for mx in M12_XS:
-        _rect(ax, mx - 6, 0, 12, 16, "#6A6A72", lw=0.5, z0=9)
+    _frame_base(ax, X_HI, Z_HI - Z_LO)
     _rect(ax, RAIL_X0, RAIL_ZB, RAIL_X1 - RAIL_X0, RAIL_ZT - RAIL_ZB, C_STEEL, lw=0.9, z0=7)   # retaining bar
     leader(ax, (UP_X0 + UP_X1) / 2, 500, UP_X1 + 22, 540, "corridor deep-box FAR upright\n(50×50 RHS)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, FOOT_X0 + 16, FOOT_ZT, PROC_TRAY_X_R - 150, 35, f"far floor foot {IBC_FOOT_PLATE}×{IBC_FOOT_PLATE_D:.0f}×{IBC_FOOT_PLATE_T} —\nLEFT EDGE {IBC_FOOT_TRAY_GAP}mm CLEAR OF THE TRAY", color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, FOOT_X0 + 10, SUB_ZT + IBC_FOOT_PLATE_T, PROC_TRAY_X_R - 150, 35, f"far floor foot {IBC_FOOT_PLATE}×{IBC_FOOT_PLATE_D:.0f}×{IBC_FOOT_PLATE_T} —\nLEFT EDGE {IBC_FOOT_TRAY_GAP}mm CLEAR OF THE TRAY", color="#B03030", fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, (RAIL_X0 + RAIL_X1) / 2, RAIL_ZT, RAIL_X1 + 54, RAIL_ZT + 40, "retaining bar (ring rail)", color=C_DIM, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     # nearest corridor lane (blue SV-01 → DV-01 return, Yd1241) — ghost, -Yd of this plane
     ax.add_patch(Circle((4772, 235), OD / 2, facecolor="none", edgecolor=C_BLUE, lw=1.4, ls="--", zorder=9))
@@ -747,7 +757,7 @@ def sheet5():
 
     notes = [
         "SECTION F-F NOTES",
-        "1. Far cantilever (Yd≈1286) — mirrors D-D on the far side of the corridor: arm off the FAR IBC upright (X4654), foot X4604–4754 again extending 25mm UNDER the tray.",
+        f"1. Far cantilever (Yd≈1286) — mirrors D-D on the far side of the corridor: arm off the FAR IBC upright (X{UP_X0}); foot X{FOOT_X0:.0f}–{FOOT_X1:.0f} on the {SUB_ZT}mm floor-anchor sub-plate, {IBC_FOOT_TRAY_GAP}mm clear of the tray.",
         "2. The ribbon loops over the NEAR cantilever only and drops into the corridor by Yd1120 — no line crosses this far cantilever.",
         "3. The nearest corridor lane is the blue SV-01 → DV-01 return (Yd1241), just −Yd of this plane — ghosted.  See E-E for the lanes in-plane.",
     ]

@@ -113,6 +113,14 @@ Deferred until after the editorial review: it reworks the water system and plumb
 **Done 2026-11-24 (interim):** reports, parts (8× `ibc-tote-bulkhead` replace the S60 adapters + reducers), IBC frame sheet 1 and IBC stacking sheets 4–5 now describe the wall-penetration design; the manual only checks the tote outlet valves are closed.
 **Still stale on IBC stacking sheets 4–5 (found 2026-11-24):** they show Blue outlet valves VB1/VB2/VB3 and V1–V4 and "1\" HDPE SDR-11" pipe; the 3D model has P-01 suction from IBC-1 via BV-01 and 1" PVC. Redraw with this work.
 
+**Research log (2026-11-24, branch `ibc-and-pivot-redesign`):**
+- **Valve face (1,000 vs 1,200 side): not published.** Not stated by Schütz (datasheet), ULINE H-3886, Greif GC 275H, or the tote guides at ibctoteguide.com, ibctotestx.com, repackify.com, ibctanks.ca, ibcrecyclingsolution.com, ibcrecyclingdetroit.com. Note sent to Schütz (tcs@schuetz.net) for an MX 1000 dimensioned drawing; otherwise measure a supplied tote.
+- **Valve:** 2" (50mm) at the bottom; ball or butterfly. Thread varies: S60×6 coarse (European-style, Schütz), 2" NPT male (ibcrecyclingdetroit.com sizing guide; S60×6 → 2" NPT adapter listed), 2" NPS male (ULINE H-3886), BSP on imports. Height and protrusion: not published.
+- **Fill opening:** 6" (150mm) screw cap, coarse buttress thread, EPDM gasket 150 OD × 125 ID × 3mm (ibcrecyclingdetroit.com). Cap height: not published.
+- **Cage:** 25mm (1") tube (matches `IBC_CAGE_TUBE_D`); mesh 4" × 8" (100 × 200mm) (ibcrecyclingdetroit.com).
+- **Pallet height:** 150–160mm (ibcrecyclingdetroit.com) vs `IBC_PALLET_H` = 168 — check on a supplied tote.
+- **Decided 2026-11-24:** each tote valve connects by a short flex hose led out of the corridor (the design already uses flex jumpers). Brown IBC-3 return: owner reviewing the diagrams (P&ID sheet 1, IBC stacking sheet 5).
+
 **Graphic first (helps decide):** draw each tote's **top fill opening + cap** (a circle, DN150 / 6", top center) and a **tap-like outlet** (2" valve, bottom center, `IBC_VALVE_Z`) on the face set by the orientation above, in the 3D tote and on the IBC 2D sheets. Placeholder positions until a tote is measured.
 
 ## 🏷️ SketchUp file metadata — set Author on every .skp (2026-11-21)

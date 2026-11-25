@@ -902,6 +902,9 @@ def subplate_pass(data, tol=1.0):
     one (a 3-axis overlap) — a part standing on the plate only touches its top face.  Fasteners into the
     plate are excluded.  The same-color solids pass can't see this: the plate is steel, the parts that
     clash with it (ply apron base, pallets) are other colors."""
+    # The walkway "Cantilever Types" catalog is a scene-only display (its sample brackets sit at catalog
+    # stations that overlap the real wall cantilevers), not installed geometry.
+    data = [g for g in data if g["p"] != "Cantilever Types"]
     plates = [g for g in data if "sub-plate" in g["n"].lower() and "bolt" not in g["n"].lower()]
     seen, out = set(), []
     for P in plates:

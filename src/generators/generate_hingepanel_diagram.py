@@ -2633,7 +2633,8 @@ def sheet15():
 def sheet16():
     from tbs_constants import (PANEL_FLOOR_GAP_SIDE as ATOP, PANEL_FLOOR_GAP as PBOT_CTR,
                                PANEL_CORNER_YD_L as jL, PANEL_CORNER_YD_R as jR, LT_CAGE_BOT,
-                               DRUM_CAGE_YD_L as cgL, DRUM_CAGE_YD_R as cgR, APRON_FIX_W)
+                               DRUM_CAGE_YD_L as cgL, DRUM_CAGE_YD_R as cgR, APRON_FIX_W,
+                               LEFT_SUBPLATE_YD0 as SP0, LEFT_SUBPLATE_YD1 as SP1, FLOOR_PLATE_T as SPT)
     WID  = PW
     STUB = WID - APRON_FIX_W     # 2162 — far pull-out strip ends here; beyond it is the TRAVELLING pivot-corner leaf
     THR  = 51                    # threshold sill top Z
@@ -2660,10 +2661,16 @@ def sheet16():
     ax.text(WID / 2, ez + ATOP + 82, "ELEVATION — door bottom (interior face)", ha="center", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.plot([0, WID], [ez, ez], color=C_OUT, lw=1.6)
     ax.text(WID + 20, ez, "FLOOR Z0", va="center", ha="left", fontsize=6.5, color=C_DIM, **FONT)
-    # (1) FIXED full-width base Z0–130 — continuous, never moves
-    ax.add_patch(Rectangle((0, ez), WID, BASE_TOP, fc=C_FIXP, ec=C_OUT, lw=1.3, hatch="///", alpha=0.85))
+    # (0) left floor-anchor sub-plate (steel, laid first) under the base over Yd SP0–SP1
+    ax.add_patch(Rectangle((SP0, ez), SP1 - SP0, SPT, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=3))
+    # (1) FIXED full-width base Z0–130 — continuous, never moves; its bottom is notched SPT to sit ON the sub-plate
+    ax.add_patch(Polygon([(0, ez), (SP0, ez), (SP0, ez + SPT), (SP1, ez + SPT), (SP1, ez), (WID, ez),
+                          (WID, ez + BASE_TOP), (0, ez + BASE_TOP)], closed=True,
+                         fc=C_FIXP, ec=C_OUT, lw=1.3, hatch="///", alpha=0.85))
     ax.text(WID / 2, ez + BASE_TOP * 0.5, f"FIXED FULL-WIDTH BASE  Z0–{int(BASE_TOP)}  (continuous — never moves)",
             ha="center", va="center", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
+    leader(ax, (SP1 - 260, ez + SPT / 2), (WID + 20, ez + 70),
+           f"base notched {SPT}mm over\nYd{SP0}–{SP1}mm: sits ON\nthe floor-anchor sub-plate", col=C_OUT, fs=6, ha="left")
     # (2) PULL-OUT corner strips Z130–282 (removable) at the two corner zones
     for y0, y1, lbl in [(0, jL, "NEAR PULL-OUT STRIP"), (jR, STUB, "FAR PULL-OUT STRIP")]:
         ax.add_patch(Rectangle((y0, ez + BASE_TOP), y1 - y0, SH, fc=C_PULL, ec=C_OUT, lw=1.6))
@@ -2714,8 +2721,10 @@ def sheet16():
     ax.text(a0 + 10, 392, "vertical section · ext LEFT → int RIGHT", ha="center", fontsize=6.2, color=C_DIM, **FONT)
     ax.plot([a0 - 46, a0 + 46], [0, 0], color=C_OUT, lw=1.6)
     ax.add_patch(Rectangle(aA(-42, 0), 16, THR, fc=C_STEEL, ec=C_OUT, lw=1.2, hatch="///"))             # threshold sill (exterior)
-    # fixed base Z0–130, top 45° chamfer (exterior LOW → interior HIGH — the interior shoulder backs the strip bottom)
-    ax.add_patch(Polygon([aA(0, 0), aA(TW, 0), aA(TW, BASE_TOP), aA(0, BASE_TOP - 18)], closed=True,
+    # left floor-anchor sub-plate from the door frame (X0 = section x −22) inboard, under the base
+    ax.add_patch(Rectangle(aA(-22, 0), 68, SPT, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=3))
+    # fixed base, ON the sub-plate, top 45° chamfer (exterior LOW → interior HIGH — the interior shoulder backs the strip bottom)
+    ax.add_patch(Polygon([aA(0, SPT), aA(TW, SPT), aA(TW, BASE_TOP), aA(0, BASE_TOP - 18)], closed=True,
                          fc=C_FIXP, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
     # pull-out strip Z130–282, bottom located in the chamfer (gravity + latch seat it EXTERIOR-down onto the square)
     ax.add_patch(Polygon([aA(0, BASE_TOP - 18), aA(TW, BASE_TOP), aA(TW, ATOP), aA(0, ATOP)], closed=True,
@@ -2762,7 +2771,8 @@ def sheet16():
     leader(ax, aA(14, 232), (RX, 318), "PULL-OUT STRIP\n(removable) Z130–282", col="#6B4A00", fw="bold", fs=6, ha="left")
     leader(ax, aA(TW + 7, BASE_TOP + 20), (RX, 244), "BOTTOM draw latch (1590A13) —\nINTERIOR face, strip↔base, one at\neach strip END (draws DOWN); Detail F", col="#1c6b32", fw="bold", fs=6, ha="left")
     leader(ax, aA(14, BASE_TOP - 6), (RX, 150), "45° chamfer + EPDM\n(ext-low → int-high;\nlocates strip bottom — Detail D)", col=C_EPDM, fw="bold", fs=6, ha="left")
-    leader(ax, aA(10, 60), (RX, 78), f"FIXED BASE\nZ0–{int(BASE_TOP)}", col="#5A3F10", fw="bold", fs=6, ha="left")
+    leader(ax, aA(10, 60), (RX, 78), f"FIXED BASE\nZ{SPT}–{int(BASE_TOP)} on the sub-plate", col="#5A3F10", fw="bold", fs=6, ha="left")
+    leader(ax, aA(36, SPT / 2), (RX, 22), f"left floor-anchor sub-plate\n{SPT}mm steel (X0 → tray edge)", col=C_OUT, fs=6, ha="left")
     draw_dim_v(ax, a0 + 32, 0, BASE_TOP, f"{int(BASE_TOP)}mm", offset=10, fs=6, font=FONT)
     draw_dim_v(ax, a0 + 32, BASE_TOP, ATOP, f"{int(SH)}mm", offset=10, fs=6, font=FONT)
 

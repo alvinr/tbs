@@ -1344,11 +1344,19 @@ def apron_base_geom():
             (_STRIP_NEAR[1], _STRIP_FAR[0], False),      # center drum bay — flat top
             (_STRIP_FAR[0], _STRIP_FAR[1], True),        # far corner — chamfered strip seat
             (_STRIP_FAR[1], C_WID, False)]               # far-pivot — flat top
+    # The left floor-anchor sub-plate runs from X0 under the base: over its Yd span the base bottom is
+    # notched to sit ON the plate (Z = FLOOR_PLATE_T), elsewhere it stands on the floor.
+    from tbs_constants import LEFT_SUBPLATE_YD0 as pY0, LEFT_SUBPLATE_YD1 as pY1, FLOOR_PLATE_T
+    cuts = sorted({0, pY0, pY1, C_WID} | {y for s in segs for y in s[:2]})
     parts = []
     for y0, y1, cham in segs:
         top = [(40, APRON_BASE_TOP), (APRON_X0, _Z_BODY)] if cham else [(40, APRON_BASE_TOP), (APRON_X0, APRON_BASE_TOP)]
-        parts.append(_prism_xz("Apron fixed base (chamfered seat)" if cham else "Apron fixed base",
-                     [(APRON_X0, 0), (40, 0)] + top, y0, y1 - y0, C_PLY, 1.0))
+        for a, b in zip(cuts, cuts[1:]):
+            if a < y0 or b > y1:
+                continue
+            zb = FLOOR_PLATE_T if pY0 <= a and b <= pY1 else 0
+            parts.append(_prism_xz("Apron fixed base (chamfered seat)" if cham else "Apron fixed base",
+                         [(APRON_X0, zb), (40, zb)] + top, a, b - a, C_PLY, 1.0))
     parts.append(ruby_box("Apron base top brush (cage)", -1, cgL, APRON_BASE_TOP, 30, cgR - cgL, LT_CAGE_BOT - APRON_BASE_TOP, color=C_SEAL))
     for i in range(int((cgR - cgL) // 12)):
         yc = cgL + 6 + i * 12

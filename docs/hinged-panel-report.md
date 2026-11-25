@@ -434,7 +434,7 @@ would have fouled the tray. The 217mm floor gap is closed in the operational pos
 ![TBS-001 Hinged Panel — Sheet 15: Bottom-Clearance Section](assets/hingepanel-sheet15.png)
 
 The gap would otherwise be a straight light path, so it is closed by the **pull-out corner apron**
-(Sheet 16; light path #3 in §6): a **fixed full-width base** (Z0–130, continuous across the door bottom, never moves) plus
+(Sheet 16; light path #3 in §6): a **fixed full-width base** (Z0–130, continuous across the door bottom, never moves; its bottom edge is notched 8mm to sit on the left floor-anchor sub-plate, which runs under it from the door frame) plus
 two **removable pull-out strips** at the corner zones (near Yd0–653, far Yd1709–2162; Z130–282, 18mm
 exterior ply). The drum-bay center (Yd653–1709) has no pull-out — the fixed base closes Z0–130 and the
 drum's own vertical cage seals the center Z130→217. Each strip locates in a 45° chamfer in the base at

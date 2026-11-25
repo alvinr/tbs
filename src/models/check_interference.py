@@ -893,7 +893,35 @@ def main():
         gap, mid, d, clear = worst[key]
         print(f"  PIPE  {key[0]:44.44s}")
         print(f"    x  PIPE  {key[1]:44.44s}  cross ({mid[0]},{mid[1]},{mid[2]})  centerline {d}mm < {clear}mm")
-    return 1 if (hits or worst) else 0
+    plate_hits = subplate_pass(data)
+    return 1 if (hits or worst or plate_hits) else 0
+
+
+def subplate_pass(data, tol=1.0):
+    """FLOOR SUB-PLATES are laid first and everything above SITS on them, so nothing may pass THROUGH
+    one (a 3-axis overlap) — a part standing on the plate only touches its top face.  Fasteners into the
+    plate are excluded.  The same-color solids pass can't see this: the plate is steel, the parts that
+    clash with it (ply apron base, pallets) are other colors."""
+    plates = [g for g in data if "sub-plate" in g["n"].lower() and "bolt" not in g["n"].lower()]
+    seen, out = set(), []
+    for P in plates:
+        for S in data:
+            n = S["n"].lower()
+            if S is P or "sub-plate" in n or is_fastener(S["n"]) or any(k in n for k in _NONSOLID_KEYS):
+                continue
+            if not overlap(P, S, tol):
+                continue
+            k = (P["n"], S["n"])
+            if k in seen:
+                continue
+            seen.add(k)
+            out.append((P, S))
+    print(f"floor sub-plate penetrations={len(out)}")
+    for P, S in out:
+        c = [round((max(P["mn"][i], S["mn"][i]) + min(P["mx"][i], S["mx"][i])) / 2) for i in range(3)]
+        print(f"  PLATE {P['n']:42.42s} ({P['p']})")
+        print(f"    x  {S['n']:44.44s} ({S['p']})  near ({c[0]},{c[1]},{c[2]})")
+    return len(out)
 
 
 def _readability(which):

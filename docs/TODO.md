@@ -94,7 +94,7 @@ Deferred until after the editorial review: it reworks the water system and plumb
 - IBC-2: X1 fill side-entry, Blue equalization end, vent BV-09.
 - IBC-3: shared bottom tap → P-02 / P-05 (`BROWN_TAP`), DV-02 return side-entry (guarded `if not sump_on_skid`, marked obsolete), vent BV-10.
 - IBC-4: waste-merge side-entry (`MERGE4`), X4 bottom pickup → P-03 (`_bottom_pickup`), vent BV-11.
-- The totes' own outlet valves are NOT modeled in 3D; only `IBC_VALVE_Z` (185mm, unsourced; Schütz says 140mm) on the 2D IBC frame drawing, which puts the valve on the corridor face (Schütz: it is on the 1,000mm walkway face).
+- The totes' own outlet valves are NOT modeled in 3D; only `IBC_VALVE_Z` (140mm, Schütz-confirmed 2026-11-25) on the 2D IBC frame drawing, which puts the valve on the corridor face (Schütz: it is on the 1,000mm walkway face).
 
 **Orientation:** each tote's 1,219mm (48"/1,200) side runs along X; the 1,016mm (40"/1,000) side runs along Yd. So the **corridor face is the long (1,200) side**; the walkway face (X 4,674) and the end-wall face (X 5,893, flush to the wall, no access) are the short (1,000) sides. The totes cannot turn 90°: 2 × 1,219 + corridor > the 2,362mm width.
 - Valve on a **1,200 side** → it faces the corridor (current assumption) or, rotated 180°, the near/far wall (no access). Works.

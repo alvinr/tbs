@@ -948,7 +948,7 @@ IBC_CAGE_TUBE_D = 25     # cage corner upright tube OD (mm)
 IBC_CAGE_RAIL_W = 25     # cage top rail tube OD (mm)
 IBC_CAGE_INSET  = 15     # cage tube center inset from pallet edge (mm)
 IBC_BOTTLE_INSET = 30    # bottle wall inset from pallet edge (mm)
-IBC_VALVE_Z     = 185    # DN50 butterfly valve CL above IBC base (mm)
+IBC_VALVE_Z     = 140    # DN50 outlet valve CL above the floor (mm) — Schütz MX 1000, both pallet types (confirmed 2026-11-25)
 
 # Near column (Yd=30–1046mm): Blue #1 on top, Brown on bottom
 BLUE_IBC_Y  = 30     # near column Yd start (mm) — pushed to near wall, 30mm clearance
